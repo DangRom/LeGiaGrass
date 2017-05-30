@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using LGG.Core;
+using LGG.Core.Repositories;
+using LGG.Persistence;
+using LGG.Persistence.Repositories;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +29,8 @@ namespace LGG
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+           // services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc();
         }
 
