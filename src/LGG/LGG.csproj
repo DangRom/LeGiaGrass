@@ -6,7 +6,34 @@
 
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+    <UserSecretsId>d566ecab-cfe2-430b-8c55-7e1c02b4a22c</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\Api\**" />
+    <Content Remove="Controllers\Api\**" />
+    <EmbeddedResource Remove="Controllers\Api\**" />
+    <None Remove="Controllers\Api\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\admin\app.css" />
+    <Content Include="wwwroot\admin\app.js" />
+    <Content Include="wwwroot\admin\systemjs.config.js" />
+    <Content Include="wwwroot\googlefbb6e67fcb02657f.html" />
+    <Content Include="wwwroot\images\author-chad.jpg" />
+    <Content Include="wwwroot\images\contact-1.jpg" />
+    <Content Include="wwwroot\images\hero-about.jpg" />
+    <Content Include="wwwroot\images\hero-archive-post.jpg" />
+    <Content Include="wwwroot\images\hero-contact.jpg" />
+    <Content Include="wwwroot\images\hero-home.jpg" />
+    <Content Include="wwwroot\images\logo-large.png" />
+    <Content Include="wwwroot\images\me.jpg" />
+    <Content Include="wwwroot\images\me300.jpg" />
+    <Content Include="wwwroot\images\popular.jpg" />
+    <Content Include="wwwroot\robots.txt" />
+    <Content Include="wwwroot\styles.html" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="MailKit" Version="1.16.1" />
@@ -32,10 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\Api\" />
-    <Folder Include="Controllers\Api\" />
   </ItemGroup>
 
 </Project>

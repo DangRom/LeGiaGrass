@@ -1,0 +1,65 @@
+﻿@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment Enviroment
+@inject Microsoft.Extensions.PlatformAbstractions.ApplicationEnvironment Application
+@using System.Runtime.InteropServices
+@{
+    Layout = "~/Views/About/_Template.cshtml";
+    ViewBag.Title = "About LGG";
+}
+<input type="hidden" value="d9197f1e-e49b-4d41-9851-440cfa63abb7">
+<section class="about">
+    <section class="who-is">
+        <div class="row">
+            <div class="large-8 columns">
+                <h1>Hi, we are LGG</h1>
+                <p>
+                    We are  <a href="https://www.google.com/maps/place/Vietnam" target="_blank" title="Vietnam">Vietnam-based</a> software develop company with a strong passion for modern development practices.
+                </p>
+
+                <p>
+                    <b>Keeping my eye on the future while standing on the shoulders of giants is kind of my thing.</b>
+                </p>
+                <ul class="menu simple">
+                    <li>
+                        <a href="https://github.com/DangRom/LeGiaGrass" title="LGG Code Github" target="_blank" class="icon">
+                            <i class="fa fa-github fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/" title="LGG Twitter" target="_blank" class="icon">
+                            <i class="fa fa-twitter fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/" title="LGG Facebook" target="_blank" class="icon">
+                            <i class="fa fa-facebook fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://google.com/" title="LGG Twitter" target="_blank" class="icon">
+                            <i class="fa fa-google-plus fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="large-4 columns">
+                <div class="image-container">
+                    <img src="~/images/me300.png" alt="LGG Logo" class="circle" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about-lgg">
+        <div class="row">
+            <div class="large-4 columns">
+                <div class="image-container">
+                    <img src="~/images/logo-large.png" alt="LGG Logo" />
+                </div>
+            </div>
+            <div class="large-8 columns">
+                <h2>Tell Me More About LGG</h2>
+                <p>Currently version "<b>@Application.ApplicationVersion</b>" of "<b>@Enviroment.ApplicationName</b>" is running on top of runtime framework "<b>@Application.RuntimeFramework</b>" in "<b>@RuntimeInformation.OSDescription</b>" and is being powered by an <b>@RuntimeInformation.ProcessArchitecture</b> process architecture.</p>
+                <p class="warning">* These stats are produced at runtime.</p>
+            </div>
+        </div>
+    </section>
+</section> 
