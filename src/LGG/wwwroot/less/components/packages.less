@@ -1,0 +1,126 @@
+.package {
+	position: relative;
+	background-color: #1e260b;
+	-webkit-backface-visibility: hidden;
+	@media (max-width: @screen-xs-max) {
+		margin-bottom: 15px;
+	}
+	.package-image img {
+		width: 100%;
+		opacity: .6;
+		.transition (all .3s ease)
+	}
+	&:hover {
+		.package-image img {
+			opacity: .8;
+		}
+	}
+	.package-ribbon-wrapper {
+		width: 155px;
+		height: 110px;
+		overflow: hidden;
+		position: absolute;
+		top: -2px;
+		left: -2px;
+	}
+	.package-ribbon {
+		font-size: 12px;
+		line-height: 18px;
+		font-weight: 600;
+		font-family: @logo-font;
+		letter-spacing: .5px;
+		text-align: center;
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		position: relative;
+		z-index: 1;
+		padding: 8px 0;
+		top: 26px;
+		left: -34px;
+		width: 155px;
+		background-color: #ff640a;
+		color: #fff;
+		-webkit-backface-visibility: hidden;
+	}
+	.package-caption {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		padding: 50px 25px 25px;
+		@media (max-width: @screen-sm-max) and (min-width: 768px) {
+			padding: 30px 15px 15px;
+		}
+		@media (max-width: @screen-xs-max) {
+			padding: 40px 15px 15px;
+		}
+		.vert>*:not(:first-child) {
+			margin-top: 15px;
+			@media (max-width: @screen-sm-max) and (min-width: 768px) {
+				margin-top: 5px;
+			}
+		}
+		&:after {
+			position: absolute;
+			z-index: -1;
+			top: 6px;
+			left: 6px;
+			bottom: 6px;
+			right: 6px;
+			content: '';
+			border: 1px solid #fff;
+			opacity: .5;
+			pointer-events: none;
+			.transition (all .5s ease)
+		}
+		&:hover:after {
+			box-shadow: 0 0 0 6px #fff;
+		}
+	}
+	.package-title {
+		font-size: 34px;
+		line-height: 40px;
+		font-weight: 600;
+		font-family: @logo-font;
+		color: #fff;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+		@media (max-width: @screen-sm-max) and (min-width: 768px) {
+			font-size: 24px;
+			line-height: 30px;
+		}
+	}
+	.package-text-1 {
+		font-size: 18px;
+		line-height: 24px;
+		font-weight: 600;
+		font-family: @logo-font;
+		text-transform: uppercase;
+		color: @custom-color;
+		text-shadow: 0 1px 1px rgba(0, 0, 0, .6);
+		margin-top: 8px !important;
+		@media (max-width: @screen-sm-max) and (min-width: 768px) {
+			font-size: 15px;
+			line-height: 20px;
+		}
+	}
+	.package-text-2 {
+		font-size: 15px;
+		line-height: 19px;
+		color: #fff;
+	}
+	.btn {
+		margin-top: 10px !important;
+		padding: 11px 22px;
+		height: 50px;
+		@media (max-width: @screen-sm-max) and (min-width: 768px) {
+			height: 40px;
+			padding-top: 6px;
+			padding-bottom: 6px;
+		}
+	}
+}

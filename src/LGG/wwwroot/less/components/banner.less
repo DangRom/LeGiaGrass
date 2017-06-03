@@ -1,0 +1,79 @@
+.bnr-block {
+	display: block;
+	text-decoration: none;
+	position: relative;
+	background-color: #1e260b;
+	-webkit-backface-visibility: hidden;
+	@media (max-width: @screen-xs-max) {
+		margin-bottom: 15px;
+	}
+	.bnr-block-image img {
+		width: 100%;
+		opacity: .9;
+		.transition (all .3s ease)
+	}
+	&:hover {
+		.bnr-block-image img {
+			opacity: 1;
+		}
+	}
+	.bnr-block-caption {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 25px 25px;
+		-webkit-backface-visibility: hidden;
+		.vert {
+			vertical-align: bottom;
+		}
+		.vert>*:not(:first-child) {
+			margin-top: 10px;
+			@media (max-width: @screen-sm-max) and (min-width: 768px) {
+				margin-top: 5px;
+			}
+		}
+		&:after {
+			position: absolute;
+			z-index: 0;
+			top: 6px;
+			left: 6px;
+			bottom: 6px;
+			right: 6px;
+			content: '';
+			border: 1px solid #fff;
+			opacity: .5;
+			pointer-events: none;
+			.transition (all .5s ease)
+		}
+		&:hover:after {
+			box-shadow: 0 0 0 6px #fff;
+		}
+	}
+	.bnr-block-title {
+		font-size: 30px;
+		line-height: 34px;
+		font-weight: 600;
+		font-family: @logo-font;
+		color: #fff;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+		@media (max-width: @screen-sm-max) and (min-width: 768px) {
+			font-size: 24px;
+			line-height: 30px;
+		}
+	}
+	.bnr-block-text {
+		font-size: 18px;
+		line-height: 22px;
+		font-weight: 600;
+		font-family: @logo-font;
+		color: #fff;
+		text-shadow: 0 1px 1px rgba(0, 0, 0, .6);
+		@media (max-width: @screen-sm-max) and (min-width: 768px) {
+			font-size: 15px;
+			line-height: 20px;
+		}
+	}
+}

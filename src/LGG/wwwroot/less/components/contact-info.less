@@ -1,0 +1,109 @@
+.contact-info {
+	position: relative;
+	font-size: 20px;
+	line-height: 31px;
+	font-weight: 400;
+	background-color: @custom-color;
+	color: #fff;
+	&:after {
+		position: absolute;
+		z-index: 0;
+		top: 6px;
+		left: 6px;
+		bottom: 6px;
+		right: 6px;
+		content: '';
+		border: 1px solid #fff;
+		opacity: .5;
+		pointer-events: none;
+		.transition (all .5s ease)
+	}
+	&:hover:after {
+		box-shadow: 0 0 0 10px #fff;
+	}
+	p {
+		color: #fff;
+		font-size: 16px;
+		line-height: 22px;
+		margin-bottom: 0;
+	}
+	.with-icon p {
+		padding-left: 50px;
+	}
+	.contact-info-title {
+		font-size: 22px;
+		line-height: 26px;
+	}
+	.row {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		padding: 0;
+		justify-content: space-between;
+		@media (max-width: 1199px) and (min-width: 992px) {
+			padding: 0 10px;
+		}
+		@media (max-width: 991px) {
+			flex-wrap: wrap;
+			padding: 0 35px;
+		}
+		@media (max-width: 600px) {
+			justify-content: center;
+		}
+	}
+	[class*='col'] {
+		margin: 20px 0 25px;
+		padding: 0 15px 0 25px;
+		position: relative;
+		&:not(:last-child):not(.noline):after {
+			position: absolute;
+			top: 0;
+			right: -25px;
+			content: '';
+			width: 1px;
+			height: 100%;
+			background-color: #fff;
+			opacity: .5;
+			@media (max-width: 991px) {
+				display: none;
+			}
+		}
+		&:first-child {
+			padding-left: 0;
+		}
+		@media (max-width: 1199px) and (min-width: 992px) {
+			padding: 0 0 0 10px;
+		}
+		@media (max-width: 991px) {
+			padding: 0 10px;
+			flex: 50%;
+		}
+		@media (max-width: 600px) {
+			flex: 100%;
+			max-width: 280px;
+			&:not(.with-icon):not(:last-child) {
+				padding-left: 50px;
+			}
+		}
+	}
+	.contact-info-title i.icon {
+		width: 50px;
+		font-size: 31px;
+		padding-right: 15px;
+		color: #fff;
+		vertical-align: sub;
+	}
+	.btn {
+		font-size: 18px;
+		padding: 17px 30px;
+		width: 100%;
+		margin-top: 8px;
+	}
+	.btn:hover, .btn:focus {
+		background: #fff !important;
+		color: #4d4d4d !important;
+		.mdShadow(2);
+	}
+}
