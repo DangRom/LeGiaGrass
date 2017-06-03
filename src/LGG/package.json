@@ -1,12 +1,12 @@
 {
-  "name": "pioneer-code",
+  "name": "legia-grass",
   "version": "1.0.0",
-  "author": "Chad Ramos <chad@pioneercode.com>",
-  "description": "Pioneer Code Blog",
+  "author": "Le Gia Grass <contact@legiagrass.com>",
+  "description": "Le Gia Grass",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PioneerCode/pioneer-blog"
+    "url": "https://github.com/DangRom/LeGiaGrass"
   },
   "scripts": {
     "gulp-public": "gulp public",

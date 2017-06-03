@@ -1,6 +1,6 @@
 {
   "authors": [
-    "Chad Ramos <chad@pioneercode.com>"
+    "Le Gia Grass <contact@legiagrass.com>"
   ],
   "dependencies": {
     "font-awesome": "4.7.0",
@@ -9,7 +9,7 @@
     "jquery": "^3.2.1"
   },
   "description": "Pioneer Code",
-  "homepage": "http://www.pioneercode.com",
+  "homepage": "http://www.legiagrass.com",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -22,7 +22,7 @@
   "moduleType": [
     "es6"
   ],
-  "name": "pioneer code blog",
+  "name": "legiagrass code blog",
   "private": true,
   "version": "1.0.0"
 }

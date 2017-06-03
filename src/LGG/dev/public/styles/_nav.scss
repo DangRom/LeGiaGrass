@@ -3,7 +3,7 @@
   position: fixed;
   width: 100%;
   font-size: 14px;
-  border-top: 3px map-get($foundation-palette, pioneer) solid;
+  border-top: 3px map-get($foundation-palette, legiagrass) solid;
   z-index: 20;
   top: 0;
   left: 0;
@@ -72,7 +72,7 @@
       color: $white;
 
       span {
-        color: map-get($foundation-palette, pioneer);
+        color: map-get($foundation-palette, legiagrass);
       }
     }
   }

@@ -90,7 +90,7 @@ h1, h2, h3, h4, h5 {
 
 .callout.filter {
     border-color: $light-gray;
-    border-left: 6px solid map-get($foundation-palette, pioneer);
+    border-left: 6px solid map-get($foundation-palette, legiagrass);
 }
 
 pre {
@@ -135,7 +135,7 @@ a.button.empty {
     border: 2px solid $white;
 
     &:hover {
-        color: map-get($foundation-palette, pioneer);
+        color: map-get($foundation-palette, legiagrass);
         background: $white;
         text-decoration: none;
     }
@@ -147,9 +147,9 @@ a.button.empty-reverse {
     color: $black;
 
     &:hover {
-        border: 2px solid map-get($foundation-palette, pioneer);
+        border: 2px solid map-get($foundation-palette, legiagrass);
         color: $white;
-        background: map-get($foundation-palette, pioneer);
+        background: map-get($foundation-palette, legiagrass);
         text-decoration: none;
     }
 }
