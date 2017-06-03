@@ -13,7 +13,7 @@
     @RenderSection("metaPage", false)
 }
 @section headEnd {
-    <link href="~/admin/app.css" rel="stylesheet" asp-append-version="true" />
+    <link href="/app.css" rel="stylesheet" asp-append-version="true" />
 }
 @section nav {
     <nav class="nav-main">
@@ -65,7 +65,7 @@
 </section>
 @section bodyEnd {
     @* TODO: Make this aysnc.  Issue currently is jQuery load. *@
-    <script src="~/admin/app.js" asp-append-version="true"></script>
+    <script src="/app.js" asp-append-version="true"></script>
     <script>
     @if (!string.IsNullOrEmpty(ViewBag.Anchor))
     {
