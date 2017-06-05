@@ -430,11 +430,11 @@ $(document).ready(function () {
 
 			trigger.waypoint(function () {
 				element.addClass('animated').addClass(animationClass);
-        var el = element;
-        setTimeout(function () {
-           el.removeClass(animationClass);
-           el.removeClass('animation');
-        }, 1000);
+		var el = element;
+		setTimeout(function () {
+		   el.removeClass(animationClass);
+		   el.removeClass('animation');
+		}, 1000);
 			}, {
 				triggerOnce: true,
 				offset: '90%'
@@ -969,15 +969,15 @@ $(document).ready(function () {
 	function popupForm(link) {
 		if ($(link).length) {
 			$(link).on('click', function (e) {  
-        var $next = $(this).next();
-        if ($next.hasClass('opened')){
-          $next.removeClass('opened');
-        } else {
-          $('.form-popup').each(function () {
-            $(this).removeClass('opened');
-          });
-          $next.addClass('opened');
-        }
+		var $next = $(this).next();
+		if ($next.hasClass('opened')){
+		  $next.removeClass('opened');
+		} else {
+		  $('.form-popup').each(function () {
+			$(this).removeClass('opened');
+		  });
+		  $next.addClass('opened');
+		}
 				e.preventDefault();
 			})
 			$(document).on('click', function (event) {

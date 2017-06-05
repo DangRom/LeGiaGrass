@@ -53,7 +53,7 @@ namespace LGG.Controllers
                     break;
                 case OperationStatus.Error:
                     ViewBag.IsValid = false;
-                    ModelState.AddModelError("", "Sorry, we had an issue with sending your email. Please try again later. ");
+                    ModelState.AddModelError("", "Xin lỗi vì sự bất tiện này, chúng tôi vừa gặp vấn đề khi gửi lời nhắn của bạn. Vui lòng thử lại!");
                     break;
             }
 

@@ -262,7 +262,6 @@
   <ItemGroup>
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Blog\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
 
 </Project>

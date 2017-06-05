@@ -6,32 +6,32 @@
     <meta charset="utf-8">
     <title>Le Gia - Grass</title>
     <meta name="keywords" content="LeGia Grass" />
-    <meta name="description" content="Le Gia Services">
+    <meta name="description" content="Le Gia Grass">
     <meta name="author" content="legiagrass.com">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="~/favicon.ico">
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Icon Fonts  -->
-    <link rel="stylesheet" href="fonts/style.css">
+    <link rel="stylesheet" href="~/css/style.css">
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="vendor/waves/waves.css">
-    <link rel="stylesheet" href="vendor/slick/slick.css">
-    <link rel="stylesheet" href="vendor/slick/slick-theme.css">
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="~/vendor/waves/waves.css">
+    <link rel="stylesheet" href="~/vendor/slick/slick.css">
+    <link rel="stylesheet" href="~/vendor/slick/slick-theme.css">
+    <link rel="stylesheet" href="~/vendor/magnific-popup/magnific-popup.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="~/fonts/style.css">
     <!-- Custom Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-    <link rel="stylesheet" type="text/css" href="vendor/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/vendor/rs-plugin/css/settings.css" media="screen" />
     <!-- Head Libs -->
     <!--[if IE]>
     <link rel="stylesheet" href="css/ie.css">
     <![endif]-->
     <!--[if lte IE 8]>
-    <script src="vendor/respond/respond.js"></script>
-    <script src="vendor/excanvas/excanvas.js"></script>
+    <script src="~/vendor/respond/respond.js"></script>
+    <script src="~/vendor/excanvas/excanvas.js"></script>
     <![endif]-->
     <!-- Vendor -->
     <!-- jQuery 1.10.1-->
@@ -40,28 +40,25 @@
     <script src="~/vendor/bootstrap/bootstrap.min.js"></script>
     <!-- Modernizr -->
     <script src="~/vendor/modernizr/modernizr.js"></script>
-</head>
-<body class="index">
-    <div id="loader-wrapper" class="loader-on">
-        <div id="loader" class="mower-loader">
-            <div class="mower"> <img src="images/lawnmower.png" alt=""> </div>
-            <div class="grass"></div>
-            <div class="text">Loading...</div>
-        </div>
-    </div>
+    @RenderSection("scriptHead", false)
 
+</head>
+<body class="@(ViewBag.Selected == "contact" ? "selected" : "")">
+
+    @RenderSection("loaderWrapper", false)
     <!-- Modal Search -->
-    <div class="overlay overlay-scale">
-        <button type="button" class="overlay-close"> ✕ </button>
-        <div class="overlay__content">
-            <form id="search-form" class="search-form outer" action="#" method="post">
-                <div class="input-group input-group--wd">
-                    <input type="text" class=" input--full" placeholder="search text here ...">
-                </div>
-                <button class="btn btn--wd text-uppercase wave waves-effect">Search</button>
-            </form>
-        </div>
-    </div>
+    <!--TODO: Tìm kiếm-->
+    @*<div class="overlay overlay-scale">
+            <button type="button" class="overlay-close"> ✕ </button>
+            <div class="overlay__content">
+                <form id="search-form" class="search-form outer" action="#" method="post">
+                    <div class="input-group input-group--wd">
+                        <input type="text" class=" input--full" placeholder="search text here ...">
+                    </div>
+                    <button class="btn btn--wd text-uppercase wave waves-effect">Search</button>
+                </form>
+            </div>
+        </div>*@
     <!-- / end Modal Search -->
 
     <div class="wrapper">
@@ -74,7 +71,7 @@
                         <div class="row">
                             <div class="col-sm-3 col-lg-3">
                                 <!--  Logo  -->
-                                <a class="logo" href="index.html"> <img class="logo-default" src="images/logo.png" alt="" /> <img class="logo-mobile" src="images/logo.png" alt="" /> </a>
+                                <a class="logo" href="index.html"> <img class="logo-default" src="~/images/logo.png" alt="" /> <img class="logo-mobile" src="~/images/logo.png" alt="" /> </a>
                                 <!-- End Logo -->
                             </div>
                             <div class="visible-lg col-lg-3">
@@ -110,38 +107,38 @@
                     <div class="container">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="index.html"><span class="link-name">Trang Chủ</span></a></li>
+                            @*<li>
+                                    <a href="services.html" class="dropdown-toggle"><span class="link-name">Dịch Vụ</span><span class="caret icon-angle-down"></span></a>
+                                    <ul class="dropdown-menu animated fadeIn" role="menu">
+                                        <li>
+                                            <a href="service-page-1.html">lawn service</a>
+                                            <ul class="submenu">
+                                                <li class="level2"><a href="service-page-1.html">trimming edge</a></li>
+                                                <li class="level2"><a href="service-page-1.html">clean up</a></li>
+                                                <li class="level2"><a href="service-page-1.html">blowing</a></li>
+                                                <li class="level2"><a href="service-page-1.html">weeding</a></li>
+                                                <li class="level2"><a href="service-page-1.html">moving</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="service-page-2.html">tree service</a></li>
+                                        <li><a href="service-page-3.html">landscape design services</a></li>
+                                        <li><a href="service-page-4.html">leaf removal</a></li>
+                                        <li><a href="service-page-5.html">Snow Removal</a></li>
+                                        <li><a href="service-page-6.html">Junk Removal</a></li>
+                                        <li><a href="service-page-7.html">New tree planting</a></li>
+                                        <li><a href="service-page-8.html">Sod service</a></li>
+                                        <li><a href="service-page-9.html">Retaining walls</a></li>
+                                        <li><a href="service-page-10.html">Patio and fire pit pavers</a></li>
+                                        <li><a href="service-page-11.html">Yard work</a></li>
+                                        <li><a href="service-page-12.html">Excavation</a></li>
+                                    </ul>
+                                </li>*@
+                            @*<li><a href="pricing.html"><span class="link-name">Giá</span></a></li>*@
                             <li>
-                                <a href="services.html" class="dropdown-toggle"><span class="link-name">Dịch Vụ</span><span class="caret icon-angle-down"></span></a>
-                                <ul class="dropdown-menu animated fadeIn" role="menu">
-                                    <li>
-                                        <a href="service-page-1.html">lawn service</a>
-                                        <ul class="submenu">
-                                            <li class="level2"><a href="service-page-1.html">trimming edge</a></li>
-                                            <li class="level2"><a href="service-page-1.html">clean up</a></li>
-                                            <li class="level2"><a href="service-page-1.html">blowing</a></li>
-                                            <li class="level2"><a href="service-page-1.html">weeding</a></li>
-                                            <li class="level2"><a href="service-page-1.html">moving</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="service-page-2.html">tree service</a></li>
-                                    <li><a href="service-page-3.html">landscape design services</a></li>
-                                    <li><a href="service-page-4.html">leaf removal</a></li>
-                                    <li><a href="service-page-5.html">Snow Removal</a></li>
-                                    <li><a href="service-page-6.html">Junk Removal</a></li>
-                                    <li><a href="service-page-7.html">New tree planting</a></li>
-                                    <li><a href="service-page-8.html">Sod service</a></li>
-                                    <li><a href="service-page-9.html">Retaining walls</a></li>
-                                    <li><a href="service-page-10.html">Patio and fire pit pavers</a></li>
-                                    <li><a href="service-page-11.html">Yard work</a></li>
-                                    <li><a href="service-page-12.html">Excavation</a></li>
-                                </ul>
+                                <a href="#"><span class="link-name">Tin Tức</span></a>
                             </li>
-                            <li><a href="pricing.html"><span class="link-name">Giá</span></a></li>
-                            <li>
-                                <a href="#"><span class="link-name">Blog</span></a>
-                            </li>
-                            <li><a href="about.html"><span class="link-name">Thông Tin</span></a></li>
-                            <li><a href="#"><span class="link-name">Liên Hệ</span></a></li>
+                            <li><a href="/about"><span class="link-name">Thông Tin</span></a></li>
+                            <li><a href="/contact"><span class="link-name">Liên Hệ</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -154,50 +151,21 @@
         </div>
 
         <footer class="footer">
-            <div class="footer__top">
-                <div class="container">
-                    <form id="estimate-form" class="estimate-form" action="#" method="post">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="title">Free Estimate</div>
-                            </div>
-                            <div class="col-md-3">
-                                <div>I want </div>
-                                <div class="select-wrapper select--full">
-                                    <select class="select--wd">
-                                        <option>Lawn Service</option>
-                                        <option>Landscape Service</option>
-                                        <option>Leaf Removal Service</option>
-                                        <option>Snow Removal</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div>at</div>
-                                <input type="text" class="subscribe-form__input input--wd input--full" placeholder="Property address">
-                            </div>
-                            <div class="col-md-2">
-                                <div>&nbsp;</div>
-                                <button class="btn btn--wd">GET MY PRICE</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            @RenderSection("footerPart", false)
             <div class="footer__column-links">
                 <div class="back-to-top"><a href="#top"><span class="icon-tree"></span></a></div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6 col-md-3"> <img src="images/guarantee.png" class="img-responsive" alt="" /> </div>
+                        <div class="col-sm-6 col-md-3"> <img src="~/images/guarantee.png" class="img-responsive" alt="" /> </div>
                         <div class="col-sm-6 col-md-3 mobile-collapse">
-                            <h5 class="title mobile-collapse__title">Thông Tin </h5>
+                            <h5 class="title mobile-collapse__title">Information </h5>
                             <div class="v-links-list mobile-collapse__content">
                                 <ul>
                                     <li><a href="maintenance.html">FAQ</a></li>
-                                    <li><a href="contact.html">Đỉa Điểm</a></li>
-                                    <li><a href="about.html">Chứng Nhận</a></li>
-                                    <li><a href="about.html">Tuyển Dụng</a></li>
-                                    <li><a href="about.html">Đối Tác</a></li>
+                                    <li><a href="contact.html">Locations</a></li>
+                                    <li><a href="about.html">Testimonials</a></li>
+                                    <li><a href="about.html">Careers</a></li>
+                                    <li><a href="about.html">Partners</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -206,14 +174,14 @@
                             <div class="v-links-list mobile-collapse__content">
                                 <ul>
                                     <li><a href="sitemap.html">Site Map</a></li>
-                                    <li><a href="about.html">Chính Sách</a></li>
-                                    <li><a href="about.html">Điều Khoản Sử Dụng</a></li>
-                                    <li><a href="contact.html">Liên Hệ</a></li>
+                                    <li><a href="about.html">Privacy</a></li>
+                                    <li><a href="about.html">Terms of Use</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 mobile-collapse mobile-collapse--last">
-                            <h5 class="title mobile-collapse__title">Công Ty</h5>
+                            <h5 class="title mobile-collapse__title">Company Info</h5>
                             <div class="v-links-list mobile-collapse__content">
                                 <ul>
                                     <li>51 St. Black Road Raleigh</li>
@@ -245,12 +213,12 @@
                     </div>
                     <div class="pull-right col-sm-6 col-md-5 col-lg-4">
                         <div class="phone">
-                            <div><span class="custom-color hidden-xs">GỌI NGAY: </span> <span class="phone-number">+84 123 456 789</span><i class="icon icon-telephone"></i></div>
-                            <div class="phone-sm">7 Ngày một tuần từ 8:00 am to 7:00 pm</div>
+                            <div><span class="custom-color hidden-xs">CALL US: </span> <span class="phone-number">+1 800 543 2100</span><i class="icon icon-telephone"></i></div>
+                            <div class="phone-sm">7 Days a week from 9:00 am to 7:00 pm</div>
                         </div>
                     </div>
                     <div class="pull-left col-sm-12 col-md-3 col-lg-4">
-                        <div class="copyright">© 2017 <a href="#">Le Gia Grass</a>.</div>
+                        <div class="copyright">© 2016 <a href="#">Lawn Care Service</a>.</div>
                     </div>
                 </div>
             </div>

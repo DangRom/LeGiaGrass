@@ -255,6 +255,12 @@ namespace LGG
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                   name: "About",
+                   template: "about/{page?}",
+                   defaults: new { controller = "about", action = "Index" });
+
             });
         }
     }
