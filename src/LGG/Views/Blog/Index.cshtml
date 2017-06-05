@@ -3,6 +3,251 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model List<PostDto>
+<!-- Breadcrumb section -->
+<section class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb--wd pull-left">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Blog</li>
+        </ol>
+    </div>
+</section>
 
-<h2>Index</h2>
+<!-- Content section -->
+<section class="content content--fill content--fill--light top-null">
+    <div class="container">
+        <h1 class="text-center lined">Blog Posts</h1>
+        <div class="row">
+            <div class="col-md-8 column-center">
+                <div class="blog-post">
+                    <div class="post-image">
+                        <a href="blog-single.html"><img src="images/blog/blog-post-img-1.jpg" alt=""></a>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title"><a href="#">Getting Ready for Spring: Slit Seeding Your Yard</a></h3>
+                        <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
+                        <div class="post-author">Richard M. Pinckney</div>
+                        <div class="post-teaser">
+                            <p>In Pennsylvania, early fall is the best time to sow grass seeds for a number of reasons. Seeding in the fall allows cool-season grasses to establish before winter. Try to sow two months before the first frost of the season. There are fewer active lawn...</p>
+                        </div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="post-image">
+                        <div class="post-carousel">
+                            <a href="#"><img src="images/blog/blog-post-img-2.jpg" alt=""></a>
+                            <a href="#"><img src="images/blog/blog-post-img-2-1.jpg" alt=""></a>
+                            <a href="#"><img src="images/blog/blog-post-img-2-2.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title"><a href="#">Getting your pool ready to swim</a></h3>
+                        <div class="post-date"><span class="day">15</span><span class="month">April</span></div>
+                        <div class="post-author">Richard M. Pinckney</div>
+                        <div class="post-teaser">
+                            <p>In Pennsylvania, early fall is the best time to sow grass seeds for a number of reasons. Seeding in the fall allows cool-season grasses to establish before winter. Try to sow two months before the first frost of the season. There are fewer active lawn...</p>
+                        </div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="post-image">
+                        <div class="post-video">
+                            <iframe src="https://player.vimeo.com/video/79100222"></iframe>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">Affordable Lawn Care Services - Lafayette</h3>
+                        <div class="post-date"><span class="day">1</span><span class="month">April</span></div>
+                        <div class="post-author">Richard M. Pinckney</div>
+                        <div class="post-teaser">
+                            <p>While I do appreciate the diverse tones in my front yard, it seems the yellow is overtaking the green. I know I should have kept up with lawn maintenance, but I just didn’t have the time. Also, it isn’t winter anymore, so why is the yellow increasing?</p>
+                        </div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="post-image">
+                        <a href="blog-single.html"><img src="images/blog/blog-post-img-3.jpg" alt=""></a>
+                        <div class="post-link-wrapper">
+                            <div class="vert-wrap">
+                                <div class="vert">
+                                    <a href="#" class="post-link">http://www.lawncarelink.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">What Should Your Fall Lawn Treatment Schedule Look Like?</h3>
+                        <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
+                        <div class="post-author">Richard M. Pinckney</div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="post-image bg-quote">
+                        <div class="post-quote">
+                            <div class="quote-author"><span>Ryan, Manson MN</span></div>
+                            <p>If your lawn is looking thin or bare, it might be time to sow it with a layer of grass seed to restore it to its lush, green state. The cool-season grasses of Pennsylvania fare best in the fall when the air is cooling down but the soil is still warm, giving grass a few months to grow before winter comes around. Read on to learn more about why fall is the best time to reseed your lawn.</p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">
+                            <a href="#">
+                                What Should Your Fall Lawn Treatment Schedule
+                                Look Like?
+                            </a>
+                        </h3>
+                        <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
+                        <div class="post-author">Richard M. Pinckney</div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="post-image bg">
+                        <div class="post-music">
+                            <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/229787464&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title"><a href="#">How to Get the Best Lawn Care Services</a></h3>
+                        <div class="post-date"><span class="day">22</span><span class="month">April</span></div>
+                        <div class="post-author">Richard M. Pinckney</div>
+                        <div class="post-teaser">
+                            <p>Spring may seem a long way off, but when it comes to your yard and landscaping, a bit of early planning will go a long way towards producing a beautiful outdoor area once the warmer weather arrives..</p>
+                        </div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="text-center"><a class="btn btn--wd view-more-post" data-load="post-more-ajax.txt">More Posts</a></div>
+                <div id="postPreload"></div>
+            </div>
 
+            <div class="col-md-4 column-right">
+                <div class="side-block">
+                    <h4>Archives</h4>
+                    <div class="calendar">
+                        <div class="calendar__header">November 2016</div>
+                        <table>
+                            <tr>
+                                <th>S</th>
+                                <th>M</th>
+                                <th>T</th>
+                                <th>W</th>
+                                <th>Th</th>
+                                <th>F</th>
+                                <th>S</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td class="selected">17</td>
+                                <td>18</td>
+                                <td>19</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td>30</td>
+                                <td>31</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div class="calendar__footer"><a href="#">« Sep</a></div>
+                    </div>
+                </div>
+                <div class="side-block">
+                    <h4>Post Categories</h4>
+                    <ul class="marker-list">
+                        <li><a href="#">Audios  <span>(2)</span></a></li>
+                        <li><a href="#">Daily Inspiration  <span>(7)</span></a></li>
+                        <li><a href="#">Freelance  <span>(3)</span></a></li>
+                        <li><a href="#">Links  <span>(1)</span></a></li>
+                        <li><a href="#">Mobile  <span>(1)</span></a></li>
+                        <li><a href="#">Photography  <span>(5)</span></a></li>
+                        <li><a href="#">Quotes  <span>(1)</span></a></li>
+                        <li><a href="#">Resources  <span>(3)</span></a></li>
+                        <li><a href="#">Status  <span>(1)</span></a></li>
+                    </ul>
+                </div>
+                <div class="side-block">
+                    <h4>Popular tags</h4>
+                    <ul class="tags-list">
+                        <li><a href="#">lawn care</a></li>
+                        <li><a href="service-page-1.html">lawn services</a></li>
+                        <li><a href="#">decoration</a></li>
+                        <li><a href="#">grass</a></li>
+                        <li><a href="#">green</a></li>
+                        <li><a href="#">flowers</a></li>
+                        <li><a href="#">garden tips</a></li>
+                        <li><a href="#">bermuda grass</a></li>
+                        <li><a href="#">maintaince</a></li>
+                    </ul>
+                </div>
+                <div class="side-block">
+                    <h4>Popular Posts</h4>
+                    <div class="blog-post post-preview">
+                        <div class="wrapper">
+                            <div class="post-image">
+                                <a href="blog-single.html"><img src="images/blog/blog-post-small-1.jpg" alt=""></a>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-date-sm">10 / 4 / 2016</div>
+                                <h5 class="post-title"><a href="blog-single.html">How to Get the Best Lawn Care Services</a></h5>
+                                <div class="post-author-sm">Ricky B. Brown</div>
+                            </div>
+                        </div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>4</span></div>
+                    </div>
+                    <div class="blog-post post-preview">
+                        <div class="wrapper">
+                            <div class="post-image">
+                                <a href="blog-single.html"><img src="images/blog/blog-post-small-2.jpg" alt=""></a>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-date-sm">10 / 4 / 2016</div>
+                                <h5 class="post-title"><a href="blog-single.html">Falling Behind: Lawn Care Services</a></h5>
+                                <div class="post-author-sm">Ricky B. Brown</div>
+                            </div>
+                        </div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>4</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

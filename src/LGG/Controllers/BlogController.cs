@@ -40,8 +40,7 @@ namespace LGG.Controllers
             ViewBag.Tags = _tagService.GetAll();
             ViewBag.PopularPosts = _postService.GetPopularPosts();
             ViewBag.NewPosts = _postService.GetAll(true, false, false, 4).ToList();
-
-            return View("../ArchivePost/Index", post);
+            return View(post);
         }
 
         // GET: Tag

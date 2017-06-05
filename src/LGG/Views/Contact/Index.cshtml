@@ -72,15 +72,15 @@
                         </div>*@
                     @if (!ViewBag.IsValid)
                     {
-                        <div class="callout alert">
-                            <div asp-validation-summary="All"></div>
-                        </div>
+                    <div class="callout alert">
+                        <div asp-validation-summary="All"></div>
+                    </div>
                     }
                     @if (ViewBag.MessageSent != null && ViewBag.MessageSent)
                     {
-                        <div class="callout success">
-                            <p>Đã gửi! Chúng tôi sẽ phản hồi cho bạn sớm nhất có thể.</p>
-                        </div>
+                    <div class="callout success">
+                        <p>Đã gửi! Chúng tôi sẽ phản hồi cho bạn sớm nhất có thể.</p>
+                    </div>
                     }
                     <div class="inputs-col">
                         <div class="input-wrapper">
@@ -111,5 +111,4 @@
         </div>
     </div>
 </section>
-<div class="page-bot"><img src="~/images/under-footer.png" class="img-responsive" alt=""></div>
 <!-- End Content section -->

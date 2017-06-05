@@ -33,7 +33,7 @@
             color: $black;
 
             &:hover {
-                color: map-get($foundation-palette, legiagrass);
+                color: map-get($foundation-palette, pioneer);
                 transition: color 0.5s ease;
             }
         }

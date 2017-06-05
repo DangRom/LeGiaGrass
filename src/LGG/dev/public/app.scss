@@ -44,7 +44,7 @@
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 
-@import "../../wwwroot/lib/font-awesome/scss/font-awesome";
+@import "../../bower_components/font-awesome/scss/font-awesome";
 
 @import "styles/paged-list";
 @import "styles/nav";
@@ -90,7 +90,7 @@ h1, h2, h3, h4, h5 {
 
 .callout.filter {
     border-color: $light-gray;
-    border-left: 6px solid map-get($foundation-palette, legiagrass);
+    border-left: 6px solid map-get($foundation-palette, pioneer);
 }
 
 pre {
@@ -135,7 +135,7 @@ a.button.empty {
     border: 2px solid $white;
 
     &:hover {
-        color: map-get($foundation-palette, legiagrass);
+        color: map-get($foundation-palette, pioneer);
         background: $white;
         text-decoration: none;
     }
@@ -147,9 +147,9 @@ a.button.empty-reverse {
     color: $black;
 
     &:hover {
-        border: 2px solid map-get($foundation-palette, legiagrass);
+        border: 2px solid map-get($foundation-palette, pioneer);
         color: $white;
-        background: map-get($foundation-palette, legiagrass);
+        background: map-get($foundation-palette, pioneer);
         text-decoration: none;
     }
 }

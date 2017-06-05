@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 @section headEnd
 {
@@ -28,6 +28,7 @@
                 </a>
             </div>
             <div class="float-right">
+                @*Đang chỉnh sửa layout, tí quay lại open chú*@
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>

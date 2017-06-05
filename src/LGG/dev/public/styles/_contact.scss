@@ -2,7 +2,7 @@
 
 .bar {
     width: 150px;
-    background: map-get($foundation-palette, legiagrass);
+    background: map-get($foundation-palette, pioneer);
     height: 3px;
     margin: 0 auto 2rem auto;
 }
@@ -30,7 +30,7 @@
     color: #999;
 
     &:hover {
-      color: map-get($foundation-palette, legiagrass);
+      color: map-get($foundation-palette, pioneer);
       transition: color 0.5s ease;
     }
   }
@@ -49,7 +49,7 @@
   .hello-bar {
     padding: 2rem 0;
     text-align: center;
-    background: map-get($foundation-palette, legiagrass);
+    background: map-get($foundation-palette, pioneer);
     color: $white;
 
     h4 {
@@ -95,7 +95,7 @@
         }
 
         span {
-            color: map-get($foundation-palette, legiagrass);
+            color: map-get($foundation-palette, pioneer);
         }
 
         .icon {
@@ -103,7 +103,7 @@
 
             &:hover {
                 transition: color 0.35s ease;
-                color: map-get($foundation-palette, legiagrass);
+                color: map-get($foundation-palette, pioneer);
             }
         }
 
