@@ -1,0 +1,235 @@
+
+@{
+    ViewData["Title"] = "Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb section -->
+<section class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb--wd pull-left">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Blog</li>
+        </ol>
+    </div>
+</section>
+
+<!-- Content section -->
+<section class="content content--fill content--fill--light top-null">
+    <div class="container">
+        <h1 class="text-center lined">Blog Posts</h1>
+        <div class="row">
+            <div class="col-md-8 column-center">
+                <div class="blog-post single">
+                    <div class="post-image">
+                        <a href="blog-single.html"><img src="images/blog/blog-post-single.jpg" alt=""></a>
+                        <div class="post-image-over"></div>
+                    </div>
+
+                    <div class="post-content">
+                        <h3 class="post-title">The Best Time to Reseed Your Lawn</h3>
+                        <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
+                        <div class="post-author">
+                            <div class="text-center"><img src="images/blog/author-1.jpg" alt=""></div>
+                            Ryan,
+                            <br>Manson MN
+                        </div>
+                        <div class="post-teaser">
+                            <p><i>If your lawn is looking thin or bare, it might be time to sow it with a layer of grass seed to restore it to its lush, green state. The cool-season grasses of Pennsylvania fare best in the fall when the air is cooling down but the soil is still warm, giving grass a few months to grow before winter comes around. Read on to learn more about why fall is the best time to reseed your lawn.</i></p>
+                            <h4>Why Fall?</h4>
+                            <p>In Pennsylvania, early fall is the best time to sow grass seeds for a number of reasons. Seeding in the fall allows cool-season grasses to establish before winter. Try to sow two months before the first frost of the season. There are fewer active lawn diseases during fall, and weeds tend to taper off, meaning your grass won’t have to compete as much for access to sun and water. Sunlight begins to increase during fall as the tree leaves begin to drop. Moisture is key to growing a healthy lawn of grass, making spring the second-most popular (but less ideal) season for seeding.</p>
+                            <h4>Why Not Spring?</h4>
+                            <p>Though the moisture and warm air are beneficial to grass growth, there are a few things about spring that make it less-than-ideal for reseeding. Weeds are more prevalent in the spring, which causes grass to have to compete for the nutrients it needs to thrive. Spring also means that summer is right around the corner. The summer’s hot temperatures and drought conditions can introduce undesirable stress to your new lawn.</p>
+                            <h4>Remember:</h4>
+                            <ul>
+                                <li>Mow low: this will help grass seeds reach the soil more easily.</li>
+                                <li>Aerate and dethatch: break up soil compaction and remove excessive thatch with a dethatcher.</li>
+                                <li>Fertilize: help your lawn develop a healthy root system by applying</li>
+                                <li>a seed-starting fertilizer with a fertilizer spreader.</li>
+                                <li>Use a seed spreader: apply after carefully reading the manufacturer’s instructions.</li>
+                                <li>Water: try to keep your soil moist in the weeks after you reseed.</li>
+                            </ul>
+                            <ul class="tags-list">
+                                <li><a href="#">Lawn care</a></li>
+                                <li><a href="#">Pennsylvania</a></li>
+                                <li><a href="#">Moisture</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="divider divider--md"></div>
+                <h5><b>COMMENTS</b></h5>
+                <div class="comments">
+                    <div class="comment">
+                        <div class="userpic"><img src="images/blog/userpic.png" alt=""></div>
+                        <div class="text">
+                            <div class="meta">Ryan, Manson MN <span class="date"> 10 / 4 / 2016 </span></div>
+                            <p>Fusce eu dui. Integer vel nibh sit amet turpis vulputate aliquet. Phasellus id nisi vitae odio pretium aliquam. Pellentesque a leo. Donec consequat lectus sed felis. Quisque vestibulum massa. </p>
+                            <a href="#" class="btn btn--wd btn--sm">reply</a>
+                        </div>
+                    </div>
+                    <div class="comment replay">
+                        <div class="userpic"><img src="images/blog/userpic.png" alt=""></div>
+                        <div class="text">
+                            <div class="meta">Ryan, Manson MN <span class="date"> 10 / 4 / 2016 </span></div>
+                            <p>Fusce eu dui. Integer vel nibh sit amet turpis vulputate aliquet. Phasellus id nisi vitae odio pretium aliquam. Pellentesque a leo. Donec consequat lectus sed felis. Quisque vestibulum massa. </p>
+                            <a href="#" class="btn btn--wd btn--sm">reply</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider divider--sm"></div>
+                <h5><b>LEAVE A COMMENT</b></h5>
+                <div class="divider-xxs"></div>
+                <form id="commentform" class="contact-form" name="contactform" method="post" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="inputs-col">
+                                <div class="input-wrapper">
+                                    <label>Name <span class="required">*</span></label>
+                                    <input type="text" class="input--wd input--full" name="name" placeholder="Your name">
+                                </div>
+                                <div class="input-wrapper">
+                                    <label>Email</label>
+                                    <input type="text" class="input--wd input--full" name="email" placeholder="xxxx@xxxx.xxx">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Message</label>
+                        <textarea class="textarea--wd input--full" name="message"></textarea>
+                    </div>
+                    <div class="divider divider--xs"></div>
+                    <button type="submit" class="btn btn--wd">Leave Message</button>
+                </form>
+
+                <div class="divider divider-lg"></div>
+
+            </div>
+            <div class="col-md-4 column-right">
+                <div class="side-block">
+                    <h4>Archives</h4>
+                    <div class="calendar">
+                        <div class="calendar__header">November 2016</div>
+                        <table>
+                            <tr>
+                                <th>S</th>
+                                <th>M</th>
+                                <th>T</th>
+                                <th>W</th>
+                                <th>Th</th>
+                                <th>F</th>
+                                <th>S</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td class="selected">17</td>
+                                <td>18</td>
+                                <td>19</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td>30</td>
+                                <td>31</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div class="calendar__footer"><a href="#">« Sep</a></div>
+                    </div>
+                </div>
+                <div class="side-block">
+                    <h4>Post Categories</h4>
+                    <ul class="marker-list">
+                        <li><a href="#">Audios  <span>(2)</span></a></li>
+                        <li><a href="#">Daily Inspiration  <span>(7)</span></a></li>
+                        <li><a href="#">Freelance  <span>(3)</span></a></li>
+                        <li><a href="#">Links  <span>(1)</span></a></li>
+                        <li><a href="#">Mobile  <span>(1)</span></a></li>
+                        <li><a href="#">Photography  <span>(5)</span></a></li>
+                        <li><a href="#">Quotes  <span>(1)</span></a></li>
+                        <li><a href="#">Resources  <span>(3)</span></a></li>
+                        <li><a href="#">Status  <span>(1)</span></a></li>
+                    </ul>
+                </div>
+                <div class="side-block">
+                    <h4>Popular tags</h4>
+                    <ul class="tags-list">
+                        <li><a href="#">lawn care</a></li>
+                        <li><a href="service-page-1.html">lawn services</a></li>
+                        <li><a href="#">decoration</a></li>
+                        <li><a href="#">grass</a></li>
+                        <li><a href="#">green</a></li>
+                        <li><a href="#">flowers</a></li>
+                        <li><a href="#">garden tips</a></li>
+                        <li><a href="#">bermuda grass</a></li>
+                        <li><a href="#">maintaince</a></li>
+                    </ul>
+                </div>
+                <div class="side-block">
+                    <h4>Popular Posts</h4>
+                    <div class="blog-post post-preview">
+                        <div class="wrapper">
+                            <div class="post-image">
+                                <a href="blog-single.html"><img src="images/blog/blog-post-small-1.jpg" alt=""></a>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-date-sm">10 / 4 / 2016</div>
+                                <h5 class="post-title"><a href="blog-single.html">How to Get the Best Lawn Care Services</a></h5>
+                                <div class="post-author-sm">Ricky B. Brown</div>
+                            </div>
+                        </div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>4</span></div>
+                    </div>
+                    <div class="blog-post post-preview">
+                        <div class="wrapper">
+                            <div class="post-image">
+                                <a href="blog-single.html"><img src="images/blog/blog-post-small-2.jpg" alt=""></a>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-date-sm">10 / 4 / 2016</div>
+                                <h5 class="post-title"><a href="blog-single.html">Falling Behind: Lawn Care Services</a></h5>
+                                <div class="post-author-sm">Ricky B. Brown</div>
+                            </div>
+                        </div>
+                        <div class="post-meta"><i class="icon icon-speech"></i><span>4</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

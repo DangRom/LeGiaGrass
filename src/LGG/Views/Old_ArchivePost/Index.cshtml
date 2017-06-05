@@ -15,6 +15,7 @@
     <div class="row">
         <div class="large-8 columns">
             @Html.Partial("ArchivePost/_ArchivePost", Model)
+
             <legiagrass-pagination info="@ViewBag.PaginatedMeta" route="/@ViewBag.Pager"></legiagrass-pagination>
         </div>
         <aside class="large-4 columns">

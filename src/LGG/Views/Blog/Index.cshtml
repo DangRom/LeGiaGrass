@@ -20,107 +20,135 @@
         <h1 class="text-center lined">Blog Posts</h1>
         <div class="row">
             <div class="col-md-8 column-center">
-                <div class="blog-post">
-                    <div class="post-image">
-                        <a href="blog-single.html"><img src="images/blog/blog-post-img-1.jpg" alt=""></a>
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-title"><a href="#">Getting Ready for Spring: Slit Seeding Your Yard</a></h3>
-                        <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
-                        <div class="post-author">Richard M. Pinckney</div>
-                        <div class="post-teaser">
-                            <p>In Pennsylvania, early fall is the best time to sow grass seeds for a number of reasons. Seeding in the fall allows cool-season grasses to establish before winter. Try to sow two months before the first frost of the season. There are fewer active lawn...</p>
-                        </div>
-                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
-                    </div>
-                </div>
-                <div class="blog-post">
-                    <div class="post-image">
-                        <div class="post-carousel">
-                            <a href="#"><img src="images/blog/blog-post-img-2.jpg" alt=""></a>
-                            <a href="#"><img src="images/blog/blog-post-img-2-1.jpg" alt=""></a>
-                            <a href="#"><img src="images/blog/blog-post-img-2-2.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-title"><a href="#">Getting your pool ready to swim</a></h3>
-                        <div class="post-date"><span class="day">15</span><span class="month">April</span></div>
-                        <div class="post-author">Richard M. Pinckney</div>
-                        <div class="post-teaser">
-                            <p>In Pennsylvania, early fall is the best time to sow grass seeds for a number of reasons. Seeding in the fall allows cool-season grasses to establish before winter. Try to sow two months before the first frost of the season. There are fewer active lawn...</p>
-                        </div>
-                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
-                    </div>
-                </div>
-                <div class="blog-post">
-                    <div class="post-image">
-                        <div class="post-video">
-                            <iframe src="https://player.vimeo.com/video/79100222"></iframe>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-title">Affordable Lawn Care Services - Lafayette</h3>
-                        <div class="post-date"><span class="day">1</span><span class="month">April</span></div>
-                        <div class="post-author">Richard M. Pinckney</div>
-                        <div class="post-teaser">
-                            <p>While I do appreciate the diverse tones in my front yard, it seems the yellow is overtaking the green. I know I should have kept up with lawn maintenance, but I just didn’t have the time. Also, it isn’t winter anymore, so why is the yellow increasing?</p>
-                        </div>
-                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
-                    </div>
-                </div>
-                <div class="blog-post">
-                    <div class="post-image">
-                        <a href="blog-single.html"><img src="images/blog/blog-post-img-3.jpg" alt=""></a>
-                        <div class="post-link-wrapper">
-                            <div class="vert-wrap">
-                                <div class="vert">
-                                    <a href="#" class="post-link">http://www.lawncarelink.com</a>
+                @foreach (var post in Model)
+                {
+                    <div class="blog-post">
+
+                        <div class="post-image">
+                            <a href="blog-single.html"><img src="@post.SmallImage" alt=""></a>
+                            <div class="post-link-wrapper">
+                                <div class="vert-wrap">
+                                    <div class="vert">
+                                        <a href="/post/@post.Url" class="post-link"></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-title">What Should Your Fall Lawn Treatment Schedule Look Like?</h3>
-                        <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
-                        <div class="post-author">Richard M. Pinckney</div>
-                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
-                    </div>
-                </div>
-                <div class="blog-post">
-                    <div class="post-image bg-quote">
-                        <div class="post-quote">
-                            <div class="quote-author"><span>Ryan, Manson MN</span></div>
-                            <p>If your lawn is looking thin or bare, it might be time to sow it with a layer of grass seed to restore it to its lush, green state. The cool-season grasses of Pennsylvania fare best in the fall when the air is cooling down but the soil is still warm, giving grass a few months to grow before winter comes around. Read on to learn more about why fall is the best time to reseed your lawn.</p>
+                        <div class="post-content">
+                            <h3 class="post-title"><a href="/post/@post.Url">@post.Title</a></h3>
+                            <div class="post-date"><span class="day">@post.PostedOn.ToString("dd")</span><span class="month">@post.PostedOn.ToString("MMM")</span></div>
+                            @*Author*@
+                            <div class="post-author">Le Gia</div>
+                            <div class="post-teaser">
+                                @Html.Raw(post.Excerpt.Content)
+                            </div>
+                            <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
                         </div>
                     </div>
-                    <div class="post-content">
-                        <h3 class="post-title">
-                            <a href="#">
-                                What Should Your Fall Lawn Treatment Schedule
-                                Look Like?
-                            </a>
-                        </h3>
-                        <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
-                        <div class="post-author">Richard M. Pinckney</div>
-                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
-                    </div>
-                </div>
-                <div class="blog-post">
-                    <div class="post-image bg">
-                        <div class="post-music">
-                            <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/229787464&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+                }
+
+                @*<div class="blog-post">
+                        <div class="post-image">
+                            <a href="blog-single.html"><img src="images/blog/blog-post-img-1.jpg" alt=""></a>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title"><a href="#">Getting Ready for Spring: Slit Seeding Your Yard</a></h3>
+                            <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
+                            <div class="post-author">Richard M. Pinckney</div>
+                            <div class="post-teaser">
+                                <p>In Pennsylvania, early fall is the best time to sow grass seeds for a number of reasons. Seeding in the fall allows cool-season grasses to establish before winter. Try to sow two months before the first frost of the season. There are fewer active lawn...</p>
+                            </div>
+                            <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
                         </div>
                     </div>
-                    <div class="post-content">
-                        <h3 class="post-title"><a href="#">How to Get the Best Lawn Care Services</a></h3>
-                        <div class="post-date"><span class="day">22</span><span class="month">April</span></div>
-                        <div class="post-author">Richard M. Pinckney</div>
-                        <div class="post-teaser">
-                            <p>Spring may seem a long way off, but when it comes to your yard and landscaping, a bit of early planning will go a long way towards producing a beautiful outdoor area once the warmer weather arrives..</p>
+                    <div class="blog-post">
+                        <div class="post-image">
+                            <div class="post-carousel">
+                                <a href="#"><img src="images/blog/blog-post-img-2.jpg" alt=""></a>
+                                <a href="#"><img src="images/blog/blog-post-img-2-1.jpg" alt=""></a>
+                                <a href="#"><img src="images/blog/blog-post-img-2-2.jpg" alt=""></a>
+                            </div>
                         </div>
-                        <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                        <div class="post-content">
+                            <h3 class="post-title"><a href="#">Getting your pool ready to swim</a></h3>
+                            <div class="post-date"><span class="day">15</span><span class="month">April</span></div>
+                            <div class="post-author">Richard M. Pinckney</div>
+                            <div class="post-teaser">
+                                <p>In Pennsylvania, early fall is the best time to sow grass seeds for a number of reasons. Seeding in the fall allows cool-season grasses to establish before winter. Try to sow two months before the first frost of the season. There are fewer active lawn...</p>
+                            </div>
+                            <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                        </div>
                     </div>
-                </div>
+                    <div class="blog-post">
+                        <div class="post-image">
+                            <div class="post-video">
+                                <iframe src="https://player.vimeo.com/video/79100222"></iframe>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title">Affordable Lawn Care Services - Lafayette</h3>
+                            <div class="post-date"><span class="day">1</span><span class="month">April</span></div>
+                            <div class="post-author">Richard M. Pinckney</div>
+                            <div class="post-teaser">
+                                <p>While I do appreciate the diverse tones in my front yard, it seems the yellow is overtaking the green. I know I should have kept up with lawn maintenance, but I just didn’t have the time. Also, it isn’t winter anymore, so why is the yellow increasing?</p>
+                            </div>
+                            <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <div class="post-image">
+                            <a href="blog-single.html"><img src="images/blog/blog-post-img-3.jpg" alt=""></a>
+                            <div class="post-link-wrapper">
+                                <div class="vert-wrap">
+                                    <div class="vert">
+                                        <a href="#" class="post-link">http://www.lawncarelink.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title">What Should Your Fall Lawn Treatment Schedule Look Like?</h3>
+                            <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
+                            <div class="post-author">Richard M. Pinckney</div>
+                            <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <div class="post-image bg-quote">
+                            <div class="post-quote">
+                                <div class="quote-author"><span>Ryan, Manson MN</span></div>
+                                <p>If your lawn is looking thin or bare, it might be time to sow it with a layer of grass seed to restore it to its lush, green state. The cool-season grasses of Pennsylvania fare best in the fall when the air is cooling down but the soil is still warm, giving grass a few months to grow before winter comes around. Read on to learn more about why fall is the best time to reseed your lawn.</p>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title">
+                                <a href="#">
+                                    What Should Your Fall Lawn Treatment Schedule
+                                    Look Like?
+                                </a>
+                            </h3>
+                            <div class="post-date"><span class="day">10</span><span class="month">April</span></div>
+                            <div class="post-author">Richard M. Pinckney</div>
+                            <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <div class="post-image bg">
+                            <div class="post-music">
+                                <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/229787464&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title"><a href="#">How to Get the Best Lawn Care Services</a></h3>
+                            <div class="post-date"><span class="day">22</span><span class="month">April</span></div>
+                            <div class="post-author">Richard M. Pinckney</div>
+                            <div class="post-teaser">
+                                <p>Spring may seem a long way off, but when it comes to your yard and landscaping, a bit of early planning will go a long way towards producing a beautiful outdoor area once the warmer weather arrives..</p>
+                            </div>
+                            <div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>
+                        </div>
+                    </div>*@
+
                 <div class="divider"></div>
                 <div class="text-center"><a class="btn btn--wd view-more-post" data-load="post-more-ajax.txt">More Posts</a></div>
                 <div id="postPreload"></div>
