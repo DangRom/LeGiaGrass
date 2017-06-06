@@ -23,6 +23,7 @@
     <Content Include="wwwroot\app.js" />
     <Content Include="wwwroot\css\style.css" />
     <Content Include="wwwroot\googlefbb6e67fcb02657f.html" />
+    <Content Include="wwwroot\images\oldman.png" />
     <Content Include="wwwroot\js\custom.js" />
     <Content Include="wwwroot\less\animate.less" />
     <Content Include="wwwroot\less\bootstrap.less" />

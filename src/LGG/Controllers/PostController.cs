@@ -8,17 +8,26 @@ namespace LGG.Controllers
     public class PostController : Controller
     {
         private readonly IPostService _postService;
+        private readonly ICategoryService _categoryService;
+        private readonly ITagService _tagService;
 
-        public PostController(IPostService postService)
+        public PostController(IPostService postService, ICategoryService categoryService, ITagService tagService)
         {
             _postService = postService;
+            _categoryService = categoryService;
+            _tagService = tagService;
         }
 
         public IActionResult Index(string id)
         {
             var post = _postService.GetPreviousCurrentNextPost(id).ToList();
             ViewBag.Description = post[(int)PreviousCurrentNextPosition.Current].Description;
+
+            ViewBag.Categories = _categoryService.GetAll();
+            ViewBag.Tags = _tagService.GetAll();
             ViewBag.PopularPosts = _postService.GetPopularPosts();
+            ViewBag.NewPosts = _postService.GetAll(true, false, false, 4).ToList();
+
             return View(post);
         }
     }
