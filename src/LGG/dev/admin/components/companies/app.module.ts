@@ -21,7 +21,7 @@ import { LoaderComponent } from '../shared/loader/loader.component';
   ],
   declarations: [
     AppComponent,
-      CompaniesPageComponent,
+    CompaniesPageComponent,
     TruncatePipe,
     LoaderComponent
   ],

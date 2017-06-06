@@ -15,7 +15,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'pc-app',
-        templateUrl: './app/components/categories/templates/app.component.html'
+        templateUrl: './app/components/companies/templates/app.component.html'
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

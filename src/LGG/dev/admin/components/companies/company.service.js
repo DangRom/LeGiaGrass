@@ -65,7 +65,8 @@ var CompanyService = (function () {
     };
     CompanyService.prototype.getCompanies = function () {
         var _this = this;
-        return this.companyRepository.getAll()
+        return this.companyRepository
+            .getAll()
             .then(function (companies) {
             _this.companies = companies;
             return _this.companyRepository.get(_this.companies[0].id, true);

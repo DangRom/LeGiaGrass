@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CompanyRepository {
-    private url = '/api/company';
+    private url = '/api/companies';
 
     constructor(private http: Http) { }
 

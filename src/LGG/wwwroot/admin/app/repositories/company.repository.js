@@ -15,7 +15,7 @@ require("rxjs/add/operator/toPromise");
 var CompanyRepository = (function () {
     function CompanyRepository(http) {
         this.http = http;
-        this.url = '/api/company';
+        this.url = '/api/companies';
     }
     CompanyRepository.prototype.get = function (id, includeExcerpt) {
         if (includeExcerpt === void 0) { includeExcerpt = false; }

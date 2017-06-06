@@ -24,16 +24,6 @@ var CompaniesPageComponent = (function () {
             _this.loading = false;
         });
     };
-    CompaniesPageComponent.prototype.deleteRecord = function (id) {
-        var _this = this;
-        if (confirm("Are you sure you want to delete \"" + this.companyService.getCurrent().name + "\" from the cmpanies list?")) {
-            this.loading = true;
-            this.companyService.remove(id)
-                .then(function () {
-                _this.loading = false;
-            });
-        }
-    };
     CompaniesPageComponent.prototype.save = function () {
         var _this = this;
         if (confirm("Are you sure you want to save \"" + this.companyService.getCurrent().name + "\" changes")) {

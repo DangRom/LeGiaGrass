@@ -19,15 +19,7 @@ export class CompaniesPageComponent implements OnInit {
       });
   }
 
-  deleteRecord(id: number): void {
-      if (confirm(`Are you sure you want to delete "${this.companyService.getCurrent().name}" from the cmpanies list?`)) {
-      this.loading = true;
-      this.companyService.remove(id)
-        .then(() => {
-          this.loading = false;
-        });
-    }
-  }
+
 
   save(): void {
       if (confirm(`Are you sure you want to save "${this.companyService.getCurrent().name}" changes`)) {
@@ -38,4 +30,5 @@ export class CompaniesPageComponent implements OnInit {
         });
     }
   }
+  
 }
