@@ -22,6 +22,7 @@ namespace LGG.Persistence
                  .ForMember(dto => dto.Tags, opt => opt.MapFrom(x => x.PostTags.Select(t => t.Tag))).ReverseMap();
                 cfg.CreateMap<PostTag, TagDto>().ReverseMap();
                 cfg.CreateMap<List<Post>, List<PostDto>>().ReverseMap();
+                cfg.CreateMap<CompanyDto, Company>().ReverseMap();
             });
         }
     }

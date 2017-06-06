@@ -138,6 +138,9 @@ namespace LGG
 
             ConfigureSecurity(app);
             ConfigureMvc(app);
+
+            /* Populates The DefaultData */
+            DefaultData.InitializeCompanyDataAsync(app.ApplicationServices).Wait();
         }
 
         private static void ConfigureServicesIdentity(IServiceCollection services)

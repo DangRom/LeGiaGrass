@@ -27,6 +27,8 @@ namespace LGG.Persistence
 
         public DbSet<Contact> Contacts { get; set; }
 
+        public DbSet<Company> Companies { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Insure Identity Entities are accounted for.
