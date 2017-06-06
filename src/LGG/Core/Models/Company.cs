@@ -43,9 +43,9 @@ namespace LGG.Core.Models
         [StringLength(250)]
         public string Avatar { get; set; }
 
-        public int AboutId { get; set; }
-        public int PrivacyId { get; set; }
-        public int TermsOfUseId { get; set; }
+        public int? AboutId { get; set; }
+        public int? PrivacyId { get; set; }
+        public int? TermsOfUseId { get; set; }
 
         [MaxLength(50)]
         [StringLength(50)]

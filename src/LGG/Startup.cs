@@ -71,6 +71,7 @@ namespace LGG
             services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
             services.AddTransient<IPaginatedMetaService, PaginatedMetaService>();
             services.AddTransient<IdentitySetup>();
+            services.AddTransient<DefaultData>();
 
             // Repositories
             services.AddTransient<IContactRepository, ContactRepository>();
@@ -96,7 +97,7 @@ namespace LGG
         public void Configure(IApplicationBuilder app,
             IHostingEnvironment env,
             ILoggerFactory loggerFactory,
-            IdentitySetup identitySetup)
+            IdentitySetup identitySetup, DefaultData defaultData)
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
@@ -118,6 +119,7 @@ namespace LGG
                 app.UseDatabaseErrorPage();
                 app.UseBrowserLink();
                 identitySetup.Setup().Wait();
+                //defaultData.InitializeCompanyDataAsync(app.ApplicationServices).Wait();
             }
             else
             {
@@ -139,8 +141,6 @@ namespace LGG
             ConfigureSecurity(app);
             ConfigureMvc(app);
 
-            /* Populates The DefaultData */
-            DefaultData.InitializeCompanyDataAsync(app.ApplicationServices).Wait();
         }
 
         private static void ConfigureServicesIdentity(IServiceCollection services)

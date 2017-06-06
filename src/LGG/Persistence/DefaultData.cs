@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LGG.Persistence
 {
-    public static class DefaultData
+    public class DefaultData
     {
-        public static async Task InitializeCompanyDataAsync(IServiceProvider serviceProvider, bool createUsers = true)
+        public async Task InitializeCompanyDataAsync(IServiceProvider serviceProvider, bool createUsers = true)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {
@@ -24,7 +24,7 @@ namespace LGG.Persistence
             }
         }
 
-        private static async Task InsertCompanyData(IServiceProvider serviceProvider)
+        private async Task InsertCompanyData(IServiceProvider serviceProvider)
         {
             Company[] companies = new Company[]
             {
@@ -39,7 +39,7 @@ namespace LGG.Persistence
         }
 
         // TODO [EF] This may be replaced by a first class mechanism in EF
-        private static async Task AddOrUpdateAsync<TEntity>(
+        private async Task AddOrUpdateAsync<TEntity>(
             IServiceProvider serviceProvider,
             Func<TEntity, object> propertyToMatch, IEnumerable<TEntity> entities)
             where TEntity : class

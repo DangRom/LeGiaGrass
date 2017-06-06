@@ -28,7 +28,6 @@
                 </a>
             </div>
             <div class="float-right">
-                @*Đang chỉnh sửa layout, tí quay lại open chú*@
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
@@ -51,6 +50,12 @@
                 <a href="/admin/tags" class="margin-zero">
                     <i class="fa fa-tags" aria-hidden="true"></i>
                     TAGS
+                </a>
+            </li>
+            <li class="@(ViewBag.Selected == "companies" ? "selected" : "")">
+                <a href="/admin/company" class="margin-zero">
+                    <i class="fa fa-copyright" aria-hidden="true"></i>
+                    COMPANIES
                 </a>
             </li>
         </ul>
