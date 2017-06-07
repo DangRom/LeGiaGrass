@@ -79,7 +79,7 @@ namespace LGG
             services.AddTransient<ITagRepository, TagRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<IPostTagRepository, PostTagRepository>();
-
+            services.AddTransient<ICompanyRepository, CompanyRepository>();
 
             // Services
             services.AddTransient<ICategoryService, CategoryService>();
@@ -88,6 +88,7 @@ namespace LGG
             services.AddTransient<ISearchService, SearchService>();
             services.AddTransient<ICommunicationService, CommunicationService>();
             services.AddTransient<ITagService, TagService>();
+            services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<ISiteMapService, SiteMapService>();
             services.AddTransient<ApplicationEnvironment>();
             services.AddTransient<HostingEnvironment>();

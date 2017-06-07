@@ -17,8 +17,7 @@ var CompanyRepository = (function () {
         this.http = http;
         this.url = '/api/companies';
     }
-    CompanyRepository.prototype.get = function (id, includeExcerpt) {
-        if (includeExcerpt === void 0) { includeExcerpt = false; }
+    CompanyRepository.prototype.get = function (id) {
         return this.http.get(this.url + '/' + id)
             .toPromise()
             .then(function (res) {
@@ -27,8 +26,11 @@ var CompanyRepository = (function () {
         })
             .catch(this.handleError);
     };
-    CompanyRepository.prototype.getAll = function () {
-        return this.http.get(this.url)
+    CompanyRepository.prototype.getAll = function (includeAbout, includePrivacy, includeTermsOfUse) {
+        if (includeAbout === void 0) { includeAbout = true; }
+        if (includePrivacy === void 0) { includePrivacy = true; }
+        if (includeTermsOfUse === void 0) { includeTermsOfUse = true; }
+        return this.http.get(this.url + '?includeAbout=' + includeAbout + '&includePrivacy=' + includePrivacy + '&includeTermsOfUse=' + includeTermsOfUse)
             .toPromise()
             .then(function (res) {
             var body = res.json();

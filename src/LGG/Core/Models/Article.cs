@@ -9,7 +9,7 @@ namespace LGG.Core.Models
         [Key]
         public int ArticleId { get; set; }
 
-        [Display(Name = "Article"), StringLength(21844)]
+        [Display(Name = "Article"), StringLength(20000)]
         public string Content { get; set; }
     }
 }

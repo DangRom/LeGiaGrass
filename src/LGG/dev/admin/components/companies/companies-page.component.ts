@@ -30,5 +30,4 @@ export class CompaniesPageComponent implements OnInit {
         });
     }
   }
-  
 }

@@ -11,20 +11,17 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\Api\**" />
+    <Compile Remove="wwwroot\admin\app\components\companies.old\**" />
     <Content Remove="Controllers\Api\**" />
+    <Content Remove="wwwroot\admin\app\components\companies.old\**" />
     <EmbeddedResource Remove="Controllers\Api\**" />
+    <EmbeddedResource Remove="wwwroot\admin\app\components\companies.old\**" />
     <None Remove="Controllers\Api\**" />
+    <None Remove="wwwroot\admin\app\components\companies.old\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="wwwroot\admin\app.css" />
-    <Content Include="wwwroot\admin\app\components\companies.old\app.component.js" />
-    <Content Include="wwwroot\admin\app\components\companies.old\app.module.js" />
-    <Content Include="wwwroot\admin\app\components\companies.old\companies-page.component.js" />
-    <Content Include="wwwroot\admin\app\components\companies.old\company.service.js" />
-    <Content Include="wwwroot\admin\app\components\companies.old\main.js" />
-    <Content Include="wwwroot\admin\app\components\companies.old\templates\app.component.html" />
-    <Content Include="wwwroot\admin\app\components\companies.old\templates\companies-page.component.html" />
     <Content Include="wwwroot\admin\systemjs.config.js" />
     <Content Include="wwwroot\app.css" />
     <Content Include="wwwroot\app.js" />

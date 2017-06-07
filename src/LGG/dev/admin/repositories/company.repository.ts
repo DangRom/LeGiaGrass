@@ -10,7 +10,7 @@ export class CompanyRepository {
 
     constructor(private http: Http) { }
 
-    get(id: number, includeExcerpt: boolean = false): Promise<Company> {
+    get(id: number): Promise<Company> {
         return this.http.get(this.url + '/' + id)
             .toPromise()
             .then((res: Response) => {
@@ -20,8 +20,10 @@ export class CompanyRepository {
             .catch(this.handleError);
     }
 
-    getAll(): Promise<Company[]> {
-        return this.http.get(this.url)
+    getAll(includeAbout: boolean = true,
+        includePrivacy: boolean = true,
+        includeTermsOfUse:boolean = true): Promise<Company[]> {
+        return this.http.get(this.url + '?includeAbout=' + includeAbout + '&includePrivacy=' + includePrivacy + '&includeTermsOfUse=' + includeTermsOfUse)
             .toPromise()
             .then((res: Response) => {
                 const body: Company[] = res.json();

@@ -43,10 +43,6 @@ namespace LGG.Core.Models
         [StringLength(250)]
         public string Avatar { get; set; }
 
-        public int? AboutId { get; set; }
-        public int? PrivacyId { get; set; }
-        public int? TermsOfUseId { get; set; }
-
         [MaxLength(50)]
         [StringLength(50)]
         public string Facebook { get; set; }
@@ -71,9 +67,13 @@ namespace LGG.Core.Models
         [StringLength(50)]
         public string Pinterest { get; set; }
 
+        public int? AboutId { get; set; }
+        public int? PrivacyId { get; set; }
+        public int? TermsOfUseId { get; set; }
+
         /* Navigation */
-        public Article ArticleAbout { get; set; }
-        public Article ArticlePrivacy { get; set; }
-        public Article ArticleTermsOfUse { get; set; }
+        public Article About { get; set; }
+        public Article Privacy { get; set; }
+        public Article TermsOfUse { get; set; }
     }
 }

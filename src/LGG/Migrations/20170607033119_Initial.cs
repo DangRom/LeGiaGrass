@@ -14,7 +14,7 @@ namespace LGG.Migrations
                 {
                     ArticleId = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    Content = table.Column<string>(nullable: true)
+                    Content = table.Column<string>(maxLength: 20000, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -126,6 +126,54 @@ namespace LGG.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Company",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    AboutId = table.Column<int>(nullable: true),
+                    Address = table.Column<string>(maxLength: 255, nullable: true),
+                    Avatar = table.Column<string>(maxLength: 250, nullable: true),
+                    Email = table.Column<string>(maxLength: 254, nullable: true),
+                    Facebook = table.Column<string>(maxLength: 50, nullable: true),
+                    Google = table.Column<string>(maxLength: 50, nullable: true),
+                    Hotline = table.Column<string>(maxLength: 15, nullable: true),
+                    Instagram = table.Column<string>(maxLength: 50, nullable: true),
+                    LinkedIn = table.Column<string>(maxLength: 50, nullable: true),
+                    Logo = table.Column<string>(maxLength: 250, nullable: true),
+                    Name = table.Column<string>(maxLength: 250, nullable: false),
+                    Pinterest = table.Column<string>(maxLength: 50, nullable: true),
+                    PrivacyId = table.Column<int>(nullable: true),
+                    Sologan = table.Column<string>(maxLength: 250, nullable: true),
+                    TermsOfUseId = table.Column<int>(nullable: true),
+                    TimeWork = table.Column<string>(maxLength: 250, nullable: true),
+                    Twitter = table.Column<string>(maxLength: 50, nullable: true),
+                    Website = table.Column<string>(maxLength: 50, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Company", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Company_Article_AboutId",
+                        column: x => x.AboutId,
+                        principalTable: "Article",
+                        principalColumn: "ArticleId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Company_Article_PrivacyId",
+                        column: x => x.PrivacyId,
+                        principalTable: "Article",
+                        principalColumn: "ArticleId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Company_Article_TermsOfUseId",
+                        column: x => x.TermsOfUseId,
+                        principalTable: "Article",
+                        principalColumn: "ArticleId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -286,6 +334,21 @@ namespace LGG.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Company_AboutId",
+                table: "Company",
+                column: "AboutId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Company_PrivacyId",
+                table: "Company",
+                column: "PrivacyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Company_TermsOfUseId",
+                table: "Company",
+                column: "TermsOfUseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Post_ArticleId",
                 table: "Post",
                 column: "ArticleId");
@@ -350,6 +413,9 @@ namespace LGG.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Company");
+
             migrationBuilder.DropTable(
                 name: "Contact");
 

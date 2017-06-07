@@ -29,7 +29,7 @@ var CompanyService = (function () {
     };
     CompanyService.prototype.setCurrent = function (id) {
         var _this = this;
-        return this.companyRepository.get(id, true)
+        return this.companyRepository.get(id)
             .then(function (resp) {
             _this.selectedCompany = resp;
             return _this.selectedCompany;
@@ -66,10 +66,10 @@ var CompanyService = (function () {
     CompanyService.prototype.getCompanies = function () {
         var _this = this;
         return this.companyRepository
-            .getAll()
+            .getAll(true, true, true)
             .then(function (companies) {
             _this.companies = companies;
-            return _this.companyRepository.get(_this.companies[0].id, true);
+            return _this.companyRepository.get(_this.companies[0].id);
         })
             .then(function (resp) {
             _this.selectedCompany = resp;

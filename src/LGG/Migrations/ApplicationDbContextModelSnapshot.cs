@@ -21,7 +21,7 @@ namespace LGG.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Content")
-                        .HasMaxLength(21844);
+                        .HasMaxLength(20000);
 
                     b.HasKey("ArticleId");
 
@@ -53,12 +53,6 @@ namespace LGG.Migrations
 
                     b.Property<string>("Address")
                         .HasMaxLength(255);
-
-                    b.Property<int?>("ArticleAboutArticleId");
-
-                    b.Property<int?>("ArticlePrivacyArticleId");
-
-                    b.Property<int?>("ArticleTermsOfUseArticleId");
 
                     b.Property<string>("Avatar")
                         .HasMaxLength(250);
@@ -109,11 +103,11 @@ namespace LGG.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArticleAboutArticleId");
+                    b.HasIndex("AboutId");
 
-                    b.HasIndex("ArticlePrivacyArticleId");
+                    b.HasIndex("PrivacyId");
 
-                    b.HasIndex("ArticleTermsOfUseArticleId");
+                    b.HasIndex("TermsOfUseId");
 
                     b.ToTable("Company");
                 });
@@ -392,17 +386,17 @@ namespace LGG.Migrations
 
             modelBuilder.Entity("LGG.Core.Models.Company", b =>
                 {
-                    b.HasOne("LGG.Core.Models.Article", "ArticleAbout")
+                    b.HasOne("LGG.Core.Models.Article", "About")
                         .WithMany()
-                        .HasForeignKey("ArticleAboutArticleId");
+                        .HasForeignKey("AboutId");
 
-                    b.HasOne("LGG.Core.Models.Article", "ArticlePrivacy")
+                    b.HasOne("LGG.Core.Models.Article", "Privacy")
                         .WithMany()
-                        .HasForeignKey("ArticlePrivacyArticleId");
+                        .HasForeignKey("PrivacyId");
 
-                    b.HasOne("LGG.Core.Models.Article", "ArticleTermsOfUse")
+                    b.HasOne("LGG.Core.Models.Article", "TermsOfUse")
                         .WithMany()
-                        .HasForeignKey("ArticleTermsOfUseArticleId");
+                        .HasForeignKey("TermsOfUseId");
                 });
 
             modelBuilder.Entity("LGG.Core.Models.Post", b =>

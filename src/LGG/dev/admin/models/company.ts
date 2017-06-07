@@ -19,7 +19,7 @@ export class Company {
     instagram: string;
     pinterest: string;
 
-    articleAbout: Article.Article;
-    articlePrivacy: Article.Article;
-    articleTermsOfUse: Article.Article;
+    about: Article.Article;
+    privacy: Article.Article;
+    termsOfUse: Article.Article;
 }

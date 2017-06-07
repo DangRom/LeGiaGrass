@@ -8,8 +8,8 @@ using LGG.Persistence;
 namespace LGG.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170605095503_RefactorArticleModel")]
-    partial class RefactorArticleModel
+    [Migration("20170607033119_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,7 @@ namespace LGG.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Content")
-                        .HasMaxLength(21844);
+                        .HasMaxLength(20000);
 
                     b.HasKey("ArticleId");
 
@@ -43,6 +43,74 @@ namespace LGG.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("LGG.Core.Models.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("AboutId");
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Avatar")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(254);
+
+                    b.Property<string>("Facebook")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Google")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Hotline")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("Instagram")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("LinkedIn")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Logo")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250);
+
+                    b.Property<string>("Pinterest")
+                        .HasMaxLength(50);
+
+                    b.Property<int?>("PrivacyId");
+
+                    b.Property<string>("Sologan")
+                        .HasMaxLength(250);
+
+                    b.Property<int?>("TermsOfUseId");
+
+                    b.Property<string>("TimeWork")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("Twitter")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Website")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AboutId");
+
+                    b.HasIndex("PrivacyId");
+
+                    b.HasIndex("TermsOfUseId");
+
+                    b.ToTable("Company");
                 });
 
             modelBuilder.Entity("LGG.Core.Models.Contact", b =>
@@ -315,6 +383,21 @@ namespace LGG.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("LGG.Core.Models.Company", b =>
+                {
+                    b.HasOne("LGG.Core.Models.Article", "About")
+                        .WithMany()
+                        .HasForeignKey("AboutId");
+
+                    b.HasOne("LGG.Core.Models.Article", "Privacy")
+                        .WithMany()
+                        .HasForeignKey("PrivacyId");
+
+                    b.HasOne("LGG.Core.Models.Article", "TermsOfUse")
+                        .WithMany()
+                        .HasForeignKey("TermsOfUseId");
                 });
 
             modelBuilder.Entity("LGG.Core.Models.Post", b =>

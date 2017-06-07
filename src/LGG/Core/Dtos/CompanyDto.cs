@@ -40,15 +40,15 @@ namespace LGG.Core.Dtos
 
         public string Pinterest { get; set; }
 
-        public Article ArticleAbout { get; set; }
-        public Article ArticlePrivacy { get; set; }
-        public Article ArticleTermsOfUse { get; set; }
+        public Article About { get; set; }
+        public Article Privacy { get; set; }
+        public Article TermsOfUse { get; set; }
 
         public CompanyDto()
         {
-            ArticleAbout = new Article();
-            ArticlePrivacy = new Article();
-            ArticleTermsOfUse = new Article();
+            About = new Article();
+            Privacy = new Article();
+            TermsOfUse = new Article();
         }
     }
 }

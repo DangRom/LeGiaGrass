@@ -24,7 +24,7 @@ export class CompanyService {
     }
 
     setCurrent(id: number): Promise<Company> {
-        return this.companyRepository.get(id, true)
+        return this.companyRepository.get(id)
             .then((resp: Company) => {
                 this.selectedCompany = resp;
                 return this.selectedCompany;
@@ -61,10 +61,10 @@ export class CompanyService {
 
     private getCompanies(): Promise<Company[]> {
         return this.companyRepository
-            .getAll()
+            .getAll(true,true,true)
             .then((companies: Company[]) => {
                 this.companies = companies;
-                return this.companyRepository.get(this.companies[0].id, true);
+                return this.companyRepository.get(this.companies[0].id);
             })
             .then((resp: Company) => {
                 this.selectedCompany = resp;

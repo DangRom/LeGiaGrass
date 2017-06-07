@@ -3,6 +3,7 @@ using LGG.Core.Dtos;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace LGG.Areas.Admin.Controllers.Api
 {
@@ -17,10 +18,25 @@ namespace LGG.Areas.Admin.Controllers.Api
             _companyService = companyService;
         }
 
+
         [HttpGet]
+        public IEnumerable<CompanyDto> GetAll(int? count, int? page,
+            bool includeAbout = true,
+            bool includePrivacy = true,
+            bool includeTermsOfUse = true)
+        {
+            if (count == null || page == null)
+            {
+                return _companyService.GetAll(includeAbout, includePrivacy, includeTermsOfUse);
+            }
+
+            return _companyService.GetAllPaged((int)count, (int)page);
+        }
+
+        [HttpGet("{id}", Name = "GetCompany")]
         public IActionResult GetById(int id)
         {
-            var item = _companyService.GetCompanyFirstOrDefault();
+            var item = _companyService.GetById(id);
             if (item == null)
             {
                 return NotFound();
@@ -29,16 +45,29 @@ namespace LGG.Areas.Admin.Controllers.Api
             return new ObjectResult(item);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Authorize(Policy = "isSuperUser")]
-        public IActionResult Update([FromBody] CompanyDto item)
+        public IActionResult Create([FromBody]CompanyDto company)
         {
-            if (item == null)
+            if (company == null)
             {
                 return BadRequest();
             }
 
-            var todo = _companyService.GetCompanyFirstOrDefault();
+            _companyService.Add(company);
+            return CreatedAtRoute("GetCompany", new { id = company.Id }, company);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Policy = "isSuperUser")]
+        public IActionResult Update(int id, [FromBody] CompanyDto item)
+        {
+            if (item == null || item.Id != id)
+            {
+                return BadRequest();
+            }
+
+            var todo = _companyService.GetById(id);
             if (todo == null)
             {
                 return NotFound();
@@ -47,6 +76,20 @@ namespace LGG.Areas.Admin.Controllers.Api
             _companyService.Update(item);
             return new NoContentResult();
         }
+
+        //[HttpDelete("{id}")]
+        //[Authorize(Policy = "isSuperUser")]
+        //public IActionResult Delete(int id)
+        //{
+        //    var todo = _companyService.GetById(id);
+        //    if (todo == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    _companyService.Remove(id);
+        //    return new NoContentResult();
+        //}
     }
 }
 #endif
