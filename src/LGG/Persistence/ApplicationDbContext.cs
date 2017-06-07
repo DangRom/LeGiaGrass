@@ -31,8 +31,33 @@ namespace LGG.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            if (modelBuilder == null)
+            {
+                throw new ArgumentNullException("modelBuilder");
+            }
+
             // Insure Identity Entities are accounted for.
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>().Property(u => u.Id).HasMaxLength(36);
+            modelBuilder.Entity<User>().Property(u => u.NormalizedEmail).HasMaxLength(128);
+
+            modelBuilder.Entity<IdentityRole>().Property(r => r.Id).HasMaxLength(36);
+
+            modelBuilder.Entity<IdentityUserRole<string>>().Property(r => r.UserId).HasMaxLength(36);
+            modelBuilder.Entity<IdentityUserRole<string>>().Property(r => r.RoleId).HasMaxLength(36);
+
+            modelBuilder.Entity<IdentityUserToken<string>>().Property(r => r.UserId).HasMaxLength(36);
+            modelBuilder.Entity<IdentityUserToken<string>>().Property(r => r.LoginProvider).HasMaxLength(36);
+            modelBuilder.Entity<IdentityUserToken<string>>().Property(r => r.Name).HasMaxLength(36);
+
+            modelBuilder.Entity<IdentityUserLogin<string>>().Property(r => r.UserId).HasMaxLength(36);
+            modelBuilder.Entity<IdentityUserLogin<string>>().Property(r => r.LoginProvider).HasMaxLength(36);
+            modelBuilder.Entity<IdentityUserLogin<string>>().Property(r => r.ProviderKey).HasMaxLength(36);
+
+            modelBuilder.Entity<IdentityRoleClaim<string>>().Property(r => r.RoleId).HasMaxLength(36);
+
+            modelBuilder.Entity<IdentityUserClaim<string>>().Property(r => r.UserId).HasMaxLength(36);
         }
 
         public async void EnsureSeedData(UserManager<User> userMgr, RoleManager<IdentityRole> roleMgr)
