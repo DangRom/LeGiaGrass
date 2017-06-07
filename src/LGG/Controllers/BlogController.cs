@@ -11,16 +11,19 @@ namespace LGG.Controllers
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
         private readonly IPaginatedMetaService _paginatedMetaService;
+        private readonly ICompanyService _companyService;
 
         public BlogController(IPostService postService,
             ICategoryService categoryService,
             ITagService tagService,
-            IPaginatedMetaService paginatedMetaService)
+            IPaginatedMetaService paginatedMetaService,
+            ICompanyService companyService)
         {
             _postService = postService;
             _categoryService = categoryService;
             _tagService = tagService;
             _paginatedMetaService = paginatedMetaService;
+            _companyService = companyService;
         }
 
         // GET: Blog
@@ -40,6 +43,9 @@ namespace LGG.Controllers
             ViewBag.Tags = _tagService.GetAll();
             ViewBag.PopularPosts = _postService.GetPopularPosts();
             ViewBag.NewPosts = _postService.GetAll(true, false, false, 4).ToList();
+
+            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault();
+
             return View(post);
         }
 

@@ -13,13 +13,17 @@ namespace LGG.Controllers
         private readonly IPostService _postService;
         private readonly ISiteMapService _siteMapService;
         private readonly ICommunicationService _communicationService;
+        private readonly ICompanyService _companyService;
 
         public HomeController(IPostService postService,
-            ISiteMapService siteMapService, ICommunicationService communicationService)
+            ISiteMapService siteMapService,
+            ICommunicationService communicationService,
+            ICompanyService companyService)
         {
             _postService = postService;
             _siteMapService = siteMapService;
             _communicationService = communicationService;
+            _companyService = companyService;
         }
 
         public IActionResult Index()
@@ -27,8 +31,11 @@ namespace LGG.Controllers
             ViewBag.Description =
                 "Hi, my name is LGG...";
 
-            ViewBag.PopularPosts = _postService.GetPopularPosts().ToList();
-            ViewBag.LatestPosts = _postService.GetAll(true, false, false, 8).ToList();
+            //ViewBag.PopularPosts = _postService.GetPopularPosts().ToList();
+            //ViewBag.LatestPosts = _postService.GetAll(true, false, false, 8).ToList();
+
+            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault();
+
             return View();
         }
 

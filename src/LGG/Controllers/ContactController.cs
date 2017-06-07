@@ -3,6 +3,7 @@ using LGG.Core.Services;
 using LGG.Core.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace LGG.Controllers
 {
@@ -12,10 +13,12 @@ namespace LGG.Controllers
     public class ContactController : Controller
     {
         private readonly ICommunicationService _communicationService;
+        private readonly ICompanyService _companyService;
 
-        public ContactController(ICommunicationService communicationService)
+        public ContactController(ICommunicationService communicationService, ICompanyService companyService)
         {
             _communicationService = communicationService;
+            _companyService = companyService;
         }
 
         /// <summary>
@@ -26,6 +29,8 @@ namespace LGG.Controllers
             ViewBag.Description = "Contact...";
             ViewBag.IsValid = true;
             ViewBag.Selected = "contact";
+            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault();
+
             return View();
         }
 

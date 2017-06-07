@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var company = (CompanyDto)ViewBag.Company;
+}
+<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -75,25 +78,25 @@
                                 <!-- End Logo -->
                             </div>
                             <div class="visible-lg col-lg-3">
-                                <div class="slogan"> Chất lượng bạn có thể tin tưởng! </div>
+                                <div class="slogan"> @company.Sologan </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="phone">
-                                    <div><span class="custom-color hidden-xs">GỌI NGAY: </span> <span class="phone-number">+84 123 456 789</span><i class="icon icon-telephone"></i></div>
-                                    <div class="phone-sm hidden-xs">7 ngày một tuần từ 8:00 am to 7:00 pm</div>
+                                    <div><span class="custom-color hidden-xs">GỌI NGAY: </span> <span class="phone-number">@company.Hotline</span><i class="icon icon-telephone"></i></div>
+                                    <div class="phone-sm hidden-xs">@company.TimeWork</div>
                                 </div>
                             </div>
                             <div class="col-sm-3 col-lg-2">
                                 <div class="social-links">
                                     <ul>
                                         <li>
-                                            <a class="icon icon-twitter-logo-button" href="#"></a>
+                                            <a class="icon icon-twitter-logo-button" href="@company.Twitter"></a>
                                         </li>
                                         <li>
-                                            <a class="icon icon-facebook-logo-button" href="#"></a>
+                                            <a class="icon icon-facebook-logo-button" href="@company.Facebook"></a>
                                         </li>
                                         <li>
-                                            <a class="icon icon-instagram-logo" href="#"></a>
+                                            <a class="icon icon-google-plus" href="@company.Google"></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -189,10 +192,10 @@
                             <h5 class="title mobile-collapse__title">Company Info</h5>
                             <div class="v-links-list mobile-collapse__content">
                                 <ul>
-                                    <li>51 St. Black Road Raleigh</li>
-                                    <li><a href="mailto:lawncare@websitename.org">lawncare@websitename.org</a></li>
-                                    <li>Mon - Sun, 24/7</li>
-                                    <li>+84 123 456 789</li>
+                                    <li>@company.Address</li>
+                                    <li><a href="mailto:@company.Email">@company.Email</a></li>
+                                    <li>@company.Website</li>
+                                    <li>@company.Hotline</li>
                                 </ul>
                             </div>
                         </div>
@@ -205,13 +208,13 @@
                         <div class="social-links">
                             <ul>
                                 <li>
-                                    <a class="icon icon-twitter-logo-button" href="#"></a>
+                                    <a class="icon icon-twitter-logo-button" href="@company.Twitter"></a>
                                 </li>
                                 <li>
-                                    <a class="icon icon-facebook-logo-button" href="#"></a>
+                                    <a class="icon icon-facebook-logo-button" href="@company.Facebook"></a>
                                 </li>
                                 <li>
-                                    <a class="icon icon-instagram-logo" href="#"></a>
+                                    <a class="icon icon-google-plus" href="@company.Google"></a>
                                 </li>
                             </ul>
                         </div>
@@ -219,11 +222,11 @@
                     <div class="pull-right col-sm-6 col-md-5 col-lg-4">
                         <div class="phone">
                             <div><span class="custom-color hidden-xs">GỌI NGAY: </span> <span class="phone-number">+84 123 456 789</span><i class="icon icon-telephone"></i></div>
-                            <div class="phone-sm">7 ngày một tuần từ 8:00 am to 7:00 pm</div>
+                            <div class="phone-sm">@company.TimeWork</div>
                         </div>
                     </div>
                     <div class="pull-left col-sm-12 col-md-3 col-lg-4">
-                        <div class="copyright">© 2017 <a href="#">Le Gia Grass</a>.</div>
+                        <div class="copyright">© 2017 <a href="#">@company.Name</a>.</div>
                     </div>
                 </div>
             </div>
