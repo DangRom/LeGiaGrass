@@ -16,50 +16,6 @@ namespace LGG.Persistence.Repositories
             _context = context;
         }
 
-        //    public Company GetCompanyFirstOrDefault()
-        //    {
-        //        return _context.Companies.FirstOrDefault();
-        //    }
-
-        //    public void Update(CompanyDto company)
-        //    {
-        //        var entity = _context
-        //            .Companies
-        //            .Include(x => x.ArticleAbout)
-        //            .Include(x => x.ArticlePrivacy)
-        //            .Include(x => x.ArticleTermsOfUse)
-        //            .FirstOrDefault(x => x.Id == company.Id);
-
-        //        entity.Name = company.Name;
-        //        entity.Sologan = company.Sologan;
-        //        entity.Hotline = company.Hotline;
-        //        entity.Email = company.Email;
-        //        entity.Website = company.Website;
-        //        entity.TimeWork = company.TimeWork;
-        //        entity.Address = company.Address;
-        //        entity.Logo = company.Logo;
-        //        entity.Avatar = company.Avatar;
-
-
-        //        entity.Facebook = company.Facebook;
-        //        entity.Twitter = company.Twitter;
-        //        entity.Google = company.Google;
-        //        entity.LinkedIn = company.LinkedIn;
-        //        entity.Instagram = company.Instagram;
-        //        entity.Pinterest = company.Pinterest;
-
-        //        // ArticleAbout
-        //        entity.ArticleAbout.Content = company.ArticleAbout.Content;
-
-        //        // ArticlePrivacy
-        //        entity.ArticlePrivacy.Content = company.ArticlePrivacy.Content;
-
-        //        // ArticleTermsOfUse
-        //        entity.ArticleTermsOfUse.Content = company.ArticleTermsOfUse.Content;
-
-
-        //        _context.SaveChanges();
-        //    }
 
         /// <summary>
         /// Get all Companies
@@ -70,6 +26,7 @@ namespace LGG.Persistence.Repositories
             var query = _context
                       .Companies
                       .Where(x => true);
+
             if (includeAbout)
             {
                 query = query.Include(x => x.About);
@@ -84,6 +41,7 @@ namespace LGG.Persistence.Repositories
             {
                 query = query.Include(x => x.TermsOfUse);
             }
+
 
             return query.ToList();
         }
@@ -189,5 +147,6 @@ namespace LGG.Persistence.Repositories
                     .Take(count)
                     .ToList();
         }
+
     }
 }

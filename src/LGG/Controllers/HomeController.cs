@@ -1,8 +1,10 @@
-﻿using LGG.Core.Helpers;
+﻿using LGG.Core.Dtos;
+using LGG.Core.Helpers;
 using LGG.Core.Services;
 using LGG.Core.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Text;
 
@@ -14,16 +16,19 @@ namespace LGG.Controllers
         private readonly ISiteMapService _siteMapService;
         private readonly ICommunicationService _communicationService;
         private readonly ICompanyService _companyService;
+        private readonly IOptions<CompanyDto> _companyDefault;
 
         public HomeController(IPostService postService,
             ISiteMapService siteMapService,
             ICommunicationService communicationService,
-            ICompanyService companyService)
+            ICompanyService companyService,
+            IOptions<CompanyDto> companyDefault)
         {
             _postService = postService;
             _siteMapService = siteMapService;
             _communicationService = communicationService;
             _companyService = companyService;
+            _companyDefault = companyDefault;
         }
 
         public IActionResult Index()
@@ -34,7 +39,7 @@ namespace LGG.Controllers
             //ViewBag.PopularPosts = _postService.GetPopularPosts().ToList();
             //ViewBag.LatestPosts = _postService.GetAll(true, false, false, 8).ToList();
 
-            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault();
+            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
 
             return View();
         }

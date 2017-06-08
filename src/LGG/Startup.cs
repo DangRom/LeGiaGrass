@@ -1,4 +1,5 @@
-﻿using LGG.Core.Models;
+﻿using LGG.Core.Dtos;
+using LGG.Core.Models;
 using LGG.Core.Repositories;
 using LGG.Core.Services;
 using LGG.Persistence;
@@ -69,6 +70,8 @@ namespace LGG
 
             // Add application services.
             services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
+            services.Configure<CompanyDto>(Configuration.GetSection("Company"));
+
             services.AddTransient<IPaginatedMetaService, PaginatedMetaService>();
             services.AddTransient<IdentitySetup>();
             services.AddTransient<DefaultData>();

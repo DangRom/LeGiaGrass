@@ -69,7 +69,7 @@ var TagService = (function () {
             .getAll()
             .then(function (tags) {
             _this.tags = tags;
-            return _this.tagRepository.get(_this.tags[0].tagId, true);
+            return _this.tags.length <= 0 ? null : _this.tagRepository.get(_this.tags[0].tagId, true); //TODO: check null
         })
             .then(function (resp) {
             _this.selectedTag = resp;

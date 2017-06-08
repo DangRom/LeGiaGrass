@@ -1,8 +1,10 @@
-﻿using LGG.Core.Helpers;
+﻿using LGG.Core.Dtos;
+using LGG.Core.Helpers;
 using LGG.Core.Services;
 using LGG.Core.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Linq;
 
 namespace LGG.Controllers
@@ -14,11 +16,15 @@ namespace LGG.Controllers
     {
         private readonly ICommunicationService _communicationService;
         private readonly ICompanyService _companyService;
+        private readonly IOptions<CompanyDto> _companyDefault;
 
-        public ContactController(ICommunicationService communicationService, ICompanyService companyService)
+        public ContactController(ICommunicationService communicationService,
+            ICompanyService companyService,
+            IOptions<CompanyDto> companyDefault)
         {
             _communicationService = communicationService;
             _companyService = companyService;
+            _companyDefault = companyDefault;
         }
 
         /// <summary>
@@ -29,7 +35,7 @@ namespace LGG.Controllers
             ViewBag.Description = "Contact...";
             ViewBag.IsValid = true;
             ViewBag.Selected = "contact";
-            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault();
+            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
 
             return View();
         }
@@ -50,7 +56,7 @@ namespace LGG.Controllers
             var response = _communicationService.SendContactEmailNotification(model);
             ViewBag.IsValid = true;
             ViewBag.Selected = "contact";
-
+            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
             switch (response.Status)
             {
                 case OperationStatus.Ok:

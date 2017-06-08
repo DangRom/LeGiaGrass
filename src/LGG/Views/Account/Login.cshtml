@@ -5,24 +5,25 @@
 @{
     ViewData["Title"] = "Log in";
 }
-<div class="row">
-    <div class="large-8 large-push-2 columns">
-        <h2>@ViewData["Title"].</h2>
+<div style="display:table; margin:0 auto">
+    <div>
+        <br />
         <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-            <h4>Use a local account to log in.</h4>
+            <h4>Đăng nhập tài khoản quản trị</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <label asp-for="Email">
                 Email
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
-            </label>
+            </label><br />
             <label asp-for="Password">
-                Password
+                Mật Khẩu
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
-            </label>
-            <button type="submit" class="button">Log in</button>
+            </label><br />
+            <button type="submit" class="btn btn--wd">Đăng Nhập</button>
         </form>
+        <br />
     </div>
 </div>

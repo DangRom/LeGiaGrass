@@ -1,9 +1,13 @@
 ﻿#if (DEBUG)
+using LGG.Core.Dtos;
 using LGG.Core.Models;
+using LGG.Core.Services;
 using LGG.Core.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LGG.Controllers
@@ -13,12 +17,18 @@ namespace LGG.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly ICompanyService _companyService;
+        private readonly IOptions<CompanyDto> _companyDefault;
 
         public AccountController(UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager,
+            ICompanyService companyService,
+            IOptions<CompanyDto> companyDefault)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _companyService = companyService;
+            _companyDefault = companyDefault;
         }
 
         //
@@ -28,6 +38,7 @@ namespace LGG.Controllers
         public IActionResult Login(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
             return View();
         }
 

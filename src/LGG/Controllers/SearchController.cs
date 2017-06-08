@@ -2,6 +2,7 @@
 using LGG.Core.Helpers;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Pioneer.Pagination;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +16,24 @@ namespace LGG.Controllers
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
         private readonly IPostService _postService;
+        private readonly ICompanyService _companyService;
+        private readonly IOptions<CompanyDto> _companyDefault;
 
         public SearchController(ISearchService searchService,
             IPaginatedMetaService paginatedMetaService,
             ICategoryService categoryService,
             ITagService tagService,
-            IPostService postService)
+            IPostService postService,
+            ICompanyService companyService,
+            IOptions<CompanyDto> companyDefault)
         {
             _searchService = searchService;
             _paginatedMetaService = paginatedMetaService;
             _categoryService = categoryService;
             _tagService = tagService;
             _postService = postService;
+            _companyService = companyService;
+            _companyDefault = companyDefault;
         }
 
         [HttpGet]
@@ -43,6 +50,8 @@ namespace LGG.Controllers
             ViewBag.Tags = _tagService.GetAll();
             ViewBag.PopularPosts = _postService.GetPopularPosts();
             ViewBag.NewPosts = _postService.GetAll(true, false, false, 4).ToList();
+
+            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
 
             return View("../Search/Index", new List<PostDto>());
         }
