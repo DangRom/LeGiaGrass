@@ -39,7 +39,9 @@ var CompanyRepository = (function () {
             .catch(this.handleError);
     };
     CompanyRepository.prototype.create = function () {
-        return this.http.post(this.url, {})
+        return this.http.post(this.url, {}, {
+            withCredentials: true
+        })
             .toPromise()
             .then(function (res) {
             var body = res.json();

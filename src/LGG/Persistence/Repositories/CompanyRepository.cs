@@ -114,7 +114,7 @@ namespace LGG.Persistence.Repositories
             entity.Privacy.Content = company.Privacy.Content;
 
             // ArticleTermsOfUse
-            entity.Privacy.Content = company.Privacy.Content;
+            entity.TermsOfUse.Content = company.TermsOfUse.Content;
 
             _context.SaveChanges();
         }

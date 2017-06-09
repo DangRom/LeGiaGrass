@@ -23,13 +23,15 @@ var PostService = (function () {
         this.currentPageIndex = 1;
         // TODO: This is an issue.  The initial state of the pager will represent this, not what comes from the repo.
         this.totalItemsInCollection = 1000;
+        this.show = false;
     }
     PostService.prototype.init = function () {
         var _this = this;
         return this.postRepository.getAll(this.countPerPage, this.currentPageIndex, false, false, true)
             .then(function (posts) {
             _this.posts = posts;
-            return _this.postRepository.get(_this.posts[0].url, true);
+            //return this.postRepository.get(this.posts[0].url, true);
+            return _this.posts.length <= 0 ? null : _this.postRepository.get(_this.posts[0].url, true); //TODO: check null
         })
             .then(function (resp) {
             _this.selectedPost = resp;

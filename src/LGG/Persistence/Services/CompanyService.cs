@@ -49,7 +49,7 @@ namespace LGG.Persistence.Services
         {
             if (company.Name == null)
             {
-
+                company.Name = "Default Company Name";
             }
 
             var response = _companyRepository.Add(Mapper.Map<CompanyDto, Company>(company));

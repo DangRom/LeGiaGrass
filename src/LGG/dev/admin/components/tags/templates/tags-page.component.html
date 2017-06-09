@@ -12,9 +12,9 @@
           </div>
           <ul class="admin-collection-list">
             <li *ngFor="let tag of tagService.getAll()"
-                [class.selected]="tag?.tagId === tagService.getCurrent()?.tagId"
+                [class.selected]="tag.tagId === tagService.getCurrent().tagId"
                 (click)="tagService.setCurrent(tag.tagId)">
-              <span>{{ tag?.name }}</span>
+              <span>{{ tag.name }}</span>
             </li>
           </ul>
         </div>
@@ -27,21 +27,21 @@
       <div class="row">
         <div class="large-12 columns">
           <div class="clearfix">
-            <!--<span class="record-id">Id: {{tagService.getCurrent()?.tagId}}</span>-->
-            <button class="button secondary float-right save tiny"
-                    (click)="save(tagService.getCurrent()?.tagId)">
+            <span class="record-id">Id: {{tagService.getCurrent()?.tagId}}</span>
+            <button class="button secondary float-right save tiny" 
+                    (click)="save(tagService.getCurrent().tagId)">
               Save
             </button>
           </div>
           <label>
             Name
-            <input type="text"
-                   [(ngModel)]="tagService.getCurrent()?.name">
+            <input type="text" *ngIf="tagService.getCurrent()!=null"
+                   [(ngModel)]="tagService.getCurrent().name">
           </label>
           <label>
             Url
-            <input type="text"
-                   [(ngModel)]="tagService.getCurrent()?.url">
+            <input type="text" *ngIf="tagService.getCurrent()!=null"
+                   [(ngModel)]="tagService.getCurrent().url">
           </label>
         </div>
       </div>

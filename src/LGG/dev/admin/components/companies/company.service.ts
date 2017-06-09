@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 export class CompanyService {
     companies = [] as Company[];
     selectedCompany = {} as Company;
+    show: boolean = false;
 
     constructor(private companyRepository: CompanyRepository) { }
 
@@ -22,6 +23,7 @@ export class CompanyService {
     getCurrent(): Company {
         return this.selectedCompany;
     }
+
 
     setCurrent(id: number): Promise<Company> {
         return this.companyRepository.get(id)
@@ -61,10 +63,11 @@ export class CompanyService {
 
     private getCompanies(): Promise<Company[]> {
         return this.companyRepository
-            .getAll(true,true,true)
+            .getAll(true, true, true)
             .then((companies: Company[]) => {
                 this.companies = companies;
-                return this.companyRepository.get(this.companies[0].id);
+                //return this.companyRepository.get(this.companies[0].id);
+                return this.companies.length <= 0 ? null : this.companyRepository.get(this.companies[0].id);//TODO: check null
             })
             .then((resp: Company) => {
                 this.selectedCompany = resp;

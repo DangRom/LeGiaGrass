@@ -351,7 +351,7 @@ namespace LGG.Persistence.Repositories
             entity.Article.Content = post.Article.Content;
 
             // Category
-            entity.CategoryId = post.Category.CategoryId;
+            entity.CategoryId = post.Category?.CategoryId;
 
             // Tags
             _context.SaveChanges();

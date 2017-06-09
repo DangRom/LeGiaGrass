@@ -17,6 +17,7 @@ var CompanyService = (function () {
         this.companyRepository = companyRepository;
         this.companies = [];
         this.selectedCompany = {};
+        this.show = false;
     }
     CompanyService.prototype.init = function () {
         return this.getCompanies();
@@ -69,7 +70,8 @@ var CompanyService = (function () {
             .getAll(true, true, true)
             .then(function (companies) {
             _this.companies = companies;
-            return _this.companyRepository.get(_this.companies[0].id);
+            //return this.companyRepository.get(this.companies[0].id);
+            return _this.companies.length <= 0 ? null : _this.companyRepository.get(_this.companies[0].id); //TODO: check null
         })
             .then(function (resp) {
             _this.selectedCompany = resp;

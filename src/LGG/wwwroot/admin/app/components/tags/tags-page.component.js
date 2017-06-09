@@ -36,6 +36,8 @@ var TagsPageComponent = (function () {
     };
     TagsPageComponent.prototype.save = function () {
         var _this = this;
+        if (this.tagService.getCurrent() == null)
+            return;
         if (confirm("Are you sure you want to save \"" + this.tagService.getCurrent().name + "\" changes")) {
             this.loading = true;
             this.tagService.save()

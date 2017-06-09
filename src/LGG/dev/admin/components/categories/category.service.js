@@ -68,7 +68,8 @@ var CategoryService = (function () {
         return this.categoryRepository.getAll()
             .then(function (categories) {
             _this.categories = categories;
-            return _this.categoryRepository.get(_this.categories[0].categoryId, true);
+            // return this.categoryRepository.get(this.categories[0].categoryId, true);
+            return _this.categories.length <= 0 ? null : _this.categoryRepository.get(_this.categories[0].categoryId, true); //TODO: check null
         })
             .then(function (resp) {
             _this.selectedCategory = resp;

@@ -33,7 +33,9 @@ export class CompanyRepository {
     }
 
     create(): Promise<Company> {
-        return this.http.post(this.url, {} as Company)
+        return this.http.post(this.url, {} as Company, {
+            withCredentials: true
+        })
             .toPromise()
             .then((res: Response) => {
                 const body: Company = res.json();
