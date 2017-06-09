@@ -1,5 +1,8 @@
+*All Command Run in root project*
+
 # Use Git
 - git clone https://github.com/DangRom/LeGiaGrass.git /* clone new git*/
+- git pull /* request new source */
 - git pull --rebase origin master /* Override local repo */
 
 # .NET Core
@@ -8,12 +11,12 @@
 # NPM
 - npm install
 
-# Typings command
+# Typings command 
 - typings install dt~foundation-sites --global --save
 - typings install dt~jquery --global --save
 - typings install dt~node --global --save
 
-# Gulp
+# Gulp 
 - Run task gulpfile.js to copy npm libs to wwwroot (In Visual Studio - Right Mouse on file and press Task Runner Explorer, right mouse admin and public and click RUN)
 
 
