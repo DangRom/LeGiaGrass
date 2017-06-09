@@ -19,10 +19,12 @@
 # Gulp 
 - Run task gulpfile.js to copy npm libs to wwwroot (In Visual Studio - Right Mouse on file and press Task Runner Explorer, right mouse admin and public and click RUN)
 - In Visual Code in input search. Typing task...
+```
 Task: Run Task
-      admin
-      public
-      
-- Read more: https://code.visualstudio.com/docs/editor/tasks
+admin
+public
+```
+Read more about task in Visual Code [How To Use](https://code.visualstudio.com/docs/editor/tasks).
+
 
 
