@@ -26,5 +26,12 @@ public
 ```
 Read more about task in Visual Code [How To Use](https://code.visualstudio.com/docs/editor/tasks).
 
+# Default Value
+- Admin Account
+> LGG/Persistence/IdentitySetup.cs Line ~45
+
+- Website/Company Info
+> LGG/appsettings.json
+
 
 
