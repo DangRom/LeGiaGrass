@@ -1,9 +1,9 @@
-*All Command Run in root project*
-
 # Use Git
 - git clone https://github.com/DangRom/LeGiaGrass.git /* clone new git*/
 - git pull /* request new source */
 - git pull --rebase origin master /* Override local repo */
+
+*All Command below run in root project*
 
 # .NET Core
 - Restore nuget package
