@@ -21,9 +21,10 @@
             </div>
         </div>
     </div>
+
     <div *ngIf="show" class="large-9 columns">
         <div class="admin-canvas-content">
-            <pc-loader [loading]="loading"></pc-loader>
+            <!--<pc-loader [loading]="loading"></pc-loader>-->
             <div class="row">
                 <div class="large-12 columns">
                     <div class="clearfix">
@@ -33,9 +34,10 @@
                             Save
                         </button>
                     </div>
+                   
                     <label>
                         Name
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().name">
                     </label>
                     <label>
@@ -55,12 +57,12 @@
                     </label>
                     <label>
                         Website
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().website">
                     </label>
                     <label>
                         Time Work
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().timeWork">
                     </label>
                     <label>
@@ -78,7 +80,23 @@
                         <input type="text"
                                [(ngModel)]="companyService.getCurrent().avatar">
                     </label>
-                    <label>
+                    <hr />
+                    <button class="button tiny"  type="button"  (click)="companyService.callAboutEditor()">Edit About</button>
+                    <div id="aboutEditor">
+                       
+                    </div>
+
+                    <button class="button tiny" type="button"  (click)="companyService.callPrivacyEditor()">Edit Privacy</button>
+                    <div id="privacyEditor">
+
+                    </div>
+
+                    <button class="button tiny" type="button" (click)="companyService.callTermOfUseEditor()">Edit Terms Of Use</button>
+                    <div id="termOfUseEditor">
+
+                    </div>
+                    <hr />
+                    <!--<label>
                         About
                         <textarea [(ngModel)]="companyService.getCurrent().about.content"
                                   *ngIf="companyService.getCurrent()"></textarea>
@@ -92,35 +110,36 @@
                         Terms Of Use
                         <textarea [(ngModel)]="companyService.getCurrent().termsOfUse.content"
                                   *ngIf="companyService.getCurrent()"></textarea>
-                    </label>
+                    </label>-->
+
                     <label>
                         Facebook
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().facebook">
                     </label>
                     <label>
                         Twitter
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().twitter">
                     </label>
                     <label>
                         Google
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().google">
                     </label>
                     <label>
                         LinkedIn
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().linkedIn">
                     </label>
                     <label>
                         Instagram
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().instagram">
                     </label>
                     <label>
                         Pinterest
-                        <input type="text" 
+                        <input type="text"
                                [(ngModel)]="companyService.getCurrent().pinterest">
                     </label>
                 </div>

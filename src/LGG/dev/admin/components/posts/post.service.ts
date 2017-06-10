@@ -7,6 +7,9 @@ import 'rxjs/add/operator/toPromise';
 import { Post } from '../../models/post';
 import { Category } from '../../models/category';
 import { Tag } from '../../models/tag';
+import '../../../../js/quillEditor.js'
+
+declare var postEditor: any;
 
 @Injectable()
 export class PostService {
@@ -17,6 +20,7 @@ export class PostService {
     // TODO: This is an issue.  The initial state of the pager will represent this, not what comes from the repo.
     totalItemsInCollection = 1000;
     show: boolean = false;
+    allowArticleEditor: boolean = true;
 
     constructor(private postRepository: PostRepository, private postTagRepository: PostTagRepository) { }
 
@@ -137,5 +141,13 @@ export class PostService {
             }
         }
         return false;
+    }
+
+    /* Text Editor */
+    callArticleEditor(): Promise<void> {
+        if (!this.allowArticleEditor)
+            return;
+        this.allowArticleEditor = false;
+        return postEditor.articleEditor();
     }
 }

@@ -13,7 +13,7 @@
                         </div>
                         <ul class="admin-collection-list">
                             <li *ngFor="let post of postService.getAll()"
-                                [class.selected]="postService.getCurrent().postId!=null&&post.postId === postService.getCurrent().postId"
+                                [class.selected]="postService.getCurrent()!=null&&post.postId === postService.getCurrent().postId"
                                 (click)="postService.setCurrent(post.url)&&show =(!show?true:show)">
                                 <span>{{ post.title }}</span>
                             </li>
@@ -132,19 +132,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="large-6 columns">
+                    <div class="large-12 columns">
                         <label>
                             Excerpt
                             <textarea [(ngModel)]="postService.getCurrent().excerpt.content"
                                       *ngIf="postService.getCurrent()"></textarea>
                         </label>
                     </div>
-                    <div class="large-6 columns">
-                        <label>
-                            Article
-                            <textarea id="editor" [(ngModel)]="postService.getCurrent().article.content"
-                                      *ngIf="postService.getCurrent()"></textarea>
-                        </label>
+                   
+                </div>
+                <div class="row">
+                    <div class="large-12" columns>
+                        <button class="button tiny" type="button" (click)="postService.callArticleEditor()">Edit Article</button>
+                        <div id="articleEditor">
+
+                        </div>
                     </div>
                 </div>
                 <div class="row">

@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var post_repository_1 = require("../../repositories/post.repository");
 var post_tag_repository_1 = require("../../repositories/post-tag.repository");
 require("rxjs/add/operator/toPromise");
+require("../../../../js/quillEditor.js");
 var PostService = (function () {
     function PostService(postRepository, postTagRepository) {
         this.postRepository = postRepository;
@@ -24,6 +25,7 @@ var PostService = (function () {
         // TODO: This is an issue.  The initial state of the pager will represent this, not what comes from the repo.
         this.totalItemsInCollection = 1000;
         this.show = false;
+        this.allowArticleEditor = true;
     }
     PostService.prototype.init = function () {
         var _this = this;
@@ -136,6 +138,13 @@ var PostService = (function () {
             }
         }
         return false;
+    };
+    /* Text Editor */
+    PostService.prototype.callArticleEditor = function () {
+        if (!this.allowArticleEditor)
+            return;
+        this.allowArticleEditor = false;
+        return postEditor.articleEditor();
     };
     return PostService;
 }());

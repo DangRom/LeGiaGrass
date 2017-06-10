@@ -1,14 +1,22 @@
 ﻿import { Injectable } from '@angular/core';
 import { CompanyRepository } from '../../repositories/company.repository';
 import { Company } from '../../models/company';
-
 import 'rxjs/add/operator/toPromise';
+import '../../../../js/quillEditor.js'
+
+declare var companyEditor: any;
 
 @Injectable()
 export class CompanyService {
+   
+    
+    /* Service */
     companies = [] as Company[];
     selectedCompany = {} as Company;
     show: boolean = false;
+    allowAboutEditor: boolean = true;
+    allowPrivacyEditor: boolean = true;
+    allowTermsOfUseEditor: boolean = true;
 
     constructor(private companyRepository: CompanyRepository) { }
 
@@ -73,5 +81,27 @@ export class CompanyService {
                 this.selectedCompany = resp;
                 return this.companies;
             });
+    }
+
+    /* Text Editor */
+    callAboutEditor(): Promise<void>  {
+        if (!this.allowAboutEditor)
+            return;
+        this.allowAboutEditor = false;
+        return companyEditor.aboutEditor();
+    }
+
+    callPrivacyEditor(): Promise<void> {
+        if (!this.allowPrivacyEditor)
+            return;
+        this.allowPrivacyEditor = false;
+        return companyEditor.privacyEditor();
+    }
+
+    callTermOfUseEditor(): Promise<void> {
+        if (!this.allowTermsOfUseEditor)
+            return;
+        this.allowTermsOfUseEditor = false;
+        return companyEditor.termOfUseEditor();
     }
 }

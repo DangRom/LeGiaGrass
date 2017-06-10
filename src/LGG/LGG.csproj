@@ -270,5 +270,8 @@
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Post\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\js\quillEditor.js" />
+  </ItemGroup>
 
 </Project>

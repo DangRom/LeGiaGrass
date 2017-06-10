@@ -17,6 +17,9 @@
 
     <!--Quill-->
     <link href="~/admin/css/quill.snow.css" rel="stylesheet" asp-append-version="true" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" asp-append-version="true"></script>
+
     <script src="~/admin/libs/quill/quill.min.js" asp-append-version="true"></script>
 
     <script>
@@ -69,13 +72,4 @@
         @RenderBody()
     </div>
 </section>
-@section bodyEnd {
-    <!-- Initialize Quill editor -->
-    <script>
-        var editor = new Quill('#editor', {
-            modules: { toolbar: '#toolbar' },
-            theme: 'snow'
-        });
-    </script>
-
-}
+@section bodyEnd {}

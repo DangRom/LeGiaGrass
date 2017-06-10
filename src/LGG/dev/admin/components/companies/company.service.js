@@ -12,12 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var company_repository_1 = require("../../repositories/company.repository");
 require("rxjs/add/operator/toPromise");
+require("../../../../js/quillEditor.js");
 var CompanyService = (function () {
     function CompanyService(companyRepository) {
         this.companyRepository = companyRepository;
+        /* Service */
         this.companies = [];
         this.selectedCompany = {};
         this.show = false;
+        this.allowAboutEditor = true;
+        this.allowPrivacyEditor = true;
+        this.allowTermsOfUseEditor = true;
     }
     CompanyService.prototype.init = function () {
         return this.getCompanies();
@@ -77,6 +82,25 @@ var CompanyService = (function () {
             _this.selectedCompany = resp;
             return _this.companies;
         });
+    };
+    /* Text Editor */
+    CompanyService.prototype.callAboutEditor = function () {
+        if (!this.allowAboutEditor)
+            return;
+        this.allowAboutEditor = false;
+        return companyEditor.aboutEditor();
+    };
+    CompanyService.prototype.callPrivacyEditor = function () {
+        if (!this.allowPrivacyEditor)
+            return;
+        this.allowPrivacyEditor = false;
+        return companyEditor.privacyEditor();
+    };
+    CompanyService.prototype.callTermOfUseEditor = function () {
+        if (!this.allowTermsOfUseEditor)
+            return;
+        this.allowTermsOfUseEditor = false;
+        return companyEditor.termOfUseEditor();
     };
     return CompanyService;
 }());
