@@ -13,6 +13,7 @@
 
 # Typings command 
 - npm remove @types/jquery --save-dev
+- npm remove @types/node --save-dev
 - typings install dt~foundation-sites --global --save
 - typings install dt~jquery --global --save
 - typings install dt~node --global --save
