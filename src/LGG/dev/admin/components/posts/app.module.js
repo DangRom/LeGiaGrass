@@ -22,6 +22,7 @@ var category_service_1 = require("../categories/category.service");
 var truncate_pipe_1 = require("../../pipes/truncate.pipe");
 var loader_component_1 = require("../shared/loader/loader.component");
 var pager_component_1 = require("../shared/pager/pager.component");
+var tinymce_1 = require("../shared/tinymce/tinymce");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,7 +40,8 @@ AppModule = __decorate([
             posts_page_component_1.PostsPageComponent,
             truncate_pipe_1.TruncatePipe,
             loader_component_1.LoaderComponent,
-            pager_component_1.PagerComponent
+            pager_component_1.PagerComponent,
+            tinymce_1.TinyComponent
         ],
         providers: [
             post_repository_1.PostRepository,

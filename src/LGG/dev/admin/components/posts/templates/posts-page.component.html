@@ -139,14 +139,25 @@
                                       *ngIf="postService.getCurrent()"></textarea>
                         </label>
                     </div>
-                   
+
                 </div>
                 <div class="row">
+                    <!--<div class="large-6 columns">
+                        <label>
+                            Article
+                            <textarea id="editor" [(ngModel)]="postService.getCurrent().article.content"
+                                      *ngIf="postService.getCurrent()"></textarea>
+                        </label>
+                    </div>-->
                     <div class="large-12" columns>
-                        <button class="button tiny" type="button" (click)="postService.callArticleEditor()">Edit Article</button>
-                        <div id="articleEditor">
+                        <!--<button class="button tiny" type="button" (click)="postService.callArticleEditor()">Edit Article</button>
+                        <div id="articleEditor" *ngIf="postService.getCurrent()">
 
                         </div>
+                        <textarea id="article-Editor" [htmlEditor] 
+                                  [(ngModel)]="postService.getCurrent().article.content"
+                                  *ngIf="postService.getCurrent()"></textarea>-->
+                       <tiny-editor id="article-Editor"></tiny-editor>
                     </div>
                 </div>
                 <div class="row">

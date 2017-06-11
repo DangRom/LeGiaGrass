@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var post_repository_1 = require("../../repositories/post.repository");
 var post_tag_repository_1 = require("../../repositories/post-tag.repository");
 require("rxjs/add/operator/toPromise");
-require("../../../../js/quillEditor.js");
+require("../../../../js/tinyEditor.js");
 var PostService = (function () {
     function PostService(postRepository, postTagRepository) {
         this.postRepository = postRepository;

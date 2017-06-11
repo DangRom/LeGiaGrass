@@ -1,6 +1,7 @@
-﻿#if (DEBUG)
+﻿using LGG.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace LGG.Areas.Admin.Controllers
 {
@@ -8,13 +9,21 @@ namespace LGG.Areas.Admin.Controllers
     [Authorize]
     public class TagsController : Controller
     {
-        public IActionResult Index()
+        private readonly ITagService _tagService;
+
+        public TagsController(ITagService tagService)
+        {
+            _tagService = tagService;
+        }
+
+        public IActionResult Index(int? count, int? page)
         {
             ViewBag.Title = "Admin | Tags";
             ViewBag.Selected = "tags";
-            ViewBag.SystemJsImportPath = "app/components/tags/main.js";
-            return View();
+            if (count == null || page == null)
+                return View(_tagService.GetAll());
+            else
+                return View(_tagService.GetAllPaged((int)count, (int)page));
         }
     }
 }
-#endif

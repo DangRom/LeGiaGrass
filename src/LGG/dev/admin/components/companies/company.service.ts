@@ -2,7 +2,7 @@
 import { CompanyRepository } from '../../repositories/company.repository';
 import { Company } from '../../models/company';
 import 'rxjs/add/operator/toPromise';
-import '../../../../js/quillEditor.js'
+import '../../../../js/tinyEditor.js'
 
 declare var companyEditor: any;
 

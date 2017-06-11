@@ -1,1 +1,90 @@
-﻿<pc-app></pc-app>
+﻿@*<pc-app></pc-app>*@
+
+
+@model IEnumerable<TagDto>
+
+@{
+    var currentTag = new TagDto();
+}
+
+<div class="row expanded">
+    <div class="large-3 columns">
+        <div class="admin-canvas-content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="clearfix">
+                        <button class="button tiny secondary float-right"
+                                (click)="tagService.create()">
+                            Add
+                        </button>
+                    </div>
+                    <ul class="admin-collection-list">
+                        @*<li *ngFor="let tag of tagService.getAll()"
+                                [class.selected]="tag.tagId === tagService.getCurrent().tagId"
+                                (click)="tagService.setCurrent(tag.tagId)">
+                                <span>{{ tag.name }}</span>
+                            </li>*@
+                        @foreach (var tag in Model)
+                        {
+                            <li data-tag-id="@tag.TagId"><span id="tag-@(tag.TagId)">@tag.Name</span></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="large-9 columns">
+        <div class="admin-canvas-content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="clearfix">
+                        <span id="tagId" class="record-id"></span>
+                        <button class="button secondary float-right save tiny"
+                                (click)="save(tagService.getCurrent().tagId)">
+                            Save
+                        </button>
+                    </div>
+                    <label>
+                        Name
+                        <input type="text" *ngIf="tagService.getCurrent()!=null"
+                               [(ngModel)]="tagService.getCurrent().name">
+                    </label>
+                    <label>
+                        Url
+                        <input type="text" *ngIf="tagService.getCurrent()!=null"
+                               [(ngModel)]="tagService.getCurrent().url">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(function () {
+            $('.admin-collection-list li').click(function (e) {
+                e.preventDefault()
+                $that = $(this);
+                $that.parent().find('li').removeClass('selected');
+                $that.addClass('selected');
+                ///TODO: Call current selected
+                var link = $(e.target);
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "/api/tags/" + link.attr("data-tag-id"),
+                    success: function (data) {
+                        var json = JSON.parse(JSON.stringify(data));
+                        document.getElementById("tagId").innerText = json["tagId"];
+                    },
+                    error: function (error) {
+
+                        jsonValue = jQuery.parseJSON(error.responseText);
+                        alert("error" + error.responseText);
+                    }
+                });
+            });
+        })
+    </script>
+}

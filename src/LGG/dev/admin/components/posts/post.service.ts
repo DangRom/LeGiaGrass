@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import { Post } from '../../models/post';
 import { Category } from '../../models/category';
 import { Tag } from '../../models/tag';
-import '../../../../js/quillEditor.js'
+import '../../../../js/tinyEditor.js'
 
 declare var postEditor: any;
 

@@ -5,26 +5,7 @@
 {
     <link href="/app.css" rel="stylesheet" asp-append-version="true" />
     <link href="/admin/app.css" rel="stylesheet" asp-append-version="true">
-    <script src="/admin/libs/libs.js" asp-append-version="true"></script>
-
-    <!-- Polyfill(s) for older browsers -->
-    <script src="/admin/libs/core-js/shim.min.js" asp-append-version="true"></script>
-
-    <script src="/admin/libs/zone.js/zone.js" asp-append-version="true"></script>
-    <script src="/admin/libs/systemjs/system.src.js" asp-append-version="true"></script>
-
-    <script src="/admin/systemjs.config.js" asp-append-version="true"></script>
-
-    <!--Quill-->
-    <link href="~/admin/css/quill.snow.css" rel="stylesheet" asp-append-version="true" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" asp-append-version="true"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" asp-append-version="true"></script>
-
-    <script src="~/admin/libs/quill/quill.min.js" asp-append-version="true"></script>
-
-    <script>
-            System.import('@ViewBag.SystemJsImportPath').catch(function (err) { console.error(err); });
-    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 }
 <section class="body-content-admin">
     <header>
@@ -42,25 +23,25 @@
     </header>
     <nav class="nav-admin">
         <ul class="menu vertical">
-            <li class="@(ViewBag.Selected == " posts" ? "selected" : "" )">
+            <li class="@(ViewBag.Selected == "posts" ? "selected" : "" )">
                 <a href="/admin/posts">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     POSTS
                 </a>
             </li>
-            <li class="@(ViewBag.Selected == " categories" ? "selected" : "" )">
+            <li class="@(ViewBag.Selected == "categories" ? "selected" : "" )">
                 <a href="/admin/categories">
                     <i class="fa fa-archive" aria-hidden="true"></i>
                     CATEGORIES
                 </a>
             </li>
-            <li class="@(ViewBag.Selected == " tags" ? "selected" : "" )">
+            <li class="@(ViewBag.Selected == "tags" ? "selected" : "" )">
                 <a href="/admin/tags" class="margin-zero">
                     <i class="fa fa-tags" aria-hidden="true"></i>
                     TAGS
                 </a>
             </li>
-            <li class="@(ViewBag.Selected == " companies" ? "selected" : "" )">
+            <li class="@(ViewBag.Selected == "companies" ? "selected" : "" )">
                 <a href="/admin/companies" class="margin-zero">
                     <i class="fa fa-copyright" aria-hidden="true"></i>
                     COMPANIES
@@ -73,3 +54,4 @@
     </div>
 </section>
 @section bodyEnd {}
+@RenderSection("Scripts", false)

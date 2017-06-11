@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var company_repository_1 = require("../../repositories/company.repository");
 require("rxjs/add/operator/toPromise");
-require("../../../../js/quillEditor.js");
+require("../../../../js/tinyEditor.js");
 var CompanyService = (function () {
     function CompanyService(companyRepository) {
         this.companyRepository = companyRepository;

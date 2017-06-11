@@ -11,13 +11,31 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\Api\**" />
-    <Compile Remove="wwwroot\admin\app\components\companies.old\**" />
+    <Compile Remove="dev\**" />
+    <Compile Remove="gulp-tasks\**" />
+    <Compile Remove="typings\**" />
     <Content Remove="Controllers\Api\**" />
-    <Content Remove="wwwroot\admin\app\components\companies.old\**" />
+    <Content Remove="dev\**" />
+    <Content Remove="gulp-tasks\**" />
+    <Content Remove="typings\**" />
     <EmbeddedResource Remove="Controllers\Api\**" />
-    <EmbeddedResource Remove="wwwroot\admin\app\components\companies.old\**" />
+    <EmbeddedResource Remove="dev\**" />
+    <EmbeddedResource Remove="gulp-tasks\**" />
+    <EmbeddedResource Remove="typings\**" />
     <None Remove="Controllers\Api\**" />
-    <None Remove="wwwroot\admin\app\components\companies.old\**" />
+    <None Remove="dev\**" />
+    <None Remove="gulp-tasks\**" />
+    <None Remove="typings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="package.json" />
+    <Content Remove="tsconfig.json" />
+    <Content Remove="typings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="gulpfile.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +47,7 @@
     <Content Include="wwwroot\googlefbb6e67fcb02657f.html" />
     <Content Include="wwwroot\images\oldman.png" />
     <Content Include="wwwroot\js\custom.js" />
+    <Content Include="wwwroot\js\tinyEditor.js" />
     <Content Include="wwwroot\less\animate.less" />
     <Content Include="wwwroot\less\bootstrap.less" />
     <Content Include="wwwroot\less\components\advantages.less" />
@@ -257,6 +276,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
     <PackageReference Include="MySql.Data" Version="7.0.7-m61" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
     <PackageReference Include="Pioneer.Pagination" Version="1.1.0" />
     <PackageReference Include="SapientGuardian.EntityFrameworkCore.MySql" Version="7.1.23" />
     <PackageReference Include="StackifyMiddleware" Version="2.0.3" />

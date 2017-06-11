@@ -50,12 +50,14 @@ function moveLibs() {
         "systemjs": 'systemjs/dist/system.src.js',
         "rxjs": 'rxjs/**/*.js',
         "core-js": 'core-js/client/shim.min.js',
-        "zone.js": 'zone.js/dist/zone.js',
-        "quill": 'quill/dist/quill.min.js'
+        "zone.js": 'zone.js/dist/zone.js'
     };
    
     for (var name in libs) {
-        if (libs.hasOwnProperty(name)) {
+        if (libs.hasOwnProperty(name)=="tinymce") {
+
+        }
+        else if (libs.hasOwnProperty(name)) {
             gulp.src('node_modules/' + libs[name])
                 .pipe(gulp.dest('wwwroot/admin/libs/' + name));
         }
@@ -66,11 +68,35 @@ function moveLibs() {
     });
 }
 
-function moveStyles() {
-    return gulp.src(['./node_modules/quill/dist/quill.snow.css'])
-        .pipe(cleanCss({ keepSpecialComments: 0 }))
-        .pipe(gulp.dest('wwwroot/admin/css'));
+function moveTiny() {
+    gulp.src('node_modules/tinymce/tinymce.js')
+        .pipe(gulp.dest('wwwroot/admin/libs/tinymce'));
+    return new Promise(function (resolve) {
+        resolve();
+    });
 }
+
+function moveTinyThemesModern() {
+    gulp.src('node_modules/tinymce/themes/modern/theme.js')
+        .pipe(gulp.dest('wwwroot/admin/libs/tinymce/themes/modern'));
+    return new Promise(function (resolve) {
+        resolve();
+    });
+}
+function moveTinyPlugins() {
+    gulp.src('node_modules/tinymce/plugins/**/plugin.js')
+        .pipe(gulp.dest('wwwroot/admin/libs/tinymce/plugins/'));
+    return new Promise(function (resolve) {
+        resolve();
+    });
+}
+function moveTinySkin() {
+    return gulp.src([
+        'node_modules/tinymce/skins/**/**/*.*'
+    ], { base: './node_modules/tinymce/skins/' })
+        .pipe(gulp.dest('wwwroot/admin/assets/skins'));
+}
+
 
 function scripts() {
     return gulp.src([
@@ -101,7 +127,6 @@ function watch() {
 gulp.task('admin-dev', gulp.series(
     clean,
     moveLibs,
-    moveStyles,
     libs,
     typescript,
     scripts,
@@ -113,10 +138,13 @@ gulp.task('admin-dev', gulp.series(
 gulp.task('admin', gulp.series(
     clean,
     moveLibs,
-    moveStyles,
     libs,
     typescript,
     scripts,
     templates,
-    styles
+    styles,
+    moveTinySkin,
+    moveTiny,
+    moveTinyThemesModern,
+    moveTinyPlugins
 ));

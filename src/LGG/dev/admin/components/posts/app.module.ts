@@ -19,30 +19,33 @@ import { TruncatePipe } from '../../pipes/truncate.pipe';
 import { LoaderComponent } from '../shared/loader/loader.component';
 import { PagerComponent } from '../shared/pager/pager.component';
 
+import { TinyComponent } from '../shared/tinymce/tinymce';
+
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
-  ],
-  declarations: [
-    AppComponent,
-    PostsPageComponent,
-    TruncatePipe,
-    LoaderComponent,
-    PagerComponent
-  ],
-  providers: [
-    PostRepository,
-    PostTagRepository,
-    CategoryRepository,
-    TagRepository,
-    PostService,
-    CategoryService,
-    TagService
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule
+    ],
+    declarations: [
+        AppComponent,
+        PostsPageComponent,
+        TruncatePipe,
+        LoaderComponent,
+        PagerComponent,
+        TinyComponent
+    ],
+    providers: [
+        PostRepository,
+        PostTagRepository,
+        CategoryRepository,
+        TagRepository,
+        PostService,
+        CategoryService,
+        TagService
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }
