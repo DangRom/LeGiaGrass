@@ -10,10 +10,10 @@
 
 # Default Value
 - Admin Account
-> LGG/Persistence/IdentitySetup.cs Line ~45
+> [LGG/Persistence/IdentitySetup.cs Line ~45](https://github.com/DangRom/LeGiaGrass/blob/master/src/LGG/Persistence/IdentitySetup.cs)
 
 - Website/Company Info
-> LGG/appsettings.json
+> [LGG/appsettings.json](https://github.com/DangRom/LeGiaGrass/blob/master/src/LGG/appsettings.json)
 
 
 
