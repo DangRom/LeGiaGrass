@@ -1,5 +1,4 @@
-﻿#if (DEBUG)
-using LGG.Core.Dtos;
+﻿using LGG.Core.Dtos;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -88,4 +87,3 @@ namespace LGG.Areas.Admin.Controllers.Api
         //}
     }
 }
-#endif

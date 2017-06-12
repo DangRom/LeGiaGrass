@@ -1,5 +1,4 @@
-﻿#if (DEBUG)
-using LGG.Core.Dtos;
+﻿using LGG.Core.Dtos;
 using LGG.Core.Models;
 using LGG.Persistence;
 using Microsoft.AspNetCore.Identity;
@@ -135,4 +134,3 @@ namespace LGG.Areas.Admin.Controllers.Api
         }
     }
 }
-#endif

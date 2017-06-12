@@ -1,1 +1,365 @@
-<pc-app></pc-app>
+﻿@model CompanyDto
+
+<div class="row expanded">
+    <div class="col-md-3">
+        <div class="admin-canvas-content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="clearfix">
+                        <button id="js-company-add" class="btn btn-default float-right add">
+                            Thêm
+                        </button>
+                    </div>
+                    <ul class="admin-collection-list">
+                        <li data-company-id="@(Model?.Id)"><span>@Model?.Name</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="admin-canvas-content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="clearfix">
+                        <span id="companyId" class="record-id"></span>
+                        <button id="saveCommand" class="btn btn-default float-right save">Lưu</button>
+                    </div>
+
+                    <label>
+                        Name
+                        <input type="text" id="name" />
+                    </label>
+                    <label>
+                        Sologan
+                        <input type="text" id="sologan" />
+                    </label>
+                    <label>
+                        Hotline
+                        <input type="text" id="hotline" />
+                    </label>
+                    <label>
+                        Email
+                        <input type="text" id="email" />
+                    </label>
+                    <label>
+                        Website
+                        <input type="text" id="website" />
+                    </label>
+                    <label>
+                        Time Work
+                        <input type="text" id="timeWork" />
+                    </label>
+                    <label>
+                        Address
+                        <input type="text" id="address" />
+                    </label>
+                    <label>
+                        Logo
+                        <input type="text" id="logo" />
+                    </label>
+                    <label>
+                        Avatar
+                        <input type="text" id="avatar" />
+                    </label>
+                    <hr />
+                    <div class="row">
+                        <label>
+                            About
+                            <textarea id="aboutEditor" class="tinyEditor"></textarea>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label>
+                            Privacy
+                            <textarea id="privacyEditor" class="tinyEditor"></textarea>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label>
+                            Terms Of Use
+                            <textarea id="termsOfUseEditor" class="tinyEditor"></textarea>
+                        </label>
+                    </div>
+                    <hr />
+                    <label>
+                        Facebook
+                        <input type="text" id="facebook" />
+                    </label>
+                    <label>
+                        Twitter
+                        <input type="text" id="twitter" />
+                    </label>
+                    <label>
+                        Google
+                        <input type="text" id="google" />
+                    </label>
+                    <label>
+                        LinkedIn
+                        <input type="text" id="linkedIn" />
+                    </label>
+                    <label>
+                        Instagram
+                        <input type="text" id="instagram" />
+                    </label>
+                    <label>
+                        Pinterest
+                        <input type="text" id="pinterest" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            //GET
+            $('.admin-collection-list li').click(function (e) {
+                e.preventDefault()
+                $that = $(this);
+                $that.parent().find('li').removeClass('selected');
+                $that.addClass('selected');
+                ///TODO: Call current selected
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "/api/companies/" + $that.attr("data-company-id"),
+                    success: function (data) {
+                        var json = JSON.parse(JSON.stringify(data));
+                        console.log(json);
+                        document.getElementById("companyId").innerText = json["id"];
+                        $('#name').val(json["name"]);
+                        $('#sologan').val(json["sologan"]);
+                        $('#hotline').val(json["hotline"]);
+                        $('#email').val(json["email"]);
+                        $('#website').val(json["website"]);
+                        $('#timeWork').val(json["timeWork"]);
+                        $('#address').val(json["address"]);
+                        $('#logo').val(json["logo"]);
+                        $('#avatar').val(json["avatar"]);
+
+                        tinymce.get('aboutEditor').setContent(json["about"]["content"]);
+                        tinymce.get('privacyEditor').setContent(json["privacy"]["content"]);
+                        tinymce.get('termsOfUseEditor').setContent(json["termsOfUse"]["content"]);
+
+                        $('#facebook').val(json["facebook"]);
+                        $('#twitter').val(json["twitter"]);
+                        $('#google').val(json["google"]);
+                        $('#linkedIn').val(json["linkedIn"]);
+                        $('#instagram').val(json["instagram"]);
+                        $('#pinterest').val(json["pinterest"]);
+                    },
+                    error: function (error) {
+
+                        jsonValue = jQuery.parseJSON(error.responseText);
+                        alert("error" + error.responseText);
+                    }
+                });
+            });
+
+            //PUT
+            $("#saveCommand").click(function (e) {
+                var link = $(e.target);
+
+                var companyID = $('#companyId').text();
+
+                var companyNAME = document.getElementById("name").value;
+                var companySOLOGAN = document.getElementById("sologan").value;
+                var companyHOTLINE = document.getElementById("hotline").value;
+                var companyEMAIL = document.getElementById("email").value;
+                var companyWEBSITE = document.getElementById("website").value;
+                var companyTIMEWORK = document.getElementById("timeWork").value;
+                var companyADDRESS = document.getElementById("address").value;
+                var companyLOGO = document.getElementById("logo").value;
+                var companyAVATAR = document.getElementById("avatar").value;
+
+                var companyABOUT = tinymce.get('aboutEditor').getContent();
+                var companyPRIVACY = tinymce.get('privacyEditor').getContent();
+                var companyTERMSOFUSE = tinymce.get('termsOfUseEditor').getContent();
+
+                var companyFACEBOOK = document.getElementById("facebook").value;
+                var companyTWITTER = document.getElementById("twitter").value;
+                var companyGOOGLE = document.getElementById("google").value;
+                var companyLINKEDIN = document.getElementById("linkedIn").value;
+                var companyINSTAGRAM = document.getElementById("instagram").value;
+                var companyPINTEREST = document.getElementById("pinterest").value;
+
+                var data = {
+                    id: companyID,
+                    name: companyNAME,
+                    sologan: companySOLOGAN,
+                    hotline: companyHOTLINE,
+                    email: companyEMAIL,
+                    website: companyWEBSITE,
+                    timeWork: companyTIMEWORK,
+                    address: companyADDRESS,
+                    logo: companyLOGO,
+                    avatar: companyAVATAR,
+                    about: {
+                        content: companyABOUT
+                    },
+                    privacy: {
+                        content: companyPRIVACY
+                    },
+                    termsOfUse: {
+                        content: companyTERMSOFUSE
+                    },
+                    facebook: companyFACEBOOK,
+                    twitter: companyTWITTER,
+                    google: companyGOOGLE,
+                    linkedIn: companyLINKEDIN,
+                    instagram: companyINSTAGRAM,
+                    pinterest: companyPINTEREST
+                };
+
+                var companyDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn lưu thông tin công ty  không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Đồng Ý',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/companies/' + companyID,
+                                dataType: "json",
+                                type: "PUT",
+                                contentType: 'application/json; charset=utf-8',
+                                data: companyDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    console.log(data);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+
+            });//
+
+            //POST
+            $("#js-company-add").click(function (e) {
+                var link = $(e.target);
+                var data = {
+                    name: 'Tên công ty',
+                    sologan: 'sologan',
+                    hotline: '+84 123 456 789',
+                    email: 'name@domain.com',
+                    website: 'http://domain.com',
+                    timeWork: '24/7 from 8:00 to 20:00',
+                    address: 'Viet Nam',
+                    logo: '#',
+                    avatar: '#',
+
+                    facebook: '#',
+                    twitter: '#',
+                    google: '#',
+                    linkedIn: '#',
+                    instagram: '#',
+                    pinterest: '#'
+                };
+
+                var companyDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn thêm mới thông tin công ty không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Có',
+                            className: 'btn-info'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/companies/',
+                                dataType: "json",
+                                type: "POST",
+                                contentType: 'application/json; charset=utf-8',
+                                data: companyDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    console.log(data);
+                                    var json = JSON.parse(JSON.stringify(data));
+                                    document.getElementById("companyId").innerText = json["id"];
+                                    $('#name').val(json["name"]);
+                                    $('#sologan').val(json["sologan"]);
+                                    $('#hotline').val(json["hotline"]);
+                                    $('#email').val(json["email"]);
+                                    $('#website').val(json["website"]);
+                                    $('#timeWork').val(json["timeWork"]);
+                                    $('#address').val(json["address"]);
+                                    $('#logo').val(json["logo"]);
+                                    $('#avatar').val(json["avatar"]);
+
+                                    $('#facebook').val(json["facebook"]);
+                                    $('#twitter').val(json["twitter"]);
+                                    $('#google').val(json["google"]);
+                                    $('#linkedIn').val(json["linkedIn"]);
+                                    $('#instagram').val(json["instagram"]);
+                                    $('#pinterest').val(json["pinterest"]);
+
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+            });//
+        });
+    </script>
+
+    <script>
+        $(function () {
+            tinymce.init({
+                selector: '.tinyEditor',
+                height: 500,
+                theme: 'modern',
+                plugins: [
+                    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                    'searchreplace wordcount visualblocks visualchars code fullscreen',
+                    'insertdatetime media nonbreaking save table contextmenu directionality',
+                    'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help'
+                ],
+                toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
+                image_advtab: true,
+                templates: [
+                    { title: 'Test template 1', content: 'Test 1' },
+                    { title: 'Test template 2', content: 'Test 2' }
+                ],
+                content_css: [
+                    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                    '//www.tinymce.com/css/codepen.min.css'
+                ]
+            });
+
+        });
+    </script>
+}

@@ -1,4 +1,3 @@
-#if (DEBUG)
 using LGG.Core.Dtos;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -54,6 +53,11 @@ namespace LGG.Areas.Admin.Controllers.Api
                 return BadRequest();
             }
 
+            var first = _companyService.GetCompanyFirstOrDefault(true, true, true);
+
+            if (first != null)
+                return CreatedAtRoute("GetCompany", new { id = first.Id }, first);
+
             _companyService.Add(company);
             return CreatedAtRoute("GetCompany", new { id = company.Id }, company);
         }
@@ -92,4 +96,3 @@ namespace LGG.Areas.Admin.Controllers.Api
         //}
     }
 }
-#endif

@@ -6,7 +6,7 @@ namespace LGG.Core.Repositories
 {
     public interface ICompanyRepository
     {
-        //Company GetCompanyFirstOrDefault(bool includeAbout, bool includePrivacy, bool includeTermsOfUse); /* Mặc định chỉ có một công ty trên site */
+        Company GetCompanyFirstOrDefault(bool includeAbout, bool includePrivacy, bool includeTermsOfUse); /* Mặc định chỉ có một công ty trên site */
 
         ////Company Add(Company map);/* Không thể thêm mới*/
         //void Update(CompanyDto company);/* Chỉ cập nhật thông tin công ty hiện tại */

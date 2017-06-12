@@ -148,5 +148,22 @@ namespace LGG.Persistence.Repositories
                     .ToList();
         }
 
+        public Company GetCompanyFirstOrDefault(bool includeAbout, bool includePrivacy, bool includeTermsOfUse)
+        {
+            var query = _context
+                    .Companies;
+
+            if (includeAbout)
+                query.Include(x => x.About);
+
+            if (includePrivacy)
+                query.Include(x => x.Privacy);
+
+            if (includeTermsOfUse)
+                query.Include(x => x.TermsOfUse);
+
+            return query.FirstOrDefault();
+
+        }
     }
 }

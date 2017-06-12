@@ -85,5 +85,10 @@ namespace LGG.Persistence.Services
         {
             return _companyRepository.GetAllPaged(count, page).Select(Mapper.Map<Company, CompanyDto>);
         }
+
+        public CompanyDto GetCompanyFirstOrDefault(bool includeAbout, bool includePrivacy, bool includeTermsOfUse)
+        {
+            return Mapper.Map<Company, CompanyDto>(_companyRepository.GetCompanyFirstOrDefault(includeAbout, includePrivacy, includeTermsOfUse));
+        }
     }
 }

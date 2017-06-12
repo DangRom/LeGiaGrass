@@ -18,7 +18,7 @@
 .pc-loader i {
     color: #8a8a8a;
     font-size: 5rem
-}*/
+}
 
 .pc-pager {
     margin: 1rem 0
@@ -31,7 +31,7 @@
 
         .pc-pager ul.pagination .current a {
             color: #fefefe
-        }
+        }*/
 
 body {
     background: #09130e
@@ -108,7 +108,7 @@ body {
             }
 
     .body-content-admin .admin-canvas {
-        /*position: relative;*/
+        position: relative;
         margin: 1rem 0 0 250px;
         min-height: 600px;
     }
@@ -158,12 +158,17 @@ body {
 }
 
 .admin-canvas-content {
-    /*padding: 1rem 0 0 0;*/
+    padding: 1rem 0 0 0;
     background: #fefefe
 }
 
     .admin-canvas-content button.save {
-        margin: 0
+        margin-top:8px;
+        margin-bottom:4px;
+    }
+    .admin-canvas-content button.add {
+        margin-top: 8px;
+        margin-bottom: 4px;
     }
 
 .admin-post-description {
