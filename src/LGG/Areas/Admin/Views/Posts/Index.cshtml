@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<PostDto>
-@{
-    var currentPost = new PostDto();
-}
+
 <section class="admin-posts">
     <div class="row expanded">
         <div class="col-md-3">
@@ -16,7 +14,7 @@
                         <ul class="admin-collection-list">
                             @foreach (var post in Model)
                             {
-                                <li data-post-id="@post.PostId"><span>@post.Title</span></li>
+                                <li data-post-url="@post.Url"><span>@post.Title</span></li>
                             }
                         </ul>
                         @*<pc-pager (onPageClicked)="onPageClicked($event)"
@@ -49,7 +47,7 @@
                         <input type="text" class="form-control" id="url" placeholder="Url...">
                     </div>
                     <div class="col-md-12">
-                        <label>Description</label>
+                        <label>Giới Thiệu</label>
                         <textarea class="form-control" id="description"></textarea>
                     </div>
                 </div>
@@ -70,7 +68,7 @@
                 <div class="row">
                     <div class="col-md-4 checkbox">
                         <label>
-                            <input type="checkbox" id="published" value="">Published
+                            <input type="checkbox" id="published" value="">Xuất Bản
                         </label>
                     </div>
                     <div class="col-md-4">
@@ -99,14 +97,14 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label>Excerpt</label>
+                        <label>Đoạn Trích</label>
                         <textarea class="form-control" id="excerpt"></textarea>
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label>Article</label>
+                        <label>Bài Viết</label>
                         <textarea class="form-control tinyEditor" id="articleEditor"></textarea>
                     </div>
                 </div>
@@ -117,7 +115,7 @@
                             <span class="admin-post-collection-item">
                                 @foreach (var category in (List<CategoryDto>)ViewBag.Categories)
                                 {
-                                    <input type="checkbox">
+                                    <input type="radio" id="category-@category.CategoryId" data-category-id="@category.CategoryId" name="groupCategories" />
                                     <label>@category.Name.Substring(0, Math.Min(category.Name.Length, 20))</label>
                                 }
                             </span>
@@ -131,7 +129,7 @@
                             <span class="admin-post-collection-item">
                                 @foreach (var tag in (List<TagDto>)ViewBag.Tags)
                                 {
-                                    <input type="checkbox" />
+                                    <input type="checkbox" id="tag-@tag.TagId" data-tag-id="@tag.TagId" />
                                     <label>@tag.Name.Substring(0, Math.Min(tag.Name.Length, 20))</label>
                                 }
                             </span>
@@ -145,6 +143,7 @@
 
 @section scripts
 {
+
     <script>
 
         $(document).ready(function () {
@@ -158,7 +157,7 @@
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: "/api/posts/" + $that.attr("data-post-id"),
+                    url: "/api/posts/" + $that.attr("data-post-url"),
                     success: function (data) {
                         var json = JSON.parse(JSON.stringify(data));
                         console.log(json);
@@ -168,19 +167,28 @@
                         $('#description').val(json["description"]);
                         $('#url').val(json["url"]);
                         $('#link').val(json["link"]);
-                        $('#published').val(json["published"]);
+                        $('#published').prop('checked', json["published"]);;
                         $('#image').val(json["image"]);
                         $('#smallImage').val(json["smallImage"]);
                         $('#iconImage').val(json["iconImage"]);
-                        //postedOn
-                        //cretedOn
-                        //modifiedOn
+                        $('#postedOn').val(json['postedOn']);
+                        $('#createdOn').val(json['createdOn']);
+                        $('#modifiedOn').val(json['postedOn']);
 
-                        $('#excerpt').val(json["excerpt"]);
+                        $('#excerpt').val(json["excerpt"]['content']);
+                        tinymce.get('articleEditor').setContent(json["article"]["content"]);
+
+
 
                         //category
+                        if (json["category"] != null)
+                            $('#category-' + json["category"]["categoryId"]).prop('checked', json["category"]["categoryId"]);;
+
                         //tags
-                        tinymce.get('articleEditor').setContent(json["article"]["content"]);
+                        jQuery.each(json["tags"], function (i, val) {
+                            $('#tag-' + val["tagId"]).prop('checked', true);
+                        });
+
 
 
                     },
@@ -203,7 +211,7 @@
                 var postDESCRIPTION = document.getElementById("description").value;
                 var postURL = document.getElementById("url").value;
                 var postLINK = document.getElementById("link").value;
-                var postPUBLISHED = document.getElementById("published").value;
+                var postPUBLISHED = $("#published").is(":checked");
                 var postIMAGE = document.getElementById("image").value;
                 var postSMALLIMAGE = document.getElementById("smallImage").value;
                 var postICONIMAGE = document.getElementById("iconImage").value;
@@ -211,6 +219,8 @@
                 var postARTICLE = tinymce.get('articleEditor').getContent();
 
                 var postEXCERPT = document.getElementById("excerpt").value;
+
+                var postCATEGORYID = $("input[name='groupCategories']:checked").attr('data-category-id');
 
                 var data = {
                     postId: postID,
@@ -220,17 +230,23 @@
                     url: postURL,
                     link: postLINK,
                     published: postPUBLISHED,
+
                     image: postIMAGE,
                     smallImage: postSMALLIMAGE,
                     iconImage: postICONIMAGE,
+
+                    categoryId: postCATEGORYID,
                     article: {
                         content: postARTICLE
                     },
-                    excerpt: postEXCERPT
+                    excerpt: {
+                        content: postEXCERPT
+
+                    }
                 };
 
                 var postDTO = JSON.stringify(data)
-
+                console.log(postDTO);
                 bootbox.confirm({
                     message: "Bạn có muốn lưu bài viết này  không?",
                     buttons: {
@@ -324,10 +340,12 @@
                                     $('#image').val(json["image"]);
                                     $('#smallImage').val(json["smallImage"]);
                                     $('#iconImage').val(json["iconImage"]);
-                                    //postedOn
-                                    //cretedOn
-                                    //modifiedOn
-                                    $('#excerpt').val(json["excerpt"]);
+
+                                    $('#postedOn').val(json["postedOn"]);
+                                    $('#createdOn').val(json["createdOn"]);
+                                    $('#modifiedOn').val(json["modifiedOn"]);
+
+                                    $('#excerpt').val(json["excerpt"]['content']);
                                     //category
                                     //tags
                                     tinymce.get('articleEditor').setContent(json["article"]["content"]);
@@ -340,6 +358,63 @@
                     }
                 });
             });//
+
+
+            //Tags selected
+            $(document).on('change', 'input[type="checkbox"]', function (e) {
+                var tagID = $(this).attr('data-tag-id');
+                var postID = $('#postId').text();
+                var isTagChecked = $(this).is(":checked");
+                if (tagID != undefined || tagID != null || postID != undefined || postID != null) {
+                    var data = {
+                        tagId: tagID,
+                        postId: postID
+                    };
+                    var postTagDTO = JSON.stringify(data)
+
+                    if (isTagChecked === 'true') {
+                        ///TODO: call postTag api add new
+
+                        $.ajax({
+                            url: '/api/post-tags/',
+                            dataType: "json",
+                            type: "POST",
+                            contentType: 'application/json; charset=utf-8',
+                            data: postTagDTO,
+                            async: true,
+                            processData: false,
+                            cache: false,
+                            success: function (data) {
+                                console.log(data);
+                            },
+                            error: function (xhr) {
+                                console.log('error');
+                                console.log(postTagDTO);
+                            }
+                        });
+                    }
+                    else {
+                        $.ajax({
+                            url: "/api/post-tags/remove/compound/",
+                            method: "POST",
+                            contentType: 'application/json; charset=utf-8',
+                            data: postTagDTO,
+                            async: true,
+                            processData: false,
+                            cache: false,
+                            success: function (data) {
+                                console.log(data);
+                            },
+                            error: function (xhr) {
+                                console.log('error');
+                                console.log(postTagDTO);
+                            }
+                        });
+                    }
+
+                }
+            });
+
         });
     </script>
 }

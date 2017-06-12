@@ -38,9 +38,11 @@ namespace LGG.Persistence.Repositories
             var entity = _context
                .PostTags
                .FirstOrDefault(x => x.PostId == postTag.PostId && x.TagId == postTag.TagId);
-
-            _context.PostTags.Remove(entity);
-            _context.SaveChanges();
+            if (entity != null)
+            {
+                _context.PostTags.Remove(entity);
+                _context.SaveChanges();
+            }
         }
     }
 }

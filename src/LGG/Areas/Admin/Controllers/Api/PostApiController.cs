@@ -34,7 +34,7 @@ namespace LGG.Areas.Admin.Controllers.Api
         }
 
         [HttpGet("{url}", Name = "GetPost")]
-        public IActionResult GetById(string url, bool includeExcerpt = false)
+        public IActionResult GetById(string url, bool includeExcerpt = true)
         {
             var item = _postService.GetByUrl(url, includeExcerpt);
             if (item == null)

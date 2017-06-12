@@ -350,8 +350,9 @@ namespace LGG.Persistence.Repositories
             // Article
             entity.Article.Content = post.Article.Content;
 
-            // Category
-            entity.CategoryId = post.Category?.CategoryId;
+            // Category :TODO: Cần check lại CategoryId tồn tại trong database, hiện tại api pass qua object id= 0
+            if (post.Category != null && post.Category.CategoryId > 0)
+                entity.CategoryId = post.Category.CategoryId;
 
             // Tags
             _context.SaveChanges();
