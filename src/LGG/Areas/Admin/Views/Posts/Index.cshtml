@@ -1,1 +1,345 @@
-﻿<pc-app></pc-app>
+﻿@model IEnumerable<PostDto>
+@{
+    var currentPost = new PostDto();
+}
+<section class="admin-posts">
+    <div class="row expanded">
+        <div class="col-md-3">
+            <div class="admin-canvas-content">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="clearfix">
+                            <button id="js-post-add" class="btn btn-default float-right add">
+                                Thêm
+                            </button>
+                        </div>
+                        <ul class="admin-collection-list">
+                            @foreach (var post in Model)
+                            {
+                                <li data-post-id="@post.PostId"><span>@post.Title</span></li>
+                            }
+                        </ul>
+                        @*<pc-pager (onPageClicked)="onPageClicked($event)"
+                            [countPerPage]="postService.countPerPage"
+                            [currentPageIndex]="postService.currentPageIndex"
+                            [totalItemsInCollection]="postService.totalItemsInCollection"></pc-pager>*@
+                        @*<pioneer-pagination info="@ViewBag.PaginatedMeta" route="/post"></pioneer-pagination>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="admin-canvas-content">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="clearfix">
+                            <span id="postId" class="record-id"></span>
+                            <button id="saveCommand" class="btn btn-default float-right save">Lưu</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Tiêu Đề</label>
+                        <input type="text" class="form-control" id="title" placeholder="Tiêu đề...">
+                    </div>
+                    <div class="col-md-12">
+                        <label>URL</label>
+                        <input type="text" class="form-control" id="url" placeholder="Url...">
+                    </div>
+                    <div class="col-md-12">
+                        <label>Description</label>
+                        <textarea class="form-control" id="description"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Ảnh Lớn</label>
+                        <input type="text" class="form-control" id="image" placeholder="Url ảnh lớn">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Ảnh Nhỏ</label>
+                        <input type="text" class="form-control" id="smallImage" placeholder="Url ảnh nhỏ...">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Ảnh Icon</label>
+                        <input type="text" class="form-control" id="iconImage" placeholder="Url ảnh icon...">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 checkbox">
+                        <label>
+                            <input type="checkbox" id="published" value="">Published
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Code Link</label>
+                        <input type="text" class="form-control" id="link" placeholder="">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Meta</label>
+                        <input type="text" class="form-control" id="meta" placeholder="">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Ngày Tạo</label>
+                        <input type="text" class="form-control" id="createdOn" disabled>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Ngày Đăng</label>
+                        <input type="text" class="form-control" id="postedOn" disabled>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Ngày Chỉnh Sửa</label>
+                        <input type="text" class="form-control" id="modifiedOn" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Excerpt</label>
+                        <textarea class="form-control" id="excerpt"></textarea>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Article</label>
+                        <textarea class="form-control tinyEditor" id="articleEditor"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <fieldset class="fieldset">
+                            <legend>Categories</legend>
+                            <span class="admin-post-collection-item">
+                                @foreach (var category in (List<CategoryDto>)ViewBag.Categories)
+                                {
+                                    <input type="checkbox">
+                                    <label>@category.Name.Substring(0, Math.Min(category.Name.Length, 20))</label>
+                                }
+                            </span>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <fieldset class="fieldset">
+                            <legend>Tags</legend>
+                            <span class="admin-post-collection-item">
+                                @foreach (var tag in (List<TagDto>)ViewBag.Tags)
+                                {
+                                    <input type="checkbox" />
+                                    <label>@tag.Name.Substring(0, Math.Min(tag.Name.Length, 20))</label>
+                                }
+                            </span>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            //GET
+            $('.admin-collection-list li').click(function (e) {
+                e.preventDefault()
+                $that = $(this);
+                $that.parent().find('li').removeClass('selected');
+                $that.addClass('selected');
+                ///TODO: Call current selected
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "/api/posts/" + $that.attr("data-post-id"),
+                    success: function (data) {
+                        var json = JSON.parse(JSON.stringify(data));
+                        console.log(json);
+                        document.getElementById("postId").innerText = json["postId"];
+                        $('#title').val(json["title"]);
+                        $('#meta').val(json["meta"]);
+                        $('#description').val(json["description"]);
+                        $('#url').val(json["url"]);
+                        $('#link').val(json["link"]);
+                        $('#published').val(json["published"]);
+                        $('#image').val(json["image"]);
+                        $('#smallImage').val(json["smallImage"]);
+                        $('#iconImage').val(json["iconImage"]);
+                        //postedOn
+                        //cretedOn
+                        //modifiedOn
+
+                        $('#excerpt').val(json["excerpt"]);
+
+                        //category
+                        //tags
+                        tinymce.get('articleEditor').setContent(json["article"]["content"]);
+
+
+                    },
+                    error: function (error) {
+
+                        jsonValue = jQuery.parseJSON(error.responseText);
+                        alert("error" + error.responseText);
+                    }
+                });
+            });
+
+            //PUT
+            $("#saveCommand").click(function (e) {
+                var link = $(e.target);
+
+                var postID = $('#postId').text();
+
+                var postTITLE = document.getElementById("title").value;
+                var postMETA = document.getElementById("meta").value;
+                var postDESCRIPTION = document.getElementById("description").value;
+                var postURL = document.getElementById("url").value;
+                var postLINK = document.getElementById("link").value;
+                var postPUBLISHED = document.getElementById("published").value;
+                var postIMAGE = document.getElementById("image").value;
+                var postSMALLIMAGE = document.getElementById("smallImage").value;
+                var postICONIMAGE = document.getElementById("iconImage").value;
+
+                var postARTICLE = tinymce.get('articleEditor').getContent();
+
+                var postEXCERPT = document.getElementById("excerpt").value;
+
+                var data = {
+                    postId: postID,
+                    title: postTITLE,
+                    meta: postMETA,
+                    description: postDESCRIPTION,
+                    url: postURL,
+                    link: postLINK,
+                    published: postPUBLISHED,
+                    image: postIMAGE,
+                    smallImage: postSMALLIMAGE,
+                    iconImage: postICONIMAGE,
+                    article: {
+                        content: postARTICLE
+                    },
+                    excerpt: postEXCERPT
+                };
+
+                var postDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn lưu bài viết này  không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Đồng Ý',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/posts/' + postID,
+                                dataType: "json",
+                                type: "PUT",
+                                contentType: 'application/json; charset=utf-8',
+                                data: postDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    console.log(data);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+
+            });//
+
+            //POST
+            $("#js-post-add").click(function (e) {
+                var link = $(e.target);
+                var data = {
+                    //title: 'Tiêu đề',
+                    //meta: '',
+                    //description: 'giới thiệu',
+                    //url: 'url',
+                    //link: '',
+                    //// published: 'true',
+                    //image: '#',
+                    //smallImage: '#',
+                    //iconImage: '#',
+                    //article: {
+                    //    content: 'Nội dung...'
+                    //},
+                    //excerpt: 'Trích đoạn'
+                };
+
+                var postDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn thêm bài viết không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Có',
+                            className: 'btn-info'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/posts/',
+                                dataType: "json",
+                                type: "POST",
+                                contentType: 'application/json; charset=utf-8',
+                                data: postDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    console.log(data);
+                                    var json = JSON.parse(JSON.stringify(data));
+                                    document.getElementById("postId").innerText = json["postId"];
+                                    $('#title').val(json["title"]);
+                                    $('#meta').val(json["meta"]);
+                                    $('#description').val(json["description"]);
+                                    $('#url').val(json["url"]);
+                                    $('#link').val(json["link"]);
+                                    $('#published').val(json["published"]);
+                                    $('#image').val(json["image"]);
+                                    $('#smallImage').val(json["smallImage"]);
+                                    $('#iconImage').val(json["iconImage"]);
+                                    //postedOn
+                                    //cretedOn
+                                    //modifiedOn
+                                    $('#excerpt').val(json["excerpt"]);
+                                    //category
+                                    //tags
+                                    tinymce.get('articleEditor').setContent(json["article"]["content"]);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+            });//
+        });
+    </script>
+}
