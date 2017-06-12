@@ -32,6 +32,7 @@
     <Content Remove="package.json" />
     <Content Remove="tsconfig.json" />
     <Content Remove="typings.json" />
+    <Content Remove="wwwroot/js\quillEditor.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,8 +47,8 @@
     <Content Include="wwwroot\css\style.css" />
     <Content Include="wwwroot\googlefbb6e67fcb02657f.html" />
     <Content Include="wwwroot\images\oldman.png" />
+    <Content Include="wwwroot\js\bootbox.min.js" />
     <Content Include="wwwroot\js\custom.js" />
-    <Content Include="wwwroot\js\tinyEditor.js" />
     <Content Include="wwwroot\less\animate.less" />
     <Content Include="wwwroot\less\bootstrap.less" />
     <Content Include="wwwroot\less\components\advantages.less" />

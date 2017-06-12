@@ -1,1 +1,180 @@
-﻿<pc-app></pc-app>
+﻿@model IEnumerable<CategoryDto>
+
+@{
+    var currentCategory = new CategoryDto();
+}
+
+<div class="row expanded">
+    <div class="col-md-3">
+        <div class="admin-canvas-content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="clearfix">
+                        <button id="js-category-add" class="button tiny secondary float-right">
+                            Thêm
+                        </button>
+                    </div>
+                    <ul class="admin-collection-list">
+                        @foreach (var category in Model)
+                        {
+                            <li data-category-id="@category.CategoryId"><span>@category.Name</span></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="admin-canvas-content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <hr />
+                    <div class="clearfix">
+                        <span id="categoryId" class="record-id"></span>
+                        <button id="saveCommand" class="button secondary float-right save tiny">Save</button>
+                    </div>
+                    <label>
+                        Name
+                        <input type="text" id="name" />
+                    </label>
+                    <label>
+                        Url
+                        <input type="text" id="url" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        //PUT
+        $(document).ready(function () {
+            //GET
+            $('.admin-collection-list li').click(function (e) {
+                e.preventDefault()
+                $that = $(this);
+                $that.parent().find('li').removeClass('selected');
+                $that.addClass('selected');
+                ///TODO: Call current selected
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "/api/categories/" + $that.attr("data-category-id"),
+                    success: function (data) {
+                        var json = JSON.parse(JSON.stringify(data));
+                        document.getElementById("categoryId").innerText = json["categoryId"];
+                        $('#name').val(json["name"]);
+                        $('#url').val(json["url"]);
+                    },
+                    error: function (error) {
+
+                        jsonValue = jQuery.parseJSON(error.responseText);
+                        alert("error" + error.responseText);
+                    }
+                });
+            });
+
+            //PUT
+            $("#saveCommand").click(function (e) {
+                var link = $(e.target);
+                var categoryID = $('#categoryId').text();
+                var categoryNAME = document.getElementById("name").value;
+                var categoryURL = document.getElementById("url").value;
+                var data = {
+                    categoryId: categoryID,
+                    name: categoryNAME,
+                    url: categoryURL
+                };
+
+                var categoryDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn lưu category này không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Đồng Ý',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/categories/' + categoryID,
+                                dataType: "json",
+                                type: "PUT",
+                                contentType: 'application/json; charset=utf-8',
+                                data: categoryDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    console.log(data);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+
+            });//
+
+            //POST
+            $("#js-category-add").click(function (e) {
+                var link = $(e.target);
+                var data = {
+
+                    name: 'name1',
+                    url: 'name1'
+                };
+
+                var categoryDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn thêm mới category không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Có',
+                            className: 'btn-info'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/categories/',
+                                dataType: "json",
+                                type: "POST",
+                                contentType: 'application/json; charset=utf-8',
+                                data: categoryDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    var json = JSON.parse(JSON.stringify(data));
+                                    document.getElementById("categoryId").innerText = json["categoryId"];
+                                    $('#name').val(json["name"]);
+                                    $('#url').val(json["url"]);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+            });//
+        });
+    </script>
+}

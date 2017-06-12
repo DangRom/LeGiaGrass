@@ -1,82 +1,74 @@
-﻿@*<pc-app></pc-app>*@
-
-
-@model IEnumerable<TagDto>
+﻿@model IEnumerable<TagDto>
 
 @{
     var currentTag = new TagDto();
 }
 
 <div class="row expanded">
-    <div class="large-3 columns">
+    <div class="col-md-3">
         <div class="admin-canvas-content">
             <div class="row">
                 <div class="large-12 columns">
                     <div class="clearfix">
-                        <button class="button tiny secondary float-right"
-                                (click)="tagService.create()">
+                        <button id="js-tag-add" class="button tiny secondary float-right">
                             Add
                         </button>
                     </div>
                     <ul class="admin-collection-list">
-                        @*<li *ngFor="let tag of tagService.getAll()"
-                                [class.selected]="tag.tagId === tagService.getCurrent().tagId"
-                                (click)="tagService.setCurrent(tag.tagId)">
-                                <span>{{ tag.name }}</span>
-                            </li>*@
                         @foreach (var tag in Model)
                         {
-                            <li data-tag-id="@tag.TagId"><span id="tag-@(tag.TagId)">@tag.Name</span></li>
+                            <li data-tag-id="@tag.TagId"><span>@tag.Name</span></li>
                         }
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="large-9 columns">
+    <div class="col-md-8">
         <div class="admin-canvas-content">
             <div class="row">
                 <div class="large-12 columns">
+                    <hr />
                     <div class="clearfix">
                         <span id="tagId" class="record-id"></span>
-                        <button class="button secondary float-right save tiny"
-                                (click)="save(tagService.getCurrent().tagId)">
-                            Save
-                        </button>
+                        <button id="saveCommand" class="button secondary float-right save tiny">Save</button>
                     </div>
                     <label>
                         Name
-                        <input type="text" *ngIf="tagService.getCurrent()!=null"
-                               [(ngModel)]="tagService.getCurrent().name">
+                        <input type="text" id="name" />
                     </label>
                     <label>
                         Url
-                        <input type="text" *ngIf="tagService.getCurrent()!=null"
-                               [(ngModel)]="tagService.getCurrent().url">
+                        <input type="text" id="url" />
                     </label>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @section scripts
 {
     <script>
-        $(function () {
+        //PUT
+        $(document).ready(function () {
+            //GET
             $('.admin-collection-list li').click(function (e) {
                 e.preventDefault()
                 $that = $(this);
                 $that.parent().find('li').removeClass('selected');
                 $that.addClass('selected');
                 ///TODO: Call current selected
-                var link = $(e.target);
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: "/api/tags/" + link.attr("data-tag-id"),
+                    url: "/api/tags/" + $that.attr("data-tag-id"),
                     success: function (data) {
                         var json = JSON.parse(JSON.stringify(data));
                         document.getElementById("tagId").innerText = json["tagId"];
+                        //$('#tagId').val(json["tagId"]);
+                        $('#name').val(json["name"]);
+                        $('#url').val(json["url"]);
                     },
                     error: function (error) {
 
@@ -85,6 +77,106 @@
                     }
                 });
             });
-        })
+
+            //PUT
+            $("#saveCommand").click(function (e) {
+                var link = $(e.target);
+                var tagID = $('#tagId').text();
+                var tagNAME = document.getElementById("name").value;
+                var tagURL = document.getElementById("url").value;
+                var data = {
+                    tagId: tagID,
+                    name: tagNAME,
+                    url: tagURL
+                };
+
+                var tagDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn lưu Tag này không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Đồng Ý',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/tags/' + tagID,
+                                dataType: "json",
+                                type: "PUT",
+                                contentType: 'application/json; charset=utf-8',
+                                data: tagDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    console.log(data);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+
+            });//
+
+            //POST
+            $("#js-tag-add").click(function (e) {
+                var link = $(e.target);
+                var data = {
+
+                    name: 'name1',
+                    url: 'name1'
+                };
+
+                var tagDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn thêm mới Tag không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Có',
+                            className: 'btn-info'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/tags/',
+                                dataType: "json",
+                                type: "POST",
+                                contentType: 'application/json; charset=utf-8',
+                                data: tagDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    var json = JSON.parse(JSON.stringify(data));
+                                    document.getElementById("tagId").innerText = json["tagId"];
+                                    //$('#tagId').val(json["tagId"]);
+                                    $('#name').val(json["name"]);
+                                    $('#url').val(json["url"]);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+            });//
+        });
     </script>
 }
