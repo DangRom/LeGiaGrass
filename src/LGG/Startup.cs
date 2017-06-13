@@ -209,10 +209,15 @@ namespace LGG
         {
             app.UseMvc(routes =>
             {
-                // Areas support
+                // route for admin
                 routes.MapRoute(
                     name: "areaRoute",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                    template: "{area:exists}/{controller=Accound}/{action=Login}/{id?}");
+
+                //route for out side
+                routes.MapRoute(
+                   name: "default",
+                   template: "{controller=Home}/{action=Index}/{alias?}");
 
                 routes.MapRoute(
                     name: "ArticleVisualStudioShortcuts",
