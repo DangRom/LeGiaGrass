@@ -66,6 +66,12 @@ namespace LGG
                 cfg.AddPolicy("isSuperUser", p => p.RequireClaim("isSuperUser", "true"));
             });
 
+            // Change default Login path
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Cookies.ApplicationCookie.LoginPath = new PathString("/admin/account/login");
+            });
+
             services.AddMvc();
 
             // Add application services.
@@ -209,15 +215,10 @@ namespace LGG
         {
             app.UseMvc(routes =>
             {
-                // route for admin
+                // Areas support
                 routes.MapRoute(
-                     name: "areaRoute",
-                     template: "{area:exists}/{controller=Account}/{action=Login}/{id?}");
-
-                routes.MapRoute(
-                    name: "ArticleVisualStudioShortcuts",
-                    template: "article/visual-studio-shortcuts",
-                    defaults: new { controller = "Article", action = "VisualStudioShortcuts" });
+                    name: "areaRoute",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 routes.MapRoute(
                     name: "Post",

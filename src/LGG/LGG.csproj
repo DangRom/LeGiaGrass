@@ -41,7 +41,6 @@
 
   <ItemGroup>
     <Content Include="wwwroot\admin\app.css" />
-    <Content Include="wwwroot\admin\systemjs.config.js" />
     <Content Include="wwwroot\app.css" />
     <Content Include="wwwroot\app.js" />
     <Content Include="wwwroot\css\style.css" />
@@ -287,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Companies\" />
+    <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Post\" />
