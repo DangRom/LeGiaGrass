@@ -211,13 +211,8 @@ namespace LGG
             {
                 // route for admin
                 routes.MapRoute(
-                    name: "areaRoute",
-                    template: "{area:exists}/{controller=Accound}/{action=Login}/{id?}");
-
-                //route for out side
-                routes.MapRoute(
-                   name: "default",
-                   template: "{controller=Home}/{action=Index}/{alias?}");
+                     name: "areaRoute",
+                     template: "{area:exists}/{controller=Account}/{action=Login}/{id?}");
 
                 routes.MapRoute(
                     name: "ArticleVisualStudioShortcuts",
