@@ -50,7 +50,7 @@
                             @foreach (var category in (List<CategoryDto>)ViewBag.Categories)
                             {
                                 <input type="radio" id="category-@category.CategoryId" data-category-id="@category.CategoryId" name="groupCategories" />
-                                <label>@category.Name.Substring(0, Math.Min(category.Name.Length, 20))</label>
+                                <label>@category.Name?.Substring(0, Math.Min(category.Name.Length, 20))</label>
                             }
                         </span>
                     </fieldset>
@@ -157,7 +157,6 @@
             $("#js-gallery-add").click(function (e) {
                 var link = $(e.target);
                 var data = {
-
                     name: 'gallery name',
                     image: '#'
                 };

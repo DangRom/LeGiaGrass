@@ -26,7 +26,7 @@ namespace LGG.Persistence.Services
         {
             return _galleryRepository.GetAll()
                     .Select(Mapper.Map<Gallery, GalleryDto>)
-                    .OrderBy(x => x.Category.Name)
+                    .OrderBy(x => x.Name)
                     .ToList();
         }
 
@@ -66,6 +66,7 @@ namespace LGG.Persistence.Services
                 gallery.Image = gallery.Name;
             }
 
+            gallery.Category = null;
             var response = _galleryRepository.Add(Mapper.Map<GalleryDto, Gallery>(gallery));
             gallery.GalleryId = response.GalleryId;
             return gallery;
