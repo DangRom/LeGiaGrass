@@ -29,6 +29,8 @@ namespace LGG.Persistence
 
         public DbSet<Company> Companies { get; set; }
 
+        public DbSet<Gallery> Galleries { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             if (modelBuilder == null)

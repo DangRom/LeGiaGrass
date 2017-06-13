@@ -1,0 +1,206 @@
+﻿@model IEnumerable<GalleryDto>
+
+
+
+<div class="row expanded">
+    <div class="col-md-3">
+        <div class="admin-canvas-content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="clearfix">
+                        <button id="js-gallery-add" class="btn btn-default float-right add">
+                            Thêm
+                        </button>
+                    </div>
+                    <ul class="admin-collection-list">
+                        @foreach (var gallery in Model)
+                        {
+                            <li data-gallery-id="@(gallery.GalleryId)"><span>@gallery.Name</span></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="admin-canvas-content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="clearfix">
+                        <span id="galleryId" class="record-id"></span>
+                        <button id="saveCommand" class="btn btn-default float-right save">Lưu</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Tên</label>
+                    <input type="text" class="form-control" id="name" placeholder="Tên...">
+                </div>
+                <div class="col-md-12">
+                    <label>Đường Dẫn</label>
+                    <input type="text" class="form-control" id="image" placeholder="http://...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset class="fieldset">
+                        <legend>Categories</legend>
+                        <span class="admin-post-collection-item">
+                            @foreach (var category in (List<CategoryDto>)ViewBag.Categories)
+                            {
+                                <input type="radio" id="category-@category.CategoryId" data-category-id="@category.CategoryId" name="groupCategories" />
+                                <label>@category.Name.Substring(0, Math.Min(category.Name.Length, 20))</label>
+                            }
+                        </span>
+                    </fieldset>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        //PUT
+        $(document).ready(function () {
+            //GET
+            $('.admin-collection-list li').click(function (e) {
+                e.preventDefault()
+                $that = $(this);
+                $that.parent().find('li').removeClass('selected');
+                $that.addClass('selected');
+                ///TODO: Call current selected
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "/api/galleries/" + $that.attr("data-gallery-id"),
+                    success: function (data) {
+                        var json = JSON.parse(JSON.stringify(data));
+                        document.getElementById("galleryId").innerText = json["galleryId"];
+                        $('#name').val(json["name"]);
+                        $('#image').val(json["image"]);
+                        //category
+                        if (json["category"] != null)
+                            $('#category-' + json["category"]["categoryId"]).prop('checked', json["category"]["categoryId"]);;
+
+                    },
+                    error: function (error) {
+
+                        jsonValue = jQuery.parseJSON(error.responseText);
+                        alert("error" + error.responseText);
+                    }
+                });
+            });
+
+            //PUT
+            $("#saveCommand").click(function (e) {
+                var link = $(e.target);
+                var galleryID = $('#galleryId').text();
+                if ($.isNumeric(galleryID) == false) {
+                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
+                    return;
+                }
+                var galleryNAME = document.getElementById("name").value;
+                var galleryIMAGE = document.getElementById("image").value;
+                var postCATEGORYID = $("input[name='groupCategories']:checked").attr('data-category-id');
+                var data = {
+                    galleryId: galleryID,
+                    name: galleryNAME,
+                    image: galleryIMAGE,
+                    category: {
+                        categoryId: postCATEGORYID
+                    },
+                };
+
+                var galleryDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn lưu gallery này không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Đồng Ý',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/galleries/' + galleryID,
+                                dataType: "json",
+                                type: "PUT",
+                                contentType: 'application/json; charset=utf-8',
+                                data: galleryDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    console.log(data);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+
+            });//
+
+            //POST
+            $("#js-gallery-add").click(function (e) {
+                var link = $(e.target);
+                var data = {
+
+                    name: 'gallery name',
+                    image: '#'
+                };
+
+                var galleryDTO = JSON.stringify(data)
+
+                bootbox.confirm({
+                    message: "Bạn có muốn thêm mới gallery không?",
+                    buttons: {
+                        confirm: {
+                            label: 'Có',
+                            className: 'btn-info'
+                        },
+                        cancel: {
+                            label: 'Không',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: '/api/galleries/',
+                                dataType: "json",
+                                type: "POST",
+                                contentType: 'application/json; charset=utf-8',
+                                data: galleryDTO,
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    var json = JSON.parse(JSON.stringify(data));
+                                    document.getElementById("galleryId").innerText = json["galleryId"];
+                                    $('#name').val(json["name"]);
+                                    $('#image').val(json["image"]);
+                                },
+                                error: function (xhr) {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    }
+                });
+            });//
+        });
+    </script>
+}

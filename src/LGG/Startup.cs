@@ -89,7 +89,7 @@ namespace LGG
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<IPostTagRepository, PostTagRepository>();
             services.AddTransient<ICompanyRepository, CompanyRepository>();
-
+            services.AddTransient<IGalleryRepository, GalleryRepository>();
             // Services
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IPostService, PostService>();
@@ -99,6 +99,8 @@ namespace LGG
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<ISiteMapService, SiteMapService>();
+            services.AddTransient<IGalleryService, GalleryService>();
+
             services.AddTransient<ApplicationEnvironment>();
             services.AddTransient<HostingEnvironment>();
         }

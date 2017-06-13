@@ -354,10 +354,12 @@
 
                                     $('#excerpt').val(json["excerpt"]['content']);
                                     //category
+
                                     //tags
                                     tinymce.get('articleEditor').setContent(json["article"]["content"]);
                                 },
                                 error: function (xhr) {
+                                    bootbox.alert("Error: Hệ thống không thể lưu")
                                     console.log('error');
                                 }
                             });

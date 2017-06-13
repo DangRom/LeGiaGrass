@@ -1,4 +1,4 @@
-﻿#if (DEBUG)
+﻿
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,4 +28,3 @@ namespace LGG.Areas.Admin.Controllers
         }
     }
 }
-#endif

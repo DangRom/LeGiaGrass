@@ -23,6 +23,7 @@ namespace LGG.Persistence
                 cfg.CreateMap<PostTag, TagDto>().ReverseMap();
                 cfg.CreateMap<List<Post>, List<PostDto>>().ReverseMap();
                 cfg.CreateMap<CompanyDto, Company>().ReverseMap();
+                cfg.CreateMap<GalleryDto, Gallery>().ReverseMap();
             });
         }
     }

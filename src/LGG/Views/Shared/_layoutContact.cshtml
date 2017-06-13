@@ -6,7 +6,9 @@
 @section scriptHead
 {
     <!-- Google map -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    @*<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>*@
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeZe988uDjqi0h93dcFioWoeApAtXDH0A&sensor=false" type="text/javascript"></script>
     <script type="text/javascript">
         // When the window has finished loading create our google map below
         google.maps.event.addDomListener(window, 'load', init);
@@ -18,7 +20,7 @@
                 // How zoomed in you want the map to start at (always required)
                 zoom: 14,
                 scrollwheel: false, // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(55.8610112, -4.2547319), // Glasgow
+                center: new google.maps.LatLng(16.054407, 108.202167), // Glasgow
                 // How you would like to style the map.
                 // This is where you would paste any style found on Snazzy Maps.
                 styles: [{
@@ -146,7 +148,7 @@
             var image = '../images/map-marker.png';
             // Let's also add a marker while we're at it
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(55.8610112, -4.2547319),
+                position: new google.maps.LatLng(16.054407, 108.202167),
                 map: map,
                 icon: image
             });
