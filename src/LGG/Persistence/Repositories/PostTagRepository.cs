@@ -1,5 +1,6 @@
 ﻿using LGG.Core.Models;
 using LGG.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace LGG.Persistence.Repositories
@@ -40,6 +41,7 @@ namespace LGG.Persistence.Repositories
                .FirstOrDefault(x => x.PostId == postTag.PostId && x.TagId == postTag.TagId);
             if (entity != null)
             {
+                _context.Entry(entity).State = EntityState.Modified; //@bravohex: Handled FAST Click by jQuery
                 _context.PostTags.Remove(entity);
                 _context.SaveChanges();
             }

@@ -29,11 +29,14 @@
         <div class="col-md-8">
             <div class="admin-canvas-content">
                 <div class="row">
-                    <div class="large-12 columns">
-                        <div class="clearfix">
-                            <span id="postId" class="record-id"></span>
-                            <button id="saveCommand" class="btn btn-default float-right save">Lưu</button>
-                        </div>
+                    <div class="col-md-2 float-right">
+                        <button id="saveCommand" class="btn btn-default">Lưu</button>
+                    </div>
+                    <div class="col-md-2 float-right">
+                        <button id="js-post-delete" class="btn btn-danger">Xóa</button>
+                    </div>
+                    <div class="col-md-12">
+                        <span id="postId" class="record-id"></span>
                     </div>
                 </div>
 
@@ -294,19 +297,7 @@
             $("#js-post-add").click(function (e) {
                 var link = $(e.target);
                 var data = {
-                    //title: 'Tiêu đề',
-                    //meta: '',
-                    //description: 'giới thiệu',
-                    //url: 'url',
-                    //link: '',
-                    //// published: 'true',
-                    //image: '#',
-                    //smallImage: '#',
-                    //iconImage: '#',
-                    //article: {
-                    //    content: 'Nội dung...'
-                    //},
-                    //excerpt: 'Trích đoạn'
+                    //empty
                 };
 
                 var postDTO = JSON.stringify(data)
@@ -368,11 +359,58 @@
                 });
             });//
 
+            $("#js-post-delete").click(function (e) {
+                var postID = $('#postId').text();
+                if ($.isNumeric(postID) == false) {
+                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
+                    return;
+                }
+                var postURL = document.getElementById("url").value;
+
+                var link = $(e.target);
+                bootbox.dialog({
+                    message: "Bạn có chắc muốn xóa vĩnh viễn bài viết này không?",
+                    title: "Cảnh báo",
+                    buttons: {
+                        no: {
+                            label: "KHÔNG XÓA",
+                            className: "btn-default",
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Có",
+                            className: "btn-danger",
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/posts/" + postURL,
+                                    method: "DELETE"
+                                })
+                                    .done(function () {
+                                        link.parents(".admin-collection-list li").fadeOut(function () {
+                                            $(this).remove();
+                                        });
+                                    })
+                                    .fail(function () {
+                                        alert("Something failed!");
+                                    });
+                            }
+                        }
+                    }
+                });
+            });
 
             //Tags selected
             $(document).on('change', 'input[type="checkbox"]', function (e) {
                 var tagID = $(this).attr('data-tag-id');
                 var postID = $('#postId').text();
+                if ($.isNumeric(postID) == false) {
+                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
+                    $('input:checkbox').prop('checked', false); //remove all tags checked
+                    return;
+                }
+
                 var isTagChecked = $(this).is(":checked");
                 if (tagID != undefined || tagID != null || postID != undefined || postID != null) {
                     var data = {

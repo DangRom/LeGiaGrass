@@ -4,6 +4,7 @@
 @section headEnd
 {
     <link href="/app.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/animate.css" rel="stylesheet" asp-append-version="true" />
     <link href="/admin/app.css" rel="stylesheet" asp-append-version="true">
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
@@ -45,16 +46,22 @@
                     TAGS
                 </a>
             </li>
+            <li class="@(ViewBag.Selected == "galleries" ? "selected" : "" )">
+                <a href="/admin/galleries/index" class="margin-zero">
+                    <i class="fa fa-image" aria-hidden="true"></i>
+                    GALLERIES
+                </a>
+            </li>
             <li class="@(ViewBag.Selected == "companies" ? "selected" : "" )">
                 <a href="/admin/companies/index" class="margin-zero">
                     <i class="fa fa-copyright" aria-hidden="true"></i>
                     COMPANIES
                 </a>
             </li>
-            <li class="@(ViewBag.Selected == "galleries" ? "selected" : "" )">
-                <a href="/admin/galleries/index" class="margin-zero">
-                    <i class="fa fa-image" aria-hidden="true"></i>
-                    GALLERIES
+            <li class="@(ViewBag.Selected == "manage" ? "selected" : "" )">
+                <a href="/admin/manage/changepassword" class="margin-zero">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    MANAGE
                 </a>
             </li>
         </ul>
@@ -67,8 +74,8 @@
 @section Scripts{
     @RenderSection("Scripts", false)
 
-        <!--tinyMCE-->
-<script src="~/admin/tinymce/js/tinymce/tinymce.min.js"></script>
-<script src="~/admin/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
-<script src="~/admin/tinymce/js/tinymce/tinyMceConfig.js"></script>
+    <!--tinyMCE-->
+    <script src="~/admin/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="~/admin/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
+    <script src="~/admin/tinymce/js/tinymce/tinyMceConfig.js"></script>
 }

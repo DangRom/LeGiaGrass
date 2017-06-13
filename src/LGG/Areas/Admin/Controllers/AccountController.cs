@@ -1,4 +1,4 @@
-#if (DEBUG)
+﻿#if (DEBUG)
 using LGG.Core.Dtos;
 using LGG.Core.Models;
 using LGG.Core.Services;
@@ -70,7 +70,7 @@ namespace LGG.Areas.Admin.Controllers
             }
 
             // If we got this far, something failed, re-display form
-            ModelState.AddModelError(string.Empty, "Failed to login.");
+            ModelState.AddModelError(string.Empty, "Đăng nhập thất bại, vui lòng kiểm tra tài khoản và mật khẩu!");
             return View(model);
         }
 
@@ -132,51 +132,6 @@ namespace LGG.Areas.Admin.Controllers
             }
 
             return RedirectToAction(nameof(HomeController.Index), "Home");
-        }
-
-
-        //
-        // GET: /Account/ResetPassword
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult ResetPassword(string code = null)
-        {
-            return code == null ? View("Error") : View();
-        }
-
-        //
-        // POST: /Account/ResetPassword
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null)
-            {
-                // Don't reveal that the user does not exist
-                return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
-            }
-            var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
-            }
-            AddErrors(result);
-            return View();
-        }
-
-        //
-        // GET: /Account/ResetPasswordConfirmation
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult ResetPasswordConfirmation()
-        {
-            return View();
         }
     }
 }

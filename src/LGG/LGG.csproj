@@ -129,9 +129,11 @@
     <Content Include="wwwroot\admin\tinymce\LICENSE.TXT" />
     <Content Include="wwwroot\app.css" />
     <Content Include="wwwroot\app.js" />
+    <Content Include="wwwroot\css\animate.css" />
     <Content Include="wwwroot\css\style.css" />
     <Content Include="wwwroot\googlefbb6e67fcb02657f.html" />
     <Content Include="wwwroot\images\oldman.png" />
+    <Content Include="wwwroot\js\animate.css" />
     <Content Include="wwwroot\js\bootbox.min.js" />
     <Content Include="wwwroot\js\custom.js" />
     <Content Include="wwwroot\less\animate.less" />
@@ -353,6 +355,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.1" />
@@ -362,8 +365,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
     <PackageReference Include="MySql.Data" Version="7.0.7-m61" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-    <PackageReference Include="Pioneer.Pagination" Version="1.1.0" />
+    <PackageReference Include="Pioneer.Pagination" Version="1.1.1" />
     <PackageReference Include="SapientGuardian.EntityFrameworkCore.MySql" Version="7.1.23" />
     <PackageReference Include="StackifyMiddleware" Version="2.0.3" />
   </ItemGroup>
