@@ -31,25 +31,25 @@
     <nav class="nav-admin">
         <ul class="menu vertical">
             <li class="@(ViewBag.Selected == "posts" ? "selected" : "" )">
-                <a href="/admin/posts">
+                <a href="/admin/posts/index">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     POSTS
                 </a>
             </li>
             <li class="@(ViewBag.Selected == "categories" ? "selected" : "" )">
-                <a href="/admin/categories">
+                <a href="/admin/categories/index">
                     <i class="fa fa-archive" aria-hidden="true"></i>
                     CATEGORIES
                 </a>
             </li>
             <li class="@(ViewBag.Selected == "tags" ? "selected" : "" )">
-                <a href="/admin/tags" class="margin-zero">
+                <a href="/admin/tags/index" class="margin-zero">
                     <i class="fa fa-tags" aria-hidden="true"></i>
                     TAGS
                 </a>
             </li>
             <li class="@(ViewBag.Selected == "companies" ? "selected" : "" )">
-                <a href="/admin/companies" class="margin-zero">
+                <a href="/admin/companies/index" class="margin-zero">
                     <i class="fa fa-copyright" aria-hidden="true"></i>
                     COMPANIES
                 </a>
