@@ -80,6 +80,10 @@
             $("#saveCommand").click(function (e) {
                 var link = $(e.target);
                 var categoryID = $('#categoryId').text();
+                if ($.isNumeric(categoryID) == false) {
+                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
+                    return;
+                }
                 var categoryNAME = document.getElementById("name").value;
                 var categoryURL = document.getElementById("url").value;
                 var data = {

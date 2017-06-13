@@ -167,7 +167,10 @@
                 var link = $(e.target);
 
                 var companyID = $('#companyId').text();
-
+                if ($.isNumeric(companyID) == false) {
+                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
+                    return;
+                }
                 var companyNAME = document.getElementById("name").value;
                 var companySOLOGAN = document.getElementById("sologan").value;
                 var companyHOTLINE = document.getElementById("hotline").value;

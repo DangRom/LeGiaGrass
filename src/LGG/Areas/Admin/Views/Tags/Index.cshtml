@@ -81,6 +81,10 @@
             $("#saveCommand").click(function (e) {
                 var link = $(e.target);
                 var tagID = $('#tagId').text();
+                if ($.isNumeric(tagID) == false) {
+                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
+                    return;
+                }
                 var tagNAME = document.getElementById("name").value;
                 var tagURL = document.getElementById("url").value;
                 var data = {

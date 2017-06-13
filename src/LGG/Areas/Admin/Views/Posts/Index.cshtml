@@ -185,6 +185,8 @@
                             $('#category-' + json["category"]["categoryId"]).prop('checked', json["category"]["categoryId"]);;
 
                         //tags
+                        $('input:checkbox').prop('checked', false); //remove all tags checked
+                        //check
                         jQuery.each(json["tags"], function (i, val) {
                             $('#tag-' + val["tagId"]).prop('checked', true);
                         });
@@ -205,7 +207,10 @@
                 var link = $(e.target);
 
                 var postID = $('#postId').text();
-
+                if ($.isNumeric(postID) == false) {
+                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
+                    return;
+                }
                 var postTITLE = document.getElementById("title").value;
                 var postMETA = document.getElementById("meta").value;
                 var postDESCRIPTION = document.getElementById("description").value;
@@ -235,7 +240,9 @@
                     smallImage: postSMALLIMAGE,
                     iconImage: postICONIMAGE,
 
-                    categoryId: postCATEGORYID,
+                    category: {
+                        categoryId: postCATEGORYID
+                    },
                     article: {
                         content: postARTICLE
                     },
@@ -372,7 +379,7 @@
                     };
                     var postTagDTO = JSON.stringify(data)
 
-                    if (isTagChecked === 'true') {
+                    if (isTagChecked == true) {
                         ///TODO: call postTag api add new
 
                         $.ajax({
@@ -385,7 +392,7 @@
                             processData: false,
                             cache: false,
                             success: function (data) {
-                                console.log(data);
+                                console.log('add tags success!');
                             },
                             error: function (xhr) {
                                 console.log('error');
