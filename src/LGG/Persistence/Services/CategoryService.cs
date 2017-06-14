@@ -88,5 +88,10 @@ namespace LGG.Persistence.Services
         {
             _categoryRepository.Remove(id);
         }
+
+        public bool CheckName(string catename)
+        {
+            return _categoryRepository.CheckName(catename);
+        }
     }
 }

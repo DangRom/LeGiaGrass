@@ -1,10 +1,10 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using LGG.Core.Models
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper "Pioneer.Pagination.PioneerPaginationTagHelper, Pioneer.Pagination"
 @model LGG.Core.ViewModels.LoginViewModel
-@inject SignInManager<User> SignInManager
 @{
-    ViewData["Title"] = "Log in";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <div style="display:table; margin:0 auto">
     <div>
         <br />

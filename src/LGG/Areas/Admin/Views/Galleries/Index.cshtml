@@ -1,6 +1,12 @@
 ﻿@model IEnumerable<GalleryDto>
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper "Pioneer.Pagination.PioneerPaginationTagHelper, Pioneer.Pagination"
+@inject IOptions<AppConfiguration> AppConfiguration
 
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
 
 <div class="row expanded">
     <div class="col-md-3">
