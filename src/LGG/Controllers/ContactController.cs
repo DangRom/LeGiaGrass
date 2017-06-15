@@ -68,7 +68,7 @@ namespace LGG.Controllers
                     break;
             }
 
-            return View("~/Views/Contact/Index.cshtml");
+            return View(nameof(ContactController.Index));
         }
     }
 }

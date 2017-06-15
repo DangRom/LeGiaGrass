@@ -11,6 +11,47 @@ namespace LGG.Core.Models
         [StringLength(250)]
         public string Name { get; set; }
 
+        //[MaxLength(500)]
+        //[StringLength(500)]
+        //public string Description { get; set; }
+
+
+        //[MaxLength(250)]
+        //[StringLength(250)]
+        //public string VideoPresentation { get; set; }
+
+        //[MaxLength(250)]
+        //[StringLength(250)]
+
+        //public string OurMission { get; set; }
+        //[MaxLength(250)]
+        //[StringLength(250)]
+        //public string OurClients { get; set; }
+
+        //[MaxLength(50)]
+        //[StringLength(50)]
+        //public string OurDifference1 { get; set; }
+
+        //[MaxLength(50)]
+        //[StringLength(50)]
+        //public string OurDifference2 { get; set; }
+
+        //[MaxLength(50)]
+        //[StringLength(50)]
+        //public string OurDifference3 { get; set; }
+
+        //[MaxLength(50)]
+        //[StringLength(50)]
+        //public string OurDifference4 { get; set; }
+
+        //[MaxLength(50)]
+        //[StringLength(50)]
+        //public string OurDifference5 { get; set; }
+
+        //[MaxLength(1000)]
+        //[StringLength(1000)]
+        //public string WhyChooseUs { get; set; }
+
         [MaxLength(250)]
         [StringLength(250)]
         public string Sologan { get; set; }

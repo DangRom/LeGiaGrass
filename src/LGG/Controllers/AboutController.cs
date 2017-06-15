@@ -24,7 +24,7 @@ namespace LGG.Controllers
         {
             ViewBag.Description = "Description...";
             ViewBag.Selected = "about";
-            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
+            ViewBag.Company = _companyService.GetAll(true, false, false).FirstOrDefault() ?? _companyDefault.Value;
             return View();
         }
     }
