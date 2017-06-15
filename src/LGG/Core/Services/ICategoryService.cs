@@ -12,5 +12,6 @@ namespace LGG.Core.Services
         void Update(CategoryDto item);
         void Remove(int id);
         bool CheckName(string catename);
+        IEnumerable<CategoryDto> GetAllForDropList();
     }
 }

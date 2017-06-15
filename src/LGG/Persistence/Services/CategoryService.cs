@@ -93,5 +93,11 @@ namespace LGG.Persistence.Services
         {
             return _categoryRepository.CheckName(catename);
         }
+
+        public IEnumerable<CategoryDto> GetAllForDropList()
+        {
+            return _categoryRepository.GetAllForDroplist().Select(
+                c => new CategoryDto{CategoryId = c.CategoryId, Name = c.Name}).ToList();
+        }
     }
 }

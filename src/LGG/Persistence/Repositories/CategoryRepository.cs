@@ -107,5 +107,11 @@ namespace LGG.Persistence.Repositories
             }
             return true;
         }
+
+        public IEnumerable<Category> GetAllForDroplist()
+        {
+            var catemodels = _context.Categories.Select(c => new{c.CategoryId, c.Name}).ToList();
+            return catemodels.Select(c => new Category{CategoryId = c.CategoryId, Name = c.Name}).ToList();
+        }
     }
 }

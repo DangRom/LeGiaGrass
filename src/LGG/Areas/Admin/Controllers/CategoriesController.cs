@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace LGG.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
