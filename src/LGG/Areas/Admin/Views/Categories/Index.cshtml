@@ -1,183 +1,64 @@
-﻿@model IEnumerable<CategoryDto>
-
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<LGG.Core.Dtos.CategoryDto>
 @{
-    var currentCategory = new CategoryDto();
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="row expanded">
-    <div class="col-md-3">
-        <div class="admin-canvas-content">
-            <div class="row">
-                <div class="large-12 columns">
-                    <div class="clearfix">
-                        <button id="js-category-add" class="btn btn-default float-right add">
-                            Thêm
-                        </button>
-                    </div>
-                    <ul class="admin-collection-list">
-                        @foreach (var category in Model)
-                        {
-                            <li data-category-id="@category.CategoryId"><span>@category.Name</span></li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-8">
-        <div class="admin-canvas-content">
-            <div class="row">
-                <div class="large-12 columns">
-                    <div class="clearfix">
-                        <span id="categoryId" class="record-id"></span>
-                        <button id="saveCommand" class="btn btn-default float-right save">Lưu</button>
-                    </div>
-                    <label>
-                        Name
-                        <input type="text" id="name" />
-                    </label>
-                    <label>
-                        Url
-                        <input type="text" id="url" />
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="content-box-header panel-heading">
+    <div class="panel-title ">Danh sách chủ đề</div>
 </div>
+<div class="content-box-large box-with-header">
+    <a href="/admin/categories/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
+    <br /><br />
+    <table id="tablesource" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Url</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Tên</th>
+                <th>Url</th>
+                <th></th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td>@m.Name</td>
+                    <td>@m.Url</td>
+                    <td style="text-align: right">
+                        <a class="btn btn-primary fa fa-pencil" href="/admin/categories/update/@m.CategoryId"></a>
+                        <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.CategoryId)"></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br /><br />
+</div>s
 
-@section scripts
-{
-    <script>
-        //PUT
-        $(document).ready(function () {
-            //GET
-            $('.admin-collection-list li').click(function (e) {
-                e.preventDefault()
-                $that = $(this);
-                $that.parent().find('li').removeClass('selected');
-                $that.addClass('selected');
-                ///TODO: Call current selected
+@section scripts{
+    <script type="text/javascript">
+        function del(id){
+        var c = confirm("Bạn có chắc là không muốn hiển chủ đề này ?");
+            if(c){
                 $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: "/api/categories/" + $that.attr("data-category-id"),
-                    success: function (data) {
-                        var json = JSON.parse(JSON.stringify(data));
-                        document.getElementById("categoryId").innerText = json["categoryId"];
-                        $('#name').val(json["name"]);
-                        $('#url').val(json["url"]);
+                    url: "/admin/categories/delete/" + id,
+                    type: "DELETE",
+                    dataType: 'json',
+                    success: function(mess){
+                        window.location.reload();
                     },
-                    error: function (error) {
-
-                        jsonValue = jQuery.parseJSON(error.responseText);
-                        alert("error" + error.responseText);
+                    error: function(error){
+                        alert(error);
                     }
-                });
-            });
-
-            //PUT
-            $("#saveCommand").click(function (e) {
-                var link = $(e.target);
-                var categoryID = $('#categoryId').text();
-                if ($.isNumeric(categoryID) == false) {
-                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
-                    return;
-                }
-                var categoryNAME = document.getElementById("name").value;
-                var categoryURL = document.getElementById("url").value;
-                var data = {
-                    categoryId: categoryID,
-                    name: categoryNAME,
-                    url: categoryURL
-                };
-
-                var categoryDTO = JSON.stringify(data)
-
-                bootbox.confirm({
-                    message: "Bạn có muốn lưu category này không?",
-                    buttons: {
-                        confirm: {
-                            label: 'Đồng Ý',
-                            className: 'btn-success'
-                        },
-                        cancel: {
-                            label: 'Không',
-                            className: 'btn-default'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result == true) {
-                            $.ajax({
-                                url: '/api/categories/' + categoryID,
-                                dataType: "json",
-                                type: "PUT",
-                                contentType: 'application/json; charset=utf-8',
-                                data: categoryDTO,
-                                async: true,
-                                processData: false,
-                                cache: false,
-                                success: function (data) {
-                                    console.log(data);
-                                },
-                                error: function (xhr) {
-                                    console.log('error');
-                                }
-                            });
-                        }
-                    }
-                });
-
-            });//
-
-            //POST
-            $("#js-category-add").click(function (e) {
-                var link = $(e.target);
-                var data = {
-
-                    name: 'name1',
-                    url: 'name1'
-                };
-
-                var categoryDTO = JSON.stringify(data)
-
-                bootbox.confirm({
-                    message: "Bạn có muốn thêm mới category không?",
-                    buttons: {
-                        confirm: {
-                            label: 'Có',
-                            className: 'btn-info'
-                        },
-                        cancel: {
-                            label: 'Không',
-                            className: 'btn-default'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result == true) {
-                            $.ajax({
-                                url: '/api/categories/',
-                                dataType: "json",
-                                type: "POST",
-                                contentType: 'application/json; charset=utf-8',
-                                data: categoryDTO,
-                                async: true,
-                                processData: false,
-                                cache: false,
-                                success: function (data) {
-                                    var json = JSON.parse(JSON.stringify(data));
-                                    document.getElementById("categoryId").innerText = json["categoryId"];
-                                    $('#name').val(json["name"]);
-                                    $('#url').val(json["url"]);
-                                },
-                                error: function (xhr) {
-                                    console.log('error');
-                                }
-                            });
-                        }
-                    }
-                });
-            });//
-        });
+                })
+            }
+        };
     </script>
 }

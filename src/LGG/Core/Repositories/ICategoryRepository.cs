@@ -12,5 +12,6 @@ namespace LGG.Core.Repositories
         Category Add(Category map);
         void Update(CategoryDto category);
         void Remove(int id);
+        bool CheckName(string catename);
     }
 }

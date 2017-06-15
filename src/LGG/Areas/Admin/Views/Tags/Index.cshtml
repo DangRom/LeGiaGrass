@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<TagDto>
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper "Pioneer.Pagination.PioneerPaginationTagHelper, Pioneer.Pagination"
+@inject IOptions<AppConfiguration> AppConfiguration
+
 @{
-    var currentTag = new TagDto();
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="row expanded">
@@ -24,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="admin-canvas-content">
             <div class="row">
                 <div class="large-12 columns">
@@ -32,14 +36,16 @@
                         <span id="tagId" class="record-id"></span>
                         <button id="saveCommand" class="btn btn-default float-right save">Save</button>
                     </div>
-                    <label>
-                        Name
-                        <input type="text" id="name" />
-                    </label>
-                    <label>
-                        Url
-                        <input type="text" id="url" />
-                    </label>
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="label-font">Tên</label>
+                            <input type="text" class="form-control height-input" id="name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="url" class="label-font">url</label>
+                            <input type="text" class="form-control height-input" id="url" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

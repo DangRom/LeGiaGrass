@@ -1,6 +1,12 @@
 ﻿@model IEnumerable<GalleryDto>
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper "Pioneer.Pagination.PioneerPaginationTagHelper, Pioneer.Pagination"
+@inject IOptions<AppConfiguration> AppConfiguration
 
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
 
 <div class="row expanded">
     <div class="col-md-3">
@@ -22,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="admin-canvas-content">
             <div class="row">
                 <div class="large-12 columns">
@@ -34,18 +40,22 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <label>Tên</label>
-                    <input type="text" class="form-control" id="name" placeholder="Tên...">
-                </div>
-                <div class="col-md-12">
-                    <label>Đường Dẫn</label>
-                    <input type="text" class="form-control" id="image" placeholder="http://...">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="label-font">Tên</label>
+                            <input type="text" class="form-control height-input" id="name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="label-font">Hình ảnh</label>
+                            <input type="text" class="form-control height-input" id="image" />
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <fieldset class="fieldset">
-                        <legend>Categories</legend>
+                        <legend style="font-size:1.40rem">Danh mục chủ đề</legend>
                         <span class="admin-post-collection-item">
                             @foreach (var category in (List<CategoryDto>)ViewBag.Categories)
                             {

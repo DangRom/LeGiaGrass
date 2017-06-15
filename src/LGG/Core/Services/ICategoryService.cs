@@ -11,5 +11,6 @@ namespace LGG.Core.Services
         CategoryDto Add(CategoryDto category);
         void Update(CategoryDto item);
         void Remove(int id);
+        bool CheckName(string catename);
     }
 }
