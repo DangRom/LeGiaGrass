@@ -3,7 +3,7 @@ using LGG.Core.Helpers;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Pioneer.Pagination;
+//using Pioneer.Pagination;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +12,7 @@ namespace LGG.Controllers
     public class SearchController : Controller
     {
         private readonly ISearchService _searchService;
-        private readonly IPaginatedMetaService _paginatedMetaService;
+        //private readonly IPaginatedMetaService _paginatedMetaService;
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
         private readonly IPostService _postService;
@@ -20,7 +20,7 @@ namespace LGG.Controllers
         private readonly IOptions<CompanyDto> _companyDefault;
 
         public SearchController(ISearchService searchService,
-            IPaginatedMetaService paginatedMetaService,
+            //IPaginatedMetaService paginatedMetaService,
             ICategoryService categoryService,
             ITagService tagService,
             IPostService postService,
@@ -28,7 +28,7 @@ namespace LGG.Controllers
             IOptions<CompanyDto> companyDefault)
         {
             _searchService = searchService;
-            _paginatedMetaService = paginatedMetaService;
+            //  _paginatedMetaService = paginatedMetaService;
             _categoryService = categoryService;
             _tagService = tagService;
             _postService = postService;
@@ -60,7 +60,7 @@ namespace LGG.Controllers
         public ActionResult Index(SearchRequest request)
         {
             var searchResults = _searchService.SearchPosts(request.Query, 5, request.Page);
-            ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(searchResults.TotalMatchingPosts, request.Page, 5);
+            // ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(searchResults.TotalMatchingPosts, request.Page, 5);
 
             ViewBag.Description = "LGG search results for \"" + request.Query + "\", page " + request.Page + ". " +
                                   "description...";
@@ -83,7 +83,7 @@ namespace LGG.Controllers
         public ActionResult GetQuery(string query, int page = 1)
         {
             var searchResults = _searchService.SearchPosts(query, 5, page);
-            ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(searchResults.TotalMatchingPosts, page, 5);
+            //ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(searchResults.TotalMatchingPosts, page, 5);
 
             ViewBag.Description = "LGG search results for \"" + query + "\", page " + page + ". " +
                                   "description";

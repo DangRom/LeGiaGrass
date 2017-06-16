@@ -14,6 +14,7 @@ namespace LGG.Core.Services
         IEnumerable<PostDto> GetAllPaged(int count, int page = 1, bool includeUnpublished = false);
         IEnumerable<PostDto> GetAllByTag(string tag, int count, int page = 1);
         IEnumerable<PostDto> GetAllByCategory(string category, int count, int page = 1);
+        IEnumerable<PostDto> GetAllByCategoryName(string categoryName, int? top = null);
         IEnumerable<PostDto> GetPopularPosts();
         IEnumerable<PostDto> GetPreviousCurrentNextPost(string id);
         PostDto Add(PostDto post);

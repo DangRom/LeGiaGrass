@@ -269,6 +269,22 @@ namespace LGG.Persistence.Repositories
                     .ToList();
         }
 
+        public IEnumerable<Post> GetAllByCategoryName(string category, int? top)
+        {
+            var query = _context
+                    .Posts
+                    .Where(x => x.Published)
+                    .Include(x => x.Excerpt)
+                    .Include(x => x.Category)
+                    .Where(x => x.Category.Name.ToLower() == category.ToLower())
+                    .OrderByDescending(x => x.PostedOn);
+            if (top != null)
+                return query
+                    .Take((int)top)
+                    .ToList();
+            else
+                return query.ToList();
+        }
         /// <summary>
         /// Get posts based on ids
         /// </summary>

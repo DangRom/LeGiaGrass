@@ -2,7 +2,8 @@
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using System;
+using System.Threading.Tasks;
 
 namespace LGG.Areas.Admin.Controllers
 {
@@ -18,15 +19,15 @@ namespace LGG.Areas.Admin.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index(int? count, int? page)
+        public async Task<IActionResult> Index(int? count, int? page)
         {
-            ViewBag.Title = "Admin | Galleries";
-            ViewBag.Selected = "Galleries";
-            ViewBag.Categories = _categoryService.GetAll();
-            if (count == null || page == null)
-                return View(_galleryService.GetAll());
-            else
-                return View(_galleryService.GetAllPaged((int)count, (int)page));
+            try{
+                var gall = await Task.Factory.StartNew(() => _galleryService.GetAll());
+                ViewBag.Categorys = await Task.Factory.StartNew(() => _categoryService.GetAllForDropList());
+                return View(gall);
+            }catch{
+                return View("Error");
+            }
         }
     }
 }

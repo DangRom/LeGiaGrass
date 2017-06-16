@@ -17,11 +17,13 @@ namespace LGG.Controllers
         private readonly ICommunicationService _communicationService;
         private readonly ICompanyService _companyService;
         private readonly IOptions<CompanyDto> _companyDefault;
+        private readonly IGalleryService _galleryService;
 
         public HomeController(IPostService postService,
             ISiteMapService siteMapService,
             ICommunicationService communicationService,
             ICompanyService companyService,
+            IGalleryService galleryService,
             IOptions<CompanyDto> companyDefault)
         {
             _postService = postService;
@@ -29,17 +31,23 @@ namespace LGG.Controllers
             _communicationService = communicationService;
             _companyService = companyService;
             _companyDefault = companyDefault;
+            _galleryService = galleryService;
         }
 
         public IActionResult Index()
         {
-            ViewBag.Description =
-                "Hi, my name is LGG...";
-
-            //ViewBag.PopularPosts = _postService.GetPopularPosts().ToList();
-            //ViewBag.LatestPosts = _postService.GetAll(true, false, false, 8).ToList();
+            ViewBag.Description = "";
 
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
+            var galleries = _galleryService.GetAll();
+            ViewBag.Galleries = (from gallery in galleries
+                                 group gallery by gallery.Category.CategoryId into newGroup
+                                 orderby newGroup.Key
+                                 select newGroup).ToList();
+
+
+            ViewBag.Posts = _postService.GetAllByCategoryName("Blog", 3).ToList();
+            ViewBag.Services = _postService.GetAllByCategoryName("Service");
 
             return View();
         }

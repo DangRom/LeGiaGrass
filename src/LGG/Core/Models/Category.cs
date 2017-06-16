@@ -19,5 +19,7 @@ namespace LGG.Core.Models
         public string Url { get; set; }
 
         public ICollection<Post> Posts { get; set; }
+
+        // public ICollection<Gallery> Galleries { get; set; }
     }
 }

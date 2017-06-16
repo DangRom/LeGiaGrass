@@ -13,5 +13,6 @@ namespace LGG.Core.Repositories
         void Update(CategoryDto category);
         void Remove(int id);
         bool CheckName(string catename);
+        IEnumerable<Category> GetAllForDroplist();
     }
 }
