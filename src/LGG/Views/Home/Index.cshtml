@@ -1,7 +1,9 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Welcome to LeGia - Grass";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var galleries = (List<IGrouping<int, GalleryDto>>)ViewBag.Galleries;
+    var isFirstGallery = true;
+    var indexLastestPost = 0;
 }
 
 @model CompanyDto
@@ -68,76 +70,92 @@
 <section class="content content--fill content--fill--light top-null">
     <div class="container">
         <div class="services-block">
-            <a href="service-page-1.html" class="service iconmove dark">
-                <div class="service-image"><img src="images/service-1-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-icon"><i class="icon first icon-gardener"></i></div>
-                            <div class="service-title">Lawn Service</div>
-                            <div class="service-text">We offer total lawn care and routine maintenance to keep your lawn looking brand new</div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="service-page-3.html" class="service iconmove light ">
-                <div class="service-image image-scale"><img src="images/service-2-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-title">
-                                Landscape
-                                <br> Design Services
+            @foreach (var service in (List<PostDto>)ViewBag.Services)
+            {
+                <a href="service-page-3.html" class="service iconmove light ">
+                    <div class="service-image image-scale"><img src="@(service.SmallImage) " alt="#"></div>
+                    <div class="caption">
+                        <div class="vert-wrap">
+                            <div class="vert">
+                                <div class="service-icon"><i class="icon first"><img src="@(service.IconImage)" /></i></div>
+                                <div class="service-title">@(service.Title)</div>
+                                <div class="service-text">@(service.Excerpt?.Content)</div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <a href="service-page-4.html" class="service iconmove light">
-                <div class="service-image"><img src="images/service-3-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-icon"><i class="icon first icon-tree"></i></div>
-                            <div class="service-title">Leaf Removal</div>
-                            <div class="service-text">Our crew blows leaves to an area of your choice ie: woods, garden, or compost pile</div>
+                </a>
+            }
+
+            @*<a href="service-page-1.html" class="service iconmove dark">
+                    <div class="service-image"><img src="images/service-1-bg.jpg" alt="#"></div>
+                    <div class="caption">
+                        <div class="vert-wrap">
+                            <div class="vert">
+                                <div class="service-icon"><i class="icon first icon-gardener"></i></div>
+                                <div class="service-title">Lawn Service</div>
+                                <div class="service-text">We offer total lawn care and routine maintenance to keep your lawn looking brand new</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <a href="service-page-5.html" class="service iconmove light">
-                <div class="service-image image-scale"><img src="images/service-4-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-title">Snow Removal</div>
-                            <div class="service-text">We don’t miss a beat when it comes to digging your home or office out from under the snow.</div>
+                </a>*@
+            @*<a href="service-page-3.html" class="service iconmove light ">
+                    <div class="service-image image-scale"><img src="images/service-2-bg.jpg" alt="#"></div>
+                    <div class="caption">
+                        <div class="vert-wrap">
+                            <div class="vert">
+                                <div class="service-title">
+                                    Landscape
+                                    <br> Design Services
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <a href="service-page-6.html" class="service iconmove color">
-                <div class="service-image"><img src="images/service-5-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-icon"><i class="icon first icon-truck-transport"></i></div>
-                            <div class="service-title">Junk Removal</div>
+                </a>*@
+            @*<a href="service-page-4.html" class="service iconmove light">
+                    <div class="service-image"><img src="images/service-3-bg.jpg" alt="#"></div>
+                    <div class="caption">
+                        <div class="vert-wrap">
+                            <div class="vert">
+                                <div class="service-icon"><i class="icon first icon-tree"></i></div>
+                                <div class="service-title">Leaf Removal</div>
+                                <div class="service-text">Our crew blows leaves to an area of your choice ie: woods, garden, or compost pile</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <a href="service-page-7.html" class="service iconmove light">
-                <div class="service-image image-scale"><img src="images/service-6-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-title">New Tree Planting</div>
-                            <div class="service-text">Let us help you protect your investment and let your new trees thrive!</div>
+                </a>*@
+            @*<a href="service-page-5.html" class="service iconmove light">
+                    <div class="service-image image-scale"><img src="images/service-4-bg.jpg" alt="#"></div>
+                    <div class="caption">
+                        <div class="vert-wrap">
+                            <div class="vert">
+                                <div class="service-title">Snow Removal</div>
+                                <div class="service-text">We don’t miss a beat when it comes to digging your home or office out from under the snow.</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>*@
+            @*<a href="service-page-6.html" class="service iconmove color">
+                    <div class="service-image"><img src="images/service-5-bg.jpg" alt="#"></div>
+                    <div class="caption">
+                        <div class="vert-wrap">
+                            <div class="vert">
+                                <div class="service-icon"><i class="icon first icon-truck-transport"></i></div>
+                                <div class="service-title">Junk Removal</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>*@
+            @*<a href="service-page-7.html" class="service iconmove light">
+                    <div class="service-image image-scale"><img src="images/service-6-bg.jpg" alt="#"></div>
+                    <div class="caption">
+                        <div class="vert-wrap">
+                            <div class="vert">
+                                <div class="service-title">New Tree Planting</div>
+                                <div class="service-text">Let us help you protect your investment and let your new trees thrive!</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>*@
         </div>
         <h2 class="text-center lined">About Us</h2>
         <p class="text-center info-text">Starting out with just a single truck and mower, we have expanded our services and grown into one of the largest lawn maintenance companies in our area. Our expansion and stellar reputation is due, in part, to our exceptional reputation for quality and timely service. Our lawn care technicians utilize the latest technology and techniques to deliver beautiful results that will stand the test of time.</p>
@@ -214,201 +232,203 @@
         </div>
     </div>
 </section>
-<section class="content">
-    <div class="container">
-        <h2 class="text-center lined">Our Packages</h2>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="package animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <div class="package-image">
-                        <img src="images/img-package-1.jpg" alt="">
-                    </div>
-                    <div class="package-caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="package-title">
-                                    Winter Offers
-                                </div>
-                                <div class="package-text-1">
-                                    STARTING FROM $326.00
-                                </div>
-                                <div class="package-text-2">
-                                    The winter is when you spend the least amount of time thinking of your lawn.
-                                </div>
-                                <div class="form-popup-wrap">
-                                    <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
-                                    <div class="form-popup">
-                                        <form class="quote-form" method="post" id="form2">
-                                            <h3>Get a Quote</h3>
-                                            <div class="successform successQuote">
-                                                <p>Your message was sent successfully!</p>
-                                            </div>
-                                            <div class="errorform errorQuote">
-                                                <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                            </div>
-                                            <div class="form-inline">
-                                                <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-                                            </div>
-                                            <div class="form-inline">
-                                                <div>
-                                                    <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+@*
+    <section class="content">
+        <div class="container">
+            <h2 class="text-center lined">Our Packages</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="package animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <div class="package-image">
+                            <img src="images/img-package-1.jpg" alt="">
+                        </div>
+                        <div class="package-caption">
+                            <div class="vert-wrap">
+                                <div class="vert">
+                                    <div class="package-title">
+                                        Winter Offers
+                                    </div>
+                                    <div class="package-text-1">
+                                        STARTING FROM $326.00
+                                    </div>
+                                    <div class="package-text-2">
+                                        The winter is when you spend the least amount of time thinking of your lawn.
+                                    </div>
+                                    <div class="form-popup-wrap">
+                                        <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
+                                        <div class="form-popup">
+                                            <form class="quote-form" method="post" id="form2">
+                                                <h3>Get a Quote</h3>
+                                                <div class="successform successQuote">
+                                                    <p>Your message was sent successfully!</p>
                                                 </div>
-                                                <div>
-                                                    <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+                                                <div class="errorform errorQuote">
+                                                    <p>Something went wrong, try refreshing and submitting the form again.</p>
                                                 </div>
-                                            </div>
-                                            <div class="form-inline">
-                                                <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-                                            </div>
-                                            <div class="form-inline">
-                                                <div class="select-wrapper select--full">
-                                                    <select name="select" class="select--wd">
-                                                        <option value="Service you need">Service you need</option>
-                                                        <option value="Tree service">Tree service</option>
-                                                        <option value="Junk Removal">Junk Removal</option>
-                                                        <option value="New tree planting">New tree planting</option>
-                                                        <option value="Retaining walls">Retaining walls</option>
-                                                    </select>
+                                                <div class="form-inline">
+                                                    <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
                                                 </div>
-                                            </div>
-                                            <div class="form-inline">
-                                                <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
-                                        </form>
+                                                <div class="form-inline">
+                                                    <div>
+                                                        <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+                                                    </div>
+                                                    <div>
+                                                        <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+                                                    </div>
+                                                </div>
+                                                <div class="form-inline">
+                                                    <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
+                                                </div>
+                                                <div class="form-inline">
+                                                    <div class="select-wrapper select--full">
+                                                        <select name="select" class="select--wd">
+                                                            <option value="Service you need">Service you need</option>
+                                                            <option value="Tree service">Tree service</option>
+                                                            <option value="Junk Removal">Junk Removal</option>
+                                                            <option value="New tree planting">New tree planting</option>
+                                                            <option value="Retaining walls">Retaining walls</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-inline">
+                                                    <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="package animation" data-animation="fadeIn" data-animation-delay="0s">
-                    <div class="package-image">
-                        <img src="images/img-package-2.jpg" alt="">
-                    </div>
-                    <div class="package-caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="package-title">
-                                    Spring Offers
-                                </div>
-                                <div class="package-text-1">
-                                    STARTING FROM $126.00
-                                </div>
-                                <div class="package-text-2">
-                                    We offer very reasonable rates and will give you a quote in person within 24 hours.
-                                </div>
-                                <div class="form-popup-wrap">
-                                    <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
-                                    <div class="form-popup">
-                                        <form class="quote-form" method="post" id="form3">
-                                            <h3>Get a Quote</h3>
-                                            <div class="successform successQuote">
-                                                <p>Your message was sent successfully!</p>
-                                            </div>
-                                            <div class="errorform errorQuote">
-                                                <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                            </div>
-                                            <div class="form-inline">
-                                                <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-                                            </div>
-                                            <div class="form-inline">
-                                                <div>
-                                                    <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+                <div class="col-sm-4">
+                    <div class="package animation" data-animation="fadeIn" data-animation-delay="0s">
+                        <div class="package-image">
+                            <img src="images/img-package-2.jpg" alt="">
+                        </div>
+                        <div class="package-caption">
+                            <div class="vert-wrap">
+                                <div class="vert">
+                                    <div class="package-title">
+                                        Spring Offers
+                                    </div>
+                                    <div class="package-text-1">
+                                        STARTING FROM $126.00
+                                    </div>
+                                    <div class="package-text-2">
+                                        We offer very reasonable rates and will give you a quote in person within 24 hours.
+                                    </div>
+                                    <div class="form-popup-wrap">
+                                        <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
+                                        <div class="form-popup">
+                                            <form class="quote-form" method="post" id="form3">
+                                                <h3>Get a Quote</h3>
+                                                <div class="successform successQuote">
+                                                    <p>Your message was sent successfully!</p>
                                                 </div>
-                                                <div>
-                                                    <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+                                                <div class="errorform errorQuote">
+                                                    <p>Something went wrong, try refreshing and submitting the form again.</p>
                                                 </div>
-                                            </div>
-                                            <div class="form-inline">
-                                                <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-                                            </div>
-                                            <div class="form-inline">
-                                                <div class="select-wrapper select--full">
-                                                    <select name="select" class="select--wd">
-                                                        <option value="Service you need">Service you need</option>
-                                                        <option value="Tree service">Tree service</option>
-                                                        <option value="Junk Removal">Junk Removal</option>
-                                                        <option value="New tree planting">New tree planting</option>
-                                                        <option value="Retaining walls">Retaining walls</option>
-                                                    </select>
+                                                <div class="form-inline">
+                                                    <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
                                                 </div>
-                                            </div>
-                                            <div class="form-inline">
-                                                <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
-                                        </form>
+                                                <div class="form-inline">
+                                                    <div>
+                                                        <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+                                                    </div>
+                                                    <div>
+                                                        <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+                                                    </div>
+                                                </div>
+                                                <div class="form-inline">
+                                                    <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
+                                                </div>
+                                                <div class="form-inline">
+                                                    <div class="select-wrapper select--full">
+                                                        <select name="select" class="select--wd">
+                                                            <option value="Service you need">Service you need</option>
+                                                            <option value="Tree service">Tree service</option>
+                                                            <option value="Junk Removal">Junk Removal</option>
+                                                            <option value="New tree planting">New tree planting</option>
+                                                            <option value="Retaining walls">Retaining walls</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-inline">
+                                                    <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="package-ribbon-wrapper">
-                        <div class="package-ribbon">ƯA CHUỘNG</div>
+                        <div class="package-ribbon-wrapper">
+                            <div class="package-ribbon">ƯA CHUỘNG</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="package animation" data-animation="fadeInRight" data-animation-delay="0.5s">
-                    <div class="package-image">
-                        <img src="images/img-package-3.jpg" alt="">
-                    </div>
-                    <div class="package-caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="package-title">
-                                    Summer Offers
-                                </div>
-                                <div class="package-text-1">
-                                    STARTING FROM $205.00
-                                </div>
-                                <div class="package-text-2">
-                                    The growing season reaches its apex as the days become longer and warmer.
-                                </div>
-                                <div class="form-popup-wrap">
-                                    <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
-                                    <div class="form-popup">
-                                        <form class="quote-form" method="post" id="form4">
-                                            <h3>Get a Quote</h3>
-                                            <div class="successform successQuote">
-                                                <p>Your message was sent successfully!</p>
-                                            </div>
-                                            <div class="errorform errorQuote">
-                                                <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                            </div>
-                                            <div class="form-inline">
-                                                <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-                                            </div>
-                                            <div class="form-inline">
-                                                <div>
-                                                    <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+                <div class="col-sm-4">
+                    <div class="package animation" data-animation="fadeInRight" data-animation-delay="0.5s">
+                        <div class="package-image">
+                            <img src="images/img-package-3.jpg" alt="">
+                        </div>
+                        <div class="package-caption">
+                            <div class="vert-wrap">
+                                <div class="vert">
+                                    <div class="package-title">
+                                        Summer Offers
+                                    </div>
+                                    <div class="package-text-1">
+                                        STARTING FROM $205.00
+                                    </div>
+                                    <div class="package-text-2">
+                                        The growing season reaches its apex as the days become longer and warmer.
+                                    </div>
+                                    <div class="form-popup-wrap">
+                                        <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
+                                        <div class="form-popup">
+                                            <form class="quote-form" method="post" id="form4">
+                                                <h3>Get a Quote</h3>
+                                                <div class="successform successQuote">
+                                                    <p>Your message was sent successfully!</p>
                                                 </div>
-                                                <div>
-                                                    <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+                                                <div class="errorform errorQuote">
+                                                    <p>Something went wrong, try refreshing and submitting the form again.</p>
                                                 </div>
-                                            </div>
-                                            <div class="form-inline">
-                                                <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-                                            </div>
-                                            <div class="form-inline">
-                                                <div class="select-wrapper select--full">
-                                                    <select name="select" class="select--wd">
-                                                        <option value="Service you need">Service you need</option>
-                                                        <option value="Tree service">Tree service</option>
-                                                        <option value="Junk Removal">Junk Removal</option>
-                                                        <option value="New tree planting">New tree planting</option>
-                                                        <option value="Retaining walls">Retaining walls</option>
-                                                    </select>
+                                                <div class="form-inline">
+                                                    <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
                                                 </div>
-                                            </div>
-                                            <div class="form-inline">
-                                                <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
-                                        </form>
+                                                <div class="form-inline">
+                                                    <div>
+                                                        <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+                                                    </div>
+                                                    <div>
+                                                        <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+                                                    </div>
+                                                </div>
+                                                <div class="form-inline">
+                                                    <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
+                                                </div>
+                                                <div class="form-inline">
+                                                    <div class="select-wrapper select--full">
+                                                        <select name="select" class="select--wd">
+                                                            <option value="Service you need">Service you need</option>
+                                                            <option value="Tree service">Tree service</option>
+                                                            <option value="Junk Removal">Junk Removal</option>
+                                                            <option value="New tree planting">New tree planting</option>
+                                                            <option value="Retaining walls">Retaining walls</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-inline">
+                                                    <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -417,114 +437,120 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+*@
 <section class="content content--fill content--fill--light">
     <div class="container">
-        <h2 class="text-center lined">Our Gallery</h2>
+        <h2 class="text-center lined">Bộ Sửu Tập Ảnh</h2>
         <div class="container">
             <!-- Filters -->
             <section class="filters-by-category">
                 <div class="container">
                     <ul class="option-set" data-option-key="filter">
                         <li><a href="#filter" data-option-value="*" class="selected">All</a></li>
-                        <li><a href="#filter" data-option-value=".category1" class="">Lawn Service</a></li>
-                        <li><a href="#filter" data-option-value=".category2" class="">Landscape Design</a></li>
-                        <li><a href="#filter" data-option-value=".category3" class="">Leaf Removal</a></li>
-                        <li><a href="#filter" data-option-value=".category4" class="">Snow Removal</a></li>
-                        <li><a href="#filter" data-option-value=".category5" class="">Junk Removal</a></li>
-                        <li><a href="#filter" data-option-value=".category6" class="">Planting New Tree</a></li>
+
+                        @foreach (var group in galleries)
+                        {
+
+                            foreach (var gallery in group)
+                            {
+                                <li><a href="#filter" data-option-value=".categoryId-@(gallery.Category.CategoryId)" class="">@gallery.Category.Name</a></li>
+                            }
+                        }
                     </ul>
                 </div>
             </section>
             <!-- //end Filters -->
             <div class="gallery gallery-isotope" id="gallery">
-                <div class="gallery__item doubleW doubleH category5 category3">
-                    <div class="gallery__item__image"> <img src="images/gallery/gallery-img-14.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-14.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
-                <div class="gallery__item category6 category2">
-                    <div class="gallery__item__image"> <img src="images/gallery/gallery-img-15.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-15.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
-                <div class="gallery__item category6 category1">
-                    <div class="gallery__item__image"> <img src="images/gallery/gallery-img-16.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-16.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
-                <div class="gallery__item category4">
-                    <div class="gallery__item__image"> <img src="images/gallery/gallery-img-17.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-17.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
-                <div class="gallery__item category6 category2">
-                    <div class="gallery__item__image"> <img src="images/gallery/gallery-img-18.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-18.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
-                <div class="gallery__item category1">
-                    <div class="gallery__item__image"> <img src="images/gallery/gallery-img-03.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-03.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
-                <div class="gallery__item category2">
-                    <div class="gallery__item__image"> <img src="images/gallery/gallery-img-04.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-04.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
+                @foreach (var group in galleries)
+                {
+                    //isFirstGallery = !isFirstGallery;
+                    foreach (var gallery in group)
+                    {
+                        if (isFirstGallery)
+                        {
+                            <div class="gallery__item doubleW doubleH categoryId-@(gallery.Category.CategoryId)">
+                                <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
+                            </div>
+                            isFirstGallery = !isFirstGallery;
+                        }
+                        else
+                        {
+                            <div class="gallery__item categoryId-@(gallery.Category.CategoryId)">
+                                <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
+                            </div>
+                        }
+
+                    }
+                }
+
             </div>
             <div class="divider divider--md"></div>
-            <div class="text-center"><a class="btn btn--wd">MORE</a></div>
-            <div class="divider divider--md"></div>
+            @*<div class="text-center"><a class="btn btn--wd">MORE</a></div>
+                <div class="divider divider--md"></div>*@
         </div>
-        <div class="divider"></div>
-        <h2 class="text-center lined">What Our Clients Say About Us?</h2>
-        <div class="row testimonials-style2-row">
-            <div class="testimonials-style2 col-sm-6">
-                <div class="testimonials-style2-inside">
-                    <div class="testimonials-style2__photo">
-                        <img src="images/testimonials-author-img-03.jpg" alt="">
+        @*
+            <div class="divider"></div>
+            <h2 class="text-center lined">What Our Clients Say About Us?</h2>
+            <div class="row testimonials-style2-row">
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="images/testimonials-author-img-03.jpg" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
+                            <div>
+                                <span class="testimonials-style2__author">Thomas Reese, </span>
+                                <br><span class="testimonials-style2__post">homeowner</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="testimonials-style2__text">
-                        <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
-                        <div>
-                            <span class="testimonials-style2__author">Thomas Reese, </span>
-                            <br><span class="testimonials-style2__post">homeowner</span>
+                </div>
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="images/testimonials-author-img-04.jpg" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
+                            <div>
+                                <span class="testimonials-style2__author">Allison Boudreaux, </span>
+                                <br><span class="testimonials-style2__post">homeowner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="images/testimonials-author-img-03.jpg" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
+                            <div>
+                                <span class="testimonials-style2__author">Thomas Reese, </span>
+                                <br><span class="testimonials-style2__post">homeowner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="images/testimonials-author-img-04.jpg" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
+                            <div>
+                                <span class="testimonials-style2__author">Allison Boudreaux, </span>
+                                <br><span class="testimonials-style2__post">homeowner</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="testimonials-style2 col-sm-6">
-                <div class="testimonials-style2-inside">
-                    <div class="testimonials-style2__photo">
-                        <img src="images/testimonials-author-img-04.jpg" alt="">
-                    </div>
-                    <div class="testimonials-style2__text">
-                        <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
-                        <div>
-                            <span class="testimonials-style2__author">Allison Boudreaux, </span>
-                            <br><span class="testimonials-style2__post">homeowner</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonials-style2 col-sm-6">
-                <div class="testimonials-style2-inside">
-                    <div class="testimonials-style2__photo">
-                        <img src="images/testimonials-author-img-03.jpg" alt="">
-                    </div>
-                    <div class="testimonials-style2__text">
-                        <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
-                        <div>
-                            <span class="testimonials-style2__author">Thomas Reese, </span>
-                            <br><span class="testimonials-style2__post">homeowner</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonials-style2 col-sm-6">
-                <div class="testimonials-style2-inside">
-                    <div class="testimonials-style2__photo">
-                        <img src="images/testimonials-author-img-04.jpg" alt="">
-                    </div>
-                    <div class="testimonials-style2__text">
-                        <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
-                        <div>
-                            <span class="testimonials-style2__author">Allison Boudreaux, </span>
-                            <br><span class="testimonials-style2__post">homeowner</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        *@
     </div>
 </section>
 <section class="content content--parallax top-null" data-image="images/parallax-bg-1.jpg">
@@ -580,65 +606,91 @@
 </section>
 <section class="content content--fill content--fill--light top-null">
     <div class="container">
-        <h2 class="text-center lined">Latest News</h2>
+        <h2 class="text-center lined">Tin Mới</h2>
         <div class="row">
-            <div class="col-sm-4">
+            @foreach (var post in (List<PostDto>)ViewBag.Posts)
+            {
+                <div class="col-sm-4">
+                    <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="@(indexLastestPost==1?"0s":"0.5s") ">
+                        <div class="blog-preview-image">
+                            <img src="@(post.Image)" alt="">
+                        </div>
+                        <div class="blog-preview-text">
+                            <div class="blog-post-title">
+                                @(post.Title)
+                            </div>
+                            <div class="blog-preview-date">
+                                @*April 18, 2017*@
+                                @(post.PostedOn.ToString("dd/MM/yyyy"))
+                            </div>
+                            <div class="blog-preview-teaser">
+                                @Html.Raw(post.Excerpt?.Content)
+                            </div>
+                            <div class="blog-preview-link text-right"><a href="/post/@(post.Url) "><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                indexLastestPost++;
+            }
+            @*<div class="col-sm-4">
                 <div class="blog-preview animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <div class="blog-preview-image">
-                        <img src="images/img-blog-preview-1.jpg" alt="">
-                    </div>
-                    <div class="blog-preview-text">
-                        <div class="blog-post-title">
-                            Lawn Preparation Work for Winter
-                        </div>
-                        <div class="blog-preview-date">
-                            March 20, 2017
-                        </div>
-                        <div class="blog-preview-teaser">
-                            Many people are under the impression that there is nothing that they can do about the way that their lawn looks in the winter months. It's important to clean up fallen leaves before winter sets in. When left on your lawn, leaves can smother and kill the grass.
-                        </div>
-                        <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                    </div>
+                <div class="blog-preview-image">
+                <img src="images/img-blog-preview-1.jpg" alt="">
                 </div>
-            </div>
-            <div class="col-sm-4">
+                <div class="blog-preview-text">
+                <div class="blog-post-title">
+                Lawn Preparation Work for Winter
+                </div>
+                <div class="blog-preview-date">
+                March 20, 2017
+                </div>
+                <div class="blog-preview-teaser">
+                Many people are under the impression that there is nothing that they can do about the way that their lawn looks in the winter months. It's important to clean up fallen leaves before winter sets in. When left on your lawn, leaves can smother and kill the grass.
+                </div>
+                <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                </div>
+                </div>
+                </div>*@
+
+            @*<div class="col-sm-4">
                 <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="0s">
-                    <div class="blog-preview-image">
-                        <img src="images/img-blog-preview-2.jpg" alt="">
-                    </div>
-                    <div class="blog-preview-text">
-                        <div class="blog-post-title">
-                            Lawn Care Tips for the Spring Season
-                        </div>
-                        <div class="blog-preview-date">
-                            April 18, 2017
-                        </div>
-                        <div class="blog-preview-teaser">
-                            Tackling spring lawn care provides a just-right dose of fresh air, sunshine, and exercise – and sets your lawn on its way to season-long glory. Spring lawn chores aren’t difficult, but they do play a vital role in getting your grass on track for a healthy, productive season.
-                        </div>
-                        <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                    </div>
+                <div class="blog-preview-image">
+                <img src="images/img-blog-preview-2.jpg" alt="">
                 </div>
-            </div>
-            <div class="col-sm-4">
+                <div class="blog-preview-text">
+                <div class="blog-post-title">
+                Lawn Care Tips for the Spring Season
+                </div>
+                <div class="blog-preview-date">
+                April 18, 2017
+                </div>
+                <div class="blog-preview-teaser">
+                Tackling spring lawn care provides a just-right dose of fresh air, sunshine, and exercise – and sets your lawn on its way to season-long glory. Spring lawn chores aren’t difficult, but they do play a vital role in getting your grass on track for a healthy, productive season.
+                </div>
+                <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                </div>
+                </div>
+                </div>*@
+
+            @*<div class="col-sm-4">
                 <div class="blog-preview animation" data-animation="fadeInRight" data-animation-delay="0.5s">
-                    <div class="blog-preview-image">
-                        <img src="images/img-blog-preview-3.jpg" alt="">
-                    </div>
-                    <div class="blog-preview-text">
-                        <div class="blog-post-title">
-                            Get 25% OFF on Your First Service
-                        </div>
-                        <div class="blog-preview-date">
-                            April 27, 2017
-                        </div>
-                        <div class="blog-preview-teaser">
-                            Sign up for an annual Lawn Care or Mosquito Control Program and get 25% OFF on your first service. The truth is, lawn care is a complex science. But many homeowners rely on trial and error and end up frustrated, never reaching their lawn goals.
-                        </div>
-                        <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                    </div>
+                <div class="blog-preview-image">
+                <img src="images/img-blog-preview-3.jpg" alt="">
                 </div>
-            </div>
+                <div class="blog-preview-text">
+                <div class="blog-post-title">
+                Get 25% OFF on Your First Service
+                </div>
+                <div class="blog-preview-date">
+                April 27, 2017
+                </div>
+                <div class="blog-preview-teaser">
+                Sign up for an annual Lawn Care or Mosquito Control Program and get 25% OFF on your first service. The truth is, lawn care is a complex science. But many homeowners rely on trial and error and end up frustrated, never reaching their lawn goals.
+                </div>
+                <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                </div>
+                </div>
+                </div>*@
         </div>
     </div>
 </section>

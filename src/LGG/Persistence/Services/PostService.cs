@@ -128,6 +128,12 @@ namespace LGG.Persistence.Services
             return Mapper.Map<IList<Post>, IList<PostDto>>(_postRepository.GetAllByCategoryPaged(category, count, page).ToList());
         }
 
+
+        public IEnumerable<PostDto> GetAllByCategoryName(string categoryName, int? top = null)
+        {
+            return Mapper.Map<IList<Post>, IList<PostDto>>(_postRepository.GetAllByCategoryName(categoryName, top).ToList());
+        }
+
         /// <summary>
         /// Get popular post based on ids in app settings
         /// </summary>

@@ -2,7 +2,7 @@
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Pioneer.Pagination;
+//using Pioneer.Pagination;
 using System.Linq;
 
 namespace LGG.Controllers
@@ -12,21 +12,21 @@ namespace LGG.Controllers
         private readonly IPostService _postService;
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
-        private readonly IPaginatedMetaService _paginatedMetaService;
+        // private readonly IPaginatedMetaService _paginatedMetaService;
         private readonly ICompanyService _companyService;
         private readonly IOptions<CompanyDto> _companyDefault;
 
         public BlogController(IPostService postService,
             ICategoryService categoryService,
             ITagService tagService,
-            IPaginatedMetaService paginatedMetaService,
+            // IPaginatedMetaService paginatedMetaService,
             ICompanyService companyService,
             IOptions<CompanyDto> companyDefault)
         {
             _postService = postService;
             _categoryService = categoryService;
             _tagService = tagService;
-            _paginatedMetaService = paginatedMetaService;
+            // _paginatedMetaService = paginatedMetaService;
             _companyService = companyService;
             _companyDefault = companyDefault;
         }

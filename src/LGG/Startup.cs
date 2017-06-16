@@ -19,7 +19,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using MySQL.Data.Entity.Extensions;
-using Pioneer.Pagination;
+//using Pioneer.Pagination;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,7 +78,7 @@ namespace LGG
             services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
             services.Configure<CompanyDto>(Configuration.GetSection("Company"));
 
-            services.AddTransient<IPaginatedMetaService, PaginatedMetaService>();
+            //services.AddTransient<IPaginatedMetaService, PaginatedMetaService>();
             services.AddTransient<IdentitySetup>();
             services.AddTransient<DefaultData>();
 
