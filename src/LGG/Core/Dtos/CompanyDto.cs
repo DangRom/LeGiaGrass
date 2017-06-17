@@ -9,29 +9,14 @@ namespace LGG.Core.Dtos
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-
-
         public string VideoPresentation { get; set; }
-
-
         public string OurMission { get; set; }
-
         public string OurClients { get; set; }
-
-
         public string OurDifference1 { get; set; }
-
         public string OurDifference2 { get; set; }
-
-
         public string OurDifference3 { get; set; }
-
-
         public string OurDifference4 { get; set; }
-
         public string OurDifference5 { get; set; }
-
         public string WhyChooseUs { get; set; }
 
         public string Sologan { get; set; }

@@ -4,9 +4,9 @@
     var galleries = (List<IGrouping<int, GalleryDto>>)ViewBag.Galleries;
     var isFirstGallery = true;
     var indexLastestPost = 0;
+    var company = (CompanyDto)ViewBag.Company;
 }
 
-@model CompanyDto
 
 <section class="content" id="slider">
     <!-- Slider section -->
@@ -72,18 +72,18 @@
         <div class="services-block">
             @foreach (var service in (List<PostDto>)ViewBag.Services)
             {
-            <a href="service-page-3.html" class="service iconmove light ">
-                <div class="service-image image-scale"><img src="@(service.SmallImage) " alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-icon"><i class="icon first"><img src="@(service.IconImage)" /></i></div>
-                            <div class="service-title">@(service.Title)</div>
-                            <div class="service-text">@(service.Description)</div>
+                <a href="service-page-3.html" class="service iconmove light ">
+                    <div class="service-image image-scale"><img src="@(service.SmallImage) " alt="#"></div>
+                    <div class="caption">
+                        <div class="vert-wrap">
+                            <div class="vert">
+                                <div class="service-icon"><i class="icon first"><img src="@(service.IconImage)" /></i></div>
+                                <div class="service-title">@(service.Title)</div>
+                                <div class="service-text">@(service.Description)</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
             }
 
             @*<a href="service-page-1.html" class="service iconmove dark">
@@ -157,24 +157,26 @@
                     </div>
                 </a>*@
         </div>
-        <h2 class="text-center lined">About Us</h2>
-        <p class="text-center info-text">Starting out with just a single truck and mower, we have expanded our services and grown into one of the largest lawn maintenance companies in our area. Our expansion and stellar reputation is due, in part, to our exceptional reputation for quality and timely service. Our lawn care technicians utilize the latest technology and techniques to deliver beautiful results that will stand the test of time.</p>
+        <h2 class="text-center lined">Giới Thiệu</h2>
+        <p class="text-center info-text">
+            @company.Description
+        </p>
         <div class="row">
             <div class="col-sm-6 animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                <div class="text-icon__title">Our Mission</div>
+                <div class="text-icon__title">Sứ Mệnh</div>
                 <div class="text-icon last">
                     <div class="text-icon__icon"><i class="icon icon-nature-2"></i></div>
                     <div class="text-icon__info">
-                        <p>Our mission is to provide our customers with the highest level of quality services. We pledge to establish lasting relationships with our clients by exceeding their expectations and gaining their trust through exceptional performance. </p>
+                        <p>@company.OurMission</p>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 animation" data-animation="fadeInRight" data-animation-delay="0.5s">
-                <div class="text-icon__title">Our Clients</div>
+                <div class="text-icon__title">Khách Hàng</div>
                 <div class="text-icon last">
                     <div class="text-icon__icon"><i class="icon icon-construction-worker"></i></div>
                     <div class="text-icon__info">
-                        <p>Our clients count on our dependability, our drive, and our integrity and we take great pride in our accomplishments and build on them every day.</p>
+                        <p>@company.OurClients</p>
                     </div>
                 </div>
             </div>
@@ -183,7 +185,7 @@
 </section>
 <section class="content content--parallax top-null" data-image="images/parallax-bg.jpg">
     <div class="container">
-        <h2 class="text-center white lined">Our Difference</h2>
+        <h2 class="text-center white lined">Sự Khác Biệt</h2>
         <div class="iconcircle-wrap">
             <div class="iconcircle iconmove">
                 <div class="iconcircle__icon"> <span><i class="icon icon-transport"></i></span> </div>
@@ -454,7 +456,7 @@
 
                             foreach (var gallery in group)
                             {
-                        <li><a href="#filter" data-option-value=".categoryId-@(gallery.Category.CategoryId)" class="">@gallery.Category.Name</a></li>
+                                <li><a href="#filter" data-option-value=".categoryId-@(gallery.Category.CategoryId)" class="">@gallery.Category.Name</a></li>
                             }
                         }
                     </ul>
@@ -469,16 +471,16 @@
                     {
                         if (isFirstGallery)
                         {
-                <div class="gallery__item doubleW doubleH categoryId-@(gallery.Category.CategoryId)">
-                    <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
+                            <div class="gallery__item doubleW doubleH categoryId-@(gallery.Category.CategoryId)">
+                                <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
+                            </div>
                             isFirstGallery = !isFirstGallery;
                         }
                         else
                         {
-                <div class="gallery__item categoryId-@(gallery.Category.CategoryId)">
-                    <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
-                </div>
+                            <div class="gallery__item categoryId-@(gallery.Category.CategoryId)">
+                                <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
+                            </div>
                         }
 
                     }

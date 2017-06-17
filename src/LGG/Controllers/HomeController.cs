@@ -40,6 +40,7 @@ namespace LGG.Controllers
 
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
             var galleries = _galleryService.GetAll();
+
             ViewBag.Galleries = (from gallery in galleries
                                  group gallery by gallery.Category.CategoryId into newGroup
                                  orderby newGroup.Key

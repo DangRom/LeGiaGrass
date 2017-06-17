@@ -10,11 +10,20 @@ namespace LGG.Core.Dtos
         [MaxLengthAttribute(100, ErrorMessage = "khong dược dài quá 100 ký tự")]
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         [Required(ErrorMessage = "không được để trống")]
         [MaxLengthAttribute(255, ErrorMessage = "khong dược dài quá 100 ký tự")]
         public string Image { get; set; }
 
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+
+        /**/
+        public CategoryDto Category { get; set; }
+        public GalleryDto()
+        {
+            Category = new CategoryDto();
+        }
     }
 }

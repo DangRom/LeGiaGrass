@@ -16,6 +16,10 @@ namespace LGG.Core.Models
 
         [MaxLength(250)]
         [StringLength(250)]
+        public string Description { get; set; }
+
+        [MaxLength(250)]
+        [StringLength(250)]
         public string Image { get; set; }
 
         public int? CategoryId { get; set; }
