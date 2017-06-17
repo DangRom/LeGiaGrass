@@ -102,7 +102,7 @@ namespace LGG.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(int id){
+        public async Task<JsonResult> Delete(int id){
             try{
                 if(id > 0){
                     await Task.Factory.StartNew(() => _galleryService.Remove(id));

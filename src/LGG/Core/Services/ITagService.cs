@@ -12,5 +12,6 @@ namespace LGG.Core.Services
         TagDto Add(TagDto tag);
         void Update(TagDto tag);
         void Remove(int id);
+        bool CheckName(string name);
     }
 }

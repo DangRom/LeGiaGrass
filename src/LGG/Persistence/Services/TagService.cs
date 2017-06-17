@@ -102,5 +102,10 @@ namespace LGG.Persistence.Services
         {
             return _tagRepository.GetAllPaged(count, page).Select(Mapper.Map<Tag, TagDto>);
         }
+
+        public bool CheckName(string name)
+        {
+            return _tagRepository.CheckName(name);
+        }
     }
 }

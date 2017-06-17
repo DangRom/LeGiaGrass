@@ -12,5 +12,6 @@ namespace LGG.Core.Repositories
         Tag Add(Tag tag);
         void Update(TagDto tag);
         void Remove(int id);
+        bool CheckName(string name);
     }
 }
