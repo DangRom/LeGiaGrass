@@ -72,18 +72,18 @@
         <div class="services-block">
             @foreach (var service in (List<PostDto>)ViewBag.Services)
             {
-                <a href="service-page-3.html" class="service iconmove light ">
-                    <div class="service-image image-scale"><img src="@(service.SmallImage) " alt="#"></div>
-                    <div class="caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="service-icon"><i class="icon first"><img src="@(service.IconImage)" /></i></div>
-                                <div class="service-title">@(service.Title)</div>
-                                <div class="service-text">@(service.Excerpt?.Content)</div>
-                            </div>
+            <a href="service-page-3.html" class="service iconmove light ">
+                <div class="service-image image-scale"><img src="@(service.SmallImage) " alt="#"></div>
+                <div class="caption">
+                    <div class="vert-wrap">
+                        <div class="vert">
+                            <div class="service-icon"><i class="icon first"><img src="@(service.IconImage)" /></i></div>
+                            <div class="service-title">@(service.Title)</div>
+                            <div class="service-text">@(service.Description)</div>
                         </div>
                     </div>
-                </a>
+                </div>
+            </a>
             }
 
             @*<a href="service-page-1.html" class="service iconmove dark">
@@ -454,7 +454,7 @@
 
                             foreach (var gallery in group)
                             {
-                                <li><a href="#filter" data-option-value=".categoryId-@(gallery.Category.CategoryId)" class="">@gallery.Category.Name</a></li>
+                        <li><a href="#filter" data-option-value=".categoryId-@(gallery.Category.CategoryId)" class="">@gallery.Category.Name</a></li>
                             }
                         }
                     </ul>
@@ -469,16 +469,16 @@
                     {
                         if (isFirstGallery)
                         {
-                            <div class="gallery__item doubleW doubleH categoryId-@(gallery.Category.CategoryId)">
-                                <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
-                            </div>
+                <div class="gallery__item doubleW doubleH categoryId-@(gallery.Category.CategoryId)">
+                    <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
+                </div>
                             isFirstGallery = !isFirstGallery;
                         }
                         else
                         {
-                            <div class="gallery__item categoryId-@(gallery.Category.CategoryId)">
-                                <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
-                            </div>
+                <div class="gallery__item categoryId-@(gallery.Category.CategoryId)">
+                    <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
+                </div>
                         }
 
                     }
@@ -489,68 +489,66 @@
             @*<div class="text-center"><a class="btn btn--wd">MORE</a></div>
                 <div class="divider divider--md"></div>*@
         </div>
-        @*
-            <div class="divider"></div>
-            <h2 class="text-center lined">What Our Clients Say About Us?</h2>
-            <div class="row testimonials-style2-row">
-                <div class="testimonials-style2 col-sm-6">
-                    <div class="testimonials-style2-inside">
-                        <div class="testimonials-style2__photo">
-                            <img src="images/testimonials-author-img-03.jpg" alt="">
-                        </div>
-                        <div class="testimonials-style2__text">
-                            <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
-                            <div>
-                                <span class="testimonials-style2__author">Thomas Reese, </span>
-                                <br><span class="testimonials-style2__post">homeowner</span>
-                            </div>
-                        </div>
+        <div class="divider"></div>
+        <h2 class="text-center lined">What Our Clients Say About Us?</h2>
+        <div class="row testimonials-style2-row">
+            <div class="testimonials-style2 col-sm-6">
+                <div class="testimonials-style2-inside">
+                    <div class="testimonials-style2__photo">
+                        <img src="images/testimonials-author-img-03.jpg" alt="">
                     </div>
-                </div>
-                <div class="testimonials-style2 col-sm-6">
-                    <div class="testimonials-style2-inside">
-                        <div class="testimonials-style2__photo">
-                            <img src="images/testimonials-author-img-04.jpg" alt="">
-                        </div>
-                        <div class="testimonials-style2__text">
-                            <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
-                            <div>
-                                <span class="testimonials-style2__author">Allison Boudreaux, </span>
-                                <br><span class="testimonials-style2__post">homeowner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-style2 col-sm-6">
-                    <div class="testimonials-style2-inside">
-                        <div class="testimonials-style2__photo">
-                            <img src="images/testimonials-author-img-03.jpg" alt="">
-                        </div>
-                        <div class="testimonials-style2__text">
-                            <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
-                            <div>
-                                <span class="testimonials-style2__author">Thomas Reese, </span>
-                                <br><span class="testimonials-style2__post">homeowner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-style2 col-sm-6">
-                    <div class="testimonials-style2-inside">
-                        <div class="testimonials-style2__photo">
-                            <img src="images/testimonials-author-img-04.jpg" alt="">
-                        </div>
-                        <div class="testimonials-style2__text">
-                            <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
-                            <div>
-                                <span class="testimonials-style2__author">Allison Boudreaux, </span>
-                                <br><span class="testimonials-style2__post">homeowner</span>
-                            </div>
+                    <div class="testimonials-style2__text">
+                        <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
+                        <div>
+                            <span class="testimonials-style2__author">Thomas Reese, </span>
+                            <br><span class="testimonials-style2__post">homeowner</span>
                         </div>
                     </div>
                 </div>
             </div>
-        *@
+            <div class="testimonials-style2 col-sm-6">
+                <div class="testimonials-style2-inside">
+                    <div class="testimonials-style2__photo">
+                        <img src="images/testimonials-author-img-04.jpg" alt="">
+                    </div>
+                    <div class="testimonials-style2__text">
+                        <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
+                        <div>
+                            <span class="testimonials-style2__author">Allison Boudreaux, </span>
+                            <br><span class="testimonials-style2__post">homeowner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials-style2 col-sm-6">
+                <div class="testimonials-style2-inside">
+                    <div class="testimonials-style2__photo">
+                        <img src="images/testimonials-author-img-03.jpg" alt="">
+                    </div>
+                    <div class="testimonials-style2__text">
+                        <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
+                        <div>
+                            <span class="testimonials-style2__author">Thomas Reese, </span>
+                            <br><span class="testimonials-style2__post">homeowner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials-style2 col-sm-6">
+                <div class="testimonials-style2-inside">
+                    <div class="testimonials-style2__photo">
+                        <img src="images/testimonials-author-img-04.jpg" alt="">
+                    </div>
+                    <div class="testimonials-style2__text">
+                        <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
+                        <div>
+                            <span class="testimonials-style2__author">Allison Boudreaux, </span>
+                            <br><span class="testimonials-style2__post">homeowner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <section class="content content--parallax top-null" data-image="images/parallax-bg-1.jpg">
@@ -610,26 +608,26 @@
         <div class="row">
             @foreach (var post in (List<PostDto>)ViewBag.Posts)
             {
-                <div class="col-sm-4">
-                    <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="@(indexLastestPost==1?"0s":"0.5s") ">
-                        <div class="blog-preview-image">
-                            <img src="@(post.Image)" alt="">
+            <div class="col-sm-4">
+                <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="@(indexLastestPost==1?"0s":"0.5s") ">
+                    <div class="blog-preview-image">
+                        <img src="@(post.Image)" alt="">
+                    </div>
+                    <div class="blog-preview-text">
+                        <div class="blog-post-title">
+                            @(post.Title)
                         </div>
-                        <div class="blog-preview-text">
-                            <div class="blog-post-title">
-                                @(post.Title)
-                            </div>
-                            <div class="blog-preview-date">
-                                @*April 18, 2017*@
-                                @(post.PostedOn.ToString("dd/MM/yyyy"))
-                            </div>
-                            <div class="blog-preview-teaser">
-                                @Html.Raw(post.Excerpt?.Content)
-                            </div>
-                            <div class="blog-preview-link text-right"><a href="/post/@(post.Url) "><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                        <div class="blog-preview-date">
+                            @*April 18, 2017*@
+                            @(post.PostedOn.ToString("dd/MM/yyyy"))
                         </div>
+                        <div class="blog-preview-teaser">
+                            @Html.Raw(post.Excerpt?.Content)
+                        </div>
+                        <div class="blog-preview-link text-right"><a href="/post/@(post.Url) "><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
                     </div>
                 </div>
+            </div>
                 indexLastestPost++;
             }
             @*<div class="col-sm-4">

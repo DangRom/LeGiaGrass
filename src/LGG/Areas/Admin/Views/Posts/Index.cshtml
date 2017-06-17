@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PostDto>
+﻿@model IEnumerable<LGG.Core.Dtos.PostDto>
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper "Pioneer.Pagination.PioneerPaginationTagHelper, Pioneer.Pagination"
@@ -63,7 +63,7 @@
                                 <input type="text" class="form-control height-input" id="description" />
                             </div>
                             <fieldset class="fieldset">
-                            <legend style="font-size:1.35rem; font-weight: bold">Categories</legend>
+                                <legend style="font-size:1.35rem; font-weight: bold">Categories</legend>
                                 <span class="admin-post-collection-item">
                                     @foreach (var category in (List<CategoryDto>)ViewBag.Categories)
                                     {
@@ -99,7 +99,7 @@
                                     <label>
                                         <input type="checkbox" id="published" checked>Xuất Bản
                                     </label>
-                                </div>                                        
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="link" class="label-font">Code Link</label>
@@ -119,9 +119,9 @@
                             </div>
                         </form>
                     </div>
+                </div>
             </div>
         </div>
-    </div>
 </section>
 
 @section scripts

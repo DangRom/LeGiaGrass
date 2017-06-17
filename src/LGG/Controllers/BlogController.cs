@@ -2,7 +2,7 @@
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-//using Pioneer.Pagination;
+using Pioneer.Pagination;
 using System.Linq;
 
 namespace LGG.Controllers
@@ -12,21 +12,21 @@ namespace LGG.Controllers
         private readonly IPostService _postService;
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
-        // private readonly IPaginatedMetaService _paginatedMetaService;
+        private readonly IPaginatedMetaService _paginatedMetaService;
         private readonly ICompanyService _companyService;
         private readonly IOptions<CompanyDto> _companyDefault;
 
         public BlogController(IPostService postService,
-            ICategoryService categoryService,
-            ITagService tagService,
-            // IPaginatedMetaService paginatedMetaService,
-            ICompanyService companyService,
-            IOptions<CompanyDto> companyDefault)
+                ICategoryService categoryService,
+                ITagService tagService,
+                IPaginatedMetaService paginatedMetaService,
+                ICompanyService companyService,
+                IOptions<CompanyDto> companyDefault)
         {
             _postService = postService;
             _categoryService = categoryService;
             _tagService = tagService;
-            // _paginatedMetaService = paginatedMetaService;
+            _paginatedMetaService = paginatedMetaService;
             _companyService = companyService;
             _companyDefault = companyDefault;
         }
@@ -35,8 +35,9 @@ namespace LGG.Controllers
         public ActionResult Index(int page = 1)
         {
             var post = _postService.GetAllPaged(4, page).ToList();
+
             ///TODO: Chưa làm paging, đang xử lý khi null
-           // ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(_postService.GetTotalNumberOfPosts(), page, 4);
+            ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(_postService.GetTotalNumberOfPosts(), page, 1);
 
             ViewBag.Description = "LGG archives page " + page + ". " +
                                   "description...";
@@ -48,7 +49,7 @@ namespace LGG.Controllers
             ViewBag.Categories = _categoryService.GetAll();
             ViewBag.Tags = _tagService.GetAll();
             ViewBag.PopularPosts = _postService.GetPopularPosts();
-            ViewBag.NewPosts = _postService.GetAll(true, false, false, 4).ToList();
+            ViewBag.NewPosts = _postService.GetAll(true, false, false, 5).ToList();
 
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
 
