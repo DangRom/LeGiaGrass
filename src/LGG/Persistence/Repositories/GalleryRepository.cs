@@ -4,6 +4,7 @@ using LGG.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace LGG.Persistence.Repositories
 {
@@ -46,14 +47,12 @@ namespace LGG.Persistence.Repositories
         /// </summary>
         /// <param name="GalleryEntity">Gallery Entity to save</param>
         /// <returns>Gallery Entity with Id</returns>
-        public Gallery Add(Gallery galleryEntity)
+        public void Add(Gallery galleryEntity)
         {
             _context
                 .Galleries
                 .Add(galleryEntity);
             _context.SaveChanges();
-
-            return galleryEntity;
         }
 
         /// <summary>
@@ -68,9 +67,10 @@ namespace LGG.Persistence.Repositories
 
             entity.Image = gallery.Image;
             entity.Name = gallery.Name;
-            if (gallery.Category != null && gallery.Category.CategoryId > 0)
-                entity.CategoryId = gallery.Category.CategoryId;
+            entity.CategoryId = gallery.CategoryId;
 
+            // _context.Galleries.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
 
@@ -101,6 +101,12 @@ namespace LGG.Persistence.Repositories
                     .Skip((page - 1) * count)
                     .Take(count)
                     .ToList();
+        }
+
+        public bool CheckName(string name)
+        {
+            if (_context.Galleries.FirstOrDefault(g => g.Name == name) == null) return false;
+            return true;
         }
     }
 }

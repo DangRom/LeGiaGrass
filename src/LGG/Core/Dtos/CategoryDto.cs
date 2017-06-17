@@ -6,12 +6,14 @@ namespace LGG.Core.Dtos
     {
         public int CategoryId { get; set; }
 
-        [Required(ErrorMessage = "không được bỏ trống")]
-        [MaxLength(100, ErrorMessage = "không được dài quá 100 ký tự")]
+        [Required(ErrorMessage = "không được để trống")]
+        [MaxLengthAttribute(100, ErrorMessage = "khong dược dài quá 100 ký tự")]
 
         public string Name { get; set; }
 
-        [MaxLength(255, ErrorMessage = "khong duoc dai qua 255 ký tu")]
+        [Required(ErrorMessage = "không được để trống")]
+        [MaxLengthAttribute(255, ErrorMessage = "khong dược dài quá 100 ký tự")]
+
         public string Url { get; set; }
 
 

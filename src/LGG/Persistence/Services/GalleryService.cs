@@ -24,10 +24,11 @@ namespace LGG.Persistence.Services
         /// <returns>Collection of Galleries</returns>
         public IEnumerable<GalleryDto> GetAll()
         {
-            return _galleryRepository.GetAll()
-                    .Select(Mapper.Map<Gallery, GalleryDto>)
-                    .OrderBy(x => x.Name)
-                    .ToList();
+            return _galleryRepository.GetAll().Select(g => new GalleryDto{
+                GalleryId = g.GalleryId,
+                Name = g.Name,
+                CategoryName = g.Category.Name
+            }).ToList();
         }
 
         /// <summary>
@@ -49,7 +50,14 @@ namespace LGG.Persistence.Services
         /// <returns>Category Object</returns>
         public GalleryDto GetById(int id)
         {
-            return Mapper.Map<Gallery, GalleryDto>(_galleryRepository.GetById(id));
+            var gallerymodel = _galleryRepository.GetById(id);
+            var gallery = new GalleryDto(){
+                GalleryId = gallerymodel.GalleryId,
+                Name = gallerymodel.Name,
+                Image = gallerymodel.Image,
+                CategoryId = gallerymodel.Category.CategoryId
+            };
+            return gallery;
         }
 
 
@@ -58,18 +66,15 @@ namespace LGG.Persistence.Services
         /// If a Name is not provided, set Name and IMAGE to a GUID
         /// </summary>
         /// <param name="category">Category</param>
-        public GalleryDto Add(GalleryDto gallery)
+        public void Add(GalleryDto gallery)
         {
-            if (gallery.Name == null)
-            {
-                gallery.Name = Guid.NewGuid().ToString();
-                gallery.Image = gallery.Name;
-            }
-
-            gallery.Category = null;
-            var response = _galleryRepository.Add(Mapper.Map<GalleryDto, Gallery>(gallery));
-            gallery.GalleryId = response.GalleryId;
-            return gallery;
+            var gall = new Gallery(){
+                GalleryId = gallery.GalleryId,
+                Name = gallery.Name,
+                Image = gallery.Image,
+                CategoryId = gallery.CategoryId,
+            };
+            _galleryRepository.Add(gall);
         }
 
         /// <summary>
@@ -88,6 +93,11 @@ namespace LGG.Persistence.Services
         public void Remove(int id)
         {
             _galleryRepository.Remove(id);
+        }
+
+        public bool CheckName(string name)
+        {
+            return _galleryRepository.CheckName(name);
         }
     }
 }

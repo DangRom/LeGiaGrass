@@ -1,5 +1,5 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model IEnumerable<LGG.Core.Dtos.galleryDto>
+@model IEnumerable<LGG.Core.Dtos.GalleryDto>
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -8,20 +8,20 @@
     <div class="panel-title ">Danh sách chủ đề</div>
 </div>
 <div class="content-box-large box-with-header">
-    <a href="/admin/categories/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
+    <a href="/admin/galleries/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
     <br /><br />
     <table id="tablesource" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Tên</th>
-                <th>Url</th>
+                <th>Chủ đề</th>
                 <th></th>
             </tr>
         </thead>
         <tfoot>
             <tr>
                 <th>Tên</th>
-                <th>Url</th>
+                <th>Chủ đề</th>
                 <th></th>
             </tr>
         </tfoot>
@@ -30,10 +30,10 @@
             {
                 <tr>
                     <td>@m.Name</td>
-                    <td>@m.Url</td>
+                    <td>@m.CategoryName</td>
                     <td style="text-align: right">
-                        <a class="btn btn-primary fa fa-pencil" href="/admin/categories/update/@m.CategoryId"></a>
-                        <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.CategoryId)"></a>
+                        <a class="btn btn-primary fa fa-pencil" href="/admin/galleries/update/@m.GalleryId"></a>
+                        <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.GalleryId)"></a>
                     </td>
                 </tr>
             }
@@ -48,7 +48,7 @@
         var c = confirm("Bạn có chắc là không muốn hiển chủ đề này ?");
             if(c){
                 $.ajax({
-                    url: "/admin/categories/delete/" + id,
+                    url: "/admin/galleries/delete/" + id,
                     type: "DELETE",
                     dataType: 'json',
                     success: function(mess){
