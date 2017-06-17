@@ -99,7 +99,7 @@ namespace LGG.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<JsonResult> Delete(int id)
         {
             try
             {

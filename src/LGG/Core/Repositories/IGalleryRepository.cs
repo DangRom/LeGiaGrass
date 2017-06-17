@@ -9,8 +9,9 @@ namespace LGG.Core.Repositories
         IEnumerable<Gallery> GetAll();
         IEnumerable<Gallery> GetAllPaged(int count, int page);
         Gallery GetById(int id);
-        Gallery Add(Gallery gallery);
+        void Add(Gallery gallery);
         void Update(GalleryDto gallery);
         void Remove(int id);
+        bool CheckName(string name);
     }
 }

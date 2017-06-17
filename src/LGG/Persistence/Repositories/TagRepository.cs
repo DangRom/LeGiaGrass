@@ -3,6 +3,7 @@ using LGG.Core.Models;
 using LGG.Core.Repositories;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace LGG.Persistence.Repositories
 {
@@ -96,6 +97,14 @@ namespace LGG.Persistence.Repositories
                     .Skip((page - 1) * count)
                     .Take(count)
                     .ToList();
+        }
+
+        public bool CheckName(string name)
+        {
+            if(_context.Tags.FirstOrDefault(t => t.Name == name) == null){
+                return false;
+            }
+            return true;
         }
     }
 }
