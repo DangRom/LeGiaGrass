@@ -18,5 +18,6 @@ namespace LGG.Core.Repositories
         Company Add(Company tag);
         void Update(CompanyDto tag);
         void Remove(int id);
+        Company GetCompany();
     }
 }

@@ -1,341 +1,162 @@
-﻿@model CompanyDto
-
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper "Pioneer.Pagination.PioneerPaginationTagHelper, Pioneer.Pagination"
-@inject IOptions<AppConfiguration> AppConfiguration
-
+@model LGG.Core.Dtos.CompanyDto
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="row expanded">
-    <div class="col-md-3">
-        <div class="admin-canvas-content">
-            <div class="row">
-                <div class="large-12 columns">
-                    <div class="clearfix">
-                        <button id="js-company-add" class="btn btn-default float-right add">
-                            Thêm
-                        </button>
-                    </div>
-                    <ul class="admin-collection-list">
-                        <li data-company-id="@(Model?.Id)"><span>@Model?.Name</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="col-md-9">
-        <div class="admin-canvas-content">
-            <div class="row">
-                <div class="large-12 columns">
-                    <div class="clearfix">
-                        <span id="companyId" class="record-id"></span>
-                        <button id="saveCommand" class="btn btn-default float-right save">Lưu</button>
-                    </div>
-                    <form>
-                        <div class="form-group">
-                            <label for="name" class="label-font">Tên cty</label>
-                            <input type="text" class="form-control height-input" id="name" />
-                        </div>
-                        <div class="form-group">
-                            <label for="sologan" class="label-font">Slogan</label>
-                            <input type="text" class="form-control height-input" id="sologan"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="hotline" class="label-font">Hotline</label>
-                            <input type="text" class="form-control height-input" id="hotline">
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="label-font">Email</label>
-                            <input type="text" class="form-control height-input" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="website" class="label-font">Website</label>
-                            <input type="text" class="form-control height-input" id="website">
-                        </div>
-                        <div class="form-group">
-                            <label for="timeWork" class="label-font">Thời gian làm việc</label>
-                            <input type="text" class="form-control height-input" id="timeWork">
-                        </div>
-                        <div class="form-group">
-                            <label for="address" class="label-font">Địa chỉ</label>
-                            <input type="text" class="form-control height-input" id="address">
-                        </div>
-                        <div class="form-group">
-                            <label for="logo" class="label-font">Logo cty</label>
-                            <input type="text" class="form-control height-input" id="logo">
-                        </div>
-                        <div class="form-group">
-                            <label for="avatar" class="label-font">Avatar</label>
-                            <input type="text" class="form-control height-input" id="avatar">
-                        </div>
-                        <div class="form-group">
-                            <label for="aboutEditor" class="label-font">Giới thiệu cty</label>
-                            <textarea id="aboutEditor"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="privacyEditor" class="label-font">privacy</label>
-                            <textarea id="privacyEditor"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="termsOfUseEditor" class="label-font">termOfUse</label>
-                            <textarea id="termsOfUseEditor"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="facebook" class="label-font">Facebook</label>
-                            <input type="text" class="form-control height-input" id="facebook">
-                        </div>
-                        <div class="form-group">
-                            <label for="twitter" class="label-font">Twitter</label>
-                            <input type="text" class="form-control height-input" id="twitter">
-                        </div>
-                        <div class="form-group">
-                            <label for="google" class="label-font">Google</label>
-                            <input type="text" class="form-control height-input" id="google">
-                        </div>
-                        <div class="form-group">
-                            <label for="linkedIn" class="label-font">LinkedIn</label>
-                            <input type="text" class="form-control height-input" id="linkedIn">
-                        </div>
-                        <div class="form-group">
-                            <label for="pinterest" class="label-font">Pinterest</label>
-                            <input type="text" class="form-control height-input" id="pinterest">
-                        </div>
-                        <div class="form-group">
-                            <label for="instagram" class="label-font">Instagram</label>
-                            <input type="text" class="form-control height-input" id="instagram">
-                        </div>
-                    </form>
-                </div>
+<div class="content-box-header panel-heading">
+    <div class="panel-title ">Thong tin cty</div>
+</div>
+<div class="content-box-large box-with-header">
+    <form class="form-horizontal" asp-controller="Companies" asp-action="Index" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Tên cty</label>
+            <div class="col-sm-10">
+                <input asp-for="Name" class="form-control height-input" id="name" >
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="Sologan" class="col-sm-2 control-label">sologan</label>
+            <div class="col-sm-10">
+                <input asp-for="Sologan" class="form-control height-input" id="sologan">
+                <span asp-validation-for="Sologan" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Hotline" class="col-sm-2 control-label">Hotline</label>
+            <div class="col-sm-5">
+                <input asp-for="Hotline" class="form-control height-input" id="hotline">
+                <span asp-validation-for="Hotline" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Email" class="col-sm-2 control-label">Hotline</label>
+            <div class="col-sm-5">
+                <input asp-for="Email" class="form-control height-input" id="email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Website" class="col-sm-2 control-label">Website</label>
+            <div class="col-sm-5">
+                <input asp-for="Website" class="form-control height-input" id="website">
+                <span asp-validation-for="Website" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="TimeWork" class="col-sm-2 control-label">Thoi gian lam viec</label>
+            <div class="col-sm-5">
+                <input asp-for="TimeWork" class="form-control height-input" id="timework">
+                <span asp-validation-for="TimeWork" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Address" class="col-sm-2 control-label">dia chi</label>
+            <div class="col-sm-10">
+                <input asp-for="Address" class="form-control height-input" id="address">
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Logo" class="col-sm-2 control-label">Logo</label>
+            <div class="col-sm-10">
+                <input asp-for="Logo" class="form-control height-input" id="logo">
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Avatar" class="col-sm-2 control-label">Hinh dai dien</label>
+            <div class="col-sm-10">
+                <input asp-for="Avatar" class="form-control height-input" id="avatar">
+                <span asp-validation-for="Avatar" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Description" class="col-sm-2 control-label">Mo ta ngan</label>
+            <div class="col-sm-10">
+                <input asp-for="Description" class="form-control height-input" id="description">
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="About.Content" class="col-sm-2 control-label">Ve chung toi</label>
+            <div class="col-sm-10">
+                <textarea asp-for="About.Content"></textarea>
+                <span asp-validation-for="About.Content" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="WhyChooseUs" class="col-sm-2 control-label">Tai sao chon chung toi</label>
+            <div class="col-sm-10">
+                <textarea asp-for="WhyChooseUs"></textarea>
+                <span asp-validation-for="WhyChooseUs" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Privacy.Content" class="col-sm-2 control-label">PrivacyEditor</label>
+            <div class="col-sm-10">
+                <textarea asp-for="Privacy.Content"></textarea>
+                <span asp-validation-for="Privacy.Content" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="TermsOfUse.Content" class="col-sm-2 control-label">TermsOfUseEditor</label>
+            <div class="col-sm-10">
+                <textarea asp-for="TermsOfUse.Content"></textarea>
+                <span asp-validation-for="TermsOfUse.Content" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Facebook" class="col-sm-2 control-label">Facebook</label>
+            <div class="col-sm-10">
+                <input asp-for="Facebook" class="form-control height-input" id="facebook">
+                <span asp-validation-for="Facebook" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Twitter" class="col-sm-2 control-label">Twitter</label>
+            <div class="col-sm-10">
+                <input asp-for="Twitter" class="form-control height-input" id="twitter">
+                <span asp-validation-for="Twitter" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Google" class="col-sm-2 control-label">Google</label>
+            <div class="col-sm-10">
+                <input asp-for="Google" class="form-control height-input" id="google">
+                <span asp-validation-for="Google" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="LinkedIn" class="col-sm-2 control-label">LinkedIn</label>
+            <div class="col-sm-10">
+                <input asp-for="LinkedIn" class="form-control height-input" id="linkedIn">
+                <span asp-validation-for="LinkedIn" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Pinterest" class="col-sm-2 control-label">Pinterest</label>
+            <div class="col-sm-10">
+                <input asp-for="Pinterest" class="form-control height-input" id="pinterest">
+                <span asp-validation-for="Pinterest" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Instagram" class="col-sm-2 control-label">Instagram</label>
+            <div class="col-sm-10">
+                <input asp-for="Instagram" class="form-control height-input" id="instagram">
+                <span asp-validation-for="Instagram" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-primary" value="Lưu" />
+            </div>
+        </div>
+    </form>
 </div>
 
-@section scripts
-{
-    <script>
-
-        $(document).ready(function () {
-            //GET
-            $('.admin-collection-list li').click(function (e) {
-                e.preventDefault()
-                $that = $(this);
-                $that.parent().find('li').removeClass('selected');
-                $that.addClass('selected');
-                ///TODO: Call current selected
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: "/api/companies/" + $that.attr("data-company-id"),
-                    success: function (data) {
-                        var json = JSON.parse(JSON.stringify(data));
-                        console.log(json);
-                        document.getElementById("companyId").innerText = json["id"];
-                        $('#name').val(json["name"]);
-                        $('#sologan').val(json["sologan"]);
-                        $('#hotline').val(json["hotline"]);
-                        $('#email').val(json["email"]);
-                        $('#website').val(json["website"]);
-                        $('#timeWork').val(json["timeWork"]);
-                        $('#address').val(json["address"]);
-                        $('#logo').val(json["logo"]);
-                        $('#avatar').val(json["avatar"]);
-
-                        tinymce.get('aboutEditor').setContent(json["about"]["content"]);
-                        tinymce.get('privacyEditor').setContent(json["privacy"]["content"]);
-                        tinymce.get('termsOfUseEditor').setContent(json["termsOfUse"]["content"]);
-
-                        $('#facebook').val(json["facebook"]);
-                        $('#twitter').val(json["twitter"]);
-                        $('#google').val(json["google"]);
-                        $('#linkedIn').val(json["linkedIn"]);
-                        $('#instagram').val(json["instagram"]);
-                        $('#pinterest').val(json["pinterest"]);
-                    },
-                    error: function (error) {
-
-                        jsonValue = jQuery.parseJSON(error.responseText);
-                        alert("error" + error.responseText);
-                    }
-                });
-            });
-
-            //PUT
-            $("#saveCommand").click(function (e) {
-                var link = $(e.target);
-
-                var companyID = $('#companyId').text();
-                if ($.isNumeric(companyID) == false) {
-                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
-                    return;
-                }
-                var companyNAME = document.getElementById("name").value;
-                var companySOLOGAN = document.getElementById("sologan").value;
-                var companyHOTLINE = document.getElementById("hotline").value;
-                var companyEMAIL = document.getElementById("email").value;
-                var companyWEBSITE = document.getElementById("website").value;
-                var companyTIMEWORK = document.getElementById("timeWork").value;
-                var companyADDRESS = document.getElementById("address").value;
-                var companyLOGO = document.getElementById("logo").value;
-                var companyAVATAR = document.getElementById("avatar").value;
-
-                var companyABOUT = tinymce.get('aboutEditor').getContent();
-                var companyPRIVACY = tinymce.get('privacyEditor').getContent();
-                var companyTERMSOFUSE = tinymce.get('termsOfUseEditor').getContent();
-
-                var companyFACEBOOK = document.getElementById("facebook").value;
-                var companyTWITTER = document.getElementById("twitter").value;
-                var companyGOOGLE = document.getElementById("google").value;
-                var companyLINKEDIN = document.getElementById("linkedIn").value;
-                var companyINSTAGRAM = document.getElementById("instagram").value;
-                var companyPINTEREST = document.getElementById("pinterest").value;
-
-                var data = {
-                    id: companyID,
-                    name: companyNAME,
-                    sologan: companySOLOGAN,
-                    hotline: companyHOTLINE,
-                    email: companyEMAIL,
-                    website: companyWEBSITE,
-                    timeWork: companyTIMEWORK,
-                    address: companyADDRESS,
-                    logo: companyLOGO,
-                    avatar: companyAVATAR,
-                    about: {
-                        content: companyABOUT
-                    },
-                    privacy: {
-                        content: companyPRIVACY
-                    },
-                    termsOfUse: {
-                        content: companyTERMSOFUSE
-                    },
-                    facebook: companyFACEBOOK,
-                    twitter: companyTWITTER,
-                    google: companyGOOGLE,
-                    linkedIn: companyLINKEDIN,
-                    instagram: companyINSTAGRAM,
-                    pinterest: companyPINTEREST
-                };
-
-                var companyDTO = JSON.stringify(data)
-
-                bootbox.confirm({
-                    message: "Bạn có muốn lưu thông tin công ty  không?",
-                    buttons: {
-                        confirm: {
-                            label: 'Đồng Ý',
-                            className: 'btn-success'
-                        },
-                        cancel: {
-                            label: 'Không',
-                            className: 'btn-default'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result == true) {
-                            $.ajax({
-                                url: '/api/companies/' + companyID,
-                                dataType: "json",
-                                type: "PUT",
-                                contentType: 'application/json; charset=utf-8',
-                                data: companyDTO,
-                                async: true,
-                                processData: false,
-                                cache: false,
-                                success: function (data) {
-                                    console.log(data);
-                                },
-                                error: function (xhr) {
-                                    console.log('error');
-                                }
-                            });
-                        }
-                    }
-                });
-
-            });//
-
-            //POST
-            $("#js-company-add").click(function (e) {
-                var link = $(e.target);
-                var data = {
-                    name: 'Tên công ty',
-                    sologan: 'sologan',
-                    hotline: '+84 123 456 789',
-                    email: 'name@domain.com',
-                    website: 'http://domain.com',
-                    timeWork: '24/7 from 8:00 to 20:00',
-                    address: 'Viet Nam',
-                    logo: '#',
-                    avatar: '#',
-
-                    facebook: '#',
-                    twitter: '#',
-                    google: '#',
-                    linkedIn: '#',
-                    instagram: '#',
-                    pinterest: '#'
-                };
-
-                var companyDTO = JSON.stringify(data)
-
-                bootbox.confirm({
-                    message: "Bạn có muốn thêm mới thông tin công ty không?",
-                    buttons: {
-                        confirm: {
-                            label: 'Có',
-                            className: 'btn-info'
-                        },
-                        cancel: {
-                            label: 'Không',
-                            className: 'btn-default'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result == true) {
-                            $.ajax({
-                                url: '/api/companies/',
-                                dataType: "json",
-                                type: "POST",
-                                contentType: 'application/json; charset=utf-8',
-                                data: companyDTO,
-                                async: true,
-                                processData: false,
-                                cache: false,
-                                success: function (data) {
-                                    console.log(data);
-                                    var json = JSON.parse(JSON.stringify(data));
-                                    document.getElementById("companyId").innerText = json["id"];
-                                    $('#name').val(json["name"]);
-                                    $('#sologan').val(json["sologan"]);
-                                    $('#hotline').val(json["hotline"]);
-                                    $('#email').val(json["email"]);
-                                    $('#website').val(json["website"]);
-                                    $('#timeWork').val(json["timeWork"]);
-                                    $('#address').val(json["address"]);
-                                    $('#logo').val(json["logo"]);
-                                    $('#avatar').val(json["avatar"]);
-
-                                    $('#facebook').val(json["facebook"]);
-                                    $('#twitter').val(json["twitter"]);
-                                    $('#google').val(json["google"]);
-                                    $('#linkedIn').val(json["linkedIn"]);
-                                    $('#instagram').val(json["instagram"]);
-                                    $('#pinterest').val(json["pinterest"]);
-
-                                },
-                                error: function (xhr) {
-                                    console.log('error');
-                                }
-                            });
-                        }
-                    }
-                });
-            });//
-        });
-    </script>
-}

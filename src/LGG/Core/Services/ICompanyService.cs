@@ -18,5 +18,6 @@ namespace LGG.Core.Services
         CompanyDto Add(CompanyDto tag);
         void Update(CompanyDto tag);
         void Remove(int id);
+        CompanyDto GetCompany();
     }
 }

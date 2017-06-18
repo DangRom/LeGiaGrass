@@ -1,4 +1,5 @@
-﻿using LGG.Core.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using LGG.Core.Models;
 
 namespace LGG.Core.Dtos
 {
@@ -6,6 +7,7 @@ namespace LGG.Core.Dtos
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "khong duoc bo trong")]
         public string Name { get; set; }
 
         public string Description { get; set; }

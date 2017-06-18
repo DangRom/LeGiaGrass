@@ -5,6 +5,7 @@ using LGG.Core.Repositories;
 using LGG.Core.Services;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace LGG.Persistence.Services
 {
@@ -89,6 +90,11 @@ namespace LGG.Persistence.Services
         public CompanyDto GetCompanyFirstOrDefault(bool includeAbout, bool includePrivacy, bool includeTermsOfUse)
         {
             return Mapper.Map<Company, CompanyDto>(_companyRepository.GetCompanyFirstOrDefault(includeAbout, includePrivacy, includeTermsOfUse));
+        }
+
+        public CompanyDto GetCompany()
+        {
+            return Mapper.Map<Company, CompanyDto>(_companyRepository.GetCompany());
         }
     }
 }

@@ -4,6 +4,7 @@ using LGG.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace LGG.Persistence.Repositories
 {
@@ -98,6 +99,8 @@ namespace LGG.Persistence.Repositories
             entity.Address = company.Address;
             entity.Logo = company.Logo;
             entity.Avatar = company.Avatar;
+            entity.Description = company.Description;
+            entity.WhyChooseUs = company.WhyChooseUs;
 
 
             entity.Facebook = company.Facebook;
@@ -164,6 +167,16 @@ namespace LGG.Persistence.Repositories
 
             return query.FirstOrDefault();
 
+        }
+
+        public Company GetCompany()
+        {
+            return _context
+                    .Companies
+                    .Include(x => x.About)
+                    .Include(x => x.Privacy)
+                    .Include(x => x.TermsOfUse)
+                    .FirstOrDefault();
         }
     }
 }
