@@ -1,447 +1,67 @@
-﻿@model IEnumerable<LGG.Core.Dtos.PostDto>
-
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@addTagHelper "Pioneer.Pagination.PioneerPaginationTagHelper, Pioneer.Pagination"
-@inject IOptions<AppConfiguration> AppConfiguration
-
+@model IEnumerable<LGG.Core.Dtos.PostDto>
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<section class="admin-posts">
-    <div class="row expanded">
-        <div class="col-md-3">
-            <div class="admin-canvas-content">
-                <div class="row">
-                    <div class="large-12 columns">
-                        <div class="clearfix">
-                            <button id="js-post-add" class="btn btn-default float-right add">
-                                Thêm
-                            </button>
-                        </div>
-                        <ul class="admin-collection-list">
-                            @foreach (var post in Model)
-                            {
-                                <li data-post-url="@post.Url"><span>@post.Title</span></li>
-                            }
-                        </ul>
-                        @*<pc-pager (onPageClicked)="onPageClicked($event)"
-                            [countPerPage]="postService.countPerPage"
-                            [currentPageIndex]="postService.currentPageIndex"
-                            [totalItemsInCollection]="postService.totalItemsInCollection"></pc-pager>*@
-                        @*<pioneer-pagination info="@ViewBag.PaginatedMeta" route="/post"></pioneer-pagination>*@
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="admin-canvas-content">
-                <div class="row">
-                    <div class="col-md-2 float-right">
-                        <button id="saveCommand" class="btn btn-default">Lưu</button>
-                    </div>
-                    <div class="col-md-2 float-right">
-                        <button id="js-post-delete" class="btn btn-danger">Xóa</button>
-                    </div>
-                    <div class="col-md-12">
-                        <span id="postId" class="record-id"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <form>
-                            <div class="form-group">
-                                <label for="title" class="label-font">Tiêu Đề</label>
-                                <input type="text" class="form-control height-input" id="title" />
-                            </div>
-                            <div class="form-group">
-                                <label for="url" class="label-font">URL</label>
-                                <input type="text" class="form-control height-input" id="url" />
-                            </div>
-                            <div class="form-group">
-                                <label for="description" class="label-font">Giới Thiệu</label>
-                                <input type="text" class="form-control height-input" id="description" />
-                            </div>
-                            <fieldset class="fieldset">
-                                <legend style="font-size:1.35rem; font-weight: bold">Categories</legend>
-                                <span class="admin-post-collection-item">
-                                    @foreach (var category in (List<CategoryDto>)ViewBag.Categories)
-                                    {
-                                        <input type="radio" id="category-@category.CategoryId" data-category-id="@category.CategoryId" name="groupCategories" />
-                                        <label>@category.Name.Substring(0, Math.Min(category.Name.Length, 20))</label>
-                                    }
-                                </span>
-                            </fieldset>
-                            <fieldset class="fieldset">
-                                <legend style="font-size:1.35rem; font-weight: bold">Tags</legend>
-                                <span class="admin-post-collection-item">
-                                    @foreach (var tag in (List<TagDto>)ViewBag.Tags)
-                                    {
-                                        <input type="checkbox" id="tag-@tag.TagId" data-tag-id="@tag.TagId" />
-                                        <label>@tag.Name.Substring(0, Math.Min(tag.Name.Length, 20))</label>
-                                    }
-                                </span>
-                            </fieldset>
-                            <div class="form-group">
-                                <label for="image" class="label-font">Ảnh Lớn</label>
-                                <input type="text" class="form-control height-input" id="image" />
-                            </div>
-                            <div class="form-group">
-                                <label for="smallImage" class="label-font">Ảnh Nhỏ</label>
-                                <input type="text" class="form-control height-input" id="smallImage" />
-                            </div>
-                            <div class="form-group">
-                                <label for="iconImage" class="label-font">Ảnh Icon</label>
-                                <input type="text" class="form-control height-input" id="iconImage" />
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 checkbox">
-                                    <label>
-                                        <input type="checkbox" id="published" checked>Xuất Bản
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="link" class="label-font">Code Link</label>
-                                <input type="text" class="form-control height-input" id="link" />
-                            </div>
-                            <div class="form-group">
-                                <label for="meta" class="label-font">Meta</label>
-                                <input type="text" class="form-control height-input" id="meta" />
-                            </div>
-                            <div class="form-group">
-                                <label for="excerpt" class="label-font">Đoạn Trích</label>
-                                <input type="text" class="form-control height-input" id="excerpt" />
-                            </div>
-                            <div class="form-group">
-                                <label for="articleEditor" class="label-font">Bài viết</label>
-                                <textarea id="articleEditor"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section>
+<div class="content-box-header panel-heading">
+    <div class="panel-title ">Danh sách bai viet</div>
+</div>
+<div class="content-box-large box-with-header">
+    <a href="/admin/posts/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
+    <br /><br />
+    <table id="tablesource" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Tên bai viet</th>
+                <th>Chu de</th>
+                <th>Hien thi</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Tên bai viet</th>
+                <th>Chu de</th>
+                <th>Hien thi</th>
+                <th></th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td>@m.Title</td>
+                    <td>@m.Category.Name</td>
+                    <td class="checkbox">@m.Published</td>
+                    <td style="text-align: right">
+                        <a class="btn btn-primary fa fa-pencil" href="/admin/posts/update/@m.PostId"></a>
+                        <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.PostId)"></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br /><br />
+</div>
 
-@section scripts
-{
-
-    <script>
-
-        $(document).ready(function () {
-            //GET
-            $('.admin-collection-list li').click(function (e) {
-                e.preventDefault()
-                $that = $(this);
-                $that.parent().find('li').removeClass('selected');
-                $that.addClass('selected');
-                ///TODO: Call current selected
+@section scripts{
+    <script type="text/javascript">
+        function del(id){
+        var c = confirm("Bạn có chắc là không muốn hiển chủ đề này ?");
+            if(c){
                 $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: "/api/posts/" + $that.attr("data-post-url"),
-                    success: function (data) {
-                        var json = JSON.parse(JSON.stringify(data));
-                        console.log(json);
-                        document.getElementById("postId").innerText = json["postId"];
-                        $('#title').val(json["title"]);
-                        $('#meta').val(json["meta"]);
-                        $('#description').val(json["description"]);
-                        $('#url').val(json["url"]);
-                        $('#link').val(json["link"]);
-                        $('#published').prop('checked', json["published"]);;
-                        $('#image').val(json["image"]);
-                        $('#smallImage').val(json["smallImage"]);
-                        $('#iconImage').val(json["iconImage"]);
-                        $('#postedOn').val(json['postedOn']);
-                        $('#createdOn').val(json['createdOn']);
-                        $('#modifiedOn').val(json['postedOn']);
-
-                        $('#excerpt').val(json["excerpt"]['content']);
-                        tinymce.get('articleEditor').setContent(json["article"]["content"]);
-
-
-
-                        //category
-                        if (json["category"] != null)
-                            $('#category-' + json["category"]["categoryId"]).prop('checked', json["category"]["categoryId"]);;
-
-                        //tags
-                        $('input:checkbox').prop('checked', false); //remove all tags checked
-                        //check
-                        jQuery.each(json["tags"], function (i, val) {
-                            $('#tag-' + val["tagId"]).prop('checked', true);
-                        });
-
-
-
+                    url: "/admin/post/delete/" + id,
+                    type: "DELETE",
+                    dataType: 'json',
+                    success: function(mess){
+                        window.location.reload();
                     },
-                    error: function (error) {
-
-                        jsonValue = jQuery.parseJSON(error.responseText);
-                        alert("error" + error.responseText);
+                    error: function(error){
+                        alert(error);
                     }
-                });
-            });
-
-            //PUT
-            $("#saveCommand").click(function (e) {
-                var link = $(e.target);
-
-                var postID = $('#postId').text();
-                if ($.isNumeric(postID) == false) {
-                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
-                    return;
-                }
-                var postTITLE = document.getElementById("title").value;
-                var postMETA = document.getElementById("meta").value;
-                var postDESCRIPTION = document.getElementById("description").value;
-                var postURL = document.getElementById("url").value;
-                var postLINK = document.getElementById("link").value;
-                var postPUBLISHED = $("#published").is(":checked");
-                var postIMAGE = document.getElementById("image").value;
-                var postSMALLIMAGE = document.getElementById("smallImage").value;
-                var postICONIMAGE = document.getElementById("iconImage").value;
-
-                var postARTICLE = tinymce.get('articleEditor').getContent();
-
-                var postEXCERPT = document.getElementById("excerpt").value;
-
-                var postCATEGORYID = $("input[name='groupCategories']:checked").attr('data-category-id');
-
-                var data = {
-                    postId: postID,
-                    title: postTITLE,
-                    meta: postMETA,
-                    description: postDESCRIPTION,
-                    url: postURL,
-                    link: postLINK,
-                    published: postPUBLISHED,
-
-                    image: postIMAGE,
-                    smallImage: postSMALLIMAGE,
-                    iconImage: postICONIMAGE,
-
-                    category: {
-                        categoryId: postCATEGORYID
-                    },
-                    article: {
-                        content: postARTICLE
-                    },
-                    excerpt: {
-                        content: postEXCERPT
-
-                    }
-                };
-
-                var postDTO = JSON.stringify(data)
-                console.log(postDTO);
-                bootbox.confirm({
-                    message: "Bạn có muốn lưu bài viết này  không?",
-                    buttons: {
-                        confirm: {
-                            label: 'Đồng Ý',
-                            className: 'btn-success'
-                        },
-                        cancel: {
-                            label: 'Không',
-                            className: 'btn-default'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result == true) {
-                            $.ajax({
-                                url: '/api/posts/' + postID,
-                                dataType: "json",
-                                type: "PUT",
-                                contentType: 'application/json; charset=utf-8',
-                                data: postDTO,
-                                async: true,
-                                processData: false,
-                                cache: false,
-                                success: function (data) {
-                                    console.log(data);
-                                },
-                                error: function (xhr) {
-                                    console.log('error');
-                                }
-                            });
-                        }
-                    }
-                });
-
-            });//
-
-            //POST
-            $("#js-post-add").click(function (e) {
-                var link = $(e.target);
-                var data = {
-                    //empty
-                };
-
-                var postDTO = JSON.stringify(data)
-
-                bootbox.confirm({
-                    message: "Bạn có muốn thêm bài viết không?",
-                    buttons: {
-                        confirm: {
-                            label: 'Có',
-                            className: 'btn-info'
-                        },
-                        cancel: {
-                            label: 'Không',
-                            className: 'btn-default'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result == true) {
-                            $.ajax({
-                                url: '/api/posts/',
-                                dataType: "json",
-                                type: "POST",
-                                contentType: 'application/json; charset=utf-8',
-                                data: postDTO,
-                                async: true,
-                                processData: false,
-                                cache: false,
-                                success: function (data) {
-                                    console.log(data);
-                                    var json = JSON.parse(JSON.stringify(data));
-                                    document.getElementById("postId").innerText = json["postId"];
-                                    $('#title').val(json["title"]);
-                                    $('#meta').val(json["meta"]);
-                                    $('#description').val(json["description"]);
-                                    $('#url').val(json["url"]);
-                                    $('#link').val(json["link"]);
-                                    $('#published').val(json["published"]);
-                                    $('#image').val(json["image"]);
-                                    $('#smallImage').val(json["smallImage"]);
-                                    $('#iconImage').val(json["iconImage"]);
-
-                                    $('#postedOn').val(json["postedOn"]);
-                                    $('#createdOn').val(json["createdOn"]);
-                                    $('#modifiedOn').val(json["modifiedOn"]);
-
-                                    $('#excerpt').val(json["excerpt"]['content']);
-                                    //category
-
-                                    //tags
-                                    tinymce.get('articleEditor').setContent(json["article"]["content"]);
-                                },
-                                error: function (xhr) {
-                                    bootbox.alert("Error: Hệ thống không thể lưu")
-                                    console.log('error');
-                                }
-                            });
-                        }
-                    }
-                });
-            });//
-
-            $("#js-post-delete").click(function (e) {
-                var postID = $('#postId').text();
-                if ($.isNumeric(postID) == false) {
-                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
-                    return;
-                }
-                var postURL = document.getElementById("url").value;
-
-                var link = $(e.target);
-                bootbox.dialog({
-                    message: "Bạn có chắc muốn xóa vĩnh viễn bài viết này không?",
-                    title: "Cảnh báo",
-                    buttons: {
-                        no: {
-                            label: "KHÔNG XÓA",
-                            className: "btn-default",
-                            callback: function () {
-                                bootbox.hideAll();
-                            }
-                        },
-                        yes: {
-                            label: "Có",
-                            className: "btn-danger",
-                            callback: function () {
-                                $.ajax({
-                                    url: "/api/posts/" + postURL,
-                                    method: "DELETE"
-                                })
-                                    .done(function () {
-                                        link.parents(".admin-collection-list li").fadeOut(function () {
-                                            $(this).remove();
-                                        });
-                                    })
-                                    .fail(function () {
-                                        alert("Something failed!");
-                                    });
-                            }
-                        }
-                    }
-                });
-            });
-
-            //Tags selected
-            $(document).on('change', 'input[type="checkbox"]', function (e) {
-                var tagID = $(this).attr('data-tag-id');
-                var postID = $('#postId').text();
-                if ($.isNumeric(postID) == false) {
-                    bootbox.alert("Bạn chưa chọn thông tin cần chỉnh sửa!");
-                    $('input:checkbox').prop('checked', false); //remove all tags checked
-                    return;
-                }
-
-                var isTagChecked = $(this).is(":checked");
-                if (tagID != undefined || tagID != null || postID != undefined || postID != null) {
-                    var data = {
-                        tagId: tagID,
-                        postId: postID
-                    };
-                    var postTagDTO = JSON.stringify(data)
-
-                    if (isTagChecked == true) {
-                        ///TODO: call postTag api add new
-
-                        $.ajax({
-                            url: '/api/post-tags/',
-                            dataType: "json",
-                            type: "POST",
-                            contentType: 'application/json; charset=utf-8',
-                            data: postTagDTO,
-                            async: true,
-                            processData: false,
-                            cache: false,
-                            success: function (data) {
-                                console.log('add tags success!');
-                            },
-                            error: function (xhr) {
-                                console.log('error');
-                                console.log(postTagDTO);
-                            }
-                        });
-                    }
-                    else {
-                        $.ajax({
-                            url: "/api/post-tags/remove/compound/",
-                            method: "POST",
-                            contentType: 'application/json; charset=utf-8',
-                            data: postTagDTO,
-                            async: true,
-                            processData: false,
-                            cache: false,
-                            success: function (data) {
-                                console.log(data);
-                            },
-                            error: function (xhr) {
-                                console.log('error');
-                                console.log(postTagDTO);
-                            }
-                        });
-                    }
-
-                }
-            });
-
-        });
+                })
+            }
+        };
     </script>
 }

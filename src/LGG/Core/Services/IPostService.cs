@@ -20,6 +20,8 @@ namespace LGG.Core.Services
         PostDto Add(PostDto post);
         void Update(PostDto item);
         void Remove(string id);
+        IEnumerable<PostDto> GetAllPostForAdmin();
+        bool CheckTitle(string title);
     }
 
 }

@@ -203,5 +203,15 @@ namespace LGG.Persistence.Services
         {
             _postRepository.Remove(url);
         }
+
+        public IEnumerable<PostDto> GetAllPostForAdmin()
+        {
+            return Mapper.Map<IList<Post>, IList<PostDto>>(_postRepository.GetAllPostForAdmin().ToList());
+        }
+
+        public bool CheckTitle(string title)
+        {
+            return _postRepository.CheckTitle(title);
+        }
     }
 }

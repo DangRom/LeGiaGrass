@@ -387,5 +387,23 @@ namespace LGG.Persistence.Repositories
             _context.Posts.Remove(entity);
             _context.SaveChanges();
         }
+
+        public IEnumerable<Post> GetAllPostForAdmin()
+        {
+            return _context.Posts.Include(p => p.Category)
+                                .Select(x => new Post{
+                                    PostId = x.PostId,
+                                    Title = x.Title,
+                                    Category = x.Category,
+                                    Published = x.Published
+                                }).ToList();
+        }
+
+        public bool CheckTitle(string title)
+        {
+            if(_context.Posts.SingleOrDefault(p => p.Title == title) == null)
+                return false;
+            return true;
+        }
     }
 }

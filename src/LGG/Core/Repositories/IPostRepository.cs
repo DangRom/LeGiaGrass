@@ -25,5 +25,7 @@ namespace LGG.Core.Repositories
         Post Add(Post map);
         void Update(PostDto post);
         void Remove(string url);
+        IEnumerable<Post> GetAllPostForAdmin();
+        bool CheckTitle(string title);
     }
 }
