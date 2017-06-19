@@ -1,6 +1,7 @@
 ﻿using LGG.Core.Dtos;
 using LGG.Core.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LGG.Core.Repositories
 {
@@ -22,7 +23,7 @@ namespace LGG.Core.Repositories
         IEnumerable<Post> GetPostsBasedOnIdCollection(List<int> postIds);
         Post GetPreviousBasedOnId(int id);
         Post GetNextBasedOnId(int id);
-        Post Add(Post map);
+        void AddPost(Post post);
         void Update(PostDto post);
         void Remove(string url);
         IEnumerable<Post> GetAllPostForAdmin();

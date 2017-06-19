@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace LGG.Persistence.Repositories
 {
@@ -326,14 +327,31 @@ namespace LGG.Persistence.Repositories
         /// </summary>
         /// <param name="post">Post model</param>
         /// <returns>New Post entity</returns>
-        public Post Add(Post post)
+        public void AddPost(Post post)
         {
-            _context
-              .Posts
-              .Add(post);
+            //insert except
+            var except = new Excerpt()
+            {
+                Content = post.Excerpt.Content
+            };
+            _context.Excerpts.Add(except);
             _context.SaveChanges();
+            post.ExcerptId = except.ExcerptId;
+            post.Excerpt.ExcerptId = except.ExcerptId;
 
-            return post;
+            //insert arcticel
+            var acticle = new Article()
+            {
+                Content = post.Article.Content
+            };
+            _context.Articles.Add(acticle);
+            _context.SaveChanges();
+            post.ArticleId = acticle.ArticleId;
+            post.Article.ArticleId = acticle.ArticleId;
+
+            post.CategoryId = post.Category.CategoryId;
+            _context.Posts.Add(post);
+            _context.SaveChanges();
         }
 
         /// <summary>
@@ -390,13 +408,19 @@ namespace LGG.Persistence.Repositories
 
         public IEnumerable<Post> GetAllPostForAdmin()
         {
-            return _context.Posts.Include(p => p.Category)
-                                .Select(x => new Post{
-                                    PostId = x.PostId,
-                                    Title = x.Title,
-                                    Category = x.Category,
-                                    Published = x.Published
+            var posts = _context.Posts.Include(p => p.Category)
+                                .Select(x => new {
+                                    x.PostId, x.Title, x.Category, x.Published
                                 }).ToList();
+            foreach (var p in posts)
+            {
+                var post = new Post();
+                post.PostId = p.PostId;
+                post.Title = p.Title;
+                post.Category = p.Category;                
+                post.Published = p.Published;
+                yield return post;
+            }
         }
 
         public bool CheckTitle(string title)

@@ -167,7 +167,7 @@ namespace LGG.Persistence.Services
         /// </summary>
         /// <param name="post">Post object</param>
         /// <returns>New PostDto record</returns>
-        public PostDto Add(PostDto post)
+        public void Add(PostDto post)
         {
             if (post.Title == null)
             {
@@ -175,15 +175,11 @@ namespace LGG.Persistence.Services
                 post.Url = post.Title;
             }
 
-            post.Category = null;
             post.PostedOn = DateTime.Now;
             post.ModifiedOn = post.PostedOn;
             post.CreatedOn = post.PostedOn;
-            post.Published = false;
 
-            var response = _postRepository.Add(Mapper.Map<PostDto, Post>(post));
-            post.PostId = response.PostId;
-            return post;
+            _postRepository.AddPost(Mapper.Map<PostDto, Post>(post));
         }
 
         /// <summary>
@@ -206,7 +202,17 @@ namespace LGG.Persistence.Services
 
         public IEnumerable<PostDto> GetAllPostForAdmin()
         {
-            return Mapper.Map<IList<Post>, IList<PostDto>>(_postRepository.GetAllPostForAdmin().ToList());
+            var postmodel = _postRepository.GetAllPostForAdmin();
+            foreach(var p in postmodel)
+            {
+                var post = new PostDto();
+                post.PostId = p.PostId;
+                post.Title = p.Title;
+                post.Category.CategoryId = p.Category.CategoryId;
+                post.Category.Name = p.Category.Name;
+                post.Published = p.Published;
+                yield return post;
+            }
         }
 
         public bool CheckTitle(string title)

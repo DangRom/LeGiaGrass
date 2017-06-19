@@ -16,6 +16,7 @@ namespace LGG.Areas.Admin.Controllers
         private readonly IPostService _postService;
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
+       
         private Task<List<SelectListItem>> GetCategorys(){
             var categorys = Task.Factory.StartNew(() => _categoryService.GetAllForDropList().Select(s => new SelectListItem
             {
@@ -53,8 +54,8 @@ namespace LGG.Areas.Admin.Controllers
 
         public async Task<IActionResult> New(){
             try{
-                ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys());
-                ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
+                ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys()).Result;
+                //ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
                 return View();
             }catch(Exception ex){
                 ModelState.AddModelError("", ex.Message);
@@ -65,13 +66,13 @@ namespace LGG.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> New(PostDto post){
             try{
-                ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys());
-                ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
+                ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys()).Result;
+                //ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
                 if(await Task.Factory.StartNew(() => _postService.CheckTitle(post.Title))){
                     ModelState.AddModelError("", "hay thu tieu de khac");
                     return View();
                 }
-                _postService.Add(post);
+                await Task.Factory.StartNew(() => _postService.Add(post));
                 return RedirectToAction("New");
             }catch(Exception ex){
                 ModelState.AddModelError("", ex.Message);

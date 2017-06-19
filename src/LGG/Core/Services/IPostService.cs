@@ -17,7 +17,7 @@ namespace LGG.Core.Services
         IEnumerable<PostDto> GetAllByCategoryName(string categoryName, int? top = null);
         IEnumerable<PostDto> GetPopularPosts();
         IEnumerable<PostDto> GetPreviousCurrentNextPost(string id);
-        PostDto Add(PostDto post);
+        void Add(PostDto post);
         void Update(PostDto item);
         void Remove(string id);
         IEnumerable<PostDto> GetAllPostForAdmin();
