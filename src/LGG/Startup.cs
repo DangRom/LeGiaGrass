@@ -80,7 +80,6 @@ namespace LGG
 
             services.AddTransient<IPaginatedMetaService, PaginatedMetaService>();
             services.AddTransient<IdentitySetup>();
-            services.AddTransient<DefaultData>();
 
             // Repositories
             services.AddTransient<IContactRepository, ContactRepository>();
@@ -109,7 +108,7 @@ namespace LGG
         public void Configure(IApplicationBuilder app,
             IHostingEnvironment env,
             ILoggerFactory loggerFactory,
-            IdentitySetup identitySetup, DefaultData defaultData)
+            IdentitySetup identitySetup)
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {

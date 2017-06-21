@@ -19,46 +19,58 @@
     <div class="tp-banner-container">
         <div class="tp-banner">
             <ul>
+                @foreach (var slide in (List<GalleryDto>)ViewBag.Slides)
+                {
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
+                        <!-- MAIN IMAGE --><img src="@(slide.Image)" alt="slide1" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">We Work Hard on Your Yard</div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-speed="630" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">Work of exceptional quality since 1995</div>
+                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
+                    </li>
+                }
                 <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                    <!-- MAIN IMAGE --><img src="images/slides/slide-1.jpg" alt="slide1" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">We Work Hard on Your Yard</div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-speed="630" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">Work of exceptional quality since 1995</div>
-                    <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                </li>
+                @*<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
+                        <!-- MAIN IMAGE --><img src="images/slides/slide-1.jpg" alt="slide1" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">We Work Hard on Your Yard</div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-speed="630" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">Work of exceptional quality since 1995</div>
+                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
+                    </li>*@
                 <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                    <!-- MAIN IMAGE --><img src="images/slides/slide-4.jpg" alt="slide4" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">LAWN SERVICE</div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">Our revive, sustain & thrive services ensure the health of your lawn</div>
-                    <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                </li>
+                @*<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
+                        <!-- MAIN IMAGE --><img src="images/slides/slide-4.jpg" alt="slide4" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">LAWN SERVICE</div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">Our revive, sustain & thrive services ensure the health of your lawn</div>
+                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
+                    </li>*@
                 <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                    <!-- MAIN IMAGE --><img src="images/slides/slide-2.jpg" alt="slide2" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">landscape design</div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">custom landscape maintenance to complement and enhance your home</div>
-                    <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                </li>
+                @*<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
+                        <!-- MAIN IMAGE --><img src="images/slides/slide-2.jpg" alt="slide2" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">landscape design</div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">custom landscape maintenance to complement and enhance your home</div>
+                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
+                    </li>*@
                 <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                    <!-- MAIN IMAGE --><img src="images/slides/slide-3.jpg" alt="slide3" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">SNOW REMOVAL</div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">Avoid condo fees, let us take care of your home snow removal for less</div>
-                    <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                </li>
+                @*<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
+                        <!-- MAIN IMAGE --><img src="images/slides/slide-3.jpg" alt="slide3" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">SNOW REMOVAL</div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">Avoid condo fees, let us take care of your home snow removal for less</div>
+                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
+                    </li>*@
             </ul>
         </div>
     </div>
@@ -86,76 +98,6 @@
                 </a>
             }
 
-            @*<a href="service-page-1.html" class="service iconmove dark">
-                    <div class="service-image"><img src="images/service-1-bg.jpg" alt="#"></div>
-                    <div class="caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="service-icon"><i class="icon first icon-gardener"></i></div>
-                                <div class="service-title">Lawn Service</div>
-                                <div class="service-text">We offer total lawn care and routine maintenance to keep your lawn looking brand new</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>*@
-            @*<a href="service-page-3.html" class="service iconmove light ">
-                    <div class="service-image image-scale"><img src="images/service-2-bg.jpg" alt="#"></div>
-                    <div class="caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="service-title">
-                                    Landscape
-                                    <br> Design Services
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>*@
-            @*<a href="service-page-4.html" class="service iconmove light">
-                    <div class="service-image"><img src="images/service-3-bg.jpg" alt="#"></div>
-                    <div class="caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="service-icon"><i class="icon first icon-tree"></i></div>
-                                <div class="service-title">Leaf Removal</div>
-                                <div class="service-text">Our crew blows leaves to an area of your choice ie: woods, garden, or compost pile</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>*@
-            @*<a href="service-page-5.html" class="service iconmove light">
-                    <div class="service-image image-scale"><img src="images/service-4-bg.jpg" alt="#"></div>
-                    <div class="caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="service-title">Snow Removal</div>
-                                <div class="service-text">We don’t miss a beat when it comes to digging your home or office out from under the snow.</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>*@
-            @*<a href="service-page-6.html" class="service iconmove color">
-                    <div class="service-image"><img src="images/service-5-bg.jpg" alt="#"></div>
-                    <div class="caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="service-icon"><i class="icon first icon-truck-transport"></i></div>
-                                <div class="service-title">Junk Removal</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>*@
-            @*<a href="service-page-7.html" class="service iconmove light">
-                    <div class="service-image image-scale"><img src="images/service-6-bg.jpg" alt="#"></div>
-                    <div class="caption">
-                        <div class="vert-wrap">
-                            <div class="vert">
-                                <div class="service-title">New Tree Planting</div>
-                                <div class="service-text">Let us help you protect your investment and let your new trees thrive!</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>*@
         </div>
         <h2 class="text-center lined">Giới Thiệu</h2>
         <p class="text-center info-text">
@@ -187,26 +129,45 @@
     <div class="container">
         <h2 class="text-center white lined">Sự Khác Biệt</h2>
         <div class="iconcircle-wrap">
-            <div class="iconcircle iconmove">
-                <div class="iconcircle__icon"> <span><i class="icon icon-transport"></i></span> </div>
-                <div class="iconcircle__title"> Clean, Branded Vehicles </div>
-            </div>
-            <div class="iconcircle iconmove">
-                <div class="iconcircle__icon"> <span><i class="icon icon-people"></i></span> </div>
-                <div class="iconcircle__title"> Professional, Uniformed Personnel </div>
-            </div>
-            <div class="iconcircle iconmove">
-                <div class="iconcircle__icon"> <span><i class="icon icon-phone-auricular"></i></span> </div>
-                <div class="iconcircle__title"> Timely Response Guarantee </div>
-            </div>
-            <div class="iconcircle iconmove">
-                <div class="iconcircle__icon"> <span><i class="icon icon-lawn-mowet"></i></span> </div>
-                <div class="iconcircle__title"> Safe, Reliable Equipment Maintained Daily </div>
-            </div>
-            <div class="iconcircle iconmove">
-                <div class="iconcircle__icon"> <span><i class="icon icon-analytic-report"></i></span> </div>
-                <div class="iconcircle__title"> Status and Quality Reports Delivered Timely </div>
-            </div>
+            @if (!string.IsNullOrEmpty(company.OurDifference1))
+            {
+                <div class="iconcircle iconmove">
+                    <div class="iconcircle__icon"> <span><i class="icon icon-transport"></i></span> </div>
+                    <div class="iconcircle__title"> @company.OurDifference1 </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(company.OurDifference2))
+            {
+                <div class="iconcircle iconmove">
+                    <div class="iconcircle__icon"> <span><i class="icon icon-people"></i></span> </div>
+                    <div class="iconcircle__title"> @company.OurDifference2 </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(company.OurDifference3))
+            {
+                <div class="iconcircle iconmove">
+                    <div class="iconcircle__icon"> <span><i class="icon icon-phone-auricular"></i></span> </div>
+                    <div class="iconcircle__title"> @company.OurDifference3 </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(company.OurDifference4))
+            {
+                <div class="iconcircle iconmove">
+                    <div class="iconcircle__icon"> <span><i class="icon icon-lawn-mowet"></i></span> </div>
+                    <div class="iconcircle__title"> @company.OurDifference4 </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(company.OurDifference5))
+            {
+                <div class="iconcircle iconmove">
+                    <div class="iconcircle__icon"> <span><i class="icon icon-analytic-report"></i></span> </div>
+                    <div class="iconcircle__title"> @company.OurDifference5 </div>
+                </div>
+            }
         </div>
     </div>
 </section>
@@ -214,22 +175,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 animation" data-animation="fadeIn" data-animation-delay="0.6s">
-                <h2 class="text-center lined">Video Presentation </h2>
+                <h2 class="text-center lined">Video Giới Thiệu </h2>
                 <div class="video-responsive">
-                    <iframe src="http://www.youtube.com/embed/-PWxUQCNGtg?wmode=opaque" allowfullscreen></iframe>
+                    <iframe src="@(company.VideoPresentation)" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="divider divider--md visible-sm visible-xs"></div>
             <div class="col-md-4 animation" data-animation="fadeIn" data-animation-delay="0.9s">
-                <h2 class="text-center lined">Why Choose Us?</h2>
-                <p>The single biggest difference between Lawn Care and other lawn care providers boils down to one simple premise: we care more. It’s the kind of caring that can only come from being the business owner. One that lives, works, and is a part of the community they serve.</p>
-                <ul class="marker-list-sm">
-                    <li>We have the highest customer retention rate in the industry.</li>
-                    <li>We have 50 years of experience.</li>
-                    <li>We have the highest TrustPilot score in the industry.</li>
-                    <li>We’re locally owned, so there’s no big business “run-around”.</li>
-                    <li>We offer the best guarantee in the business: If you’re not 100% satisfied – we’ll make it right. It’s that simple.</li>
-                </ul>
+                <h2 class="text-center lined">Tại Sao Chọn Chúng Tôi</h2>
+                <p>
+                    @company.WhyChooseUs
+                </p>
             </div>
         </div>
     </div>
@@ -553,211 +509,219 @@
         </div>
     </div>
 </section>
-<section class="content content--parallax top-null" data-image="images/parallax-bg-1.jpg">
-    <div class="container">
-        <div class="text-banner-light">
-            <h3>Get Your Lawn Ready for Summer 2017!</h3>
-            <p>Contact us for a free no obligation Lawn Care Survey worth $25 and we will agree a convenient time to meet you and survey your lawn.</p>
-            <div class="form-popup-wrap">
-                <a href="" class="btn btn--wd btn--invert form-popup-link">FREE LAWN SURVEY</a>
-                <div class="form-popup">
-                    <form class="quote-form" method="post" id="form5">
-                        <h3>Lawn Survey Order</h3>
-                        <div class="successform successQuote">
-                            <p>Your message was sent successfully!</p>
-                        </div>
-                        <div class="errorform errorQuote">
-                            <p>Something went wrong, try refreshing and submitting the form again.</p>
-                        </div>
-                        <div class="form-inline">
-                            <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-                        </div>
-                        <div class="form-inline">
-                            <div>
-                                <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+
+@*EVENTS*@
+@if (((List<GalleryDto>)ViewBag.Events).Count > 0)
+{
+    <section class="content content--parallax top-null" data-image="@(((List<GalleryDto>)ViewBag.Events).FirstOrDefault().Image)">
+        <div class="container">
+            <div class="text-banner-light">
+                <h3>Get Your Lawn Ready for Summer 2017!</h3>
+                <p>Contact us for a free no obligation Lawn Care Survey worth $25 and we will agree a convenient time to meet you and survey your lawn.</p>
+                <div class="form-popup-wrap">
+                    <a href="" class="btn btn--wd btn--invert form-popup-link">FREE LAWN SURVEY</a>
+                    <div class="form-popup">
+                        <form class="quote-form" method="post" id="form5">
+                            <h3>Lawn Survey Order</h3>
+                            <div class="successform successQuote">
+                                <p>Your message was sent successfully!</p>
                             </div>
-                            <div>
-                                <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+                            <div class="errorform errorQuote">
+                                <p>Something went wrong, try refreshing and submitting the form again.</p>
                             </div>
-                        </div>
-                        <div class="form-inline">
-                            <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-                        </div>
-                        <div class="form-inline">
-                            <div class="select-wrapper select--full">
-                                <select name="select" class="select--wd">
-                                    <option value="Service you need">Service you need</option>
-                                    <option value="Tree service">Tree service</option>
-                                    <option value="Junk Removal">Junk Removal</option>
-                                    <option value="New tree planting">New tree planting</option>
-                                    <option value="Retaining walls">Retaining walls</option>
-                                </select>
+                            <div class="form-inline">
+                                <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
                             </div>
-                        </div>
-                        <div class="form-inline">
-                            <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>order now</button>
-                    </form>
+                            <div class="form-inline">
+                                <div>
+                                    <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+                                </div>
+                                <div>
+                                    <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+                                </div>
+                            </div>
+                            <div class="form-inline">
+                                <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
+                            </div>
+                            <div class="form-inline">
+                                <div class="select-wrapper select--full">
+                                    <select name="select" class="select--wd">
+                                        <option value="Service you need">Service you need</option>
+                                        <option value="Tree service">Tree service</option>
+                                        <option value="Junk Removal">Junk Removal</option>
+                                        <option value="New tree planting">New tree planting</option>
+                                        <option value="Retaining walls">Retaining walls</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-inline">
+                                <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>order now</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<section class="content content--fill content--fill--light top-null">
-    <div class="container">
-        <h2 class="text-center lined">Tin Mới</h2>
-        <div class="row">
-            @foreach (var post in (List<PostDto>)ViewBag.Posts)
+    </section>
+
+}
+
+    @*BLOG*@
+    <section class="content content--fill content--fill--light top-null">
+        <div class="container">
+            <h2 class="text-center lined">Tin Mới</h2>
+            <div class="row">
+                @foreach (var post in (List<PostDto>)ViewBag.Posts)
             {
-            <div class="col-sm-4">
-                <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="@(indexLastestPost==1?"0s":"0.5s") ">
+                    <div class="col-sm-4">
+                        <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="@(indexLastestPost==1?"0s":"0.5s") ">
+                            <div class="blog-preview-image">
+                                <img src="@(post.Image)" alt="">
+                            </div>
+                            <div class="blog-preview-text">
+                                <div class="blog-post-title">
+                                    @(post.Title)
+                                </div>
+                                <div class="blog-preview-date">
+                                    @*April 18, 2017*@
+                                    @(post.PostedOn.ToString("dd/MM/yyyy"))
+                                </div>
+                                <div class="blog-preview-teaser">
+                                    @Html.Raw(post.Excerpt?.Content)
+                                </div>
+                                <div class="blog-preview-link text-right"><a href="/post/@(post.Url) "><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    indexLastestPost++;
+                }
+                @*<div class="col-sm-4">
+                    <div class="blog-preview animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                     <div class="blog-preview-image">
-                        <img src="@(post.Image)" alt="">
+                    <img src="images/img-blog-preview-1.jpg" alt="">
                     </div>
                     <div class="blog-preview-text">
-                        <div class="blog-post-title">
-                            @(post.Title)
-                        </div>
-                        <div class="blog-preview-date">
-                            @*April 18, 2017*@
-                            @(post.PostedOn.ToString("dd/MM/yyyy"))
-                        </div>
-                        <div class="blog-preview-teaser">
-                            @Html.Raw(post.Excerpt?.Content)
-                        </div>
-                        <div class="blog-preview-link text-right"><a href="/post/@(post.Url) "><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                    <div class="blog-post-title">
+                    Lawn Preparation Work for Winter
                     </div>
-                </div>
+                    <div class="blog-preview-date">
+                    March 20, 2017
+                    </div>
+                    <div class="blog-preview-teaser">
+                    Many people are under the impression that there is nothing that they can do about the way that their lawn looks in the winter months. It's important to clean up fallen leaves before winter sets in. When left on your lawn, leaves can smother and kill the grass.
+                    </div>
+                    <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                    </div>
+                    </div>
+                    </div>*@
+
+                @*<div class="col-sm-4">
+                    <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="0s">
+                    <div class="blog-preview-image">
+                    <img src="images/img-blog-preview-2.jpg" alt="">
+                    </div>
+                    <div class="blog-preview-text">
+                    <div class="blog-post-title">
+                    Lawn Care Tips for the Spring Season
+                    </div>
+                    <div class="blog-preview-date">
+                    April 18, 2017
+                    </div>
+                    <div class="blog-preview-teaser">
+                    Tackling spring lawn care provides a just-right dose of fresh air, sunshine, and exercise – and sets your lawn on its way to season-long glory. Spring lawn chores aren’t difficult, but they do play a vital role in getting your grass on track for a healthy, productive season.
+                    </div>
+                    <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                    </div>
+                    </div>
+                    </div>*@
+
+                @*<div class="col-sm-4">
+                    <div class="blog-preview animation" data-animation="fadeInRight" data-animation-delay="0.5s">
+                    <div class="blog-preview-image">
+                    <img src="images/img-blog-preview-3.jpg" alt="">
+                    </div>
+                    <div class="blog-preview-text">
+                    <div class="blog-post-title">
+                    Get 25% OFF on Your First Service
+                    </div>
+                    <div class="blog-preview-date">
+                    April 27, 2017
+                    </div>
+                    <div class="blog-preview-teaser">
+                    Sign up for an annual Lawn Care or Mosquito Control Program and get 25% OFF on your first service. The truth is, lawn care is a complex science. But many homeowners rely on trial and error and end up frustrated, never reaching their lawn goals.
+                    </div>
+                    <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                    </div>
+                    </div>
+                    </div>*@
             </div>
-                indexLastestPost++;
-            }
-            @*<div class="col-sm-4">
-                <div class="blog-preview animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                <div class="blog-preview-image">
-                <img src="images/img-blog-preview-1.jpg" alt="">
-                </div>
-                <div class="blog-preview-text">
-                <div class="blog-post-title">
-                Lawn Preparation Work for Winter
-                </div>
-                <div class="blog-preview-date">
-                March 20, 2017
-                </div>
-                <div class="blog-preview-teaser">
-                Many people are under the impression that there is nothing that they can do about the way that their lawn looks in the winter months. It's important to clean up fallen leaves before winter sets in. When left on your lawn, leaves can smother and kill the grass.
-                </div>
-                <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                </div>
-                </div>
-                </div>*@
-
-            @*<div class="col-sm-4">
-                <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="0s">
-                <div class="blog-preview-image">
-                <img src="images/img-blog-preview-2.jpg" alt="">
-                </div>
-                <div class="blog-preview-text">
-                <div class="blog-post-title">
-                Lawn Care Tips for the Spring Season
-                </div>
-                <div class="blog-preview-date">
-                April 18, 2017
-                </div>
-                <div class="blog-preview-teaser">
-                Tackling spring lawn care provides a just-right dose of fresh air, sunshine, and exercise – and sets your lawn on its way to season-long glory. Spring lawn chores aren’t difficult, but they do play a vital role in getting your grass on track for a healthy, productive season.
-                </div>
-                <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                </div>
-                </div>
-                </div>*@
-
-            @*<div class="col-sm-4">
-                <div class="blog-preview animation" data-animation="fadeInRight" data-animation-delay="0.5s">
-                <div class="blog-preview-image">
-                <img src="images/img-blog-preview-3.jpg" alt="">
-                </div>
-                <div class="blog-preview-text">
-                <div class="blog-post-title">
-                Get 25% OFF on Your First Service
-                </div>
-                <div class="blog-preview-date">
-                April 27, 2017
-                </div>
-                <div class="blog-preview-teaser">
-                Sign up for an annual Lawn Care or Mosquito Control Program and get 25% OFF on your first service. The truth is, lawn care is a complex science. But many homeowners rely on trial and error and end up frustrated, never reaching their lawn goals.
-                </div>
-                <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                </div>
-                </div>
-                </div>*@
         </div>
-    </div>
-</section>
-<!-- End Content section -->
-<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="~/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="~/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    </section>
+    <!-- End Content section -->
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="~/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-        var fullwidth = "on";
-        var fullscreen = "off";
-        jQuery('.tp-banner').show().revolution({
-            dottedOverlay: "none",
-            delay: 5000,
-            startwidth: 1920,
-            startheight: 746,
-            hideThumbs: 200,
-            hideTimerBar: "on",
-            thumbWidth: 100,
-            thumbHeight: 50,
-            thumbAmount: 5,
-            navigationType: "none",
-            navigationArrows: "",
-            navigationStyle: "",
-            touchenabled: "on",
-            onHoverStop: "off",
-            swipe_velocity: 0.7,
-            swipe_min_touches: 1,
-            swipe_max_touches: 1,
-            drag_block_vertical: false,
-            parallax: "mouse",
-            parallaxBgFreeze: "on",
-            parallaxLevels: [7, 4, 3, 2, 5, 4, 3, 2, 1, 0],
-            keyboardNavigation: "off",
-            navigationHAlign: "center",
-            navigationVAlign: "bottom",
-            navigationHOffset: 0,
-            navigationVOffset: 20,
-            soloArrowLeftHalign: "left",
-            soloArrowLeftValign: "center",
-            soloArrowLeftHOffset: 20,
-            soloArrowLeftVOffset: 0,
-            soloArrowRightHalign: "right",
-            soloArrowRightValign: "center",
-            soloArrowRightHOffset: 20,
-            soloArrowRightVOffset: 0,
-            shadow: 0,
-            fullWidth: fullwidth,
-            fullScreen: fullscreen,
-            spinner: "",
-            stopLoop: "off",
-            stopAfterLoops: -1,
-            stopAtSlide: -1,
-            shuffle: "off",
-            autoHeight: "off",
-            forceFullWidth: "off",
-            hideThumbsOnMobile: "off",
-            hideNavDelayOnMobile: 1500,
-            hideBulletsOnMobile: "off",
-            hideArrowsOnMobile: "off",
-            hideThumbsUnderResolution: 0,
-            hideSliderAtLimit: 0,
-            hideCaptionAtLimit: 0,
-            hideAllCaptionAtLilmit: 0,
-            startWithSlide: 0,
-            fullScreenOffsetContainer: ".header .navbar-wd"
-        });
-    }); //ready
-</script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var fullwidth = "on";
+            var fullscreen = "off";
+            jQuery('.tp-banner').show().revolution({
+                dottedOverlay: "none",
+                delay: 5000,
+                startwidth: 1920,
+                startheight: 746,
+                hideThumbs: 200,
+                hideTimerBar: "on",
+                thumbWidth: 100,
+                thumbHeight: 50,
+                thumbAmount: 5,
+                navigationType: "none",
+                navigationArrows: "",
+                navigationStyle: "",
+                touchenabled: "on",
+                onHoverStop: "off",
+                swipe_velocity: 0.7,
+                swipe_min_touches: 1,
+                swipe_max_touches: 1,
+                drag_block_vertical: false,
+                parallax: "mouse",
+                parallaxBgFreeze: "on",
+                parallaxLevels: [7, 4, 3, 2, 5, 4, 3, 2, 1, 0],
+                keyboardNavigation: "off",
+                navigationHAlign: "center",
+                navigationVAlign: "bottom",
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+                soloArrowLeftHalign: "left",
+                soloArrowLeftValign: "center",
+                soloArrowLeftHOffset: 20,
+                soloArrowLeftVOffset: 0,
+                soloArrowRightHalign: "right",
+                soloArrowRightValign: "center",
+                soloArrowRightHOffset: 20,
+                soloArrowRightVOffset: 0,
+                shadow: 0,
+                fullWidth: fullwidth,
+                fullScreen: fullscreen,
+                spinner: "",
+                stopLoop: "off",
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+                shuffle: "off",
+                autoHeight: "off",
+                forceFullWidth: "off",
+                hideThumbsOnMobile: "off",
+                hideNavDelayOnMobile: 1500,
+                hideBulletsOnMobile: "off",
+                hideArrowsOnMobile: "off",
+                hideThumbsUnderResolution: 0,
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                startWithSlide: 0,
+                fullScreenOffsetContainer: ".header .navbar-wd"
+            });
+        }); //ready
+    </script>

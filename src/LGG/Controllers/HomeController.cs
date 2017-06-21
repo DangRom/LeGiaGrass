@@ -50,6 +50,9 @@ namespace LGG.Controllers
             ViewBag.Posts = _postService.GetAllByCategoryName("Blog", 3).ToList();
             ViewBag.Services = _postService.GetAllByCategoryName("Service");
 
+            ViewBag.Events = _galleryService.GetByCategoryName("Event");
+            ViewBag.Slides = _galleryService.GetByCategoryName("Slide");
+
             return View();
         }
 

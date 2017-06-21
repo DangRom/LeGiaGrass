@@ -3,7 +3,6 @@ using LGG.Core.Dtos;
 using LGG.Core.Models;
 using LGG.Core.Repositories;
 using LGG.Core.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,11 +23,16 @@ namespace LGG.Persistence.Services
         /// <returns>Collection of Galleries</returns>
         public IEnumerable<GalleryDto> GetAll()
         {
-            return _galleryRepository.GetAll().Select(g => new GalleryDto{
-                GalleryId = g.GalleryId,
-                Name = g.Name,
-                CategoryName = g.Category.Name
-            }).ToList();
+            //return _galleryRepository.GetAll().Select(g => new GalleryDto
+            //{
+            //    GalleryId = g.GalleryId,
+            //    Image = g.Image,
+            //    Name = g.Name,
+            //    Description=g.Description,
+            //    CategoryName = g.Category.Name
+            //}).ToList();
+
+            return Mapper.Map<IList<Gallery>, IList<GalleryDto>>(_galleryRepository.GetAll().ToList());
         }
 
         /// <summary>
@@ -51,7 +55,8 @@ namespace LGG.Persistence.Services
         public GalleryDto GetById(int id)
         {
             var gallerymodel = _galleryRepository.GetById(id);
-            var gallery = new GalleryDto(){
+            var gallery = new GalleryDto()
+            {
                 GalleryId = gallerymodel.GalleryId,
                 Name = gallerymodel.Name,
                 Image = gallerymodel.Image,
@@ -68,7 +73,8 @@ namespace LGG.Persistence.Services
         /// <param name="category">Category</param>
         public void Add(GalleryDto gallery)
         {
-            var gall = new Gallery(){
+            var gall = new Gallery()
+            {
                 GalleryId = gallery.GalleryId,
                 Name = gallery.Name,
                 Image = gallery.Image,
@@ -98,6 +104,11 @@ namespace LGG.Persistence.Services
         public bool CheckName(string name)
         {
             return _galleryRepository.CheckName(name);
+        }
+
+        public IEnumerable<GalleryDto> GetByCategoryName(string categoryName)
+        {
+            return Mapper.Map<IList<Gallery>, IList<GalleryDto>>(_galleryRepository.GetByCategoryName(categoryName).ToList());
         }
     }
 }

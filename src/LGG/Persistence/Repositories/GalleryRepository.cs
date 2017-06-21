@@ -4,7 +4,6 @@ using LGG.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace LGG.Persistence.Repositories
 {
@@ -107,6 +106,14 @@ namespace LGG.Persistence.Repositories
         {
             if (_context.Galleries.FirstOrDefault(g => g.Name == name) == null) return false;
             return true;
+        }
+
+        public IEnumerable<Gallery> GetByCategoryName(string categoryName)
+        {
+            return _context
+                   .Galleries
+                   .Where(x => x.Category.Name.ToLower() == categoryName.ToLower())
+                   .ToList();
         }
     }
 }
