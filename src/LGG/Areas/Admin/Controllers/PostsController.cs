@@ -1,12 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using LGG.Core.Dtos;
 using LGG.Core.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
-using LGG.Core.Dtos;
+using System.Threading.Tasks;
 
 namespace LGG.Areas.Admin.Controllers
 {
@@ -16,8 +15,9 @@ namespace LGG.Areas.Admin.Controllers
         private readonly IPostService _postService;
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
-       
-        private Task<List<SelectListItem>> GetCategorys(){
+
+        private Task<List<SelectListItem>> GetCategorys()
+        {
             var categorys = Task.Factory.StartNew(() => _categoryService.GetAllForDropList().Select(s => new SelectListItem
             {
                 Value = s.CategoryId.ToString(),
@@ -27,7 +27,8 @@ namespace LGG.Areas.Admin.Controllers
             return categorys;
         }
 
-        private Task<List<SelectListItem>> GetTags(){
+        private Task<List<SelectListItem>> GetTags()
+        {
             var categorys = Task.Factory.StartNew(() => _tagService.GetAll().Select(s => new SelectListItem
             {
                 Value = s.TagId.ToString(),
@@ -45,36 +46,48 @@ namespace LGG.Areas.Admin.Controllers
             _tagService = tagService;
         }
 
-        public async Task<IActionResult> Index(){
-            try{
+        public async Task<IActionResult> Index()
+        {
+            try
+            {
                 var posts = await Task.Factory.StartNew(() => _postService.GetAllPostForAdmin());
                 return View(posts);
-            }catch{return View("Error");}
+            }
+            catch { return View("Error"); }
         }
 
-        public async Task<IActionResult> New(){
-            try{
+        public async Task<IActionResult> New()
+        {
+            try
+            {
                 ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys()).Result;
-                //ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
+                ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
                 return View();
-            }catch(Exception ex){
+            }
+            catch (Exception ex)
+            {
                 ModelState.AddModelError("", ex.Message);
                 return View();
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> New(PostDto post){
-            try{
+        public async Task<IActionResult> New(PostDto post)
+        {
+            try
+            {
                 ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys()).Result;
                 //ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
-                if(await Task.Factory.StartNew(() => _postService.CheckTitle(post.Title))){
+                if (await Task.Factory.StartNew(() => _postService.CheckTitle(post.Title)))
+                {
                     ModelState.AddModelError("", "hay thu tieu de khac");
                     return View();
                 }
                 await Task.Factory.StartNew(() => _postService.Add(post));
                 return RedirectToAction("New");
-            }catch(Exception ex){
+            }
+            catch (Exception ex)
+            {
                 ModelState.AddModelError("", ex.Message);
                 return View();
             }

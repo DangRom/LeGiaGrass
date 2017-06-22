@@ -7,6 +7,15 @@
     var company = (CompanyDto)ViewBag.Company;
 }
 
+@section loaderWrapper{
+    <div id="loader-wrapper" class="loader-on">
+        <div id="loader" class="mower-loader">
+            <div class="mower"> <img src="images/lawnmower.png" alt=""> </div>
+            <div class="grass"></div>
+            <div class="text">Loading...</div>
+        </div>
+    </div>
+}
 
 <section class="content" id="slider">
     <!-- Slider section -->
