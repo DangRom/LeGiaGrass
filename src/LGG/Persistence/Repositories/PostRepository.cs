@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace LGG.Persistence.Repositories
 {
@@ -329,29 +328,32 @@ namespace LGG.Persistence.Repositories
         /// <returns>New Post entity</returns>
         public void AddPost(Post post)
         {
-            //insert except
-            var except = new Excerpt()
-            {
-                Content = post.Excerpt.Content
-            };
-            _context.Excerpts.Add(except);
-            _context.SaveChanges();
-            post.ExcerptId = except.ExcerptId;
-            post.Excerpt.ExcerptId = except.ExcerptId;
+            ////insert except
+            //var except = new Excerpt()
+            //{
+            //    Content = post.Excerpt.Content
+            //};
+            //_context.Excerpts.Add(except);
+            //_context.SaveChanges();
+            //post.ExcerptId = except.ExcerptId;
 
-            //insert arcticel
-            var acticle = new Article()
-            {
-                Content = post.Article.Content
-            };
-            _context.Articles.Add(acticle);
-            _context.SaveChanges();
-            post.ArticleId = acticle.ArticleId;
-            post.Article.ArticleId = acticle.ArticleId;
+            ////insert arcticel
+            //var acticle = new Article()
+            //{
+            //    Content = post.Article.Content
+            //};
+            //_context.Articles.Add(acticle);
+            //_context.SaveChanges();
+            //post.ArticleId = acticle.ArticleId;
 
-            post.CategoryId = post.Category.CategoryId;
+            //post.Excerpt = null;
+            //post.Article = null;
+
+            //post.CategoryId = post.Category.CategoryId;
+
             _context.Posts.Add(post);
             _context.SaveChanges();
+
         }
 
         /// <summary>
@@ -409,15 +411,19 @@ namespace LGG.Persistence.Repositories
         public IEnumerable<Post> GetAllPostForAdmin()
         {
             var posts = _context.Posts.Include(p => p.Category)
-                                .Select(x => new {
-                                    x.PostId, x.Title, x.Category, x.Published
+                                .Select(x => new
+                                {
+                                    x.PostId,
+                                    x.Title,
+                                    x.Category,
+                                    x.Published
                                 }).ToList();
             foreach (var p in posts)
             {
                 var post = new Post();
                 post.PostId = p.PostId;
                 post.Title = p.Title;
-                post.Category = p.Category;                
+                post.Category = p.Category;
                 post.Published = p.Published;
                 yield return post;
             }
@@ -425,7 +431,7 @@ namespace LGG.Persistence.Repositories
 
         public bool CheckTitle(string title)
         {
-            if(_context.Posts.SingleOrDefault(p => p.Title == title) == null)
+            if (_context.Posts.SingleOrDefault(p => p.Title == title) == null)
                 return false;
             return true;
         }

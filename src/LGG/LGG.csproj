@@ -14,12 +14,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Content Include="wwwroot\admin\css\fm.tagator.jquery.css" />
-    <Content Include="wwwroot\admin\css\fm.tagator.jquery.min.css" />
-    <Content Include="wwwroot\admin\css\fm.tagator.jquery.min.map" />
     <Content Include="wwwroot\admin\css\inputTags.css" />
-    <Content Include="wwwroot\admin\js\fm.tagator.jquery.js" />
-    <Content Include="wwwroot\admin\js\inputTags.jquery.js" />
   </ItemGroup>
   
   <ItemGroup>
