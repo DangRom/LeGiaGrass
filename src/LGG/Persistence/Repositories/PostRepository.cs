@@ -366,6 +366,7 @@ namespace LGG.Persistence.Repositories
                 .Posts
                 .Include(x => x.Category)
                 .Include(x => x.Excerpt)
+                .Include(x=>x.Article)
                 .FirstOrDefault(x => x.PostId == post.PostId);
 
             // Post

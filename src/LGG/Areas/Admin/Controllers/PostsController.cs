@@ -62,7 +62,10 @@ namespace LGG.Areas.Admin.Controllers
             {
                 ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys()).Result;
                 ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
-                return View();
+                PostDto post = new PostDto();
+                _postService.Add(post);
+                var model = _postService.GetByUrl(post.Url, false);
+                return View(model);
             }
             catch (Exception ex)
             {
@@ -78,13 +81,13 @@ namespace LGG.Areas.Admin.Controllers
             {
                 ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys()).Result;
                 //ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
-                if (await Task.Factory.StartNew(() => _postService.CheckTitle(post.Title)))
-                {
-                    ModelState.AddModelError("", "hay thu tieu de khac");
-                    return View();
-                }
-                await Task.Factory.StartNew(() => _postService.Add(post));
-                return RedirectToAction("New");
+                //if (await Task.Factory.StartNew(() => _postService.CheckTitle(post.Title)))
+                //{
+                //    ModelState.AddModelError("", "hay thu tieu de khac");
+                //    return View();
+                //}
+                await Task.Factory.StartNew(() => _postService.Update(post));
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
