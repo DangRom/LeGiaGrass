@@ -137,7 +137,7 @@ namespace LGG.Persistence.Repositories
 
             if (!includeUnpublished)
             {
-                query = query.Where(x => x.Published);
+                // query = query.Where(x => x.Published);
             }
 
             if (includeExcerpt)
@@ -172,8 +172,8 @@ namespace LGG.Persistence.Repositories
             if (!includeUnpublished)
             {
                 query = _context
-                    .Posts
-                    .Where(x => x.Published);
+                    .Posts;
+                //.Where(x => x.Published);//Chưa fix được C# bool =>mysql
             }
             else
             {
@@ -273,15 +273,15 @@ namespace LGG.Persistence.Repositories
         {
             var query = _context
                     .Posts
-                    .Where(x => x.Published)
+                    //.Where(x => x.Published) //Chưa sửa được kiểu C# bool => mysql
                     .Include(x => x.Excerpt)
                     .Include(x => x.Category)
                     .Where(x => x.Category.Name.ToLower() == category.ToLower())
                     .OrderByDescending(x => x.PostedOn);
             if (top != null)
                 return query
-                    .Take((int)top)
-                    .ToList();
+                  .Take((int)top)
+                  .ToList();
             else
                 return query.ToList();
         }
@@ -366,7 +366,7 @@ namespace LGG.Persistence.Repositories
                 .Posts
                 .Include(x => x.Category)
                 .Include(x => x.Excerpt)
-                .Include(x=>x.Article)
+                .Include(x => x.Article)
                 .FirstOrDefault(x => x.PostId == post.PostId);
 
             // Post

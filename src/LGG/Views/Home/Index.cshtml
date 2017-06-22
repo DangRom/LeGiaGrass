@@ -418,11 +418,7 @@
 
                         @foreach (var group in galleries)
                         {
-
-                            foreach (var gallery in group)
-                            {
-                                <li><a href="#filter" data-option-value=".categoryId-@(gallery.Category.CategoryId)" class="">@gallery.Category.Name</a></li>
-                            }
+                            <li><a href="#filter" data-option-value=".categoryId-@(group.FirstOrDefault().Category.CategoryId)" class="">@group.FirstOrDefault().Category.Name</a></li>
                         }
                     </ul>
                 </div>
