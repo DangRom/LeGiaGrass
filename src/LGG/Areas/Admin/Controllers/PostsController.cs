@@ -16,7 +16,7 @@ namespace LGG.Areas.Admin.Controllers
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
 
-        private Task<List<SelectListItem>> GetCategorys()
+        private Task<List<SelectListItem>> GetCategories()
         {
             var categorys = Task.Factory.StartNew(() => _categoryService.GetAllForDropList().Select(s => new SelectListItem
             {
@@ -60,7 +60,7 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categories = await Task.Factory.StartNew(() => GetCategorys()).Result;
+                ViewBag.Categories = await Task.Factory.StartNew(() => GetCategories()).Result;
                 ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
                 PostDto post = new PostDto();
                 _postService.Add(post);
@@ -79,7 +79,7 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categories = await Task.Factory.StartNew(() => GetCategorys()).Result;
+                ViewBag.Categories = await Task.Factory.StartNew(() => GetCategories()).Result;
                 //ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
                 //if (await Task.Factory.StartNew(() => _postService.CheckTitle(post.Title)))
                 //{
@@ -93,6 +93,67 @@ namespace LGG.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("", ex.Message);
                 return View();
+            }
+        }
+
+
+        public async Task<IActionResult> Update(int id)
+        {
+            try
+            {
+                if (id > 0)
+                {
+                    var post = await Task.Factory.StartNew(() => _postService.GetById(id));
+                    if (post != null)
+                    {
+                        ViewBag.Categories = await GetCategories();
+                        return View(post);
+                    }
+                }
+                ModelState.AddModelError("", "Bài viết không còn tồn tại!");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(PostDto post)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await Task.Factory.StartNew(() => _postService.Update(post));
+                    return RedirectToAction("Index");
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View();
+            }
+        }
+
+        [HttpDelete]
+        public async Task<JsonResult> Delete(string url)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(url))
+                {
+                    await Task.Factory.StartNew(() => _postService.Remove(url));
+                    return Json("OK");
+                }
+                return Json("Error");
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
             }
         }
     }

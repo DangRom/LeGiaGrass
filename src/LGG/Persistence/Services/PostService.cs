@@ -203,11 +203,14 @@ namespace LGG.Persistence.Services
         public IEnumerable<PostDto> GetAllPostForAdmin()
         {
             var postmodel = _postRepository.GetAllPostForAdmin();
-            foreach(var p in postmodel)
+            foreach (var p in postmodel)
             {
-                var post = new PostDto();
-                post.PostId = p.PostId;
-                post.Title = p.Title;
+                var post = new PostDto
+                {
+                    PostId = p.PostId,
+                    Url = p.Url,
+                    Title = p.Title
+                };
                 post.Category.CategoryId = p.Category.CategoryId;
                 post.Category.Name = p.Category.Name;
                 post.Published = p.Published;
@@ -218,6 +221,11 @@ namespace LGG.Persistence.Services
         public bool CheckTitle(string title)
         {
             return _postRepository.CheckTitle(title);
+        }
+
+        public void RemoveById(int id)
+        {
+            _postRepository.RemoveById(id);
         }
     }
 }

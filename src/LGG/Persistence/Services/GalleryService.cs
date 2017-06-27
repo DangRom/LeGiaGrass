@@ -58,6 +58,7 @@ namespace LGG.Persistence.Services
             var gallery = new GalleryDto()
             {
                 GalleryId = gallerymodel.GalleryId,
+                Description = gallerymodel.Description,
                 Name = gallerymodel.Name,
                 Image = gallerymodel.Image,
                 CategoryId = gallerymodel.Category.CategoryId

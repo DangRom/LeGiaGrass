@@ -96,5 +96,18 @@ namespace LGG.Areas.Admin.Controllers.Api
             _postService.Remove(url);
             return new NoContentResult();
         }
+        [HttpDelete("{id}")]
+        [Authorize(Policy = "isSuperUser")]
+        public IActionResult Delete(int id)
+        {
+            var todo = _postService.GetById(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            _postService.RemoveById(id);
+            return new NoContentResult();
+        }
     }
 }

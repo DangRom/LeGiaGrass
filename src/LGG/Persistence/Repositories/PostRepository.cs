@@ -415,6 +415,7 @@ namespace LGG.Persistence.Repositories
                                 .Select(x => new
                                 {
                                     x.PostId,
+                                    x.Url,
                                     x.Title,
                                     x.Category,
                                     x.Published
@@ -423,6 +424,7 @@ namespace LGG.Persistence.Repositories
             {
                 var post = new Post();
                 post.PostId = p.PostId;
+                post.Url = p.Url;
                 post.Title = p.Title;
                 post.Category = p.Category;
                 post.Published = p.Published;
@@ -435,6 +437,16 @@ namespace LGG.Persistence.Repositories
             if (_context.Posts.SingleOrDefault(p => p.Title == title) == null)
                 return false;
             return true;
+        }
+
+        public void RemoveById(int id)
+        {
+            var entity = _context
+                .Posts
+                .FirstOrDefault(x => x.PostId == id);
+
+            _context.Posts.Remove(entity);
+            _context.SaveChanges();
         }
     }
 }

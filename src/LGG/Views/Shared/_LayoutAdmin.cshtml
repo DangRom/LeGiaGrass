@@ -3,6 +3,8 @@
 <head>
     <title>Bootstrap Admin Theme v3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+
     <!-- Bootstrap -->
     <link href="~/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
@@ -10,7 +12,6 @@
     <link href="~/admin/css/styleform.css" rel="stylesheet" asp-append-version="true" />
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/js/bootbox.min.js" asp-append-version="true"></script>
     <script src="~/admin/bootstrap/js/bootstrap.min.js"></script>
     @*TAG INPUT*@
@@ -73,9 +74,9 @@
         </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    @*<script src="https://code.jquery.com/jquery.js"></script>*@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/admin/bootstrap/js/bootstrap.min.js"></script>
+    @*<script src="~/admin/bootstrap/js/bootstrap.min.js"></script>*@
     <script src="~/admin/js/custom.js"></script>
     <!--tinyMCE-->
     <script src="~/admin/tinymce/js/tinymce/tinymce.min.js"></script>
@@ -83,7 +84,7 @@
     <script src="~/admin/tinymce/js/tinymce/tinyMceConfig.js"></script>
 
     <!--datatable-->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    @*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>*@
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="~/admin/configTable.js"></script>
     @RenderSection("Scripts", false)

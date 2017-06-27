@@ -15,7 +15,7 @@ namespace LGG.Areas.Admin.Controllers
     {
         private readonly IGalleryService _galleryService;
         private readonly ICategoryService _categoryService;
-        private Task<List<SelectListItem>> GetCategorys()
+        private Task<List<SelectListItem>> GetCategories()
         {
             var categorys = Task.Factory.StartNew(() => _categoryService.GetAllForDropList().Select(s => new SelectListItem
             {
@@ -48,7 +48,7 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categories = await GetCategorys();
+                ViewBag.Categories = await GetCategories();
                 return View();
             }
             catch (Exception ex)
@@ -63,7 +63,7 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categories = await GetCategorys();
+                ViewBag.Categories = await GetCategories();
                 if (ModelState.IsValid)
                 {
                     if (await Task.Factory.StartNew(() => _galleryService.CheckName(gallery.Name)))
@@ -95,11 +95,11 @@ namespace LGG.Areas.Admin.Controllers
                     var gallery = await Task.Factory.StartNew(() => _galleryService.GetById(id));
                     if (gallery != null)
                     {
-                        ViewBag.Categories = await GetCategorys();
+                        ViewBag.Categories = await GetCategories();
                         return View(gallery);
                     }
                 }
-                ModelState.AddModelError("", "du lieu khong ton tai.");
+                ModelState.AddModelError("", "Dữ liệu không tồn tại.");
                 return View();
             }
             catch (Exception ex)

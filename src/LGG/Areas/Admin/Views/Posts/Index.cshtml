@@ -5,32 +5,32 @@
 }
 
 <div class="content-box-header panel-heading">
-    <div class="panel-title ">Danh sách bai viet</div>
+    <div class="panel-title ">Danh Sách Bài Viết</div>
 </div>
 <div class="content-box-large box-with-header">
     <a href="/admin/posts/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
     <br /><br />
-    <table id="tablesource" class="display" cellspacing="0" width="100%">
+    <table id="tablesource" class="display" cellspacing="0">
         <thead>
             <tr>
-                <th>Tên bai viet</th>
-                <th>Chu de</th>
-                <th>Hien thi</th>
+                <th>Tên Bài Viết</th>
+                <th>Chủ Đề</th>
+                <th>Xuất Bản</th>
                 <th></th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <th>Tên bai viet</th>
-                <th>Chu de</th>
-                <th>Hien thi</th>
+                <th>Tên Bài Viết</th>
+                <th>Chủ Đề</th>
+                <th>Xuất Bản</th>
                 <th></th>
             </tr>
         </tfoot>
         <tbody>
             @foreach (var m in Model)
             {
-                <tr>
+                <tr id="row@(m.PostId)">
                     <td>@m.Title</td>
                     <td>@m.Category.Name</td>
                     <td class="checkbox">@m.Published</td>
@@ -47,21 +47,54 @@
 
 @section scripts{
     <script type="text/javascript">
-        function del(id){
-        var c = confirm("Bạn có chắc là không muốn hiển chủ đề này ?");
-            if(c){
-                $.ajax({
-                    url: "/admin/post/delete/" + id,
-                    type: "DELETE",
-                    dataType: 'json',
-                    success: function(mess){
-                        window.location.reload();
+        function del(id) {
+            //var c = confirm("Bạn có chắc muốn xóa bài viết này không?");
+            //if (c) {
+            //    $.ajax({
+            //        url: "/admin/post/delete/" + url,
+            //        type: "DELETE",
+            //        dataType: 'json',
+            //        success: function (mess) {
+            //            window.location.reload();
+            //        },
+            //        error: function (error) {
+            //            alert(error);
+            //        }
+            //    })
+            //}
+
+            bootbox.dialog({
+                message: "Bạn có chắc muốn xóa vĩnh viễn bài viết này không?",
+                title: "Cảnh báo",
+                buttons: {
+                    no: {
+                        label: "KHÔNG XÓA",
+                        className: "btn-default",
+                        callback: function () {
+                            bootbox.hideAll();
+                        }
                     },
-                    error: function(error){
-                        alert(error);
+                    yes: {
+                        label: "Có",
+                        className: "btn-danger",
+                        callback: function () {
+                            $.ajax({
+                                url: "/api/posts/" + id,
+                                method: "DELETE"
+                            })
+                                .done(function () {
+                                    //link.parents(".admin-collection-list li").fadeOut(function () {
+                                    //    $(this).remove();
+                                    //});
+                                    $("#row" + id).remove();
+                                })
+                                .fail(function () {
+                                    alert("Something failed!");
+                                });
+                        }
                     }
-                })
-            }
+                }
+            });
         };
     </script>
 }

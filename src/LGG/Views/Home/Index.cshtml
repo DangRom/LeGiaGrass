@@ -93,8 +93,10 @@
         <div class="services-block">
             @foreach (var service in (List<PostDto>)ViewBag.Services)
             {
-                <a href="service-page-3.html" class="service iconmove light ">
-                    <div class="service-image image-scale"><img src="@(service.SmallImage) " alt="#"></div>
+                <a href="@(service.Url)" class="service iconmove light ">
+                    <div class="service-image image-scale">
+                        <img src="@(string.IsNullOrEmpty(service.SmallImage) ? "/images/service-page-1.jpg" : service.SmallImage)" alt="#">
+                    </div>
                     <div class="caption">
                         <div class="vert-wrap">
                             <div class="vert">

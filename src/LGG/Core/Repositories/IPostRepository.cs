@@ -1,7 +1,6 @@
 ﻿using LGG.Core.Dtos;
 using LGG.Core.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace LGG.Core.Repositories
 {
@@ -26,6 +25,7 @@ namespace LGG.Core.Repositories
         void AddPost(Post post);
         void Update(PostDto post);
         void Remove(string url);
+        void RemoveById(int id);
         IEnumerable<Post> GetAllPostForAdmin();
         bool CheckTitle(string title);
     }
