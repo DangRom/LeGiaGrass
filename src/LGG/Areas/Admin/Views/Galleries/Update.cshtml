@@ -36,12 +36,12 @@
         <div class="form-group">
             <label for="chude" class="col-sm-2 control-label">Chủ đề</label>
             <div class="col-sm-6">
-                <select asp-for="CategoryId" asp-items="ViewBag.Categorys" class="form-control select-text" id="chude"></select>
+                <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-control select-text" id="chude"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="mage" class="col-sm-2 control-label">url</label>
+            <label for="mage" class="col-sm-2 control-label">Url</label>
             <div class="col-sm-10">
                 <input asp-for="Image" class="form-control height-input" id="mage" placeholder="url">
                 <span asp-validation-for="Image" class="text-danger"></span>

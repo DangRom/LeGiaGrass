@@ -24,7 +24,7 @@
             <br>Grass
         </div>
         <div class="post-teaser">
-            @Html.Raw(Model[(int)PreviousCurrentNextPosition.Current].Article.Content)
+            @Html.Raw(Model[(int)PreviousCurrentNextPosition.Current].Article?.Content)
             <ul class="tags-list">
                 @foreach (var tag in Model[(int)PreviousCurrentNextPosition.Current].Tags)
                 {

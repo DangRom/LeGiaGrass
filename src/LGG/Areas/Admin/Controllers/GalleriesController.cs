@@ -48,7 +48,7 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categorys = await GetCategorys();
+                ViewBag.Categories = await GetCategorys();
                 return View();
             }
             catch (Exception ex)
@@ -63,7 +63,7 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categorys = await GetCategorys();
+                ViewBag.Categories = await GetCategorys();
                 if (ModelState.IsValid)
                 {
                     if (await Task.Factory.StartNew(() => _galleryService.CheckName(gallery.Name)))
@@ -95,7 +95,7 @@ namespace LGG.Areas.Admin.Controllers
                     var gallery = await Task.Factory.StartNew(() => _galleryService.GetById(id));
                     if (gallery != null)
                     {
-                        ViewBag.Categorys = await GetCategorys();
+                        ViewBag.Categories = await GetCategorys();
                         return View(gallery);
                     }
                 }

@@ -7,20 +7,20 @@
 
 
 <div class="content-box-header panel-heading">
-    <div class="panel-title ">Thong tin cty</div>
+    <div class="panel-title ">Cập Nhật Thông Tin Công Ty</div>
 </div>
 <div class="content-box-large box-with-header">
     <form class="form-horizontal" asp-controller="Companies" asp-action="Index" method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">Tên cty</label>
+            <label for="name" class="col-sm-2 control-label">Tên Công Ty</label>
             <div class="col-sm-10">
-                <input asp-for="Name" class="form-control height-input" id="name" >
+                <input asp-for="Name" class="form-control height-input" id="name">
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="Sologan" class="col-sm-2 control-label">sologan</label>
+            <label for="Sologan" class="col-sm-2 control-label">Sologan</label>
             <div class="col-sm-10">
                 <input asp-for="Sologan" class="form-control height-input" id="sologan">
                 <span asp-validation-for="Sologan" class="text-danger"></span>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="Email" class="col-sm-2 control-label">Hotline</label>
+            <label for="Email" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-5">
                 <input asp-for="Email" class="form-control height-input" id="email">
                 <span asp-validation-for="Email" class="text-danger"></span>
@@ -48,14 +48,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="TimeWork" class="col-sm-2 control-label">Thoi gian lam viec</label>
+            <label for="TimeWork" class="col-sm-2 control-label">Thời Gian Làm Việc</label>
             <div class="col-sm-5">
                 <input asp-for="TimeWork" class="form-control height-input" id="timework">
                 <span asp-validation-for="TimeWork" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="Address" class="col-sm-2 control-label">dia chi</label>
+            <label for="Address" class="col-sm-2 control-label">Địa Chỉ</label>
             <div class="col-sm-10">
                 <input asp-for="Address" class="form-control height-input" id="address">
                 <span asp-validation-for="Address" class="text-danger"></span>
@@ -69,42 +69,42 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="Avatar" class="col-sm-2 control-label">Hinh dai dien</label>
+            <label for="Avatar" class="col-sm-2 control-label">Avatar</label>
             <div class="col-sm-10">
                 <input asp-for="Avatar" class="form-control height-input" id="avatar">
                 <span asp-validation-for="Avatar" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="Description" class="col-sm-2 control-label">Mo ta ngan</label>
+            <label for="Description" class="col-sm-2 control-label">Mô Tả Ngắn</label>
             <div class="col-sm-10">
                 <input asp-for="Description" class="form-control height-input" id="description">
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="About.Content" class="col-sm-2 control-label">Ve chung toi</label>
+            <label for="About.Content" class="col-sm-2 control-label">Về Chúng Tôi</label>
             <div class="col-sm-10">
                 <textarea asp-for="About.Content"></textarea>
                 <span asp-validation-for="About.Content" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="WhyChooseUs" class="col-sm-2 control-label">Tai sao chon chung toi</label>
+            <label for="WhyChooseUs" class="col-sm-2 control-label">Tại Sao Chọn Chúng Tôi</label>
             <div class="col-sm-10">
                 <textarea asp-for="WhyChooseUs"></textarea>
                 <span asp-validation-for="WhyChooseUs" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="Privacy.Content" class="col-sm-2 control-label">PrivacyEditor</label>
+            <label for="Privacy.Content" class="col-sm-2 control-label">Privacy</label>
             <div class="col-sm-10">
                 <textarea asp-for="Privacy.Content"></textarea>
                 <span asp-validation-for="Privacy.Content" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="TermsOfUse.Content" class="col-sm-2 control-label">TermsOfUseEditor</label>
+            <label for="TermsOfUse.Content" class="col-sm-2 control-label">Terms Of Use</label>
             <div class="col-sm-10">
                 <textarea asp-for="TermsOfUse.Content"></textarea>
                 <span asp-validation-for="TermsOfUse.Content" class="text-danger"></span>

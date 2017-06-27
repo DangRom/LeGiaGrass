@@ -60,7 +60,7 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys()).Result;
+                ViewBag.Categories = await Task.Factory.StartNew(() => GetCategorys()).Result;
                 ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
                 PostDto post = new PostDto();
                 _postService.Add(post);
@@ -79,7 +79,7 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categorys = await Task.Factory.StartNew(() => GetCategorys()).Result;
+                ViewBag.Categories = await Task.Factory.StartNew(() => GetCategorys()).Result;
                 //ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
                 //if (await Task.Factory.StartNew(() => _postService.CheckTitle(post.Title)))
                 //{

@@ -64,6 +64,7 @@ namespace LGG.Persistence.Repositories
                 .Galleries
                 .FirstOrDefault(x => x.GalleryId == gallery.GalleryId);
 
+            entity.Description = gallery.Description;
             entity.Image = gallery.Image;
             entity.Name = gallery.Name;
             entity.CategoryId = gallery.CategoryId;
