@@ -10,7 +10,7 @@ namespace LGG.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.Title = "Admin | Xin Chào!";
+            ViewBag.Title = "Admin | Xin Chï¿½o!";
             //return View();
             return RedirectToAction("Index", "Companies");
         }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LGG.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class TagsController : Controller
     {
         private readonly ITagService _tagService;

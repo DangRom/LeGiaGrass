@@ -8,6 +8,7 @@ using LGG.Core.Services;
 namespace LGG.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class CompaniesController : Controller
     {
         private readonly ICompanyService _companyService;
