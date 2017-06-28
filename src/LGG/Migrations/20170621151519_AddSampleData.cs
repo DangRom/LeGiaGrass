@@ -16,8 +16,9 @@ namespace LGG.Migrations
             migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(2,'Service', 'category-services')");
             migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(3,'Slide', 'category-slides')");
             migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(4,'Event', 'category-events')");
+            migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(5,'Testimonial', 'category-testimonials')");
 
-            //Galleries for Slide
+            //Galleries for Slide 
             migrationBuilder.Sql("INSERT INTO Gallery (GalleryId, CategoryId, Image, Name, Description) VALUES(1,3,'https://drive.google.com/uc?id=0B4NZzlONf1itcy1hYmc3UWJSN0E','Lawn Service','We offer total lawn care and routine maintenance to keep your lawn looking brand new')");
             migrationBuilder.Sql("INSERT INTO Gallery (GalleryId, CategoryId, Image, Name, Description) VALUES(2,3,'https://drive.google.com/uc?id=0B4NZzlONf1itcy1hYmc3UWJSN0E','Leaf Removal','Our crew blows leaves to an area of your choice ie: woods, garden, or compost pile')");
             migrationBuilder.Sql("INSERT INTO Gallery (GalleryId, CategoryId, Image, Name, Description) VALUES(3,3,'https://drive.google.com/uc?id=0B4NZzlONf1itcy1hYmc3UWJSN0E','Snow Removal','We don’t miss a beat when it comes to digging your home or office out from under the snow.')");

@@ -37,7 +37,7 @@ namespace LGG.Controllers
         public IActionResult Index()
         {
             ViewBag.Description = "";
-
+            ViewBag.Selected = "home";
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
             var galleries = _galleryService.GetAll();
 
@@ -48,7 +48,7 @@ namespace LGG.Controllers
 
 
             ViewBag.Posts = _postService.GetAllByCategoryName("Blog", 3).ToList();
-            ViewBag.Services = _postService.GetAllByCategoryName("Service", 6);
+            ViewBag.Services = _postService.GetAllByCategoryName("Service");
 
             ViewBag.Events = _galleryService.GetByCategoryName("Event");
             ViewBag.Slides = _galleryService.GetByCategoryName("Slide");

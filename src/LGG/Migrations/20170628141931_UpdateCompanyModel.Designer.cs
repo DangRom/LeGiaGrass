@@ -8,9 +8,10 @@ using LGG.Persistence;
 namespace LGG.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170628141931_UpdateCompanyModel")]
+    partial class UpdateCompanyModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -78,15 +79,11 @@ namespace LGG.Migrations
                     b.Property<string>("Instagram")
                         .HasMaxLength(50);
 
-                    b.Property<double>("Latitude");
-
                     b.Property<string>("LinkedIn")
                         .HasMaxLength(50);
 
                     b.Property<string>("Logo")
                         .HasMaxLength(250);
-
-                    b.Property<double>("Longitude");
 
                     b.Property<string>("Name")
                         .IsRequired()

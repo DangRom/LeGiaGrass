@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using LGG.Core.Models;
+﻿using LGG.Core.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace LGG.Core.Dtos
 {
@@ -25,7 +25,12 @@ namespace LGG.Core.Dtos
 
         public string Hotline { get; set; }
 
+        public string Phone { get; set; }
+
         public string Email { get; set; }
+        public string ContactEmail { get; set; }
+
+        public string SupportEmail { get; set; }
 
         public string Website { get; set; }
 
@@ -36,6 +41,10 @@ namespace LGG.Core.Dtos
         public string Logo { get; set; }
 
         public string Avatar { get; set; }
+
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
 
         public int AboutId { get; set; }
         public int PrivacyId { get; set; }

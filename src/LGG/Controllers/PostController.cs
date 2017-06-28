@@ -37,7 +37,7 @@ namespace LGG.Controllers
             ViewBag.Tags = _tagService.GetAll();
             ViewBag.PopularPosts = _postService.GetPopularPosts();
             ViewBag.NewPosts = _postService.GetAll(true, false, false, 4).ToList();
-
+            ViewBag.Services = _postService.GetAllByCategoryName("Service");
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
             return View(post);
         }

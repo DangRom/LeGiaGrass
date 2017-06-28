@@ -60,9 +60,22 @@ namespace LGG.Core.Models
         [StringLength(15)]
         public string Hotline { get; set; }
 
+        [MaxLength(15)]
+        [StringLength(15)]
+        public string Phone { get; set; }
+
+
         [MaxLength(254)]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
+
+        [MaxLength(254)]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string ContactEmail { get; set; }
+
+        [MaxLength(254)]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string SupportEmail { get; set; }
 
         [MaxLength(50)]
         [StringLength(50)]
@@ -83,6 +96,10 @@ namespace LGG.Core.Models
         [MaxLength(250)]
         [StringLength(250)]
         public string Avatar { get; set; }
+
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
 
         [MaxLength(50)]
         [StringLength(50)]

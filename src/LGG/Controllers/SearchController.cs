@@ -40,7 +40,7 @@ namespace LGG.Controllers
         public ActionResult Index()
         {
             ViewBag.Description = "LGG search page. ";
-
+            ViewBag.Services = _postService.GetAllByCategoryName("Service");
             ViewBag.Header = "Search";
             ViewBag.Title = "Search";
             ViewBag.Pager = "search";

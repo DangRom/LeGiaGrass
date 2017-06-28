@@ -17,14 +17,16 @@ namespace LGG.Controllers
         private readonly ICommunicationService _communicationService;
         private readonly ICompanyService _companyService;
         private readonly IOptions<CompanyDto> _companyDefault;
-
+        private readonly IPostService _postService;
         public ContactController(ICommunicationService communicationService,
             ICompanyService companyService,
-            IOptions<CompanyDto> companyDefault)
+            IOptions<CompanyDto> companyDefault,
+            IPostService postService)
         {
             _communicationService = communicationService;
             _companyService = companyService;
             _companyDefault = companyDefault;
+            _postService = postService;
         }
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace LGG.Controllers
             ViewBag.IsValid = true;
             ViewBag.Selected = "contact";
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
-
+            ViewBag.Services = _postService.GetAllByCategoryName("Service");
             return View();
         }
 

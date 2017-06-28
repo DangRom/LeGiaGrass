@@ -10,11 +10,13 @@ namespace LGG.Controllers
     {
         private readonly IOptions<CompanyDto> _companyDefault;
         private readonly ICompanyService _companyService;
+        private readonly IPostService _postService;
 
-        public AboutController(IOptions<CompanyDto> companyDefault, ICompanyService companyService)
+        public AboutController(IOptions<CompanyDto> companyDefault, ICompanyService companyService, IPostService postService)
         {
             _companyService = companyService;
             _companyDefault = companyDefault;
+            _postService = postService;
         }
 
         /// <summary>
@@ -24,6 +26,7 @@ namespace LGG.Controllers
         {
             ViewBag.Description = "Description...";
             ViewBag.Selected = "about";
+            ViewBag.Services = _postService.GetAllByCategoryName("Service");
             ViewBag.Company = _companyService.GetAll(true, false, false).FirstOrDefault() ?? _companyDefault.Value;
             return View();
         }

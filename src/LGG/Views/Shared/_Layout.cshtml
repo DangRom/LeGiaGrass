@@ -1,5 +1,6 @@
 ﻿@{
     var company = (CompanyDto)ViewBag.Company;
+    var services = (List<PostDto>)ViewBag.Services;
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -14,8 +15,8 @@
     <link rel="shortcut icon" href="~/favicon.ico">
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <!-- jQuery 1.10.1-->
-        <script src="~/vendor/jquery/jquery.js"></script>
+    <!-- jQuery 1.10.1-->
+    <script src="~/vendor/jquery/jquery.js"></script>
     <!-- Icon Fonts  -->
     <link rel="stylesheet" href="~/css/style.css">
     <!-- Vendor CSS -->
@@ -77,7 +78,7 @@
                         <div class="row">
                             <div class="col-sm-3 col-lg-3">
                                 <!--  Logo  -->
-                                <a class="logo" href="index.html"> <img class="logo-default" src="~/images/logo.png" alt="" /> <img class="logo-mobile" src="~/images/logo.png" alt="" /> </a>
+                                <a class="logo" href="/"> <img class="logo-default" src="@(!string.IsNullOrEmpty(company.Logo)?company.Logo:"/images/logo.png")" alt="" /> <img class="logo-mobile" src="@(!string.IsNullOrEmpty(company.Logo)?company.Logo:"/images/logo.png")" alt="" /> </a>
                                 <!-- End Logo -->
                             </div>
                             <div class="visible-lg col-lg-3">
@@ -112,43 +113,45 @@
                     <div class="slidemenu-close visible-xs">✕</div>
                     <div class="container">
                         <ul class="nav navbar-nav">
-                            <li><a href="/"><span class="link-name">Trang Chủ</span></a></li>
+                            <li class="@((string)ViewBag.Selected == "home" ? "active" : "")"><a href="/"><span class="link-name">Trang Chủ</span></a></li>
                             <li>
-                                <a href="services.html" class="dropdown-toggle"><span class="link-name">Dịch Vụ</span><span class="caret icon-angle-down"></span></a>
+                                <a href="#" class="dropdown-toggle"><span class="link-name">Dịch Vụ</span><span class="caret icon-angle-down"></span></a>
                                 <ul class="dropdown-menu animated fadeIn" role="menu">
-                                    <li>
-                                        <a href="service-page-1.html">lawn service</a>
-                                        <ul class="submenu">
-                                            <li class="level2"><a href="service-page-1.html">trimming edge</a></li>
-                                            <li class="level2"><a href="service-page-1.html">clean up</a></li>
-                                            <li class="level2"><a href="service-page-1.html">blowing</a></li>
-                                            <li class="level2"><a href="service-page-1.html">weeding</a></li>
-                                            <li class="level2"><a href="service-page-1.html">moving</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="service-page-2.html">tree service</a></li>
-                                    <li><a href="service-page-3.html">landscape design services</a></li>
-                                    <li><a href="service-page-4.html">leaf removal</a></li>
-                                    <li><a href="service-page-5.html">Snow Removal</a></li>
-                                    <li><a href="service-page-6.html">Junk Removal</a></li>
-                                    <li><a href="service-page-7.html">New tree planting</a></li>
-                                    <li><a href="service-page-8.html">Sod service</a></li>
-                                    <li><a href="service-page-9.html">Retaining walls</a></li>
-                                    <li><a href="service-page-10.html">Patio and fire pit pavers</a></li>
-                                    <li><a href="service-page-11.html">Yard work</a></li>
-                                    <li><a href="service-page-12.html">Excavation</a></li>
+                                    @*<li>
+                                            <a href="service-page-1.html">lawn service</a>
+                                            <ul class="submenu">
+                                                <li class="level2"><a href="service-page-1.html">trimming edge</a></li>
+                                                <li class="level2"><a href="service-page-1.html">clean up</a></li>
+                                                <li class="level2"><a href="service-page-1.html">blowing</a></li>
+                                                <li class="level2"><a href="service-page-1.html">weeding</a></li>
+                                                <li class="level2"><a href="service-page-1.html">moving</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="service-page-2.html">tree service</a></li>
+                                        <li><a href="service-page-3.html">landscape design services</a></li>
+                                        <li><a href="service-page-4.html">leaf removal</a></li>
+                                        <li><a href="service-page-5.html">Snow Removal</a></li>
+                                        <li><a href="service-page-6.html">Junk Removal</a></li>
+                                        <li><a href="service-page-7.html">New tree planting</a></li>
+                                        <li><a href="service-page-8.html">Sod service</a></li>
+                                        <li><a href="service-page-9.html">Retaining walls</a></li>
+                                        <li><a href="service-page-10.html">Patio and fire pit pavers</a></li>
+                                        <li><a href="service-page-11.html">Yard work</a></li>
+                                        <li><a href="service-page-12.html">Excavation</a></li>*@
+                                    @foreach (var menu in services)
+                                    {
+                                    <li class="@((string)ViewBag.Selected == "service" ? "active" : "")"><a href="/post/@(menu.Url)">@(menu.Title)</a></li>
+                                    }
                                 </ul>
                             </li>
                             @*<li><a href="pricing.html"><span class="link-name">Báo Giá</span></a></li>*@
-                            <li>
-                                <a href="/blog" class="link-name"><span class="link-name">Tin Tức</span></a>
-                            </li>
+                            <li class="@((string)ViewBag.Selected == "blog" ? "active" : "")"><a href="/blog" class="link-name"><span class="link-name">Tin Tức</span></a></li>
                             @*<li><a href="gallery.html"><span class="link-name">Gallery</span></a></li>*@
                             @*<li><a href="maintenance.html"><span class="link-name">Bảo Trì</span></a></li>*@
                             @*<li><a href="shop.html"><span class="link-name">Shop</span></a></li>*@
                             @*<li><a href="testimonial.html"><span class="link-name">Chứng Thực</span></a></li>*@
-                            <li><a href="/about"><span class="link-name">Về Chúng Tôi</span></a></li>
-                            <li><a href="/contact"><span class="link-name">Liên Hệ</span></a></li>
+                            <li class="@((string)ViewBag.Selected == "about" ? "active" : "")"><a href="/about"><span class="link-name">Về Chúng Tôi</span></a></li>
+                            <li class="@((string)ViewBag.Selected == "contact" ? "active" : "")"><a href="/contact"><span class="link-name">Liên Hệ</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -196,7 +199,7 @@
                             <div class="v-links-list mobile-collapse__content">
                                 <ul>
                                     <li>@company.Address</li>
-                                    <li><a href="mailto:@company.Email">@company.Email</a></li>
+                                    <li><a href="mailto:@(company.Email)">@company.Email</a></li>
                                     <li>@company.Website</li>
                                     <li>@company.Hotline</li>
                                 </ul>
@@ -235,7 +238,7 @@
             </div>
         </footer>
     </div>
-
+    @RenderSection("modalForm", false)
     <environment names="Development">
 
         <!-- Specific Page Vendor -->
@@ -256,7 +259,6 @@
     </environment>
     <environment names="Staging,Production">
         <!-- Vendor -->
-
         <!-- Bootstrap 3-->
         <script src="vendor/bootstrap/bootstrap.min.js"></script>
         <!-- Specific Page Vendor -->
