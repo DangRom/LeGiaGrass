@@ -16,11 +16,13 @@ namespace LGG.Persistence.Services
     {
         private readonly IOptions<AppConfiguration> _appConfiguration;
         private readonly IContactRepository _contactRepository;
-
-        public CommunicationService(IOptions<AppConfiguration> appConfiguration, IContactRepository contactRepository)
+        private readonly ICompanyService _companyService;
+        public CommunicationService(IOptions<AppConfiguration> appConfiguration, IContactRepository contactRepository,
+            ICompanyService companyService)
         {
             _appConfiguration = appConfiguration;
             _contactRepository = contactRepository;
+            _companyService = companyService;
         }
 
         /// <summary>
@@ -28,13 +30,15 @@ namespace LGG.Persistence.Services
         /// </summary>
         public OperationResult<ContactViewModel> SendContactEmailNotification(ContactViewModel model)
         {
+            var company = _companyService.GetCompanyFirstOrDefault(false, false, false);
+
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(_appConfiguration.Value.SiteTitle + " - Contact", model.Email));
-            message.To.Add(new MailboxAddress(_appConfiguration.Value.SiteTitle + " - Contact", _appConfiguration.Value.EmailUsername));
-            message.Subject = _appConfiguration.Value.SiteTitle + " - Contact: " + model.Subject;
+            message.From.Add(new MailboxAddress(_appConfiguration.Value.SiteTitle + " - Liên Hệ", model.Email));
+            message.To.Add(new MailboxAddress(_appConfiguration.Value.SiteTitle + " - Liên Hệ", !string.IsNullOrEmpty(company?.Email) ? company?.Email : _appConfiguration.Value.EmailUsername));
+            message.Subject = _appConfiguration.Value.SiteTitle + " - Liên Hệ: " + model.Subject;
             message.Body = new TextPart("html")
             {
-                Text = string.Format("<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>", model.Name, model.Email, model.Message)
+                Text = string.Format("<p>Lời nhắn được gửi từ: {0} ({1})</p><p>Nội Dung:</p><p>{2}</p>", model.Name, model.Email, model.Message)
             };
 
             try

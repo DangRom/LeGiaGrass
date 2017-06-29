@@ -20,6 +20,8 @@
   
   <ItemGroup>
     <Content Include="wwwroot\admin\css\inputTags.css" />
+    <Content Include="wwwroot\images\testimonials-author-img-03.jpg" />
+    <Content Include="wwwroot\images\testimonials-author.jpg" />
   </ItemGroup>
   
   <ItemGroup>

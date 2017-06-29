@@ -52,13 +52,14 @@ namespace LGG.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.IsValid = false;
-                return View("~/Views/Contact/Index.cshtml");
+                return RedirectToAction(nameof(ContactController.Index));
             }
 
             var response = _communicationService.SendContactEmailNotification(model);
             ViewBag.IsValid = true;
-            ViewBag.Selected = "contact";
-            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
+            //ViewBag.Selected = "contact";
+            //ViewBag.Services = _postService.GetAllByCategoryName("Service");
+            //ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
             switch (response.Status)
             {
                 case OperationStatus.Ok:
@@ -70,7 +71,8 @@ namespace LGG.Controllers
                     break;
             }
 
-            return View(nameof(ContactController.Index));
+            return RedirectToAction(nameof(ContactController.Index));
+            //return View("Index");
         }
     }
 }

@@ -93,7 +93,10 @@ namespace LGG.Persistence.Repositories
             entity.Name = company.Name;
             entity.Sologan = company.Sologan;
             entity.Hotline = company.Hotline;
+            entity.Phone = company.Phone;
             entity.Email = company.Email;
+            entity.ContactEmail = company.ContactEmail;
+            entity.SupportEmail = company.SupportEmail;
             entity.Website = company.Website;
             entity.TimeWork = company.TimeWork;
             entity.Address = company.Address;

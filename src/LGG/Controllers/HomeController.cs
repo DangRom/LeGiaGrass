@@ -46,12 +46,13 @@ namespace LGG.Controllers
                                  orderby newGroup.Key
                                  select newGroup).ToList();
 
-
             ViewBag.Posts = _postService.GetAllByCategoryName("Blog", 3).ToList();
             ViewBag.Services = _postService.GetAllByCategoryName("Service");
+            ViewBag.Testimonials = _postService.GetAllByCategoryName("Testimonial");
 
             ViewBag.Events = _galleryService.GetByCategoryName("Event");
             ViewBag.Slides = _galleryService.GetByCategoryName("Slide");
+
 
             return View();
         }

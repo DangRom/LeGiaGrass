@@ -8,8 +8,8 @@ using LGG.Persistence;
 namespace LGG.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170622133523_AddSampleData3")]
-    partial class AddSampleData3
+    [Migration("20170629153142_AddDemoData")]
+    partial class AddDemoData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,6 +58,9 @@ namespace LGG.Migrations
                     b.Property<string>("Avatar")
                         .HasMaxLength(250);
 
+                    b.Property<string>("ContactEmail")
+                        .HasMaxLength(254);
+
                     b.Property<string>("Description")
                         .HasMaxLength(500);
 
@@ -76,11 +79,15 @@ namespace LGG.Migrations
                     b.Property<string>("Instagram")
                         .HasMaxLength(50);
 
+                    b.Property<double>("Latitude");
+
                     b.Property<string>("LinkedIn")
                         .HasMaxLength(50);
 
                     b.Property<string>("Logo")
                         .HasMaxLength(250);
+
+                    b.Property<double>("Longitude");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -107,6 +114,9 @@ namespace LGG.Migrations
                     b.Property<string>("OurMission")
                         .HasMaxLength(250);
 
+                    b.Property<string>("Phone")
+                        .HasMaxLength(15);
+
                     b.Property<string>("Pinterest")
                         .HasMaxLength(50);
 
@@ -114,6 +124,9 @@ namespace LGG.Migrations
 
                     b.Property<string>("Sologan")
                         .HasMaxLength(250);
+
+                    b.Property<string>("SupportEmail")
+                        .HasMaxLength(254);
 
                     b.Property<int?>("TermsOfUseId");
 

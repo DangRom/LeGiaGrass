@@ -422,12 +422,17 @@ namespace LGG.Persistence.Repositories
                                 }).ToList();
             foreach (var p in posts)
             {
-                var post = new Post();
-                post.PostId = p.PostId;
-                post.Url = p.Url;
-                post.Title = p.Title;
-                post.Category = p.Category;
-                post.Published = p.Published;
+                var post = new Post()
+                {
+                    PostId = p.PostId,
+                    Url = p.Url,
+                    Title = p.Title,
+                    Published = p.Published
+                };
+
+                if (p.Category != null)
+                    post.Category = p.Category;
+               
                 yield return post;
             }
         }

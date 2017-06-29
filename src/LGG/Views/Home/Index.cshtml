@@ -455,64 +455,81 @@
                 <div class="divider divider--md"></div>*@
         </div>
         <div class="divider"></div>
-        <h2 class="text-center lined">What Our Clients Say About Us?</h2>
+        <h2 class="text-center lined">Khách Hàng Nói Về Chúng Tôi?</h2>
         <div class="row testimonials-style2-row">
-            <div class="testimonials-style2 col-sm-6">
-                <div class="testimonials-style2-inside">
-                    <div class="testimonials-style2__photo">
-                        <img src="images/testimonials-author-img-03.jpg" alt="">
-                    </div>
-                    <div class="testimonials-style2__text">
-                        <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
-                        <div>
-                            <span class="testimonials-style2__author">Thomas Reese, </span>
-                            <br><span class="testimonials-style2__post">homeowner</span>
+            @foreach (var tes in (List<PostDto>)ViewBag.Testimonials)
+            {
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="@(!string.IsNullOrEmpty(tes.SmallImage)?tes.SmallImage:"images/testimonials-author.jpg")" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>@(tes.Excerpt?.Content)</p>
+                            <div>
+                                <span class="testimonials-style2__author">@(tes.Title),</span>
+                                <br><span class="testimonials-style2__post">@(tes.Description)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonials-style2 col-sm-6">
-                <div class="testimonials-style2-inside">
-                    <div class="testimonials-style2__photo">
-                        <img src="images/testimonials-author-img-04.jpg" alt="">
-                    </div>
-                    <div class="testimonials-style2__text">
-                        <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
-                        <div>
-                            <span class="testimonials-style2__author">Allison Boudreaux, </span>
-                            <br><span class="testimonials-style2__post">homeowner</span>
+            }
+            @*<div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="images/testimonials-author-img-03.jpg" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
+                            <div>
+                                <span class="testimonials-style2__author">Thomas Reese, </span>
+                                <br><span class="testimonials-style2__post">homeowner</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonials-style2 col-sm-6">
-                <div class="testimonials-style2-inside">
-                    <div class="testimonials-style2__photo">
-                        <img src="images/testimonials-author-img-03.jpg" alt="">
-                    </div>
-                    <div class="testimonials-style2__text">
-                        <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
-                        <div>
-                            <span class="testimonials-style2__author">Thomas Reese, </span>
-                            <br><span class="testimonials-style2__post">homeowner</span>
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="images/testimonials-author-img-04.jpg" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
+                            <div>
+                                <span class="testimonials-style2__author">Allison Boudreaux, </span>
+                                <br><span class="testimonials-style2__post">homeowner</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonials-style2 col-sm-6">
-                <div class="testimonials-style2-inside">
-                    <div class="testimonials-style2__photo">
-                        <img src="images/testimonials-author-img-04.jpg" alt="">
-                    </div>
-                    <div class="testimonials-style2__text">
-                        <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
-                        <div>
-                            <span class="testimonials-style2__author">Allison Boudreaux, </span>
-                            <br><span class="testimonials-style2__post">homeowner</span>
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="images/testimonials-author-img-03.jpg" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
+                            <div>
+                                <span class="testimonials-style2__author">Thomas Reese, </span>
+                                <br><span class="testimonials-style2__post">homeowner</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="images/testimonials-author-img-04.jpg" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
+                            <div>
+                                <span class="testimonials-style2__author">Allison Boudreaux, </span>
+                                <br><span class="testimonials-style2__post">homeowner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
         </div>
     </div>
 </section>
@@ -777,7 +794,5 @@
                 });
             }); //ready
         </script>
-
-
     }
 

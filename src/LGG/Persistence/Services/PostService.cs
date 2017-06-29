@@ -178,7 +178,7 @@ namespace LGG.Persistence.Services
             post.PostedOn = DateTime.Now;
             post.ModifiedOn = post.PostedOn;
             post.CreatedOn = post.PostedOn;
-
+            post.Category = null;
             _postRepository.AddPost(Mapper.Map<PostDto, Post>(post));
         }
 
@@ -211,8 +211,11 @@ namespace LGG.Persistence.Services
                     Url = p.Url,
                     Title = p.Title
                 };
-                post.Category.CategoryId = p.Category.CategoryId;
-                post.Category.Name = p.Category.Name;
+                if (p.Category != null)
+                {
+                    post.Category.CategoryId = p.Category.CategoryId;
+                    post.Category.Name = p.Category.Name;
+                }
                 post.Published = p.Published;
                 yield return post;
             }
