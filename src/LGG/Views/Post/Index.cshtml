@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = Model[(int)PreviousCurrentNextPosition.Current].Title;
     Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+    var company = (CompanyDto)ViewBag.Company;
 }
 
 @model List<PostDto>
@@ -19,11 +20,11 @@
             <span class="month">@Model[(int)PreviousCurrentNextPosition.Current].PostedOn.ToString("MMM")</span>
         </div>
         <div class="post-author">
-            <div class="text-center"><img src="~/images/oldman.png" alt=""></div>
-            Le Gia,
-            <br>Grass
+            <div class="text-center"><img src="@(!string.IsNullOrEmpty(company.Avatar)?company.Avatar:"/images/blog/userpic.png")" alt=""></div>
+            Admin
         </div>
         <div class="post-teaser">
+            <p><i>@Html.Raw(Model[(int)PreviousCurrentNextPosition.Current].Excerpt?.Content)</i></p>
             @Html.Raw(Model[(int)PreviousCurrentNextPosition.Current].Article?.Content)
             <ul class="tags-list">
                 @foreach (var tag in Model[(int)PreviousCurrentNextPosition.Current].Tags)

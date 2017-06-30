@@ -20,8 +20,17 @@
   
   <ItemGroup>
     <Content Include="wwwroot\admin\css\inputTags.css" />
-    <Content Include="wwwroot\images\testimonials-author-img-03.jpg" />
-    <Content Include="wwwroot\images\testimonials-author.jpg" />
+    <Content Include="wwwroot\images\blog\blog-post-small.jpg" />
+    <Content Include="wwwroot\images\home\img-blog-preview-320x210.jpg" />
+    <Content Include="wwwroot\images\home\parallax-bg-2224x1008.jpg" />
+    <Content Include="wwwroot\images\home\parallax-bg-2000x1400.jpg" />
+    <Content Include="wwwroot\images\home\parallax-bg-2000x1440.jpg" />
+    <Content Include="wwwroot\images\home\service-1-bg.jpg" />
+    <Content Include="wwwroot\images\home\service-2-bg.jpg" />
+    <Content Include="wwwroot\images\home\service-5-bg.jpg" />
+    <Content Include="wwwroot\images\home\slide-1.jpg" />
+    <Content Include="wwwroot\images\home\slide-1920x746.jpg" />
+    <Content Include="wwwroot\images\home\testimonials-author-200x275.jpg" />
   </ItemGroup>
   
   <ItemGroup>

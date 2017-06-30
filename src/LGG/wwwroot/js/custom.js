@@ -807,7 +807,7 @@ $(document).ready(function () {
 						minlength: 2
 					},
 					message: {
-						required: true,
+						required: false,
 						minlength: 20
 					},
 					email: {
@@ -838,12 +838,12 @@ $(document).ready(function () {
 						success: function () {
 							console.log($this)
 							$('.successQuote', $this).fadeIn();
-							$('.quote-form').each(function () {
+							$('#quote-form').each(function () {
 								this.reset();
 							});
 						},
 						error: function () {
-							$('.quote-form').fadeTo("slow", 0, function () {
+							$('#quote-form').fadeTo("slow", 0, function () {
 								$('.errorQuote', $this).fadeIn();
 							});
 						},
@@ -1045,8 +1045,8 @@ $(document).ready(function () {
 	if ($('#contactform').length) {
 		contactForm('#contactform');
 	}
-	if ($('.quote-form').length) {
-		$('.quote-form').each(function () {
+	if ($('#quote-form').length) {
+		$('#quote-form').each(function () {
 			quoteForm(this);
 		});
 	}

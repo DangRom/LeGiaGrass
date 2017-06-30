@@ -137,7 +137,7 @@ namespace LGG.Persistence.Repositories
 
             if (!includeUnpublished)
             {
-                // query = query.Where(x => x.Published);
+                query = query.Where(x => x.Published);
             }
 
             if (includeExcerpt)
@@ -172,8 +172,8 @@ namespace LGG.Persistence.Repositories
             if (!includeUnpublished)
             {
                 query = _context
-                    .Posts;
-                //.Where(x => x.Published);//Chưa fix được C# bool =>mysql
+                    .Posts
+                .Where(x => x.Published);//Chưa fix được C# bool =>mysql
             }
             else
             {
@@ -269,15 +269,21 @@ namespace LGG.Persistence.Repositories
                     .ToList();
         }
 
-        public IEnumerable<Post> GetAllByCategoryName(string category, int? top)
+        public IEnumerable<Post> GetAllByCategoryName(string category, bool includeArticle, int? top)
         {
             var query = _context
                     .Posts
-                    //.Where(x => x.Published) //Chưa sửa được kiểu C# bool => mysql
+                    .Where(x => x.Published) //Chưa sửa được kiểu C# bool => mysql
                     .Include(x => x.Excerpt)
                     .Include(x => x.Category)
-                    .Where(x => x.Category.Name.ToLower() == category.ToLower())
+                    .Where(x => true);
+            if (includeArticle)
+                query = query.Include(x => x.Article);
+
+
+            query = query.Where(x => x.Category.Name.ToLower() == category.ToLower())
                     .OrderByDescending(x => x.PostedOn);
+
             if (top != null)
                 return query
                   .Take((int)top)
@@ -382,10 +388,17 @@ namespace LGG.Persistence.Repositories
             entity.Published = post.Published;
 
             // Excerpt
-            entity.Excerpt.Content = post.Excerpt.Content;
+
+            if (entity.Excerpt != null)
+                entity.Excerpt.Content = post.Excerpt.Content;
+            else
+                entity.Excerpt = new Excerpt { Content = post.Excerpt.Content };
 
             // Article
-            entity.Article.Content = post.Article.Content;
+            if (entity.Article != null)
+                entity.Article.Content = post.Article.Content;
+            else
+                entity.Article = new Article { Content = post.Article.Content };
 
             // Category :TODO: Cần check lại CategoryId tồn tại trong database, hiện tại api pass qua object id= 0
             if (post.Category != null && post.Category.CategoryId > 0)
@@ -432,7 +445,7 @@ namespace LGG.Persistence.Repositories
 
                 if (p.Category != null)
                     post.Category = p.Category;
-               
+
                 yield return post;
             }
         }

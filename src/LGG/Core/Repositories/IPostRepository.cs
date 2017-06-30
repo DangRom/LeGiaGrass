@@ -18,7 +18,7 @@ namespace LGG.Core.Repositories
         int GetQueryPagedCount(string query);
         IEnumerable<Post> GetAllByTagPaged(string tag, int count, int page = 1);
         IEnumerable<Post> GetAllByCategoryPaged(string category, int count, int page = 1);
-        IEnumerable<Post> GetAllByCategoryName(string categoryName, int? top);
+        IEnumerable<Post> GetAllByCategoryName(string category, bool includeArticle, int? top);
         IEnumerable<Post> GetPostsBasedOnIdCollection(List<int> postIds);
         Post GetPreviousBasedOnId(int id);
         Post GetNextBasedOnId(int id);

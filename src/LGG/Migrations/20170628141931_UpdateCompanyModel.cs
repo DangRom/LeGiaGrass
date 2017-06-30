@@ -15,7 +15,7 @@ namespace LGG.Migrations
             migrationBuilder.AddColumn<string>(
                 name: "Phone",
                 table: "Company",
-                maxLength: 15,
+                maxLength: 20,
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(

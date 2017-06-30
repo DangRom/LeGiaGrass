@@ -1,13 +1,13 @@
 
 using LGG.Core.Dtos;
 using LGG.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 
 namespace LGG.Areas.Admin.Controllers
 {
@@ -68,16 +68,17 @@ namespace LGG.Areas.Admin.Controllers
                 ViewBag.Categories = await GetCategories();
                 if (ModelState.IsValid)
                 {
-                    if (await Task.Factory.StartNew(() => _galleryService.CheckName(gallery.Name)))
-                    {
-                        ModelState.AddModelError("", "Hay thu ten khac.");
-                        return View();
-                    }
-                    else
-                    {
-                        await Task.Factory.StartNew(() => _galleryService.Add(gallery));
-                        return RedirectToAction("New");
-                    }
+                    ///TODO: Cho phép trùng tên: Album 1, Album 2
+                    //if (await Task.Factory.StartNew(() => _galleryService.CheckName(gallery.Name)))
+                    //{
+                    //    ModelState.AddModelError("", "Hay thu ten khac.");
+                    //    return View();
+                    //}
+                    //else
+                    //{
+                    await Task.Factory.StartNew(() => _galleryService.Add(gallery));
+                    return RedirectToAction(nameof(GalleriesController.Index));
+                    //}
                 }
                 return View();
             }
@@ -119,7 +120,7 @@ namespace LGG.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     await Task.Factory.StartNew(() => _galleryService.Update(gallery));
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(GalleriesController.Index));
                 }
                 return View();
             }

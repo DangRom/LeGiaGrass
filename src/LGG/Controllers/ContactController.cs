@@ -57,9 +57,7 @@ namespace LGG.Controllers
 
             var response = _communicationService.SendContactEmailNotification(model);
             ViewBag.IsValid = true;
-            //ViewBag.Selected = "contact";
-            //ViewBag.Services = _postService.GetAllByCategoryName("Service");
-            //ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
+
             switch (response.Status)
             {
                 case OperationStatus.Ok:
@@ -72,7 +70,6 @@ namespace LGG.Controllers
             }
 
             return RedirectToAction(nameof(ContactController.Index));
-            //return View("Index");
         }
     }
 }

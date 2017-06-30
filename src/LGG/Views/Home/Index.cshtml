@@ -1,12 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Welcome to LeGia - Grass";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var galleries = (List<IGrouping<int, GalleryDto>>)ViewBag.Galleries;
+    var galleries = (List<IGrouping<string, GalleryDto>>)ViewBag.Galleries;
     var isFirstGallery = true;
     var indexLastestPost = 0;
     var company = (CompanyDto)ViewBag.Company;
+    var events = ((List<GalleryDto>)ViewBag.Events).FirstOrDefault();
+    var diffirence = ((List<GalleryDto>)ViewBag.Diffirences).FirstOrDefault();
+    string[] serviceDefaultBackground = { "/images/home/service-1-bg.jpg", "/images/home/service-2-bg.jpg", "/images/home/service-3-bg.jpg", "/images/home/service-4-bg.jpg" };
+    var random = new Random();
 }
-
+@model  LGG.Core.ViewModels.ContactViewModel
 @section loaderWrapper{
     <div id="loader-wrapper" class="loader-on">
         <div id="loader" class="mower-loader">
@@ -30,56 +34,17 @@
             <ul>
                 @foreach (var slide in (List<GalleryDto>)ViewBag.Slides)
                 {
-                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                        <!-- MAIN IMAGE --><img src="@(slide.Image)" alt="slide1" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">We Work Hard on Your Yard</div>
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-speed="630" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">Work of exceptional quality since 1995</div>
-                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                    </li>
+                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
+                    <!-- MAIN IMAGE --><img src="@(!string.IsNullOrEmpty(slide.Image)?slide.Image:"images/home/slide-1920x746.jpg")" alt="slide1" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <!-- LAYERS -->
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">@(slide.Name)</div>
+                    <!-- LAYER NR. 2 -->
+                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-speed="630" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">@(slide.Description)</div>
+                    <!-- LAYER NR. 3 -->
+                    <a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GỬI YÊU CẦU</a>
+                </li>
                 }
-                <!-- SLIDE  -->
-                @*<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                        <!-- MAIN IMAGE --><img src="images/slides/slide-1.jpg" alt="slide1" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">We Work Hard on Your Yard</div>
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-speed="630" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">Work of exceptional quality since 1995</div>
-                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                    </li>*@
-                <!-- SLIDE  -->
-                @*<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                        <!-- MAIN IMAGE --><img src="images/slides/slide-4.jpg" alt="slide4" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">LAWN SERVICE</div>
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">Our revive, sustain & thrive services ensure the health of your lawn</div>
-                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                    </li>*@
-                <!-- SLIDE  -->
-                @*<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                        <!-- MAIN IMAGE --><img src="images/slides/slide-2.jpg" alt="slide2" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">landscape design</div>
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">custom landscape maintenance to complement and enhance your home</div>
-                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                    </li>*@
-                <!-- SLIDE  -->
-                @*<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                        <!-- MAIN IMAGE --><img src="images/slides/slide-3.jpg" alt="slide3" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">SNOW REMOVAL</div>
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">Avoid condo fees, let us take care of your home snow removal for less</div>
-                        <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                    </li>*@
             </ul>
         </div>
     </div>
@@ -93,14 +58,14 @@
         <div class="services-block">
             @foreach (var service in (List<PostDto>)ViewBag.Services)
             {
-                <a href="@(service.Url)" class="service iconmove light ">
-                    <div class="service-image image-scale">
-                        <img src="@(string.IsNullOrEmpty(service.SmallImage) ? "/images/service-page-1.jpg" : service.SmallImage)" alt="#">
+                <a href="/post/@(service.Url)" class="service iconmove light">
+                    <div class="service-image">
+                        <img src="@(string.IsNullOrEmpty(service.SmallImage) ?serviceDefaultBackground[random.Next(0, serviceDefaultBackground.Length)] : service.SmallImage)" a alt="#">
                     </div>
                     <div class="caption">
                         <div class="vert-wrap">
                             <div class="vert">
-                                <div class="service-icon"><i class="icon first"><img src="@(service.IconImage)" /></i></div>
+                                <div class="service-icon"><i class="icon first icon-tree"></i></div>
                                 <div class="service-title">@(service.Title)</div>
                                 <div class="service-text">@(service.Description)</div>
                             </div>
@@ -136,7 +101,7 @@
         </div>
     </div>
 </section>
-<section class="content content--parallax top-null" data-image="images/parallax-bg.jpg">
+<section class="content content--parallax top-null" data-image="@(!string.IsNullOrEmpty(diffirence?.Image)?diffirence.Image:"/images/home/parallax-bg-2000x1400.jpg")">
     <div class="container">
         <h2 class="text-center white lined">Sự Khác Biệt</h2>
         <div class="iconcircle-wrap">
@@ -201,260 +166,58 @@
         </div>
     </div>
 </section>
-@*
-    <section class="content">
-        <div class="container">
-            <h2 class="text-center lined">Our Packages</h2>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="package animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <div class="package-image">
-                            <img src="images/img-package-1.jpg" alt="">
-                        </div>
-                        <div class="package-caption">
-                            <div class="vert-wrap">
-                                <div class="vert">
-                                    <div class="package-title">
-                                        Winter Offers
-                                    </div>
-                                    <div class="package-text-1">
-                                        STARTING FROM $326.00
-                                    </div>
-                                    <div class="package-text-2">
-                                        The winter is when you spend the least amount of time thinking of your lawn.
-                                    </div>
-                                    <div class="form-popup-wrap">
-                                        <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
-                                        <div class="form-popup">
-                                            <form class="quote-form" method="post" id="form2">
-                                                <h3>Get a Quote</h3>
-                                                <div class="successform successQuote">
-                                                    <p>Your message was sent successfully!</p>
-                                                </div>
-                                                <div class="errorform errorQuote">
-                                                    <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-                                                </div>
-                                                <div class="form-inline">
-                                                    <div>
-                                                        <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
-                                                    </div>
-                                                    <div>
-                                                        <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
-                                                    </div>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-                                                </div>
-                                                <div class="form-inline">
-                                                    <div class="select-wrapper select--full">
-                                                        <select name="select" class="select--wd">
-                                                            <option value="Service you need">Service you need</option>
-                                                            <option value="Tree service">Tree service</option>
-                                                            <option value="Junk Removal">Junk Removal</option>
-                                                            <option value="New tree planting">New tree planting</option>
-                                                            <option value="Retaining walls">Retaining walls</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="package animation" data-animation="fadeIn" data-animation-delay="0s">
-                        <div class="package-image">
-                            <img src="images/img-package-2.jpg" alt="">
-                        </div>
-                        <div class="package-caption">
-                            <div class="vert-wrap">
-                                <div class="vert">
-                                    <div class="package-title">
-                                        Spring Offers
-                                    </div>
-                                    <div class="package-text-1">
-                                        STARTING FROM $126.00
-                                    </div>
-                                    <div class="package-text-2">
-                                        We offer very reasonable rates and will give you a quote in person within 24 hours.
-                                    </div>
-                                    <div class="form-popup-wrap">
-                                        <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
-                                        <div class="form-popup">
-                                            <form class="quote-form" method="post" id="form3">
-                                                <h3>Get a Quote</h3>
-                                                <div class="successform successQuote">
-                                                    <p>Your message was sent successfully!</p>
-                                                </div>
-                                                <div class="errorform errorQuote">
-                                                    <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-                                                </div>
-                                                <div class="form-inline">
-                                                    <div>
-                                                        <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
-                                                    </div>
-                                                    <div>
-                                                        <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
-                                                    </div>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-                                                </div>
-                                                <div class="form-inline">
-                                                    <div class="select-wrapper select--full">
-                                                        <select name="select" class="select--wd">
-                                                            <option value="Service you need">Service you need</option>
-                                                            <option value="Tree service">Tree service</option>
-                                                            <option value="Junk Removal">Junk Removal</option>
-                                                            <option value="New tree planting">New tree planting</option>
-                                                            <option value="Retaining walls">Retaining walls</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="package-ribbon-wrapper">
-                            <div class="package-ribbon">ƯA CHUỘNG</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="package animation" data-animation="fadeInRight" data-animation-delay="0.5s">
-                        <div class="package-image">
-                            <img src="images/img-package-3.jpg" alt="">
-                        </div>
-                        <div class="package-caption">
-                            <div class="vert-wrap">
-                                <div class="vert">
-                                    <div class="package-title">
-                                        Summer Offers
-                                    </div>
-                                    <div class="package-text-1">
-                                        STARTING FROM $205.00
-                                    </div>
-                                    <div class="package-text-2">
-                                        The growing season reaches its apex as the days become longer and warmer.
-                                    </div>
-                                    <div class="form-popup-wrap">
-                                        <a href="" class="btn btn--wd form-popup-link">Xem Ngay</a>
-                                        <div class="form-popup">
-                                            <form class="quote-form" method="post" id="form4">
-                                                <h3>Get a Quote</h3>
-                                                <div class="successform successQuote">
-                                                    <p>Your message was sent successfully!</p>
-                                                </div>
-                                                <div class="errorform errorQuote">
-                                                    <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-                                                </div>
-                                                <div class="form-inline">
-                                                    <div>
-                                                        <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
-                                                    </div>
-                                                    <div>
-                                                        <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
-                                                    </div>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-                                                </div>
-                                                <div class="form-inline">
-                                                    <div class="select-wrapper select--full">
-                                                        <select name="select" class="select--wd">
-                                                            <option value="Service you need">Service you need</option>
-                                                            <option value="Tree service">Tree service</option>
-                                                            <option value="Junk Removal">Junk Removal</option>
-                                                            <option value="New tree planting">New tree planting</option>
-                                                            <option value="Retaining walls">Retaining walls</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-inline">
-                                                    <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-*@
-<section class="content content--fill content--fill--light">
-    <div class="container">
-        <h2 class="text-center lined">Bộ Sửu Tập Ảnh</h2>
-        <div class="container">
-            <!-- Filters -->
-            <section class="filters-by-category">
-                <div class="container">
-                    <ul class="option-set" data-option-key="filter">
-                        <li><a href="#filter" data-option-value="*" class="selected">All</a></li>
 
-                        @foreach (var group in galleries)
-                        {
-                            <li><a href="#filter" data-option-value=".categoryId-@(group.FirstOrDefault().Category.CategoryId)" class="">@group.FirstOrDefault().Category.Name</a></li>
-                        }
-                    </ul>
-                </div>
-            </section>
-            <!-- //end Filters -->
-            <div class="gallery gallery-isotope" id="gallery">
-                @foreach (var group in galleries)
+@*Galleries - Customer says about us*@
+<section class="content content--fill content--fill--light top-null">
+    <div class="container">
+        @if (galleries.Count > 0)
+        {
+            <h2 class="text-center lined">Bộ Sửu Tập Ảnh</h2>
+            <div class="container">
+                <!-- Filters -->
+                <section class="filters-by-category">
+                    <div class="container">
+                        <ul class="option-set" data-option-key="filter">
+                            <li><a href="#filter" data-option-value="*" class="selected">All</a></li>
+
+                            @foreach (var group in galleries)
+                            {
+                                <li><a href="#filter" data-option-value=".categoryId-@(group.FirstOrDefault().Name.GetHashCode())" class="">@group.FirstOrDefault().Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                </section>
+                <!-- //end Filters -->
+                <div class="gallery gallery-isotope" id="gallery">
+                    @foreach (var group in galleries)
                 {
                     //isFirstGallery = !isFirstGallery;
                     foreach (var gallery in group)
                     {
                         if (isFirstGallery)
                         {
-                            <div class="gallery__item doubleW doubleH categoryId-@(gallery.Category.CategoryId)">
-                                <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
-                            </div>
-                            isFirstGallery = !isFirstGallery;
-                        }
-                        else
-                        {
-                            <div class="gallery__item categoryId-@(gallery.Category.CategoryId)">
-                                <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
-                            </div>
-                        }
+                                <div class="gallery__item doubleW doubleH categoryId-@(gallery.Name.GetHashCode())">
+                                    <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
+                                </div>
+                                isFirstGallery = !isFirstGallery;
+                            }
+                            else
+                            {
+                                <div class="gallery__item categoryId-@(gallery.Name.GetHashCode())">
+                                    <div class="gallery__item__image"> <img src="@(gallery.Image)" alt="" /> <a class="btn btn--round" href="@(gallery.Image)"><span class="icon icon-magnifying-glass"></span></a> </div>
+                                </div>
+                            }
 
+                        }
                     }
-                }
-
+                </div>
+                <div class="divider divider--md"></div>
+                @*<div class="text-center"><a class="btn btn--wd">MORE</a></div>
+                    <div class="divider divider--md"></div>*@
             </div>
-            <div class="divider divider--md"></div>
-            @*<div class="text-center"><a class="btn btn--wd">MORE</a></div>
-                <div class="divider divider--md"></div>*@
-        </div>
-        <div class="divider"></div>
+            <div class="divider"></div>
+        }
+
         <h2 class="text-center lined">Khách Hàng Nói Về Chúng Tôi?</h2>
         <div class="row testimonials-style2-row">
             @foreach (var tes in (List<PostDto>)ViewBag.Testimonials)
@@ -462,7 +225,7 @@
                 <div class="testimonials-style2 col-sm-6">
                     <div class="testimonials-style2-inside">
                         <div class="testimonials-style2__photo">
-                            <img src="@(!string.IsNullOrEmpty(tes.SmallImage)?tes.SmallImage:"images/testimonials-author.jpg")" alt="">
+                            <img src="@(!string.IsNullOrEmpty(tes.SmallImage)?tes.SmallImage:"images/home/testimonials-author-200x275.jpg")" alt="">
                         </div>
                         <div class="testimonials-style2__text">
                             <p>@(tes.Excerpt?.Content)</p>
@@ -474,62 +237,7 @@
                     </div>
                 </div>
             }
-            @*<div class="testimonials-style2 col-sm-6">
-                    <div class="testimonials-style2-inside">
-                        <div class="testimonials-style2__photo">
-                            <img src="images/testimonials-author-img-03.jpg" alt="">
-                        </div>
-                        <div class="testimonials-style2__text">
-                            <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
-                            <div>
-                                <span class="testimonials-style2__author">Thomas Reese, </span>
-                                <br><span class="testimonials-style2__post">homeowner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-style2 col-sm-6">
-                    <div class="testimonials-style2-inside">
-                        <div class="testimonials-style2__photo">
-                            <img src="images/testimonials-author-img-04.jpg" alt="">
-                        </div>
-                        <div class="testimonials-style2__text">
-                            <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
-                            <div>
-                                <span class="testimonials-style2__author">Allison Boudreaux, </span>
-                                <br><span class="testimonials-style2__post">homeowner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-style2 col-sm-6">
-                    <div class="testimonials-style2-inside">
-                        <div class="testimonials-style2__photo">
-                            <img src="images/testimonials-author-img-03.jpg" alt="">
-                        </div>
-                        <div class="testimonials-style2__text">
-                            <p>We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping. </p>
-                            <div>
-                                <span class="testimonials-style2__author">Thomas Reese, </span>
-                                <br><span class="testimonials-style2__post">homeowner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-style2 col-sm-6">
-                    <div class="testimonials-style2-inside">
-                        <div class="testimonials-style2__photo">
-                            <img src="images/testimonials-author-img-04.jpg" alt="">
-                        </div>
-                        <div class="testimonials-style2__text">
-                            <p>At the beginning of spring, our lawn was a mess. My husband was seriously planning to rototill the entire yard and start over again. Fortunately, you persuaded him otherwise and your excellent care of our lawn </p>
-                            <div>
-                                <span class="testimonials-style2__author">Allison Boudreaux, </span>
-                                <br><span class="testimonials-style2__post">homeowner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
+
         </div>
     </div>
 </section>
@@ -537,58 +245,17 @@
 @*EVENTS*@
 @if (((List<GalleryDto>)ViewBag.Events).Count > 0)
 {
-    <section class="content content--parallax top-null" data-image="@(((List<GalleryDto>)ViewBag.Events).FirstOrDefault().Image)">
+    <section class="content content--parallax top-null" data-image="@(!string.IsNullOrEmpty(events.Image)?events.Image:"/images/home/parallax-bg-2224x1008.jpg")">
         <div class="container">
             <div class="text-banner-light">
-                <h3>Get Your Lawn Ready for Summer 2017!</h3>
-                <p>Contact us for a free no obligation Lawn Care Survey worth $25 and we will agree a convenient time to meet you and survey your lawn.</p>
+                <h3>@(events.Name)</h3>
+                <p>@(events.Description)</p>
                 <div class="form-popup-wrap">
-                    <a href="" class="btn btn--wd btn--invert form-popup-link">FREE LAWN SURVEY</a>
-                    <div class="form-popup">
-                        <form class="quote-form" method="post" id="form5">
-                            <h3>Lawn Survey Order</h3>
-                            <div class="successform successQuote">
-                                <p>Your message was sent successfully!</p>
-                            </div>
-                            <div class="errorform errorQuote">
-                                <p>Something went wrong, try refreshing and submitting the form again.</p>
-                            </div>
-                            <div class="form-inline">
-                                <input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-                            </div>
-                            <div class="form-inline">
-                                <div>
-                                    <input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
-                                </div>
-                                <div>
-                                    <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
-                                </div>
-                            </div>
-                            <div class="form-inline">
-                                <input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-                            </div>
-                            <div class="form-inline">
-                                <div class="select-wrapper select--full">
-                                    <select name="select" class="select--wd">
-                                        <option value="Service you need">Service you need</option>
-                                        <option value="Tree service">Tree service</option>
-                                        <option value="Junk Removal">Junk Removal</option>
-                                        <option value="New tree planting">New tree planting</option>
-                                        <option value="Retaining walls">Retaining walls</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-inline">
-                                <textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>order now</button>
-                        </form>
-                    </div>
+                    <a href="#modalForm1" class="btn btn--wd btn--invert  modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GỬI YÊU CẦU</a>
                 </div>
             </div>
         </div>
     </section>
-
 }
 
     @*BLOG*@
@@ -601,7 +268,9 @@
                     <div class="col-sm-4">
                         <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="@(indexLastestPost==1?"0s":"0.5s") ">
                             <div class="blog-preview-image">
-                                <img src="@(post.Image)" alt="">
+                                <a href="/post/@(post.Url)">
+                                    <img src="@(!string.IsNullOrEmpty(post.SmallImage) ? post.SmallImage : "images/home/img-blog-preview-320x210.jpg")" alt="">
+                                </a>
                             </div>
                             <div class="blog-preview-text">
                                 <div class="blog-post-title">
@@ -620,65 +289,6 @@
                     </div>
                     indexLastestPost++;
                 }
-                @*<div class="col-sm-4">
-                    <div class="blog-preview animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <div class="blog-preview-image">
-                    <img src="images/img-blog-preview-1.jpg" alt="">
-                    </div>
-                    <div class="blog-preview-text">
-                    <div class="blog-post-title">
-                    Lawn Preparation Work for Winter
-                    </div>
-                    <div class="blog-preview-date">
-                    March 20, 2017
-                    </div>
-                    <div class="blog-preview-teaser">
-                    Many people are under the impression that there is nothing that they can do about the way that their lawn looks in the winter months. It's important to clean up fallen leaves before winter sets in. When left on your lawn, leaves can smother and kill the grass.
-                    </div>
-                    <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                    </div>
-                    </div>
-                    </div>*@
-
-                @*<div class="col-sm-4">
-                    <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="0s">
-                    <div class="blog-preview-image">
-                    <img src="images/img-blog-preview-2.jpg" alt="">
-                    </div>
-                    <div class="blog-preview-text">
-                    <div class="blog-post-title">
-                    Lawn Care Tips for the Spring Season
-                    </div>
-                    <div class="blog-preview-date">
-                    April 18, 2017
-                    </div>
-                    <div class="blog-preview-teaser">
-                    Tackling spring lawn care provides a just-right dose of fresh air, sunshine, and exercise – and sets your lawn on its way to season-long glory. Spring lawn chores aren’t difficult, but they do play a vital role in getting your grass on track for a healthy, productive season.
-                    </div>
-                    <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                    </div>
-                    </div>
-                    </div>*@
-
-                @*<div class="col-sm-4">
-                    <div class="blog-preview animation" data-animation="fadeInRight" data-animation-delay="0.5s">
-                    <div class="blog-preview-image">
-                    <img src="images/img-blog-preview-3.jpg" alt="">
-                    </div>
-                    <div class="blog-preview-text">
-                    <div class="blog-post-title">
-                    Get 25% OFF on Your First Service
-                    </div>
-                    <div class="blog-preview-date">
-                    April 27, 2017
-                    </div>
-                    <div class="blog-preview-teaser">
-                    Sign up for an annual Lawn Care or Mosquito Control Program and get 25% OFF on your first service. The truth is, lawn care is a complex science. But many homeowners rely on trial and error and end up frustrated, never reaching their lawn goals.
-                    </div>
-                    <div class="blog-preview-link text-right"><a href="blog-single.html"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                    </div>
-                    </div>
-                    </div>*@
             </div>
         </div>
     </section>
@@ -687,40 +297,43 @@
 
     @section modalForm{
         <div id="modalForm1" class="form-modal">
-            <form class="quote-form" method="post" id="form1">
-                <h3>Quote Form</h3>
+            <form asp-controller="Home" asp-action="Send" method="post" id="form1" class="quote-form" name="quoteform" novalidate>
+                <h3>Yêu Cầu</h3>
                 <div class="successform successQuote">
                     <p>Your message was sent successfully!</p>
                 </div>
+
                 <div class="errorform errorQuote">
-                    <p>Something went wrong, try refreshing and submitting the form again.</p>
+                    <div asp-validation-summary="All"></div>
                 </div>
                 <div class="form-inline">
-                    <input type="text" name="name" class="form-control input--wd" value="" placeholder="Họ Tên">
+                    <input type="text" name="name" asp-for="Name" class="form-control input--wd" value="" placeholder="Họ Tên">
                 </div>
                 <div class="form-inline">
                     <div>
-                        <input type="text" name="email" class="form-control input--wd" value="" placeholder="Email">
+                        <input type="text" name="email" asp-for="Email" class="form-control input--wd" value="" placeholder="Email">
                     </div>
                     <div>
-                        <input type="text" name="phone" class="form-control input--wd" value="" placeholder="Điện Thoại">
+                        <input type="text" name="phone" asp-for="Phone" class="form-control input--wd" value="" placeholder="Điện Thoại">
+                        <span asp-validation-for="Phone" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-inline">
-                    <input type="text" name="address" class="form-control input--wd" value="" placeholder="Địa chỉ của bạn">
+                    <input type="text" name="address" asp-for="Address" class="form-control input--wd" value="" placeholder="Địa chỉ của bạn">
                 </div>
                 <div class="form-inline">
                     <div class="select-wrapper select--full">
-                        <select name="select" class="select--wd">
-                            @foreach (var service in (List<PostDto>)ViewBag.Services)
-                            {
-                                <option value="@(service.Title)">@(service.Title)</option>
-                            }
-                        </select>
+                        @*<select name="select" asp-items="" class="select--wd" asp-for="Service">
+                                @foreach (var service in (List<PostDto>)ViewBag.Services)
+                                {
+                                    <option value="@(service.Title)">@(service.Title)</option>
+                                }
+                            </select>*@
+                        <select asp-for="Service" asp-items="Model.ServiceSelectList" class="select--wd"></select>
                     </div>
                 </div>
                 <div class="form-inline">
-                    <textarea name="message" class="form-control input--wd input--full" placeholder="Lời nhắn"></textarea>
+                    <textarea name="message" asp-for="Message" class="form-control input--wd input--full" placeholder="Lời nhắn"></textarea>
                 </div>
                 <button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>GỬI</button>
             </form>

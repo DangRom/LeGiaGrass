@@ -140,7 +140,7 @@ namespace LGG.Migrations
                     Email = table.Column<string>(maxLength: 254, nullable: true),
                     Facebook = table.Column<string>(maxLength: 50, nullable: true),
                     Google = table.Column<string>(maxLength: 50, nullable: true),
-                    Hotline = table.Column<string>(maxLength: 15, nullable: true),
+                    Hotline = table.Column<string>(maxLength: 20, nullable: true),
                     Instagram = table.Column<string>(maxLength: 50, nullable: true),
                     LinkedIn = table.Column<string>(maxLength: 50, nullable: true),
                     Logo = table.Column<string>(maxLength: 250, nullable: true),

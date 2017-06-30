@@ -34,7 +34,7 @@ namespace LGG.Controllers
         // GET: Blog
         public ActionResult Index(int page = 1)
         {
-            var post = _postService.GetAllPaged(4, page).ToList();
+            var post = _postService.GetAllByCategoryName("Blog", true); ;// _postService.GetAllPaged(4, page).ToList();
 
             ///TODO: Chưa làm paging, đang xử lý khi null
             ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(_postService.GetTotalNumberOfPosts(), page, 1);

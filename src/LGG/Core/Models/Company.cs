@@ -56,12 +56,12 @@ namespace LGG.Core.Models
         [StringLength(250)]
         public string Sologan { get; set; }
 
-        [MaxLength(15)]
-        [StringLength(15)]
+        [MaxLength(20)]
+        [StringLength(20)]
         public string Hotline { get; set; }
 
-        [MaxLength(15)]
-        [StringLength(15)]
+        [MaxLength(20)]
+        [StringLength(20)]
         public string Phone { get; set; }
 
 

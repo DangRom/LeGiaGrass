@@ -4,7 +4,9 @@ using LGG.Core.Services;
 using LGG.Core.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -39,22 +41,32 @@ namespace LGG.Controllers
             ViewBag.Description = "";
             ViewBag.Selected = "home";
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
-            var galleries = _galleryService.GetAll();
 
+            var galleries = _galleryService.GetByCategoryName("Gallery");
             ViewBag.Galleries = (from gallery in galleries
-                                 group gallery by gallery.Category.CategoryId into newGroup
+                                 group gallery by gallery.Name
+                                 into newGroup
                                  orderby newGroup.Key
                                  select newGroup).ToList();
 
-            ViewBag.Posts = _postService.GetAllByCategoryName("Blog", 3).ToList();
+            ViewBag.Posts = _postService.GetAllByCategoryName("Blog", false, 3).ToList();
             ViewBag.Services = _postService.GetAllByCategoryName("Service");
             ViewBag.Testimonials = _postService.GetAllByCategoryName("Testimonial");
-
             ViewBag.Events = _galleryService.GetByCategoryName("Event");
             ViewBag.Slides = _galleryService.GetByCategoryName("Slide");
+            ViewBag.Diffirences = _galleryService.GetByCategoryName("Diffirence");
 
+            var ServiceSelectList = new List<SelectListItem>();
+            foreach (var ser in (List<PostDto>)ViewBag.Services)
+            {
+                ServiceSelectList.Add(new SelectListItem { Value = ser.Title, Text = ser.Title });
+            }
 
-            return View();
+            ContactViewModel contact = new ContactViewModel()
+            {
+                ServiceSelectList = ServiceSelectList
+            };
+            return View(contact);
         }
 
         [HttpPost]
@@ -93,6 +105,35 @@ namespace LGG.Controllers
         public IActionResult SiteMap()
         {
             return Content(_siteMapService.GetSiteMap(), "text/xml", Encoding.UTF8);
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Send(ContactViewModel model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.IsValid = false;
+                return RedirectToAction(nameof(HomeController.Index));
+            }
+
+            var response = _communicationService.SendContactEmailNotification(model);
+            ViewBag.IsValid = true;
+
+            switch (response.Status)
+            {
+                case OperationStatus.Ok:
+                    ViewBag.MessageSent = true;
+                    break;
+                case OperationStatus.Error:
+                    ViewBag.IsValid = false;
+                    ModelState.AddModelError("", "Xin lỗi vì sự bất tiện này, chúng tôi vừa gặp vấn đề khi gửi lời nhắn của bạn. Vui lòng thử lại!");
+                    break;
+            }
+
+            return RedirectToAction(nameof(HomeController.Index));
         }
     }
 }

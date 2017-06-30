@@ -129,9 +129,9 @@ namespace LGG.Persistence.Services
         }
 
 
-        public IEnumerable<PostDto> GetAllByCategoryName(string categoryName, int? top = null)
+        public IEnumerable<PostDto> GetAllByCategoryName(string categoryName, bool includeArticle = false, int? top = null)
         {
-            return Mapper.Map<IList<Post>, IList<PostDto>>(_postRepository.GetAllByCategoryName(categoryName, top).ToList());
+            return Mapper.Map<IList<Post>, IList<PostDto>>(_postRepository.GetAllByCategoryName(categoryName, includeArticle, top).ToList());
         }
 
         /// <summary>

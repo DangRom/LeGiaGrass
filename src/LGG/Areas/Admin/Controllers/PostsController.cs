@@ -1,12 +1,12 @@
 ﻿using LGG.Core.Dtos;
 using LGG.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 
 namespace LGG.Areas.Admin.Controllers
 {
@@ -105,7 +105,7 @@ namespace LGG.Areas.Admin.Controllers
             {
                 if (id > 0)
                 {
-                    var post = await Task.Factory.StartNew(() => _postService.GetById(id));
+                    var post = await Task.Factory.StartNew(() => _postService.GetById(id, true));
                     if (post != null)
                     {
                         ViewBag.Categories = await GetCategories();

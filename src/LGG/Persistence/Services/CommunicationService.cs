@@ -35,10 +35,10 @@ namespace LGG.Persistence.Services
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_appConfiguration.Value.SiteTitle + " - Liên Hệ", model.Email));
             message.To.Add(new MailboxAddress(_appConfiguration.Value.SiteTitle + " - Liên Hệ", !string.IsNullOrEmpty(company?.Email) ? company?.Email : _appConfiguration.Value.EmailUsername));
-            message.Subject = _appConfiguration.Value.SiteTitle + " - Liên Hệ: " + model.Subject;
+            message.Subject = _appConfiguration.Value.SiteTitle + " - Liên Hệ: " + model.Subject + " " + model.Service;
             message.Body = new TextPart("html")
             {
-                Text = string.Format("<p>Lời nhắn được gửi từ: {0} ({1})</p><p>Nội Dung:</p><p>{2}</p>", model.Name, model.Email, model.Message)
+                Text = $"<p>Lời nhắn được gửi từ: {model.Name} ({model.Email})</p><p>Điện Thoại:</p><p>{model.Phone}</p><p>Địa Chỉ:</p><p>{model.Address}</p><p>Nội Dung:</p><p>{model.Message}</p>"
             };
 
             try
