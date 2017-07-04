@@ -3,6 +3,7 @@
     ViewBag.Title = "Về Chúng Tôi";
     Layout = "~/Views/Shared/_LayoutSub.cshtml";
     var company = (CompanyDto)ViewBag.Company;
+    var seleted = (string)ViewBag.Selected;
 }
 
 <section class="breadcrumbs">
@@ -21,7 +22,24 @@
         <h1 class="text-center lined">Về Chúng Tôi</h1>
         <div class="row">
             <div class="col-md-12 column-center">
-                @Html.Raw(company.About?.Content)
+                @{
+                    switch (seleted)
+                    {
+                        case nameof(AboutType.About):
+                            @Html.Raw(company.About?.Content)
+                            break;
+                        case nameof(AboutType.Privacy):
+                            @Html.Raw(company.Privacy?.Content)
+                            break;
+                        case nameof(AboutType.TermsOfUse):
+                            @Html.Raw(company.TermsOfUse?.Content)
+                            break;
+                        default:
+                            @Html.Raw(company.Privacy?.Content)
+                            break;
+                    }
+                }
+
             </div>
         </div>
     </div>
