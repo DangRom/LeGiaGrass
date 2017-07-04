@@ -23,9 +23,9 @@ namespace LGG.Controllers
         /// <summary>
         /// GET: About
         /// </summary>
-        public IActionResult Index(string type)
+        public IActionResult Index(string id)
         {
-            switch (type)
+            switch (id)
             {
                 case nameof(AboutType.About):
                     ViewBag.Selected = nameof(AboutType.About);
