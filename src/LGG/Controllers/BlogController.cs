@@ -1,4 +1,5 @@
 ﻿using LGG.Core.Dtos;
+using LGG.Core.Helpers;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -37,20 +38,18 @@ namespace LGG.Controllers
             var post = _postService.GetAllByCategoryName("Blog", true); ;// _postService.GetAllPaged(4, page).ToList();
 
             ///TODO: Chưa làm paging, đang xử lý khi null
-            ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(_postService.GetTotalNumberOfPosts(), page, 1);
+            //ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(_postService.GetTotalNumberOfPosts(), page, 1);
 
-            ViewBag.Description = "LGG archives page " + page + ". " +
-                                  "description...";
-            ViewBag.Header = "LGG";
-            ViewBag.Title = "LGG";
-            ViewBag.Pager = "blog";
+            //ViewBag.Header = "LGG";
+            //ViewBag.Title = "LGG";
+            //ViewBag.Pager = "blog";
             ViewBag.Selected = "blog";
 
             ViewBag.Categories = _categoryService.GetAll();
             ViewBag.Tags = _tagService.GetAll();
-            ViewBag.PopularPosts = _postService.GetPopularPosts();
-            ViewBag.NewPosts = _postService.GetAll(true, false, false, 5).ToList();
-            ViewBag.Services = _postService.GetAllByCategoryName("Service");
+            //ViewBag.PopularPosts = _postService.GetPopularPosts();
+            ViewBag.NewPosts = _postService.GetAllByCategoryName(nameof(CategoryName.Blog), false, 5); //_postService.GetAll(true, false, false, 5).ToList();
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
 
             return View(post);

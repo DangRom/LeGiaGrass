@@ -243,7 +243,7 @@
 </section>
 
 @*EVENTS*@
-@if (((List<GalleryDto>)ViewBag.Events).Count > 0)
+@if (events != null)
 {
     <section class="content content--parallax top-null" data-image="@(!string.IsNullOrEmpty(events.Image)?events.Image:"/images/home/parallax-bg-2224x1008.jpg")">
         <div class="container">

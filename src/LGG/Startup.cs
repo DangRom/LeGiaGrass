@@ -263,7 +263,7 @@ namespace LGG
 
                 routes.MapRoute(
                    name: "About",
-                   template: "about/{page?}",
+                   template: "about/{id}",
                    defaults: new { controller = "about", action = "Index" });
 
                 routes.MapRoute(

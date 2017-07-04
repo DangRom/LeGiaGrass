@@ -38,23 +38,22 @@ namespace LGG.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Description = "";
             ViewBag.Selected = "home";
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
 
-            var galleries = _galleryService.GetByCategoryName("Gallery");
+            var galleries = _galleryService.GetByCategoryName(nameof(CategoryName.Gallery));
             ViewBag.Galleries = (from gallery in galleries
                                  group gallery by gallery.Name
                                  into newGroup
                                  orderby newGroup.Key
                                  select newGroup).ToList();
 
-            ViewBag.Posts = _postService.GetAllByCategoryName("Blog", false, 3).ToList();
-            ViewBag.Services = _postService.GetAllByCategoryName("Service");
-            ViewBag.Testimonials = _postService.GetAllByCategoryName("Testimonial");
-            ViewBag.Events = _galleryService.GetByCategoryName("Event");
-            ViewBag.Slides = _galleryService.GetByCategoryName("Slide");
-            ViewBag.Diffirences = _galleryService.GetByCategoryName("Diffirence");
+            ViewBag.Posts = _postService.GetAllByCategoryName(nameof(CategoryName.Blog), false, 3).ToList();
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
+            ViewBag.Testimonials = _postService.GetAllByCategoryName(nameof(CategoryName.Testimonial));
+            ViewBag.Events = _galleryService.GetByCategoryName(nameof(CategoryName.Event));
+            ViewBag.Slides = _galleryService.GetByCategoryName(nameof(CategoryName.Slide));
+            ViewBag.Diffirences = _galleryService.GetByCategoryName(nameof(CategoryName.Diffirence));
 
             var ServiceSelectList = new List<SelectListItem>();
             foreach (var ser in (List<PostDto>)ViewBag.Services)

@@ -1,4 +1,5 @@
 ﻿using LGG.Core.Dtos;
+using LGG.Core.Helpers;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -22,11 +23,23 @@ namespace LGG.Controllers
         /// <summary>
         /// GET: About
         /// </summary>
-        public IActionResult Index()
+        public IActionResult Index(string type)
         {
-            ViewBag.Description = "Description...";
-            ViewBag.Selected = "about";
-            ViewBag.Services = _postService.GetAllByCategoryName("Service");
+            switch (type)
+            {
+                case nameof(AboutType.About):
+                    ViewBag.Selected = nameof(AboutType.About);
+                    break;
+                case nameof(AboutType.Privacy):
+                    ViewBag.Selected = nameof(AboutType.Privacy);
+                    break;
+                case nameof(AboutType.TermsOfUse):
+                    ViewBag.Selected = nameof(AboutType.TermsOfUse);
+                    break;
+                default:
+                    break;
+            }
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
             ViewBag.Company = _companyService.GetAll(true, false, false).FirstOrDefault() ?? _companyDefault.Value;
             return View();
         }

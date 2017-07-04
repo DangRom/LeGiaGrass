@@ -1,4 +1,5 @@
 ﻿using LGG.Core.Dtos;
+using LGG.Core.Helpers;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -34,7 +35,7 @@ namespace LGG.Controllers
             if (post.Count() <= 0)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
-            ViewBag.Services = _postService.GetAllByCategoryName("Service");
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
             return View(post);
         }

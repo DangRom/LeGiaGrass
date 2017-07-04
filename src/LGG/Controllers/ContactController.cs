@@ -34,11 +34,11 @@ namespace LGG.Controllers
         /// </summary>
         public IActionResult Index()
         {
-            ViewBag.Description = "Contact...";
+
             ViewBag.IsValid = true;
             ViewBag.Selected = "contact";
             ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
-            ViewBag.Services = _postService.GetAllByCategoryName("Service");
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
             return View();
         }
 
