@@ -257,6 +257,20 @@ namespace LGG
                     defaults: new { controller = "blog", action = "Index" });
 
                 routes.MapRoute(
+                 name: "Service",
+                 template: "service/{id}",
+                 defaults: new { controller = "service", action = "Index" });
+
+                routes.MapRoute(
+                   name: "About",
+                   template: "about/{page?}",
+                   defaults: new { controller = "about", action = "Index" });
+
+                routes.MapRoute(
+                   name: "Contact",
+                   template: "contact/{page?}",
+                   defaults: new { controller = "contact", action = "Index" });
+                routes.MapRoute(
                     name: "SiteMap",
                     template: "sitemap.xml",
                     defaults: new { controller = "home", action = "SiteMap" });
@@ -265,10 +279,7 @@ namespace LGG
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(
-                   name: "About",
-                   template: "about/{page?}",
-                   defaults: new { controller = "about", action = "Index" });
+
 
             });
         }
