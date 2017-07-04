@@ -129,7 +129,7 @@
                             @*<li><a href="maintenance.html"><span class="link-name">Bảo Trì</span></a></li>*@
                             @*<li><a href="shop.html"><span class="link-name">Shop</span></a></li>*@
                             @*<li><a href="testimonial.html"><span class="link-name">Chứng Thực</span></a></li>*@
-                            <li class="@((string)ViewBag.Selected == "About" ? "active" : "")"><a href="/about"><span class="link-name">Về Chúng Tôi</span></a></li>
+                            <li class="@((string)ViewBag.Selected == "about" ? "active" : "")"><a href="/about"><span class="link-name">Thông Tin</span></a></li>
                             <li class="@((string)ViewBag.Selected == "contact" ? "active" : "")"><a href="/contact"><span class="link-name">Liên Hệ</span></a></li>
                         </ul>
                     </div>
@@ -155,21 +155,19 @@
                             <div class="v-links-list mobile-collapse__content">
                                 <ul>
                                     <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Locations</a></li>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">Partners</a></li>
+                                    <li><a href="#">Tuyển Dụng</a></li>
+                                    <li><a href="#">Đối Tác</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 mobile-collapse">
-                            <h5 class="title mobile-collapse__title">Service</h5>
+                            <h5 class="title mobile-collapse__title">Sử Dụng</h5>
                             <div class="v-links-list mobile-collapse__content">
                                 <ul>
                                     @*<li><a href="#">Site Map</a></li>*@
                                     <li><a href="/about/@(AboutType.About)">Về Chúng Tôi</a></li>
-                                    <li><a href="/about/@(AboutType.Privacy)">Privacy</a></li>
-                                    <li><a href="/about/@(AboutType.TermsOfUse)">Terms of Use</a></li>
+                                    <li><a href="/about/@(AboutType.Privacy)">Chính Sách</a></li>
+                                    <li><a href="/about/@(AboutType.TermsOfUse)">Điều Khoản</a></li>
                                 </ul>
                             </div>
                         </div>

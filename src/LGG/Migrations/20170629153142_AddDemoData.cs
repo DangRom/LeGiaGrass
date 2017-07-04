@@ -43,12 +43,12 @@ namespace LGG.Migrations
 
 
             //services
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (1,'Title 1', 'post-url1','description 1',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (2,'Title 2', 'post-url2','description 2',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (3,'Title 5', 'post-url3','description 3',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (4,'Title 3', 'post-url4','description 4',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (5,'Title 4', 'post-url5','description 5',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (6,'Title 6', 'post-url6','description 6',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
+            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (1,'Service 1', 'post-url1','description 1',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
+            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (2,'Service 2', 'post-url2','description 2',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
+            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (3,'Service 5', 'post-url3','description 3',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
+            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (4,'Service 3', 'post-url4','description 4',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
+            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (5,'Service 4', 'post-url5','description 5',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
+            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (6,'Service 6', 'post-url6','description 6',1,'','',2,'2017-06-22','2017-06-22','2017-06-22')");
 
             //blogs
             migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (7,'Title 7', 'post-url7','description 7',1,'https://images.pexels.com/photos/102973/pexels-photo-102973.jpeg','https://images.pexels.com/photos/102973/pexels-photo-102973.jpeg',1,'2017-06-22','2017-06-22','2017-06-22')");

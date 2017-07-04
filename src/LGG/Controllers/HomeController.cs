@@ -39,21 +39,21 @@ namespace LGG.Controllers
         public IActionResult Index()
         {
             ViewBag.Selected = "home";
-            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
+            ViewBag.Company = _companyService.GetAll().FirstOrDefault() ?? _companyDefault.Value;
 
-            var galleries = _galleryService.GetByCategoryName(nameof(CategoryName.Gallery));
+            var galleries = _galleryService.GetByCategoryName(nameof(BaseCategoryName.Gallery));
             ViewBag.Galleries = (from gallery in galleries
                                  group gallery by gallery.Name
                                  into newGroup
                                  orderby newGroup.Key
                                  select newGroup).ToList();
 
-            ViewBag.Posts = _postService.GetAllByCategoryName(nameof(CategoryName.Blog), false, 3).ToList();
-            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
-            ViewBag.Testimonials = _postService.GetAllByCategoryName(nameof(CategoryName.Testimonial));
-            ViewBag.Events = _galleryService.GetByCategoryName(nameof(CategoryName.Event));
-            ViewBag.Slides = _galleryService.GetByCategoryName(nameof(CategoryName.Slide));
-            ViewBag.Diffirences = _galleryService.GetByCategoryName(nameof(CategoryName.Diffirence));
+            ViewBag.Posts = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Blog), false, 3).ToList();
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Service));
+            ViewBag.Testimonials = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Testimonial));
+            ViewBag.Events = _galleryService.GetByCategoryName(nameof(BaseCategoryName.Event));
+            ViewBag.Slides = _galleryService.GetByCategoryName(nameof(BaseCategoryName.Slide));
+            ViewBag.Diffirences = _galleryService.GetByCategoryName(nameof(BaseCategoryName.Diffirence));
 
             var ServiceSelectList = new List<SelectListItem>();
             foreach (var ser in (List<PostDto>)ViewBag.Services)

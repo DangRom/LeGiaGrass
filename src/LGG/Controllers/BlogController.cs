@@ -35,7 +35,7 @@ namespace LGG.Controllers
         // GET: Blog
         public ActionResult Index(int page = 1)
         {
-            var post = _postService.GetAllByCategoryName("Blog", true); ;// _postService.GetAllPaged(4, page).ToList();
+            var post = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Blog), true); ;// _postService.GetAllPaged(4, page).ToList();
 
             ///TODO: Chưa làm paging, đang xử lý khi null
             //ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(_postService.GetTotalNumberOfPosts(), page, 1);
@@ -48,9 +48,9 @@ namespace LGG.Controllers
             ViewBag.Categories = _categoryService.GetAll();
             ViewBag.Tags = _tagService.GetAll();
             //ViewBag.PopularPosts = _postService.GetPopularPosts();
-            ViewBag.NewPosts = _postService.GetAllByCategoryName(nameof(CategoryName.Blog), false, 5); //_postService.GetAll(true, false, false, 5).ToList();
-            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
-            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
+            ViewBag.NewPosts = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Blog), false, 5); //_postService.GetAll(true, false, false, 5).ToList();
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Service));
+            ViewBag.Company = _companyService.GetAll().FirstOrDefault() ?? _companyDefault.Value;
 
             return View(post);
         }

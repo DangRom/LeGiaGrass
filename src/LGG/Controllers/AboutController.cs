@@ -28,19 +28,21 @@ namespace LGG.Controllers
             switch (id)
             {
                 case nameof(AboutType.About):
-                    ViewBag.Selected = nameof(AboutType.About);
+                    ViewBag.AboutType = AboutType.About;
                     break;
                 case nameof(AboutType.Privacy):
-                    ViewBag.Selected = nameof(AboutType.Privacy);
+                    ViewBag.AboutType = AboutType.Privacy;
                     break;
                 case nameof(AboutType.TermsOfUse):
-                    ViewBag.Selected = nameof(AboutType.TermsOfUse);
+                    ViewBag.AboutType = AboutType.TermsOfUse;
                     break;
                 default:
                     break;
             }
-            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
-            ViewBag.Company = _companyService.GetAll(true, false, false).FirstOrDefault() ?? _companyDefault.Value;
+
+            ViewBag.Selected = "about";
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Service));
+            ViewBag.Company = _companyService.GetAll().FirstOrDefault() ?? _companyDefault.Value;
             return View();
         }
     }

@@ -91,14 +91,14 @@
         <div class="form-group">
             <label for="Meta" class="col-sm-2 control-label">Meta</label>
             <div class="col-sm-10">
-                <input asp-for="Meta" class="form-control height-input" id="meta">
+                <input asp-for="Meta" class="form-control height-input" id="meta" placeholder="Meta hoặc tên tác giả, người đánh giá...">
                 <span asp-validation-for="Meta" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="Excerpt.Content" class="col-sm-2 control-label">Đoạn trích trang home</label>
+            <label for="Excerpt.Content" class="col-sm-2 control-label">Đoạn Trích</label>
             <div class="col-sm-10">
-                <input asp-for="Excerpt.Content" class="form-control height-input" id="content">
+                <input asp-for="Excerpt.Content" class="form-control height-input" id="content" placeholder="Đoạn trích, mô tả ngắn, chức vụ, nghề nghiệp, ...">
                 <span asp-validation-for="Excerpt.Content" class="text-danger"></span>
             </div>
         </div>

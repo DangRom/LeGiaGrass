@@ -2,7 +2,7 @@
 
 namespace LGG.Core.Helpers
 {
-    public enum CategoryName
+    public enum BaseCategoryName
     {
         [Description("Tin Tức")]
         Blog = 1,
@@ -17,11 +17,13 @@ namespace LGG.Core.Helpers
 
     public enum AboutType
     {
-        [Description("Về Chúng Tôi")]
+        [Description("Thông Tin")]
         About = 1,
         [Description("Chính Sách")]
         Privacy = 2,
         [Description("Điều Khoản Sử Dụng")]
-        TermsOfUse = 3
+        TermsOfUse = 3,
+        [Description("Dữ Liệu Không Tồn Tại!")]
+        Null = 4
     }
 }

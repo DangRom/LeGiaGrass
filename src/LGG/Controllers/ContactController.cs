@@ -37,8 +37,8 @@ namespace LGG.Controllers
 
             ViewBag.IsValid = true;
             ViewBag.Selected = "contact";
-            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
-            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
+            ViewBag.Company = _companyService.GetAll().FirstOrDefault() ?? _companyDefault.Value;
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Service));
             return View();
         }
 

@@ -14,16 +14,16 @@
     <form class="form-horizontal" asp-controller="categories" asp-action="Update" method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group" hidden>
-            <label for="cateid" class="col-sm-2 control-label">Tên chủ đề</label>
+            <label for="cateid" class="col-sm-2 control-label">Mã Chủ Đề</label>
             <div class="col-sm-6">
-                <input asp-for="CategoryId" class="form-control height-input" id="cateid" placeholder="tên chủ để">
+                <input asp-for="CategoryId" class="form-control height-input" id="cateid">
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Tên chủ đề</label>
             <div class="col-sm-6">
-                <input asp-for="Name" class="form-control height-input" id="name" placeholder="tên chủ để">
+                <input asp-for="Name" class="form-control height-input" id="name" placeholder="Blog, Service, Event, Slide, Difference, Testimonial, Gallery...">
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>

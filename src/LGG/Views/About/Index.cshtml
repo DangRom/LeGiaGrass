@@ -3,14 +3,14 @@
     ViewBag.Title = "Về Chúng Tôi";
     Layout = "~/Views/Shared/_LayoutSub.cshtml";
     var company = (CompanyDto)ViewBag.Company;
-    var seleted = (string)ViewBag.Selected;
+    var aboutType = (AboutType)ViewBag.AboutType;
 }
 
 <section class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb--wd pull-left">
             <li><a href="index.html">Trang Chủ</a></li>
-            <li class="active">@AboutType.About.GetDescription()</li>
+            <li class="active">@(aboutType.GetDescription())</li>
         </ol>
     </div>
 </section>
@@ -23,15 +23,15 @@
         <div class="row">
             <div class="col-md-12 column-center">
                 @{
-                    switch (seleted)
+                    switch (aboutType)
                     {
-                        case nameof(AboutType.About):
+                        case AboutType.About:
                             @Html.Raw(company.About?.Content)
                             break;
-                        case nameof(AboutType.Privacy):
+                        case AboutType.Privacy:
                             @Html.Raw(company.Privacy?.Content)
                             break;
-                        case nameof(AboutType.TermsOfUse):
+                        case AboutType.TermsOfUse:
                             @Html.Raw(company.TermsOfUse?.Content)
                             break;
                         default:

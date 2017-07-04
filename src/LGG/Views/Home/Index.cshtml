@@ -53,6 +53,7 @@
 <!-- END REVOLUTION SLIDER -->
 <!-- End Slider section -->
 <!-- Content section -->
+<!--SERVICES-->
 <section class="content content--fill content--fill--light top-null">
     <div class="container">
         <div class="services-block">
@@ -65,7 +66,7 @@
                     <div class="caption">
                         <div class="vert-wrap">
                             <div class="vert">
-                                <div class="service-icon"><i class="icon first icon-tree"></i></div>
+                                @*<div class="service-icon"><i class="icon first icon-wheelbarrow"></i></div>*@
                                 <div class="service-title">@(service.Title)</div>
                                 <div class="service-text">@(service.Description)</div>
                             </div>
@@ -101,6 +102,7 @@
         </div>
     </div>
 </section>
+
 <section class="content content--parallax top-null" data-image="@(!string.IsNullOrEmpty(diffirence?.Image)?diffirence.Image:"/images/home/parallax-bg-2000x1400.jpg")">
     <div class="container">
         <h2 class="text-center white lined">Sự Khác Biệt</h2>
@@ -228,10 +230,10 @@
                             <img src="@(!string.IsNullOrEmpty(tes.SmallImage)?tes.SmallImage:"images/home/testimonials-author-200x275.jpg")" alt="">
                         </div>
                         <div class="testimonials-style2__text">
-                            <p>@(tes.Excerpt?.Content)</p>
+                            <p>@(tes.Article?.Content)</p>
                             <div>
-                                <span class="testimonials-style2__author">@(tes.Title),</span>
-                                <br><span class="testimonials-style2__post">@(tes.Description)</span>
+                                <span class="testimonials-style2__author">@(tes.Meta),</span>
+                                <br><span class="testimonials-style2__post">@(tes.Excerpt?.Content)</span>
                             </div>
                         </div>
                     </div>

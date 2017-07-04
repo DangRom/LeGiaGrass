@@ -35,8 +35,8 @@ namespace LGG.Controllers
             if (post.Count() <= 0)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
-            ViewBag.Services = _postService.GetAllByCategoryName(nameof(CategoryName.Service));
-            ViewBag.Company = _companyService.GetAll(false, false, false).FirstOrDefault() ?? _companyDefault.Value;
+            ViewBag.Services = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Service));
+            ViewBag.Company = _companyService.GetAll().FirstOrDefault() ?? _companyDefault.Value;
             return View(post);
         }
     }
