@@ -8,9 +8,10 @@ using LGG.Persistence;
 namespace LGG.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170705013408_AddTestimonialModel")]
+    partial class AddTestimonialModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -300,7 +301,7 @@ namespace LGG.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(200);
+                        .HasMaxLength(250);
 
                     b.Property<string>("Name")
                         .IsRequired()

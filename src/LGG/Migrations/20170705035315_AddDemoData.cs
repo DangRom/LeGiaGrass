@@ -16,9 +16,8 @@ namespace LGG.Migrations
             migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(2,'Service', 'category-services')");
             migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(3,'Slide', 'category-slides')");
             migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(4,'Event', 'category-events')");
-            migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(5,'Testimonial', 'category-testimonials')");
-            migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(6,'Gallery', 'category-Galleries')");
-            migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(7,'Diffirence', 'category-Diffirences')");
+            migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(5,'Gallery', 'category-Galleries')");
+            migrationBuilder.Sql("INSERT INTO Category (CategoryId, Name, Url) VALUES(6,'Diffirence', 'category-Diffirences')");
 
             //Galleries for Slide 
             migrationBuilder.Sql("INSERT INTO Gallery (GalleryId, CategoryId, Image, Name, Description) VALUES(1,3,'','Lawn Service','We offer total lawn care and routine maintenance to keep your lawn looking brand new')");
@@ -29,7 +28,7 @@ namespace LGG.Migrations
             migrationBuilder.Sql("INSERT INTO Gallery (GalleryId, CategoryId, Image, Name, Description) VALUES(4,4,'','Get Your Lawn Ready for Summer 2017!','Contact us for a free no obligation Lawn Care Survey worth $25 and we will agree a convenient time to meet you and survey your lawn.')");
 
             //Galleies for Diffirence
-            migrationBuilder.Sql("INSERT INTO Gallery (GalleryId, CategoryId, Image, Name, Description) VALUES(5,7,'','Get Your Lawn Ready for Summer 2017!','Contact us for a free no obligation Lawn Care Survey worth $25 and we will agree a convenient time to meet you and survey your lawn.')");
+            migrationBuilder.Sql("INSERT INTO Gallery (GalleryId, CategoryId, Image, Name, Description) VALUES(5,6,'','Get Your Lawn Ready for Summer 2017!','Contact us for a free no obligation Lawn Care Survey worth $25 and we will agree a convenient time to meet you and survey your lawn.')");
 
             //article
             migrationBuilder.Sql("INSERT INTO Article (ArticleId, Content) VALUES (1, '<p>About</p>')");
@@ -56,12 +55,11 @@ namespace LGG.Migrations
             migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn) VALUES (9,'Title 9', 'post-url9','description 9',1,'https://images.pexels.com/photos/179132/pexels-photo-179132.jpeg','https://images.pexels.com/photos/179132/pexels-photo-179132.jpeg',1,'2017-06-22','2017-06-22','2017-06-22')");
 
             //testimonials
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn, ExcerptId) VALUES (10,'Alex', 'post-url10','Chu nha',1,'','',5,'2017-06-22','2017-06-22','2017-06-22',1)");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn, ExcerptId) VALUES (11,'Jonh', 'post-url11','Chu nha',1,'','',5,'2017-06-22','2017-06-22','2017-06-22', 1)");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn, ExcerptId) VALUES (12,'Max', 'post-url12','Chu san bong',1,'','',5,'2017-06-22','2017-06-22','2017-06-22',1)");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn, ExcerptId) VALUES (13,'Piter', 'post-url13','chu san bong mini',1,'','',5,'2017-06-22','2017-06-22','2017-06-22',1)");
-            migrationBuilder.Sql("INSERT INTO Post (PostId, Title,Url, Description, Published,Image, SmallImage,CategoryId,PostedOn,CreatedOn, ModifiedOn, ExcerptId) VALUES (14,'Karen', 'post-url14','Ong chu cty A',1,'','',5,'2017-06-22','2017-06-22','2017-06-22',1)");
-
+            migrationBuilder.Sql("INSERT INTO Testimonial (Id, Name, Position, Content) VALUES (1, 'Ho va Ten', 'Chu Nha', 'We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping.')");
+            migrationBuilder.Sql("INSERT INTO Testimonial (Id, Name, Position, Content) VALUES (2, 'Ho va Ten', 'Chu Nha', 'We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping.')");
+            migrationBuilder.Sql("INSERT INTO Testimonial (Id, Name, Position, Content) VALUES (3, 'Ho va Ten', 'Chu Nha', 'We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping.')");
+            migrationBuilder.Sql("INSERT INTO Testimonial (Id, Name, Position, Content) VALUES (4, 'Ho va Ten', 'Chu Nha', 'We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping.')");
+            migrationBuilder.Sql("INSERT INTO Testimonial (Id, Name, Position, Content) VALUES (5, 'Ho va Ten', 'Chu Nha', 'We have been with Lawn Care several years and we have had great service winter, spring, summer and fall. Today was a hi-light when our yard was finished with the landscaping.')");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

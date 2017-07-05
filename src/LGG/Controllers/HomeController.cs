@@ -20,13 +20,15 @@ namespace LGG.Controllers
         private readonly ICompanyService _companyService;
         private readonly IOptions<CompanyDto> _companyDefault;
         private readonly IGalleryService _galleryService;
+        private readonly ITestimonialService _testimonialService;
 
         public HomeController(IPostService postService,
             ISiteMapService siteMapService,
             ICommunicationService communicationService,
             ICompanyService companyService,
             IGalleryService galleryService,
-            IOptions<CompanyDto> companyDefault)
+            IOptions<CompanyDto> companyDefault,
+            ITestimonialService testimonialService)
         {
             _postService = postService;
             _siteMapService = siteMapService;
@@ -34,6 +36,7 @@ namespace LGG.Controllers
             _companyService = companyService;
             _companyDefault = companyDefault;
             _galleryService = galleryService;
+            _testimonialService = testimonialService;
         }
 
         public IActionResult Index()
@@ -50,7 +53,7 @@ namespace LGG.Controllers
 
             ViewBag.Posts = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Blog), false, 3).ToList();
             ViewBag.Services = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Service));
-            ViewBag.Testimonials = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Testimonial));
+            ViewBag.Testimonials = _testimonialService.GetAll(); //_postService.GetAllByCategoryName(nameof(BaseCategoryName.Testimonial));
             ViewBag.Events = _galleryService.GetByCategoryName(nameof(BaseCategoryName.Event));
             ViewBag.Slides = _galleryService.GetByCategoryName(nameof(BaseCategoryName.Slide));
             ViewBag.Diffirences = _galleryService.GetByCategoryName(nameof(BaseCategoryName.Diffirence));

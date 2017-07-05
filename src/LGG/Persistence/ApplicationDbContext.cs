@@ -31,6 +31,8 @@ namespace LGG.Persistence
 
         public DbSet<Gallery> Galleries { get; set; }
 
+        public DbSet<Testimonial> Testimonials { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             if (modelBuilder == null)

@@ -129,7 +129,7 @@
                             @*<li><a href="maintenance.html"><span class="link-name">Bảo Trì</span></a></li>*@
                             @*<li><a href="shop.html"><span class="link-name">Shop</span></a></li>*@
                             @*<li><a href="testimonial.html"><span class="link-name">Chứng Thực</span></a></li>*@
-                            <li class="@((string)ViewBag.Selected == "about" ? "active" : "")"><a href="/about"><span class="link-name">Thông Tin</span></a></li>
+                            <li class="@((string)ViewBag.Selected == "about" ? "active" : "")"><a href="/about/@(nameof(AboutType.About))"><span class="link-name">Thông Tin</span></a></li>
                             <li class="@((string)ViewBag.Selected == "contact" ? "active" : "")"><a href="/contact"><span class="link-name">Liên Hệ</span></a></li>
                         </ul>
                     </div>

@@ -8,8 +8,8 @@ using LGG.Persistence;
 namespace LGG.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170629153142_AddDemoData")]
-    partial class AddDemoData
+    [Migration("20170705034807_UpdateTestimonialModel")]
+    partial class UpdateTestimonialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,7 +74,7 @@ namespace LGG.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Hotline")
-                        .HasMaxLength(15);
+                        .HasMaxLength(20);
 
                     b.Property<string>("Instagram")
                         .HasMaxLength(50);
@@ -115,7 +115,7 @@ namespace LGG.Migrations
                         .HasMaxLength(250);
 
                     b.Property<string>("Phone")
-                        .HasMaxLength(15);
+                        .HasMaxLength(20);
 
                     b.Property<string>("Pinterest")
                         .HasMaxLength(50);
@@ -292,6 +292,31 @@ namespace LGG.Migrations
                     b.HasKey("TagId");
 
                     b.ToTable("Tag");
+                });
+
+            modelBuilder.Entity("LGG.Core.Models.Testimonial", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("SmallImage")
+                        .HasMaxLength(250);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Testimonial");
                 });
 
             modelBuilder.Entity("LGG.Core.Models.User", b =>
