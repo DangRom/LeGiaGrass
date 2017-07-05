@@ -56,8 +56,8 @@
                         @*<li><a href="#">Audios  <span>(2)</span></a></li>*@
                         @foreach (var category in (List<CategoryDto>)ViewBag.Categories)
                         {
-                            @*<li><a href="/category/@category.Url">@category.Name</a></li>*@
-                            <li><a href="#">@category.Name</a></li>
+                            <li><a href="/blog/Category/@category.Url">@category.Name</a></li>
+                            @*<li><a href="#">@category.Name</a></li>*@
                         }
                     </ul>
                 </div>
@@ -66,8 +66,8 @@
                     <ul class="tags-list">
                         @foreach (var tag in (List<TagDto>)ViewBag.Tags)
                         {
-                            @*<li><a href="/tag/@tag.Url">@tag.Name</a></li>*@
-                            <li><a href="#">@tag.Name</a></li>
+                            <li><a href="/blog/tag/@tag.Url">@tag.Name</a></li>
+                            @*<li><a href="#">@tag.Name</a></li>*@
                         }
                     </ul>
                 </div>

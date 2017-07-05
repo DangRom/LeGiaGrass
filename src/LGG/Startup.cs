@@ -234,15 +234,15 @@ namespace LGG
                     template: "post",
                     defaults: new { controller = "blog", action = "Index" });
 
-                routes.MapRoute(
-                    name: "BlogTag",
-                    template: "tag",
-                    defaults: new { controller = "blog", action = "Index" });
+                //routes.MapRoute(
+                //    name: "BlogTag",
+                //    template: "tag",
+                //    defaults: new { controller = "blog", action = "Index" });
 
-                routes.MapRoute(
-                    name: "BlogCategory",
-                    template: "category",
-                    defaults: new { controller = "blog", action = "Index" });
+                //routes.MapRoute(
+                //    name: "BlogCategory",
+                //    template: "category",
+                //    defaults: new { controller = "blog", action = "Index" });
 
                 routes.MapRoute(
                     name: "Category",
@@ -254,10 +254,10 @@ namespace LGG
                     template: "tag/{id}/{page?}",
                     defaults: new { controller = "blog", action = "Tag" });
 
-                routes.MapRoute(
-                    name: "Blog",
-                    template: "blog/{page?}",
-                    defaults: new { controller = "blog", action = "Index" });
+                //routes.MapRoute(
+                //    name: "Blog",
+                //    template: "blog/{page?}",
+                //    defaults: new { controller = "blog", action = "Index" });
 
                 routes.MapRoute(
                  name: "Service",
@@ -271,7 +271,7 @@ namespace LGG
 
                 routes.MapRoute(
                    name: "Contact",
-                   template: "contact/{page?}",
+                   template: "contact",
                    defaults: new { controller = "contact", action = "Index" });
                 routes.MapRoute(
                     name: "SiteMap",

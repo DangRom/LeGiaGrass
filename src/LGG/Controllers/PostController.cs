@@ -32,11 +32,10 @@ namespace LGG.Controllers
         {
             var post = _postService.GetPreviousCurrentNextPost(id).ToList();
 
-            // ViewBag.Description = post[(int)PreviousCurrentNextPosition.Current].Description;
             ViewBag.Categories = _categoryService.GetAll();
             ViewBag.Tags = _tagService.GetAll();
             // ViewBag.PopularPosts = _postService.GetPopularPosts();
-            ViewBag.NewPosts = _postService.GetAll(true, false, false, 4).ToList();
+            ViewBag.NewPosts = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Blog), false, 5);
             ViewBag.Services = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Service));
             ViewBag.Company = _companyService.GetAll().FirstOrDefault() ?? _companyDefault.Value;
             return View(post);
