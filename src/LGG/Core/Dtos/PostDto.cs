@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace LGG.Core.Dtos
 {
@@ -27,14 +26,18 @@ namespace LGG.Core.Dtos
         public DateTime CreatedOn { get; set; }
         public bool Published { get; set; }
 
-        public IEnumerable<TagDto> Tags { get; set; }
+        public List<PostTagDto> PostTags { get; set; }
+        public List<TagDto> Tags { get; set; }
+
         public ArticleDto Article { get; set; }
         public CategoryDto Category { get; set; }
         public ExcerptDto Excerpt { get; set; }
 
+        public string TagsInput { get; set; }
         public PostDto()
         {
             Tags = new List<TagDto>();
+            PostTags = new List<PostTagDto>();
             Category = new CategoryDto();
             Article = new ArticleDto();
             Excerpt = new ExcerptDto();

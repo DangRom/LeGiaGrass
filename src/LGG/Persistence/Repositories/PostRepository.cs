@@ -1,10 +1,10 @@
-﻿using LGG.Core.Dtos;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using LGG.Core.Dtos;
 using LGG.Core.Models;
 using LGG.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace LGG.Persistence.Repositories
 {
@@ -373,6 +373,7 @@ namespace LGG.Persistence.Repositories
                 .Include(x => x.Category)
                 .Include(x => x.Excerpt)
                 .Include(x => x.Article)
+                .Include(x => x.PostTags)
                 .FirstOrDefault(x => x.PostId == post.PostId);
 
             // Post
@@ -403,6 +404,48 @@ namespace LGG.Persistence.Repositories
             // Category :TODO: Cần check lại CategoryId tồn tại trong database, hiện tại api pass qua object id= 0
             if (post.Category != null && post.Category.CategoryId > 0)
                 entity.CategoryId = post.Category.CategoryId;
+
+            ///TODO: Update post Tags
+            var tagsEntity = _context.Tags.Include(x => x.Posts).ToList();
+            var newTags = post.TagsInput.Split(',');
+
+
+            foreach (var tag in newTags)
+            {
+                var match = tagsEntity
+                    .Where(x => x.Name.Equals(tag.Trim()))
+                    .FirstOrDefault();
+
+
+                if (match != null)
+                {
+                    if (entity.PostTags.Any(x => x.PostId == match.TagId))
+                    {
+                        //NOTHING
+                    }
+                    else
+                    {
+                        _context.PostTags.Add(new PostTag { PostId = entity.PostId, TagId = match.TagId });
+                    }
+                }
+                else
+                {
+                    //_context.Tags.Add(new Tag{ Name=tag, Url=Guid.NewGuid().ToString()});
+                    //_context.SaveChanges();
+                    _context.PostTags.Add(new PostTag
+                    {
+                        PostId = entity.PostId,
+                        Tag = new Tag { Name = tag, Url = Guid.NewGuid().ToString() }
+                    });
+                }
+
+                //REMOVE OLD
+                //var old = entity.PostTags.Where(x => x.Tag.Name != tag).FirstOrDefault();
+                //if (old != null)
+                //{
+                //    _context.PostTags.Remove(old);
+                //}
+            }
 
             // Tags
             _context.SaveChanges();

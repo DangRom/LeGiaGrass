@@ -1,8 +1,8 @@
-﻿using LGG.Core.Dtos;
+﻿using System.Collections.Generic;
+using LGG.Core.Dtos;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace LGG.Areas.Admin.Controllers.Api
 {
@@ -16,7 +16,6 @@ namespace LGG.Areas.Admin.Controllers.Api
         {
             _postService = postService;
         }
-
 
         [HttpGet]
         public IEnumerable<PostDto> GetAll(int? countPerPage,

@@ -1,12 +1,13 @@
-﻿using LGG.Core.Dtos;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using LGG.Core.Dtos;
 using LGG.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace LGG.Areas.Admin.Controllers
 {
@@ -17,6 +18,20 @@ namespace LGG.Areas.Admin.Controllers
         private readonly IPostService _postService;
         private readonly ICategoryService _categoryService;
         private readonly ITagService _tagService;
+        private readonly IPostTagService _postTagService;
+
+        public PostsController(IPostService postService,
+            ICategoryService categoryService,
+            ITagService tagService,
+            IPostTagService postTagService)
+        {
+            _postService = postService;
+            _categoryService = categoryService;
+            _tagService = tagService;
+            _postTagService = postTagService;
+        }
+
+
 
         private Task<List<SelectListItem>> GetCategories()
         {
@@ -31,22 +46,15 @@ namespace LGG.Areas.Admin.Controllers
 
         private Task<List<SelectListItem>> GetTags()
         {
-            var categorys = Task.Factory.StartNew(() => _tagService.GetAll().Select(s => new SelectListItem
+            var tags = Task.Factory.StartNew(() => _tagService.GetAll().Select(s => new SelectListItem
             {
                 Value = s.TagId.ToString(),
                 Text = s.Name
             }).ToList());
-            categorys.Result.Insert(0, new SelectListItem { Value = "0", Text = "--chọn tag--" });
-            return categorys;
+            tags.Result.Insert(0, new SelectListItem { Value = "0", Text = "--chọn tag--" });
+            return tags;
         }
 
-
-        public PostsController(IPostService postService, ICategoryService categoryService, ITagService tagService)
-        {
-            _postService = postService;
-            _categoryService = categoryService;
-            _tagService = tagService;
-        }
 
         public async Task<IActionResult> Index()
         {
@@ -63,7 +71,9 @@ namespace LGG.Areas.Admin.Controllers
             try
             {
                 ViewBag.Categories = await Task.Factory.StartNew(() => GetCategories()).Result;
-                ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
+                var tags = await Task.Factory.StartNew(() => _tagService.GetAll());
+                ViewBag.Tags = JsonConvert.SerializeObject(tags);
+
                 PostDto post = new PostDto();
                 _postService.Add(post);
                 var model = _postService.GetByUrl(post.Url, false);
@@ -81,13 +91,9 @@ namespace LGG.Areas.Admin.Controllers
         {
             try
             {
-                ViewBag.Categories = await Task.Factory.StartNew(() => GetCategories()).Result;
-                //ViewBag.Tags = await Task.Factory.StartNew(() => GetTags());
-                //if (await Task.Factory.StartNew(() => _postService.CheckTitle(post.Title)))
-                //{
-                //    ModelState.AddModelError("", "hay thu tieu de khac");
-                //    return View();
-                //}
+                //ViewBag.Categories = await Task.Factory.StartNew(() => GetCategories()).Result;
+                //var tags = await Task.Factory.StartNew(() => _tagService.GetAll());
+
                 await Task.Factory.StartNew(() => _postService.Update(post));
                 return RedirectToAction("Index");
             }
@@ -96,6 +102,7 @@ namespace LGG.Areas.Admin.Controllers
                 ModelState.AddModelError("", ex.Message);
                 return View();
             }
+
         }
 
 
@@ -109,6 +116,18 @@ namespace LGG.Areas.Admin.Controllers
                     if (post != null)
                     {
                         ViewBag.Categories = await GetCategories();
+                        var tags = await Task.Factory.StartNew(() => _tagService.GetAll());
+                        var CurrentTags = string.Empty;
+                        foreach (var tag in post.PostTags)
+                        {
+                            var match = tags.Where(x => x.TagId == tag.TagId).FirstOrDefault();
+                            if (match != null)
+                            {
+                                CurrentTags += match.Name + ",";
+                            }
+                        }
+                        ViewBag.CurrentTags = CurrentTags;
+                        ViewBag.Tags = JsonConvert.SerializeObject(tags);
                         return View(post);
                     }
                 }

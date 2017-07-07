@@ -6,7 +6,7 @@ namespace LGG.Core.Dtos
     {
         public int TagId { get; set; }
 
-        [Required(ErrorMessage = "khong duoc bo trong")]
+        [Required(ErrorMessage = "Không được để trống")]
         [MaxLength(100, ErrorMessage = "khong duoc dai qua 100 ky tu")]
         public string Name { get; set; }
 
