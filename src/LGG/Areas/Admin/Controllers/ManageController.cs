@@ -60,12 +60,12 @@ namespace LGG.Areas.Admin.Controllers
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User changed their password successfully.");
-                    return RedirectToAction(nameof(HomeController.Index));
+                    return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
                 AddErrors(result);
                 return View(model);
             }
-            return RedirectToAction(nameof(HomeController.Index), new { Message = ManageMessageId.Error });
+            return RedirectToAction(nameof(HomeController.Index), "Home", new { Message = ManageMessageId.Error });
         }
 
 

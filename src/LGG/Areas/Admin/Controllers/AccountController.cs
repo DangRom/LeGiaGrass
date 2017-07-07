@@ -6,6 +6,7 @@ using LGG.Core.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,16 +21,18 @@ namespace LGG.Areas.Admin.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly ICompanyService _companyService;
         private readonly IOptions<CompanyDto> _companyDefault;
-
+        private readonly ILogger _logger;
         public AccountController(UserManager<User> userManager,
             SignInManager<User> signInManager,
             ICompanyService companyService,
-            IOptions<CompanyDto> companyDefault)
+            IOptions<CompanyDto> companyDefault,
+            ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _companyService = companyService;
             _companyDefault = companyDefault;
+            _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
         //
@@ -43,15 +46,16 @@ namespace LGG.Areas.Admin.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/LogOff
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogOff()
+        public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
+            _logger.LogInformation(4, "User logged out.");
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+
 
         //
         // POST: /Account/Login

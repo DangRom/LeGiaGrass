@@ -224,55 +224,42 @@ namespace LGG
                     name: "areaRoute",
                     template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
+                // Client
                 routes.MapRoute(
                     name: "Post",
-                    template: "post/{id}",
+                    template: "post/{id?}",
                     defaults: new { controller = "Post", action = "Index" });
 
                 routes.MapRoute(
-                    name: "BlogPost",
-                    template: "post",
+                    name: "Blog",
+                    template: "blog",
                     defaults: new { controller = "blog", action = "Index" });
-
-                //routes.MapRoute(
-                //    name: "BlogTag",
-                //    template: "tag",
-                //    defaults: new { controller = "blog", action = "Index" });
-
-                //routes.MapRoute(
-                //    name: "BlogCategory",
-                //    template: "category",
-                //    defaults: new { controller = "blog", action = "Index" });
 
                 routes.MapRoute(
                     name: "Category",
-                    template: "category/{id}/{page?}",
+                    template: "category/{id?}/{page?}",
                     defaults: new { controller = "blog", action = "Category" });
 
                 routes.MapRoute(
                     name: "Tag",
-                    template: "tag/{id}/{page?}",
+                    template: "tag/{id?}/{page?}",
                     defaults: new { controller = "blog", action = "Tag" });
 
-                //routes.MapRoute(
-                //    name: "Blog",
-                //    template: "blog/{page?}",
-                //    defaults: new { controller = "blog", action = "Index" });
 
                 routes.MapRoute(
                  name: "Service",
-                 template: "service/{id}",
+                 template: "service/{id?}",
                  defaults: new { controller = "service", action = "Index" });
 
                 routes.MapRoute(
                    name: "About",
-                   template: "about/{id}",
+                   template: "about/{id?}",
                    defaults: new { controller = "about", action = "Index" });
 
-                routes.MapRoute(
-                   name: "Contact",
-                   template: "contact",
-                   defaults: new { controller = "contact", action = "Index" });
+                //routes.MapRoute(
+                //   name: "Contact",
+                //   template: "contact",
+                //   defaults: new { controller = "contact", action = "Index" });
                 routes.MapRoute(
                     name: "SiteMap",
                     template: "sitemap.xml",
