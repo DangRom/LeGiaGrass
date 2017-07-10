@@ -25,7 +25,7 @@ namespace LeGiaGrass.ViewComponents{
                   Id = h.Id,
                   Name = h.Name,
                   Alias = h.Alias,
-                  ClassType = h.ClassType
+                  Service = h.Service
                }).ToList();
 
                var menulinemodel = await Task.Factory.StartNew(() => _postRepo.GetMenuLine());
@@ -35,9 +35,9 @@ namespace LeGiaGrass.ViewComponents{
                   Alias = l.Alias
                }).ToList();
 
-               var classtype = menuheadmodel.FirstOrDefault(c => c.ClassType == true);
-               if(classtype != null){
-                  var serviceid = classtype.Id;
+               var category = menuheadmodel.FirstOrDefault(c => c.Service == true);
+               if(category != null){
+                  var serviceid = category.Id;
                   var servicemodels = _serviceRepo.GetAllServiceForMenuLine();
                   foreach(var c in servicemodels){
                       var service = new MenuLineViewModel(){

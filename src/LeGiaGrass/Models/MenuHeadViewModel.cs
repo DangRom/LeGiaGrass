@@ -4,6 +4,6 @@ namespace LeGiaGrass.Models{
         public string Name { get; set; }
         public string Alias { get; set; }
         public string Image { get; set; }
-        public bool ClassType { get; set; }
+        public bool Service { get; set; }
     }
 }

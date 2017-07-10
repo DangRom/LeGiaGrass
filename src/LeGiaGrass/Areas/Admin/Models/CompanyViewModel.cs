@@ -26,13 +26,20 @@ namespace LeGiaGrass.Areas.Admin.Models{
         public string Google { get; set; }
 
         [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
-        public string Tweeter { get; set; }
+        public string Twitter { get; set; }
 
         [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
         public string Facebook { get; set; }
 
         [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
         public string Description { get; set; }
+
         public string About { get; set; }
+
+        [MaxLength(255, ErrorMessage = "Không được dài quá 255 ký tự")]
+        public string Sologan { get; set; }
+
+        [MaxLength(255, ErrorMessage = "Không được dài quá 255 ký tự")]
+        public string BusinessHours { get; set; }
     }
 }

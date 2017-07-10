@@ -30,10 +30,12 @@ namespace LeGiaGrass.Areas.Admin.Controllers
                     Phone = companyModel.Phone,
                     TaxCode = companyModel.TaxCode,
                     Google = companyModel.Google,
-                    Tweeter = companyModel.Tweeter,
+                    Twitter = companyModel.Twitter,
                     Facebook = companyModel.Facebook,
                     Description = companyModel.Description,
-                    About = companyModel.About
+                    About = companyModel.About,
+                    Sologan = companyModel.Sologan,
+                    BusinessHours = companyModel.BusinessHours
                 };
                 return View(company);
             }catch(Exception ex){
@@ -54,10 +56,12 @@ namespace LeGiaGrass.Areas.Admin.Controllers
                         Phone = company.Phone,
                         TaxCode = company.TaxCode,
                         Google = company.Google,
-                        Tweeter = company.Tweeter,
+                        Twitter = company.Twitter,
                         Facebook = company.Facebook,
                         Description = company.Description,
-                        About = company.About
+                        About = company.About,
+                        Sologan = company.Sologan,
+                        BusinessHours = company.BusinessHours
                     };
                     _companyRepo.SaveCompany(companyModel);
                     return RedirectToAction("Index");

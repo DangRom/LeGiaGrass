@@ -20,7 +20,7 @@ namespace LeGiaGrass.Areas.Admin.Models{
       public string Description { get; set; }
       public string Content { get; set; }
       public bool Activated { get; set; }
-      public bool ClassType { get; set; }
+      public bool Service { get; set; }
       public int Orders { get; set; }
     }
 }

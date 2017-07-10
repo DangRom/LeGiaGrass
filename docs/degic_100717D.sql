@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
---
--- Host: localhost    Database: Degic
+-- Host: localhost    Database: legiagrass
 -- ------------------------------------------------------
 -- Server version	5.7.18-0ubuntu0.16.04.1
+-- CREATE DATABASE IF NOT EXISTS legiagrass CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -63,9 +63,11 @@ CREATE TABLE `Company` (
   `TaxCode` tinytext COLLATE utf8_unicode_ci,
   `Facebook` tinytext COLLATE utf8_unicode_ci,
   `Google` tinytext COLLATE utf8_unicode_ci,
-  `Tweeter` tinytext COLLATE utf8_unicode_ci,
+  `Twitter` tinytext COLLATE utf8_unicode_ci,
   `Description` text COLLATE utf8_unicode_ci,
-  `About` longtext COLLATE utf8_unicode_ci
+  `About` longtext COLLATE utf8_unicode_ci,
+  `Sologan` text COLLATE utf8_unicode_ci,
+  `BusinessHours` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -75,7 +77,7 @@ CREATE TABLE `Company` (
 
 LOCK TABLES `Company` WRITE;
 /*!40000 ALTER TABLE `Company` DISABLE KEYS */;
-INSERT INTO `Company` VALUES ('Trung tâm Degic Center Education','Đà Nẵng','chưa có mua','không thèm mua','a@gmail.com','chưa có đăng ký','chưa tạo facebook','chưa tạo google','chưa tạo tweeter','<div class=\"section-content\">\n                        <div class=\"row\">\n                            <div class=\"col-md-6\">\n                                <h6 class=\"letter-space-4 text-gray-darkgray text-uppercase mt-0 mb-0\">All About</h6>\n                                <h2 class=\"text-uppercase font-weight-600 mt-0 font-28 line-bottom\">The World’s Best Education in Our University</h2>\n                                <h4 class=\"text-theme-colored\">Lorem ipsum dolor sit amet soluta saepe odit error, maxime praesentium sunt udiandae!</h4>\n                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore atque officiis maxime suscipit expedita obcaecati nulla in ducimus iure quos quam recusandae dolor quas et perspiciatis voluptatum accusantium delectus nisi\n                                    reprehenderit, eveniet fuga modi pariatur, eius vero. Ea vitae maiores.</p>\n                                <a class=\"btn btn-theme-colored btn-flat btn-lg mt-10 mb-sm-30\" href=\"#\">Know More →</a>\n                            </div>\n                            <div class=\"col-md-6\">\n                                <div class=\"video-popup\">\n                                    <a href=\"https://www.youtube.com/watch?v=pW1uVUg5wXM\" data-lightbox-gallery=\"youtube-video\" title=\"Video\">\n                                        <img alt=\"\" src=\"http://placehold.it/555x330\" class=\"img-responsive img-fullwidth\">\n                                    </a>\n                                </div>\n                            </div>\n                        </div>\n                    </div>','<p>kh&ocirc;ng c&oacute; g&igrave; để n&oacute;i đ&oacute; l&agrave;m g&igrave; nhausdsdsdsdd</p>');
+INSERT INTO `Company` VALUES ('Công Ty Lê Gia','Đà Nẵng','chưa có mua','không thèm mua','a@gmail.com','chưa có đăng ký','chưa tạo facebook','chưa tạo google','chưa tạo Twitter','<div class=\"section-content\">\n                        <div class=\"row\">\n                            <div class=\"col-md-6\">\n                                <h6 class=\"letter-space-4 text-gray-darkgray text-uppercase mt-0 mb-0\">All About</h6>\n                                <h2 class=\"text-uppercase font-weight-600 mt-0 font-28 line-bottom\">The World’s Best Education in Our University</h2>\n                                <h4 class=\"text-theme-colored\">Lorem ipsum dolor sit amet soluta saepe odit error, maxime praesentium sunt udiandae!</h4>\n                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore atque officiis maxime suscipit expedita obcaecati nulla in ducimus iure quos quam recusandae dolor quas et perspiciatis voluptatum accusantium delectus nisi\n                                    reprehenderit, eveniet fuga modi pariatur, eius vero. Ea vitae maiores.</p>\n                                <a class=\"btn btn-theme-colored btn-flat btn-lg mt-10 mb-sm-30\" href=\"#\">Know More →</a>\n                            </div>\n                            <div class=\"col-md-6\">\n                                <div class=\"video-popup\">\n                                    <a href=\"https://www.youtube.com/watch?v=pW1uVUg5wXM\" data-lightbox-gallery=\"youtube-video\" title=\"Video\">\n                                        <img alt=\"\" src=\"http://placehold.it/555x330\" class=\"img-responsive img-fullwidth\">\n                                    </a>\n                                </div>\n                            </div>\n                        </div>\n                    </div>','<p>kh&ocirc;ng c&oacute; g&igrave; để n&oacute;i đ&oacute; l&agrave;m g&igrave; nhausdsdsdsdd</p>', 'sologan', '7 DAYS A WEEK FROM 9:00 AM TO 7:00 PM');
 /*!40000 ALTER TABLE `Company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,7 +303,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `deleteCourse` */;
+/*!50003 DROP PROCEDURE IF EXISTS `deleteService` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -311,7 +313,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteCourse`(IN pId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteService`(IN pId INT)
 BEGIN 
     DELETE FROM Services WHERE Id = pId;
   END ;;
@@ -440,7 +442,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `findCourseByAlias` */;
+/*!50003 DROP PROCEDURE IF EXISTS `findServiceByAlias` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -450,7 +452,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `findCourseByAlias`(IN pAlias TINYTEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `findServiceByAlias`(IN pAlias TINYTEXT)
 BEGIN
     DECLARE _find INT;
     SET _find = (SELECT COUNT(Id) FROM Services WHERE Alias = pAlias  COLLATE utf8_unicode_ci LIMIT 1 );
@@ -579,7 +581,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getAllCourse` */;
+/*!50003 DROP PROCEDURE IF EXISTS `getAllService` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -589,7 +591,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCourse`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllService`()
 BEGIN 
     SELECT Id, Name, Alias, Image, Status, Price, ShortDesciptions, Activated, Content
     FROM Services
@@ -600,7 +602,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getAllCourseForFeedback` */;
+/*!50003 DROP PROCEDURE IF EXISTS `getAllServiceForFeedback` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -610,7 +612,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCourseForFeedback`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllServiceForFeedback`()
 BEGIN 
     SELECT Id, Name
     FROM Services
@@ -621,7 +623,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getAllCourseForHomePage` */;
+/*!50003 DROP PROCEDURE IF EXISTS `getAllServiceForHomePage` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -631,7 +633,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCourseForHomePage`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllServiceForHomePage`()
 BEGIN
     SELECT Id, Name, Alias, Image, Status, Price, ShortDesciptions
     FROM Services
@@ -643,7 +645,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getAllCourseForMenuLine` */;
+/*!50003 DROP PROCEDURE IF EXISTS `getAllServiceForMenuLine` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -653,7 +655,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCourseForMenuLine`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllServiceForMenuLine`()
 BEGIN 
     SELECT Name, Alias
     FROM Services
@@ -697,7 +699,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllFeedback`()
 BEGIN 
-    SELECT f.Id, f.FullName, c.Name as CourseName
+    SELECT f.Id, f.FullName, c.Name as ServiceName
     FROM Feedbacks f
     INNER JOIN Services c on f.ServiceId = c.Id
     ORDER BY Id;
@@ -909,7 +911,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompany`()
 BEGIN 
-    SELECT Name, Address, Phone, Hotline, Email, TaxCode, Google, Tweeter, Facebook, Description, About
+    SELECT Name, Address, Phone, Hotline, Email, TaxCode, Google, Twitter, Facebook, Description, About, Sologan, BusinessHours
     FROM Company
     LIMIT 1;
   END ;;
@@ -930,7 +932,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompanyForFooter`()
 BEGIN
-    SELECT Address, Phone, Hotline, Email, Facebook, Google, Tweeter, TaxCode
+    SELECT Address, Phone, Hotline, Email, Facebook, Google, Twitter, TaxCode
     FROM Company
     LIMIT 1;
   END ;;
@@ -951,7 +953,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompanyForHead`()
 BEGIN
-    SELECT Facebook, Tweeter, Google, Hotline
+    SELECT Facebook, Twitter, Google, Hotline
     FROM Company
     LIMIT 1;
   END ;;
@@ -972,7 +974,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompanyForHome`()
 BEGIN 
-    SELECT Description
+    SELECT Description, Sologan, BusinessHours
     FROM Company
     LIMIT 1;
   END ;;
@@ -981,7 +983,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getCourseById` */;
+/*!50003 DROP PROCEDURE IF EXISTS `getServiceById` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -991,7 +993,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getCourseById`(IN pId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getServiceById`(IN pId INT)
 BEGIN
     SELECT Id, Name, Alias, Image, Status, Price, ShortDesciptions, Activated, Content
     FROM Services
@@ -1003,7 +1005,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getCourseForFooter` */;
+/*!50003 DROP PROCEDURE IF EXISTS `getServiceForFooter` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1013,7 +1015,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getCourseForFooter`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getServiceForFooter`()
 BEGIN
     SELECT Name, Alias FROM Services WHERE Activated = 1 LIMIT 5;
   END ;;
@@ -1223,7 +1225,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `insertCourse` */;
+/*!50003 DROP PROCEDURE IF EXISTS `insertService` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1233,7 +1235,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertCourse`(IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT  CHAR SET utf8, IN pImage TINYTEXT  CHAR SET utf8,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertService`(IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT  CHAR SET utf8, IN pImage TINYTEXT  CHAR SET utf8,
 IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescriptions TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
 IN pContent LONGTEXT CHAR SET utf8, IN pPrice INT)
 BEGIN
@@ -1259,11 +1261,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertFeedback`(
     IN pFullName TINYTEXT CHAR SET utf8,
     IN pAvatar TINYTEXT,
     IN pContent TEXT CHAR SET utf8,
-    IN pCourseId INT
+    IN pServiceId INT
   )
 BEGIN
     INSERT INTO Feedbacks (FullName, Avatar, Content, CreateDate, ServiceId)
-    VALUES (pFullName, pAvatar, pContent, NOW(), pCourseId);
+    VALUES (pFullName, pAvatar, pContent, NOW(), pServiceId);
   END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1416,19 +1418,20 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCompany`(IN pName    TINYTEXT CHAR SET utf8, IN pAddress TINYTEXT CHAR SET utf8,
   IN pPhone TINYTEXT CHAR SET utf8, IN pHotline TINYTEXT CHAR SET utf8, IN pEmail   TINYTEXT CHAR SET utf8, 
   IN pTaxCode TINYTEXT CHAR SET utf8, IN pFacebook TINYTEXT CHAR SET utf8, IN pGoogle TINYTEXT CHAR SET utf8,
-  IN pTweeter TINYTEXT CHAR SET utf8, IN pDescription TEXT CHAR SET utf8, IN pAbout LONGTEXT CHAR SET utf8)
+  IN pTweeter TINYTEXT CHAR SET utf8, IN pDescription TEXT CHAR SET utf8, IN pAbout LONGTEXT CHAR SET utf8,
+  IN pSologan TEXT CHAR SET utf8, IN pBusinessHours TEXT CHAR SET utf8 )
 BEGIN 
     UPDATE Company
     SET Name = pName, Address = pAddress, Phone = pPhone, Hotline = pHotline, Email = pEmail,
-        TaxCode = pTaxCode, Facebook = pFacebook, Google = pGoogle, Tweeter = pTweeter,
-        Description = pDescription, About = pAbout;
+        TaxCode = pTaxCode, Facebook = pFacebook, Google = pGoogle, Twitter = pTweeter,
+        Description = pDescription, About = pAbout, pSologan = Sologan, pBusinessHours = BusinessHours;
   END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `updateCourse` */;
+/*!50003 DROP PROCEDURE IF EXISTS `updateService` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1438,7 +1441,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCourse`(IN pId INT, IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT  CHAR SET utf8, IN pImage TINYTEXT  CHAR SET utf8,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateService`(IN pId INT, IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT  CHAR SET utf8, IN pImage TINYTEXT  CHAR SET utf8,
 IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescriptions TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
 IN pContent LONGTEXT CHAR SET utf8, IN pPrice INT)
 BEGIN
@@ -1467,11 +1470,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `updateFeedback`(
     IN pFullName TINYTEXT CHAR SET utf8,
     IN pAvatar TINYTEXT,
     IN pContent TEXT CHAR SET utf8,
-    IN pCourseId INT
+    IN pServiceId INT
   )
 BEGIN
     UPDATE Feedbacks
-    SET FullName = pFullName, Avatar = pAvatar, Content = pContent, ServiceId = pCourseId
+    SET FullName = pFullName, Avatar = pAvatar, Content = pContent, ServiceId = pServiceId
     WHERE Id = pId;
   END ;;
 DELIMITER ;

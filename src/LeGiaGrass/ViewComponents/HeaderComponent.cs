@@ -15,7 +15,7 @@ namespace LeGiaGrass.ViewComponents{
                var head = new CompanyViewModel(){
                   Facebook = headmodel.Facebook,
                   Google = headmodel.Google,
-                  Tweeter = headmodel.Tweeter,
+                  Twitter = headmodel.Twitter,
                   Hotline = headmodel.Hotline
                };
                return View(head);

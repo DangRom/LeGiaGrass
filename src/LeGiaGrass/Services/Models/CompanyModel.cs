@@ -7,9 +7,12 @@
         public string Phone { get; set; }
         public string TaxCode { get; set; }
         public string Google { get; set; }
-        public string Tweeter { get; set; }
+        public string Twitter { get; set; }
         public string Facebook { get; set; }
         public string Description { get; set; }
         public string About { get; set; }
+        //add more
+        public string Sologan { get; set; } 
+        public string BusinessHours { get; set; }
     }
 }

@@ -41,7 +41,7 @@ namespace LeGiaGrass.Services.Repository
             para.Add("pHotline", model.Hotline, DbType.String, ParameterDirection.Input);
             para.Add("pTaxCode", model.TaxCode, DbType.String, ParameterDirection.Input);
             para.Add("pGoogle", model.Google, DbType.String, ParameterDirection.Input);
-            para.Add("pTweeter", model.Tweeter, DbType.String, ParameterDirection.Input);
+            para.Add("pTwitter", model.Twitter, DbType.String, ParameterDirection.Input);
             para.Add("pFacebook", model.Facebook, DbType.String, ParameterDirection.Input);
             para.Add("pDescription", model.Description, DbType.String, ParameterDirection.Input);
             para.Add("pAbout", model.About, DbType.String, ParameterDirection.Input);

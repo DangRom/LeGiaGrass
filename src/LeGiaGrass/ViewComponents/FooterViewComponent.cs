@@ -35,7 +35,7 @@ namespace LeGiaGrass.ViewComponents{
                Hotline = companymodel.Hotline,
                Facebook = companymodel.Facebook,
                Google = companymodel.Google,
-               Tweeter = companymodel.Tweeter
+               Twitter = companymodel.Twitter
             };
 
             var servicemodels = await Task.Factory.StartNew(() => _serviceRepo.GetForFooter());

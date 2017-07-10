@@ -24,7 +24,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers{
                Image = c.Image,
                Description = c.Descriptions,
                Activated = c.Activated,
-               ClassType = c.ClassType,
+               Service = c.Service,
                Content = c.Content,
                Orders = c.Orders
             }).ToList();
@@ -50,7 +50,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers{
                      Image = category.Image,
                      Descriptions = category.Description,
                      Activated = category.Activated,
-                     ClassType = category.ClassType,
+                     Service = category.Service,
                      Orders = category.Orders,
                      Content = category.Content
                   };
@@ -80,7 +80,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers{
                Image = categoryModel.Image,
                Description = categoryModel.Descriptions,
                Activated = categoryModel.Activated,
-               ClassType = categoryModel.ClassType,
+               Service = categoryModel.Service,
                Orders = categoryModel.Orders,
                Content = categoryModel.Content
             };
@@ -102,7 +102,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers{
                   Image = category.Image,
                   Descriptions = category.Description,
                   Activated = category.Activated,
-                  ClassType = category.ClassType,
+                  Service = category.Service,
                   Orders = category.Orders,
                   Content = category.Content
                };
