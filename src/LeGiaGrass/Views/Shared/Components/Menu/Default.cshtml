@@ -1,59 +1,53 @@
 @model LeGiaGrass.Models.MenuViewModel
 
-
- <div class="header-nav">
-                <div class="header-nav-wrapper navbar-scrolltofixed bg-theme-colored border-bottom-theme-color-2-1px">
-                    <div class="container">
-                        <nav id="menuzord" class="menuzord bg-theme-colored pull-left flip menuzord-responsive">
-                            <ul class="menuzord-menu">
-                               <li class="active"><a href="/">Trang chủ</a></li>
-                               @foreach(var h in Model.MenuHead)
-                               {
-                                  var lines = Model.MenuLine.Where(l => l.HeadId == h.Id).ToList();
-                                  if(lines.Count == 0)
-                                  {
-                                       var hlink = "/" + @h.Alias;
-                                       <li><a href="@hlink">@h.Name</a></li>
-                                  }
-                                  else
-                                  {
-                                       var hlink = "/danh-sach/" + @h.Alias;
-                                       <li><a href="@hlink">@h.Name</a>
-                                             <ul class="dropdown">
-                                                @foreach(var l in lines)
-                                                {
-                                                   var llink = "";
-                                                   if(h.ClassType == true)
-                                                   {
-                                                      llink = "/khoa-hoc/" + l.Alias;
-                                                   }
-                                                   else
-                                                   {
-                                                      llink = "/bai-viet/" + l.Alias;
-                                                   }
-                                                   <li><a href="@llink">@l.Name</a></li>
-                                                }
-                                             </ul>
-                                       </li>
-                                  }
-                               }
-                            </ul>
-                            <ul class="pull-right flip hidden-sm hidden-xs">
-                                <li>
-                                    <!-- Modal: Book Now Starts -->
-                                    <a class="btn btn-colored btn-flat bg-theme-color-2 text-white font-14 bs-modal-ajax-load mt-0 p-25 pr-15 pl-15" data-toggle="modal" data-target="#BSParentModal" href="ajax-load/reservation-form.html"></a>
-                                    <!-- Modal: Book Now End -->
-                                </li>
-                            </ul>
-                            <div id="top-search-bar" class="collapse">
-                                <div class="container">
-                                    <form role="search" action="#" class="search_form_top" method="get">
-                                        <input type="text" placeholder="Type text and press Enter..." name="s" class="form-control" autocomplete="off">
-                                        <span class="search-close"><i class="fa fa-search"></i></span>
-                                    </form>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+<div id="slidemenu">
+    <div class="slidemenu-close visible-xs">✕</div>
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/"><span class="link-name">Home</span></a></li>
+            <li>
+                <a href="/service" class="dropdown-toggle"><span class="link-name">Dịch Vụ</span><span class="caret icon-angle-down"></span></a>
+                <ul class="dropdown-menu animated fadeIn" role="menu">
+                    <li>
+                        <a href="service-page-1.html">lawn service</a>
+                        <ul class="submenu">
+                            <li class="level2"><a href="service-page-1.html">trimming edge</a></li>
+                            <li class="level2"><a href="service-page-1.html">clean up</a></li>
+                            <li class="level2"><a href="service-page-1.html">blowing</a></li>
+                            <li class="level2"><a href="service-page-1.html">weeding</a></li>
+                            <li class="level2"><a href="service-page-1.html">moving</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="service-page-2.html">tree service</a></li>
+                    <li><a href="service-page-3.html">landscape design services</a></li>
+                    <li><a href="service-page-4.html">leaf removal</a></li>
+                    <li><a href="service-page-5.html">Snow Removal</a></li>
+                    <li><a href="service-page-6.html">Junk Removal</a></li>
+                    <li><a href="service-page-7.html">New tree planting</a></li>
+                    <li><a href="service-page-8.html">Sod service</a></li>
+                    <li><a href="service-page-9.html">Retaining walls</a></li>
+                    <li><a href="service-page-10.html">Patio and fire pit pavers</a></li>
+                    <li><a href="service-page-11.html">Yard work</a></li>
+                    <li><a href="service-page-12.html">Excavation</a></li>
+                </ul>
+            </li>
+            <!--<li><a href="testimonial.html"><span class="link-name">Testimonials</span></a></li>-->
+            <!--<li><a href="pricing.html"><span class="link-name">Pricing</span></a></li>-->
+            <!--
+            <li>
+                <a href="blog.html" class="dropdown-toggle"><span class="link-name">Blog</span><span class="caret icon-angle-down"></span></a>
+                <ul class="dropdown-menu animated fadeIn" role="menu">
+                    <li><a href="blog.html">Blog Classic</a></li>
+                    <li><a href="blog-card.html">Blog Post Card</a></li>
+                    <li><a href="blog-single.html">Blog Single post</a></li>
+                </ul>
+            </li>
+            <li><a href="gallery.html"><span class="link-name">Gallery</span></a></li>
+            <li><a href="maintenance.html"><span class="link-name">Maintenance tips</span></a></li>
+            <li><a href="shop.html"><span class="link-name">Shop</span></a></li>
+            -->
+            <li><a href="/about"><span class="link-name">Thông Tin</span></a></li>
+            <li><a href="/contact"><span class="link-name">Liên Hệ</span></a></li>
+        </ul>
+    </div>
+</div>

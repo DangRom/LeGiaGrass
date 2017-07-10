@@ -1,0 +1,47 @@
+@model IEnumerable<LeGiaGrass.Models.GalleryViewModel>
+
+<h2 class="text-center lined">Our Gallery</h2>
+<div class="container">
+    <!-- Filters -->
+    <section class="filters-by-category">
+        <div class="container">
+            <ul class="option-set" data-option-key="filter">
+                <li><a href="#filter" data-option-value="*" class="selected">All</a></li>
+                <li><a href="#filter" data-option-value=".category1" class="">Lawn Service</a></li>
+                <li><a href="#filter" data-option-value=".category2" class="">Landscape Design</a></li>
+                <li><a href="#filter" data-option-value=".category3" class="">Leaf Removal</a></li>
+                <li><a href="#filter" data-option-value=".category4" class="">Snow Removal</a></li>
+                <li><a href="#filter" data-option-value=".category5" class="">Junk Removal</a></li>
+                <li><a href="#filter" data-option-value=".category6" class="">Planting New Tree</a></li>
+            </ul>
+        </div>
+    </section>
+    <!-- //end Filters -->
+    <div class="gallery gallery-isotope" id="gallery">
+        <div class="gallery__item doubleW doubleH category5 category3">
+            <div class="gallery__item__image"> <img src="images/gallery/gallery-img-14.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-14.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
+        </div>
+        <div class="gallery__item category6 category2">
+            <div class="gallery__item__image"> <img src="images/gallery/gallery-img-15.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-15.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
+        </div>
+        <div class="gallery__item category6 category1">
+            <div class="gallery__item__image"> <img src="images/gallery/gallery-img-16.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-16.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
+        </div>
+        <div class="gallery__item category4">
+            <div class="gallery__item__image"> <img src="images/gallery/gallery-img-17.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-17.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
+        </div>
+        <div class="gallery__item category6 category2">
+            <div class="gallery__item__image"> <img src="images/gallery/gallery-img-18.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-18.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
+        </div>
+        <div class="gallery__item category1">
+            <div class="gallery__item__image"> <img src="images/gallery/gallery-img-03.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-03.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
+        </div>
+        <div class="gallery__item category2">
+            <div class="gallery__item__image"> <img src="images/gallery/gallery-img-04.jpg" alt="" /> <a class="btn btn--round" href="images/gallery/gallery-img-04.jpg"><span class="icon icon-magnifying-glass"></span></a> </div>
+        </div>
+    </div>
+    <div class="divider divider--md"></div>
+    <div class="text-center"><a class="btn btn--wd">MORE</a></div>
+    <div class="divider divider--md"></div>
+</div>
+

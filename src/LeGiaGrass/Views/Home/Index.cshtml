@@ -1,29 +1,34 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 <!-- Section: slide -->
-@await Component.InvokeAsync("Slide")
+@await Component.InvokeAsync("SlideHome")
 
-<!-- Section: About -->
-<section class="">
+<!-- Section: SERVICE & About -->
+<section class="content content--fill content--fill--light top-null">
     <div class="container">
-        @Html.Raw(Model.Description)
+        @await Component.InvokeAsync("ServiceHome")
+        @await Component.InvokeAsync("AboutHome")
     </div>
 </section>
 
-<!-- Section: SERVICE -->
-@await Component.InvokeAsync("ServiceHomePage")
 
-<!-- Divider: testimonials -->
-@await Component.InvokeAsync("StudentSay")
+<!-- Section: Difference -->
+@await Component.InvokeAsync("DifferenceHome")
 
-<!-- Section: Gallery -->
-@await Component.InvokeAsync("OurGallery")
+<!-- Section: Video & WhyChoose -->
+@await Component.InvokeAsync("WhyChooseHome")
 
-<!-- Section: blog -->
-@await Component.InvokeAsync("PostForHome")
+<!-- Section: Our Gallery & Customer Say -->
 
-<!-- Divider: Clients -->
-@await Component.InvokeAsync("Customer")
-<!-- end main-content -->
+<section class="content content--fill content--fill--light">
+    <div class="container">
+        @await Component.InvokeAsync("OurGalleryHome")
+        <div class="divider"></div>
+        @await Component.InvokeAsync("CustomerSayHome")
+    </div>
+</section>
+
+
+@await Component.InvokeAsync("LatestNewHome")

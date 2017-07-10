@@ -1,61 +1,42 @@
 @model LeGiaGrass.Models.CompanyViewModel
 
-
- <div class="header-top bg-theme-color-2 sm-text-center p-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="widget no-border m-0">
-                                <ul class="list-inline font-13 sm-text-center mt-5">
-                                    <li class="text-white">|</li>
-                                    <li>
-                                        <a class="text-white" href="/admin">Login</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="widget no-border m-0 mr-15 pull-right flip sm-pull-none sm-text-center">
-                                <ul class="styled-icons icon-circled icon-sm pull-right flip sm-pull-none sm-text-center mt-sm-15">
-                                    <li><a href="@Model.Facebook"><i class="fa fa-facebook text-white"></i></a></li>
-                                    <li><a href="@Model.Tweeter"><i class="fa fa-twitter text-white"></i></a></li>
-                                    <li><a href="@Model.Google"><i class="fa fa-google-plus text-white"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+<div class="navbar-header">
+    <div class="container">
+        <button type="button" class="navbar-toggle" id="slide-nav"><i class="icon icon-menu"></i></button>
+        <div class="row">
+            <div class="col-sm-3 col-lg-3">
+                <!--  Logo  -->
+                <a class="logo" href="index.html"> <img class="logo-default" src="~/images/logo.png" alt="" /> <img class="logo-mobile" src="images/logo.png" alt="" /> </a>
+                <!-- End Logo -->
+            </div>
+            <div class="visible-lg col-lg-3">
+                <div class="slogan"> Quality work you Can Trust! </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="phone">
+                    <div><span class="custom-color hidden-xs">CALL US: </span> <span class="phone-number">+1 800 543 2100</span><i class="icon icon-telephone"></i></div>
+                    <div class="phone-sm hidden-xs">7 Days a week from 9:00 am to 7:00 pm</div>
                 </div>
             </div>
-            <div class="header-middle p-0 bg-lightest xs-text-center">
-                <div class="container pt-0 pb-0">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 col-md-5">
-                            <div class="widget no-border m-0">
-                                <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="javascript:void(0)"><img src="images/logo-wide.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4">
-                            <div class="widget no-border pull-right sm-pull-none sm-text-center mt-10 mb-10 m-0">
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-phone-square text-theme-colored font-36 mt-5 sm-display-block"></i></li>
-                                    <li>
-                                        <a href="#" class="font-12 text-gray text-uppercase">Hotline</a>
-                                        <h5 class="font-14 m-0">@Model.Hotline</h5>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3">
-                            <div class="widget no-border pull-right sm-pull-none sm-text-center mt-10 mb-10 m-0">
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-clock-o text-theme-colored font-36 mt-5 sm-display-block"></i></li>
-                                    <li>
-                                        <a href="#" class="font-12 text-gray text-uppercase">Thời gian làm việc!</a>
-                                        <h5 class="font-13 text-black m-0"> 8:00 AM - 8:00 PM</h5>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-sm-3 col-lg-2">
+                <div class="social-links">
+                    <ul>
+                        <li>
+                            <a class="icon icon-twitter-logo-button" href="#"></a>
+                        </li>
+                        <li>
+                            <a class="icon icon-facebook-logo-button" href="#"></a>
+                        </li>
+                        <li>
+                            <a class="icon icon-google-plus" href="#"></a>
+                        </li>
+                        <li>
+                            <a class="icon icon-instagram-logo" href="#"></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+        <div class="header__search"> <a href="#" class="search-open"><span class="icon icon-magnifying-glass"></span></a> </div>
+    </div>
+</div>
