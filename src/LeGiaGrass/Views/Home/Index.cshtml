@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Section: slide -->
+@await Component.InvokeAsync("Slide")
+
+<!-- Section: About -->
+<section class="">
+    <div class="container">
+        @Html.Raw(Model.Description)
+    </div>
+</section>
+
+<!-- Section: SERVICE -->
+@await Component.InvokeAsync("ServiceHomePage")
+
+<!-- Divider: testimonials -->
+@await Component.InvokeAsync("StudentSay")
+
+<!-- Section: Gallery -->
+@await Component.InvokeAsync("OurGallery")
+
+<!-- Section: blog -->
+@await Component.InvokeAsync("PostForHome")
+
+<!-- Divider: Clients -->
+@await Component.InvokeAsync("Customer")
+<!-- end main-content -->

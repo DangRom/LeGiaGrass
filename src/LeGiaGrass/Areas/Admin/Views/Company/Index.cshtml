@@ -1,0 +1,101 @@
+﻿@model LeGiaGrass.Areas.Admin.Models.CompanyViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="dashboard_graph">
+        <div class="row x_title">
+            <div class="col-md-6">
+                <h2>Thông tin công ty</h2>
+            </div>
+        </div>
+        <div class="row">
+            <form class="form-horizontal" asp-controller="Company" asp-action="Index" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label for="tencty" class="col-sm-2 control-label">Tên công ty</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Name" class="form-control height-input" id="tencty">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="diachi" class="col-sm-2 control-label">Địa chỉ</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Address" class="form-control height-input" id="diachi">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mst" class="col-sm-2 control-label">Mã số thuế</label>
+                    <div class="col-sm-10">
+                        <input asp-for="TaxCode" class="form-control height-input" id="mst">
+                        <span asp-validation-for="TaxCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emai" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Email" class="form-control height-input" id="email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-sm-2 control-label">Số điện thoại</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Phone" class="form-control height-input" id="phone">
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hotline" class="col-sm-2 control-label">Hot line</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Hotline" class="form-control height-input" id="hotline">
+                        <span asp-validation-for="Hotline" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="google" class="col-sm-2 control-label">Google</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Google" class="form-control height-input" id="google">
+                        <span asp-validation-for="Google" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tweeter" class="col-sm-2 control-label">Tweeter</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Tweeter" class="form-control height-input" id="tweeter">
+                        <span asp-validation-for="Tweeter" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="facebook" class="col-sm-2 control-label">Facebook</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Facebook" class="form-control height-input" id="facebook">
+                        <span asp-validation-for="Facebook" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="col-sm-2 control-label">Mô tả ngắn</label>
+                    <div class="col-sm-10">
+                        <textarea asp-for="Description" class="form-control" id="description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mota" class="col-sm-2 control-label">Về chúng tôi</label>
+                    <div class="col-sm-10">
+                        <textarea asp-for="About" class="form-control" id="mota"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

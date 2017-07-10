@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Degic Center</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <!-- Bootstrap -->
+    <link href="~/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="~/admin/build/css/custom.min.css" rel="stylesheet">
+    <!-- Custom style -->
+    <link href="~/admin/css/styleSheet.css" rel="stylesheet">
+    <!--DataTable-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="/admin" class="site_title"><i class="fa fa-paw"></i> <span>Degic Center</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="~/admin/build/images/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>John Doe</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-home"></i> Công ty <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/admin/company/index">Thông tin công ty</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-book"></i> Danh mục chủ đề <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/admin/category/index">danh sách chủ đề</a></li>
+                                        <li><a href="/admin/category/new">thêm mới chủ đề</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-edit"></i> Danh mục bài viết <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/admin/post/index">danh sách bài viết</a></li>
+                                        <li><a href="/admin/post/new">them moi bai viet</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-slideshare"></i> Danh mục slide <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/admin/slide/index">danh sách slide</a></li>
+                                        <li><a href="/admin/slide/new">thêm mới slide</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-graduation-cap"></i> Danh mục dịch vụ <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/admin/service/index">danh sách dịch vụ</a></li>
+                                        <li><a href="/admin/service/new">thêm mới dịch vụ</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-comments"></i> Danh mục feedback <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/admin/feedback/index">danh sách feedback</a></li>
+                                        <li><a href="/admin/feedback/new">thêm mới feedback</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-picture-o"></i> Hình ảnh <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/admin/image/index">danh sách hình ảnh</a></li>
+                                        <li><a href="/admin/image/new">thêm mới hình ảnh</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/admin/user/index">danh sách user</a></li>
+                                        <li><a href="/admin/user/new">thêm mới user</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/admin/build/images/img.jpg" alt="">John Doe
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="/admin/account/profile"> Profile</a></li>
+                                    <li><a href="/admin/account/ChangePassword">Change password</a></li>
+                                    <li><a href="/admin/account/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    @RenderBody()
+                </div>
+                <br />
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="~/admin/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- DateJS -->
+    <script src="~/admin/vendors/DateJS/build/date.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/admin/build/js/custom.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/admin/tinymce/js/tinymce/jquery.tinymce.min.js"></script>
+    <script src="~/admin/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="~/admin/js/tinyMceConfig.js"></script>
+    <!--DataTable-->
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="~/admin/js/datatable_config.js"></script>
+    <!--slug-->
+    <script src="~/admin/js/slug_alias.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
