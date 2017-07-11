@@ -28,14 +28,14 @@ namespace LeGiaGrass.Controllers
             {
                 Name = p.Name,
                 Alias = p.Alias,
-                ShortDescriptions = p.ShortDescriptions,
+                ShortDescription = p.ShortDescription,
                 Image = p.Image,
                 CreateDate = p.CreateDate
             }).ToList();
             return View(posts);
         }
 
-        
+      
         public ActionResult Post(string alias)
         {
             var postmodel = _postRepo.GetPostByAlias(alias.Trim());
@@ -43,7 +43,7 @@ namespace LeGiaGrass.Controllers
             {
                 Name = postmodel.Name,
                 Alias = postmodel.Alias,
-                ShortDescriptions = postmodel.ShortDescriptions,
+                ShortDescription = postmodel.ShortDescription,
                 Content = postmodel.Content,
                 Image = postmodel.Image,
                 CreateDate = postmodel.CreateDate
@@ -52,17 +52,18 @@ namespace LeGiaGrass.Controllers
         }
 
         // GET: Category
-        public ActionResult Category(string id, int page = 1)
+        public ActionResult Category(string alias)
         {
-            // var posts = _postService.GetAllByCategory(id, 10, page).ToList();
-            // ViewBag.Categories = _categoryService.GetAll();
-            // ViewBag.Tags = _tagService.GetAll();
-            // ViewBag.NewPosts = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Blog), false, 5);
-            // ViewBag.Services = _postService.GetAllByCategoryName(nameof(BaseCategoryName.Service));
-            // ViewBag.Company = _companyService.GetAll().FirstOrDefault() ?? _companyDefault.Value;
-            // ViewBag.Selected = "blog";
-            //return View(nameof(BlogController.Index), posts);
-            return View();
+           var postmodels = _postRepo.getAllPostByCategoryByAlias(alias);
+            var posts = postmodels.Select(p => new PostViewModel
+            {
+                Name = p.Name,
+                Alias = p.Alias,
+                ShortDescription = p.ShortDescription,
+                Image = p.Image,
+                CreateDate = p.CreateDate
+            }).ToList();
+            return View(nameof(BlogController.Index),posts);
         }
     }
 }

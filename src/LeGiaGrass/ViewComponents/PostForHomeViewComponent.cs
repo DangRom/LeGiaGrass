@@ -16,7 +16,7 @@ namespace LeGiaGrass.ViewComponents{
                var posts = postmodel.Select(p => new PostViewModel{
                   Name = p.Name,
                   Alias = p.Alias,
-                  ShortDescriptions = p.ShortDescriptions,
+                  ShortDescription = p.ShortDescription,
                   Image = p.Image,
                   CreateDate = p.CreateDate,
                   CreateDay = p.CreateDate.Day.ToString(),

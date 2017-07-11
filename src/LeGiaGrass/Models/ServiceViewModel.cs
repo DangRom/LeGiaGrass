@@ -1,5 +1,7 @@
-namespace LeGiaGrass.Services.Models{
-    public class ServiceModel{
+using System.ComponentModel.DataAnnotations;
+
+namespace LeGiaGrass.Models{
+    public class ServiceViewModel{
         public int Id { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }

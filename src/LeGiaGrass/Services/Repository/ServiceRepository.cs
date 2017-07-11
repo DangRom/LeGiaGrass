@@ -35,6 +35,13 @@ namespace LeGiaGrass.Services.Repository{
             return GetById("getServiceById", para);
         }
 
+        public ServiceModel GetServiceByAlias(string alias)
+        {
+            var para = new DynamicParameters();
+            para.Add("pAlias", alias, DbType.String, ParameterDirection.Input);
+            return GetById("getServiceByAlias", para);
+        }
+
         public void Insert(ServiceModel model)
         {
             var para = GetParams(model);
@@ -75,7 +82,7 @@ namespace LeGiaGrass.Services.Repository{
             para.Add("pImage", model.Image, DbType.String, ParameterDirection.Input);
             para.Add("pPrice", model.Price, DbType.Int32, ParameterDirection.Input);
             para.Add("pStatus", model.Status, DbType.String, ParameterDirection.Input);
-            para.Add("pShortDescriptions", model.ShortDesciptions, DbType.String, ParameterDirection.Input);
+            para.Add("pShortDescription", model.ShortDescription, DbType.String, ParameterDirection.Input);
             para.Add("pContent", model.Content, DbType.String, ParameterDirection.Input);
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
             return para;

@@ -24,7 +24,7 @@ namespace LeGiaGrass.ViewComponents
                     Name = c.Name,
                     Alias = c.Alias,
                     Image = c.Image,
-                    ShortDesciptions = c.ShortDesciptions
+                    ShortDescription = c.ShortDescription
                 }).ToList();
 
                 return View(services);

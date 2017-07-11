@@ -11,6 +11,7 @@ namespace LeGiaGrass.Services.IRepository{
        PostModel GetPostById(int id);
        
         PostModel GetPostByAlias(string alias);
+        IEnumerable<PostModel> getAllPostByCategoryByAlias(string alias);
        IEnumerable<PostModel> GetAllPost();
        IEnumerable<PostModel> GetPostForHomePage();
        IEnumerable<PostModel> GetMenuLine();

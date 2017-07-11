@@ -9,6 +9,7 @@ namespace LeGiaGrass.Services.IRepository{
         void Delete(int id);
         bool CheckAlias(string alias);
         ServiceModel GetServiceById(int id);
+        ServiceModel GetServiceByAlias(string alias);
         IEnumerable<ServiceModel> GetAllService();
         IEnumerable<ServiceModel> GetAllServiceForFeedback();
         IEnumerable<ServiceModel> GetAllServiceForHomePage();

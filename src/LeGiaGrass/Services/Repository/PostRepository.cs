@@ -22,7 +22,12 @@ namespace LeGiaGrass.Services.Repository{
          para.Add("pId", id, DbType.Int32, ParameterDirection.Input);
          Execute("deletePost", para);
       }
-
+      public IEnumerable<PostModel> getAllPostByCategoryByAlias(string alias)
+      {
+          var para = new DynamicParameters();
+         para.Add("pAlias", alias, DbType.String, ParameterDirection.Input);
+         return GetAll("getAllPostByCategoryByAlias", para);
+      }
       public IEnumerable<PostModel> GetAllPost()
       {
          return GetAll("getAllPost", null);
@@ -75,7 +80,7 @@ namespace LeGiaGrass.Services.Repository{
          para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
          para.Add("pAlias", model.Alias, DbType.String, ParameterDirection.Input);
          para.Add("pImage", model.Image, DbType.String, ParameterDirection.Input);
-         para.Add("pShortDescriptions", model.ShortDescriptions, DbType.String, ParameterDirection.Input);
+         para.Add("pShortDescription", model.ShortDescription, DbType.String, ParameterDirection.Input);
          para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
          para.Add("pContent", model.Content, DbType.String, ParameterDirection.Input);
          para.Add("pCategoryId", model.CategoryId, DbType.Int32, ParameterDirection.Input);

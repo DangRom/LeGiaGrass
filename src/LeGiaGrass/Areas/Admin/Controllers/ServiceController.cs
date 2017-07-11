@@ -46,7 +46,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers{
                             Alias = service.Alias,
                             Image = service.Image,
                             Status = service.Status,
-                            ShortDesciptions = service.ShortDescription,
+                            ShortDescription = service.ShortDescription,
                             Content = service.Content,
                             Activated = service.Activated,
                             Price = service.Price
@@ -76,7 +76,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers{
                     Alias = servicemodel.Alias,
                     Image = servicemodel.Image,
                     Status = servicemodel.Status,
-                    ShortDescription = servicemodel.ShortDesciptions,
+                    ShortDescription = servicemodel.ShortDescription,
                     Content = servicemodel.Content,
                     Activated = servicemodel.Activated,
                     Price = servicemodel.Price
@@ -98,7 +98,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers{
                         Alias = service.Alias,
                         Image = service.Image,
                         Status = service.Status,
-                        ShortDesciptions = service.ShortDescription,
+                        ShortDescription = service.ShortDescription,
                         Content = service.Content,
                         Activated = service.Activated,
                         Price = service.Price   
