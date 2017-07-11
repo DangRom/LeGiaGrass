@@ -1,4 +1,4 @@
-@model LeGiaGrass.Models.CompanyViewModel
+@model LeGiaGrass.Models.HeaderViewModel
 
 <div class="navbar-header">
     <div class="container">
@@ -6,32 +6,29 @@
         <div class="row">
             <div class="col-sm-3 col-lg-3">
                 <!--  Logo  -->
-                <a class="logo" href="index.html"> <img class="logo-default" src="~/images/logo.png" alt="" /> <img class="logo-mobile" src="images/logo.png" alt="" /> </a>
+                <a class="logo" href="/"> <img class="logo-default" src="~/images/logo.png" alt="" /> <img class="logo-mobile" src="images/logo.png" alt="" /> </a>
                 <!-- End Logo -->
             </div>
             <div class="visible-lg col-lg-3">
-                <div class="slogan"> Quality work you Can Trust! </div>
+                <div class="slogan"> @Model.Slogan </div>
             </div>
             <div class="col-sm-6 col-lg-4">
                 <div class="phone">
-                    <div><span class="custom-color hidden-xs">CALL US: </span> <span class="phone-number">+1 800 543 2100</span><i class="icon icon-telephone"></i></div>
-                    <div class="phone-sm hidden-xs">7 Days a week from 9:00 am to 7:00 pm</div>
+                    <div><span class="custom-color hidden-xs">GỌI NGAY: </span> <span class="phone-number">@Model.Hotline</span><i class="icon icon-telephone"></i></div>
+                    <div class="phone-sm hidden-xs">@Model.BusinessHours</div>
                 </div>
             </div>
             <div class="col-sm-3 col-lg-2">
                 <div class="social-links">
                     <ul>
                         <li>
-                            <a class="icon icon-twitter-logo-button" href="#"></a>
+                            <a class="icon icon-twitter-logo-button" href="@Model.Twitter"></a>
                         </li>
                         <li>
-                            <a class="icon icon-facebook-logo-button" href="#"></a>
+                            <a class="icon icon-facebook-logo-button" href="@Model.Facebook"></a>
                         </li>
                         <li>
-                            <a class="icon icon-google-plus" href="#"></a>
-                        </li>
-                        <li>
-                            <a class="icon icon-instagram-logo" href="#"></a>
+                            <a class="icon icon-google-plus" href="@Model.Google"></a>
                         </li>
                     </ul>
                 </div>

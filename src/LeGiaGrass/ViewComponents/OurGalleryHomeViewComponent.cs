@@ -18,7 +18,7 @@ namespace LeGiaGrass.ViewComponents
             try
             {
                 var gallerymodels = await Task.Factory.StartNew(() => _galleryRepo.GetAllImageForHomePage());
-                var gallerys = gallerymodels.Select(g => new GalleryViewModel
+                var gallerys = gallerymodels.Select(g => new GalleryHomeViewModel
                 {
                     Name = g.Name,
                     Image = g.Image

@@ -10,46 +10,24 @@
     <div class="tp-banner-container">
         <div class="tp-banner">
             <ul>
-                <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                    <!-- MAIN IMAGE --><img src="images/slides/slide-1.jpg" alt="slide1" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                @foreach(var slide in Model)
+                {
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
+                    <!-- MAIN IMAGE -->
+                    <img src="@slide.Image" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
                     <!-- LAYERS -->
                     <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">We Work Hard on Your Yard</div>
+                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">@slide.Name</div>
                     <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-speed="630" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">Work of exceptional quality since 1995</div>
-                    <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                </li>
-                <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                    <!-- MAIN IMAGE --><img src="images/slides/slide-4.jpg" alt="slide4" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">LAWN SERVICE</div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">Our revive, sustain & thrive services ensure the health of your lawn</div>
-                    <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                </li>
-                <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                    <!-- MAIN IMAGE --><img src="images/slides/slide-2.jpg" alt="slide2" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">landscape design</div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">custom landscape maintenance to complement and enhance your home</div>
-                    <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                </li>
-                <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
-                    <!-- MAIN IMAGE --><img src="images/slides/slide-3.jpg" alt="slide3" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-caption--wd-1  lfb ltt" data-x="center" data-y="center" data-voffset="-100" data-hoffset="0" data-speed="600" data-start="800" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 1;">SNOW REMOVAL</div>
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-hoffset="0" data-speed="600" data-start="900" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 2;">Avoid condo fees, let us take care of your home snow removal for less</div>
-                    <!-- LAYER NR. 3 --><a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">GET A QUOTE</a>
-                </li>
+                    <!--<div class="tp-caption tp-caption--wd-3 lfb ltt" data-x="center" data-y="center" data-voffset="-50" data-speed="630" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">Work of exceptional quality since 1995</div>-->
+                    
+                    <!-- LAYER NR. 3 -->
+                    @if(slide.ButtonViewer)
+                    {
+                        <a href="#modalForm1" class="tp-caption lfb ltt linkbtn modal-popup-link" data-x="center" data-y="center" data-voffset="30" data-hoffset="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endeasing="Power4.easeIn" style="z-index: 3;">Yêu Cầu</a>
+                    }
+                    </li>
+                }
             </ul>
         </div>
     </div>

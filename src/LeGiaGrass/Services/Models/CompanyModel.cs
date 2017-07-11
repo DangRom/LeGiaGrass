@@ -12,7 +12,7 @@
         public string Description { get; set; }
         public string About { get; set; }
         //add more
-        public string Sologan { get; set; } 
+        public string Slogan { get; set; } 
         public string BusinessHours { get; set; }
     }
 }

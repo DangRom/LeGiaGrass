@@ -37,7 +37,7 @@ namespace LeGiaGrass.Areas.Admin.Models{
         public string About { get; set; }
 
         [MaxLength(255, ErrorMessage = "Không được dài quá 255 ký tự")]
-        public string Sologan { get; set; }
+        public string Slogan { get; set; }
 
         [MaxLength(255, ErrorMessage = "Không được dài quá 255 ký tự")]
         public string BusinessHours { get; set; }

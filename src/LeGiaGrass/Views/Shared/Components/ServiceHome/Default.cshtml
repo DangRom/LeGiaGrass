@@ -1,79 +1,18 @@
-@model IEnumerable<LeGiaGrass.Areas.Admin.Models.ServiceViewModel>
+@model IEnumerable<LeGiaGrass.Models.ServiceHomeViewModel>
 
-
-        <div class="services-block">
-            <a href="service-page-1.html" class="service iconmove dark">
-                <div class="service-image"><img src="images/service-1-bg.jpg" alt="#"></div>
+<div class="services-block">
+@foreach(var service in Model)
+{
+     <a href="/service/@service.Alias" class="service iconmove light">
+                <div class="service-image"><img src="@service.Image" alt="#"></div>
                 <div class="caption">
                     <div class="vert-wrap">
                         <div class="vert">
-                            <div class="service-icon"><i class="icon first icon-gardener"></i></div>
-                            <div class="service-title">Lawn Service</div>
-                            <div class="service-text">We offer total lawn care and routine maintenance to keep your lawn looking brand new</div>
+                            <!--<div class="service-icon"><i class="icon first icon-gardener"></i></div>-->
+                            <div class="service-title">@service.Name</div>
+                            <div class="service-text">@service.ShortDesciptions</div>
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="service-page-3.html" class="service iconmove light ">
-                <div class="service-image image-scale"><img src="images/service-2-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-title">
-                                Landscape
-                                <br> Design Services
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="service-page-4.html" class="service iconmove light">
-                <div class="service-image"><img src="images/service-3-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-icon"><i class="icon first icon-tree"></i></div>
-                            <div class="service-title">Leaf Removal</div>
-                            <div class="service-text">Our crew blows leaves to an area of your choice ie: woods, garden, or compost pile</div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="service-page-5.html" class="service iconmove light">
-                <div class="service-image image-scale"><img src="images/service-4-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-title">Snow Removal</div>
-                            <div class="service-text">We don’t miss a beat when it comes to digging your home or office out from under the snow.</div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="service-page-6.html" class="service iconmove color">
-                <div class="service-image"><img src="images/service-5-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-icon"><i class="icon first icon-truck-transport"></i></div>
-                            <div class="service-title">Junk Removal</div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="service-page-7.html" class="service iconmove light">
-                <div class="service-image image-scale"><img src="images/service-6-bg.jpg" alt="#"></div>
-                <div class="caption">
-                    <div class="vert-wrap">
-                        <div class="vert">
-                            <div class="service-title">New Tree Planting</div>
-                            <div class="service-text">Let us help you protect your investment and let your new trees thrive!</div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-       
-        
-
+}

@@ -18,9 +18,10 @@ namespace LeGiaGrass.ViewComponents{
                   Alias = p.Alias,
                   ShortDescriptions = p.ShortDescriptions,
                   Image = p.Image,
+                  CreateDate = p.CreateDate,
                   CreateDay = p.CreateDate.Day.ToString(),
                   CreateMonth = p.CreateDate.Month.ToString()
-               }).ToList();
+               }).Take(3).ToList();
                return View(posts);
           }catch{throw;}
        }

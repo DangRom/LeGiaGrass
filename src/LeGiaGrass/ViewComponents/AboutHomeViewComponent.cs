@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using LeGiaGrass.Areas.Admin.Models;
+using LeGiaGrass.Models;
 using LeGiaGrass.Services.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,25 +11,21 @@ namespace LeGiaGrass.ViewComponents
     [ViewComponent(Name = "AboutHome")]
     public class AboutHomeViewComponent : ViewComponent
     {
-        private readonly IServiceRepository _serviceRepo;
+        private readonly ICompanyRepository _companyRepo;
 
-        public AboutHomeViewComponent(IServiceRepository serviceRepo) => _serviceRepo = serviceRepo;
+        public AboutHomeViewComponent(ICompanyRepository companyRepo) => _companyRepo = companyRepo;
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
             try
             {
-                var servicemodels = await Task.Factory.StartNew(() => _serviceRepo.GetAllServiceForHomePage());
-                var services = servicemodels.Select(c => new ServiceViewModel
+                var companyModel = await Task.Factory.StartNew(() => _companyRepo.GetCompanyForHome());
+                var aboutHome =  new AboutHomeViewModel
                 {
-                    Id = c.Id,
-                    Name = c.Name,
-                    Alias = c.Alias,
-                    Price = c.Price,
-                    Image = c.Image,
-                    ShortDescription = c.ShortDesciptions
-                }).ToList();
-                return View(services);
+                    Description =companyModel.Description
+                };
+                
+                return View(aboutHome);
             }
             catch { throw; }
         }

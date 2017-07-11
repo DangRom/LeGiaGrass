@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using LeGiaGrass.Models;
 using LeGiaGrass.Services.IRepository;
@@ -6,23 +5,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LeGiaGrass.ViewComponents
 {
-    [ViewComponent(Name = "Footer")]
-    public class FooterViewComponent : ViewComponent
+    [ViewComponent(Name = "Header")]
+    public class HeaderViewComponent : ViewComponent
     {
         private readonly ICompanyRepository _headRepo;
-        public FooterViewComponent(ICompanyRepository headRepo) => _headRepo = headRepo;
+        public HeaderViewComponent(ICompanyRepository headRepo) => _headRepo = headRepo;
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
             try
             {
-                var company = await Task.Factory.StartNew(() => _headRepo.GetCompanyForFooter());
-                var footer = new FooterViewModel()
+                var company = await Task.Factory.StartNew(() => _headRepo.GetCompanyForHead());
+                var header = new HeaderViewModel()
                 {
-                    Name = company.Name,
-                    Email = company.Email,
-                    Phone = company.Phone,
-                    Address=company.Address,
                     Slogan = company.Slogan,
                     BusinessHours = company.BusinessHours,
                     Hotline = company.Hotline,
@@ -30,7 +25,7 @@ namespace LeGiaGrass.ViewComponents
                     Google = company.Google,
                     Twitter = company.Twitter,
                 };
-                return View(footer);
+                return View(header);
             }
             catch { throw; }
         }

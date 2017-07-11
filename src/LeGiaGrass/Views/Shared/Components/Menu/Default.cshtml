@@ -1,4 +1,4 @@
-@model LeGiaGrass.Models.MenuViewModel
+@model IEnumerable<LeGiaGrass.Models.MenuViewModel>
 
 <div id="slidemenu">
     <div class="slidemenu-close visible-xs">✕</div>
@@ -8,27 +8,10 @@
             <li>
                 <a href="/service" class="dropdown-toggle"><span class="link-name">Dịch Vụ</span><span class="caret icon-angle-down"></span></a>
                 <ul class="dropdown-menu animated fadeIn" role="menu">
-                    <li>
-                        <a href="service-page-1.html">lawn service</a>
-                        <ul class="submenu">
-                            <li class="level2"><a href="service-page-1.html">trimming edge</a></li>
-                            <li class="level2"><a href="service-page-1.html">clean up</a></li>
-                            <li class="level2"><a href="service-page-1.html">blowing</a></li>
-                            <li class="level2"><a href="service-page-1.html">weeding</a></li>
-                            <li class="level2"><a href="service-page-1.html">moving</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="service-page-2.html">tree service</a></li>
-                    <li><a href="service-page-3.html">landscape design services</a></li>
-                    <li><a href="service-page-4.html">leaf removal</a></li>
-                    <li><a href="service-page-5.html">Snow Removal</a></li>
-                    <li><a href="service-page-6.html">Junk Removal</a></li>
-                    <li><a href="service-page-7.html">New tree planting</a></li>
-                    <li><a href="service-page-8.html">Sod service</a></li>
-                    <li><a href="service-page-9.html">Retaining walls</a></li>
-                    <li><a href="service-page-10.html">Patio and fire pit pavers</a></li>
-                    <li><a href="service-page-11.html">Yard work</a></li>
-                    <li><a href="service-page-12.html">Excavation</a></li>
+                   @foreach(var menu in Model)
+                   {
+                       <li><a href="/service/@menu.Alias">@menu.Name</a></li>
+                   }
                 </ul>
             </li>
             <!--<li><a href="testimonial.html"><span class="link-name">Testimonials</span></a></li>-->
@@ -51,3 +34,4 @@
         </ul>
     </div>
 </div>
+   

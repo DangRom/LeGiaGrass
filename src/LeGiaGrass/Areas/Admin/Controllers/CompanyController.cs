@@ -34,7 +34,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers
                     Facebook = companyModel.Facebook,
                     Description = companyModel.Description,
                     About = companyModel.About,
-                    Sologan = companyModel.Sologan,
+                    Slogan = companyModel.Slogan,
                     BusinessHours = companyModel.BusinessHours
                 };
                 return View(company);
@@ -60,7 +60,7 @@ namespace LeGiaGrass.Areas.Admin.Controllers
                         Facebook = company.Facebook,
                         Description = company.Description,
                         About = company.About,
-                        Sologan = company.Sologan,
+                        Slogan = company.Slogan,
                         BusinessHours = company.BusinessHours
                     };
                     _companyRepo.SaveCompany(companyModel);

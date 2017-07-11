@@ -1,5 +1,5 @@
 namespace LeGiaGrass.Models{
-    public class GalleryViewModel{
+    public class GalleryHomeViewModel{
        public string Name { get; set; }
        public string Image { get; set; }
     }

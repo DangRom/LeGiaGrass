@@ -1,6 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
-using LeGiaGrass.Areas.Admin.Models;
+using LeGiaGrass.Models;
 using LeGiaGrass.Services.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,15 +18,15 @@ namespace LeGiaGrass.ViewComponents
             try
             {
                 var servicemodels = await Task.Factory.StartNew(() => _serviceRepo.GetAllServiceForHomePage());
-                var services = servicemodels.Select(c => new ServiceViewModel
+                
+                var services = servicemodels.Select(c => new ServiceHomeViewModel
                 {
-                    Id = c.Id,
                     Name = c.Name,
                     Alias = c.Alias,
-                    Price = c.Price,
                     Image = c.Image,
-                    ShortDescription = c.ShortDesciptions
+                    ShortDesciptions = c.ShortDesciptions
                 }).ToList();
+
                 return View(services);
             }
             catch { throw; }

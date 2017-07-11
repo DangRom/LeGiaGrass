@@ -12,36 +12,36 @@
             <div class="row">
                 <div class="col-sm-6 col-md-3"> <img src="~/images/guarantee.png" class="img-responsive" alt="" /> </div>
                 <div class="col-sm-6 col-md-3 mobile-collapse">
-                    <h5 class="title mobile-collapse__title">Information </h5>
+                    <h5 class="title mobile-collapse__title">Thông Tin </h5>
                     <div class="v-links-list mobile-collapse__content">
                         <ul>
-                            <li><a href="maintenance.html">FAQ</a></li>
-                            <li><a href="contact.html">Locations</a></li>
-                            <li><a href="about.html">Testimonials</a></li>
-                            <li><a href="about.html">Careers</a></li>
-                            <li><a href="about.html">Partners</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="/contact">Địa Chỉ</a></li>
+                            <li><a href="#">Đánh Giá</a></li>
+                            <li><a href="#">Tuyển Dụng</a></li>
+                            <li><a href="#">Đối Tác</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3 mobile-collapse">
-                    <h5 class="title mobile-collapse__title">Service</h5>
+                    <h5 class="title mobile-collapse__title">Sử Dụng</h5>
                     <div class="v-links-list mobile-collapse__content">
                         <ul>
-                            <li><a href="sitemap.html">Site Map</a></li>
-                            <li><a href="about.html">Privacy</a></li>
-                            <li><a href="about.html">Terms of Use</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="#">Site Map</a></li>
+                            <li><a href="#">Chính Sách</a></li>
+                            <li><a href="#">Điều Khoản</a></li>
+                            <li><a href="/contact">Liên Hệ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3 mobile-collapse mobile-collapse--last">
-                    <h5 class="title mobile-collapse__title">Company Info</h5>
+                    <h5 class="title mobile-collapse__title">Công Ty</h5>
                     <div class="v-links-list mobile-collapse__content">
                         <ul>
-                            <li>51 St. Black Road Raleigh</li>
-                            <li><a href="mailto:lawncare@websitename.org">lawncare@websitename.org</a></li>
-                            <li>Mon - Sun, 24/7</li>
-                            <li>+1 800 543 2100</li>
+                            <li>@Model.Name</li>
+                            <li>@Model.Address</li>
+                            <li><a href="mailto:@Model.Email">@Model.Email</a></li>
+                            <li>@Model.Phone</li>
                         </ul>
                     </div>
                 </div>
@@ -54,28 +54,25 @@
                 <div class="social-links">
                     <ul>
                         <li>
-                            <a class="icon icon-twitter-logo-button" href="#"></a>
+                            <a class="icon icon-twitter-logo-button" href="@Model.Twitter"></a>
                         </li>
                         <li>
-                            <a class="icon icon-facebook-logo-button" href="#"></a>
+                            <a class="icon icon-facebook-logo-button" href="@Model.Facebook"></a>
                         </li>
                         <li>
-                            <a class="icon icon-google-plus" href="#"></a>
-                        </li>
-                        <li>
-                            <a class="icon icon-instagram-logo" href="#"></a>
+                            <a class="icon icon-google-plus" href="@Model.Google"></a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="pull-right col-sm-6 col-md-5 col-lg-4">
                 <div class="phone">
-                    <div><span class="custom-color hidden-xs">CALL US: </span> <span class="phone-number">+1 800 543 2100</span><i class="icon icon-telephone"></i></div>
-                    <div class="phone-sm">7 Days a week from 9:00 am to 7:00 pm</div>
+                    <div><span class="custom-color hidden-xs">GỌI NGAY: </span> <span class="phone-number">@Model.Hotline</span><i class="icon icon-telephone"></i></div>
+                    <div class="phone-sm">@Model.BusinessHours</div>
                 </div>
             </div>
             <div class="pull-left col-sm-12 col-md-3 col-lg-4">
-                <div class="copyright">© 2016 <a href="#">Le Gia Grass</a>.</div>
+                <div class="copyright">© 2017 <a href="#">@Model.Name</a>.</div>
             </div>
         </div>
     </div>
