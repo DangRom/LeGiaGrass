@@ -40,13 +40,7 @@
 </head>
 
 <body class="">
-    <div id="loader-wrapper" class="loader-on">
-        <div id="loader" class="mower-loader">
-            <div class="mower"> <img src="~/images/lawnmower.png" alt=""> </div>
-            <div class="grass"></div>
-            <div class="text">Loading...</div>
-        </div>
-    </div>
+     @RenderSection("loaderWrapper", false)
     <!-- Modal Search -->
     <div class="overlay overlay-scale">
         <button type="button" class="overlay-close"> ✕ </button>
@@ -165,6 +159,7 @@
             });
         }); //ready
     </script>
+     @RenderSection("Scripts", required: false)
 </body>
 
 </html>

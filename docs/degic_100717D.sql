@@ -66,7 +66,7 @@ CREATE TABLE `Company` (
   `Twitter` tinytext COLLATE utf8_unicode_ci,
   `Description` text COLLATE utf8_unicode_ci,
   `About` longtext COLLATE utf8_unicode_ci,
-  `Sologan` text COLLATE utf8_unicode_ci,
+  `Slogan` text COLLATE utf8_unicode_ci,
   `BusinessHours` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -77,7 +77,7 @@ CREATE TABLE `Company` (
 
 LOCK TABLES `Company` WRITE;
 /*!40000 ALTER TABLE `Company` DISABLE KEYS */;
-INSERT INTO `Company` VALUES ('Công Ty Lê Gia','Đà Nẵng','chưa có mua','không thèm mua','a@gmail.com','chưa có đăng ký','chưa tạo facebook','chưa tạo google','chưa tạo Twitter',' <h2 class="text-center lined">About Us</h2> <p class="text-center info-text">Starting out with just a single truck and mower, we have expanded our services and grown into one of the largest lawn maintenance companies in our area. Our expansion and stellar reputation is due, in part, to our exceptional reputation for quality and timely service. Our lawn care technicians utilize the latest technology and techniques to deliver beautiful results that will stand the test of time.</p> <div class="row"> <div class="col-sm-6 animation" data-animation="fadeInLeft" data-animation-delay="0.5s"> <div class="text-icon__title">Our Mission</div> <div class="text-icon last"> <div class="text-icon__icon"><i class="icon icon-nature-2"></i></div> <div class="text-icon__info"> <p>Our mission is to provide our customers with the highest level of quality services. We pledge to establish lasting relationships with our clients by exceeding their expectations and gaining their trust through exceptional performance. </p> </div> </div> </div> <div class="col-sm-6 animation" data-animation="fadeInRight" data-animation-delay="0.5s"> <div class="text-icon__title">Our Clients</div> <div class="text-icon last"> <div class="text-icon__icon"><i class="icon icon-construction-worker"></i></div> <div class="text-icon__info"> <p>Our clients count on our dependability, our drive, and our integrity and we take great pride in our accomplishments and build on them every day.</p> </div> </div> </div> </div> <h2 class="text-center">Our Difference</h2> <div class="iconcircle-wrap"> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-transport"></i></span> </div> <div class="iconcircle__title"> Clean, Branded Vehicles </div> </div> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-people"></i></span> </div> <div class="iconcircle__title"> Professional, Uniformed Personnel </div> </div> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-phone-auricular"></i></span> </div> <div class="iconcircle__title"> Timely Response Guarantee </div> </div> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-lawn-mowet"></i></span> </div> <div class="iconcircle__title"> Safe, Reliable Equipment Maintained Daily </div> </div> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-analytic-report"></i></span> </div> <div class="iconcircle__title"> Status and Quality Reports Delivered Timely </div> </div> </div> <div class="row"> <div class="col-md-8 animation" data-animation="fadeIn" data-animation-delay="0.6s"> <h2 class="text-center lined">Video Presentation </h2> <div class="video-responsive"> <iframe src="http://www.youtube.com/embed/-PWxUQCNGtg?wmode=opaque" allowfullscreen></iframe> </div> </div> <div class="divider divider--md visible-sm visible-xs"></div> <div class="col-md-4 animation" data-animation="fadeIn" data-animation-delay="0.9s"> <h2 class="text-center lined">Why Choose Us?</h2> <p>The single biggest difference between Lawn Care and other lawn care providers boils down to one simple premise: we care more. It’s the kind of caring that can only come from being the business owner. One that lives, works, and is a part of the community they serve.</p> <ul class="marker-list-sm"> <li>We have the highest customer retention rate in the industry.</li> <li>We have 50 years of experience.</li> <li>We have the highest TrustPilot score in the industry.</li> <li>We’re locally owned, so there’s no big business “run-around”.</li> <li>We offer the best guarantee in the business: If you’re not 100% satisfied – we’ll make it right. It’s that simple.</li> </ul> </div> </div> ','<p>kh&ocirc;ng c&oacute; g&igrave; để n&oacute;i đ&oacute; l&agrave;m g&igrave; nhausdsdsdsdd</p>', 'sologan', '7 DAYS A WEEK FROM 9:00 AM TO 7:00 PM');
+INSERT INTO `Company` VALUES ('Công Ty Lê Gia','Đà Nẵng','chưa có mua','không thèm mua','legiagrass@gmail.com','chưa có đăng ký','chưa tạo facebook','chưa tạo google','chưa tạo Twitter',' <h2 class="text-center lined">About Us</h2> <p class="text-center info-text">Starting out with just a single truck and mower, we have expanded our services and grown into one of the largest lawn maintenance companies in our area. Our expansion and stellar reputation is due, in part, to our exceptional reputation for quality and timely service. Our lawn care technicians utilize the latest technology and techniques to deliver beautiful results that will stand the test of time.</p> <div class="row"> <div class="col-sm-6 animation" data-animation="fadeInLeft" data-animation-delay="0.5s"> <div class="text-icon__title">Our Mission</div> <div class="text-icon last"> <div class="text-icon__icon"><i class="icon icon-nature-2"></i></div> <div class="text-icon__info"> <p>Our mission is to provide our customers with the highest level of quality services. We pledge to establish lasting relationships with our clients by exceeding their expectations and gaining their trust through exceptional performance. </p> </div> </div> </div> <div class="col-sm-6 animation" data-animation="fadeInRight" data-animation-delay="0.5s"> <div class="text-icon__title">Our Clients</div> <div class="text-icon last"> <div class="text-icon__icon"><i class="icon icon-construction-worker"></i></div> <div class="text-icon__info"> <p>Our clients count on our dependability, our drive, and our integrity and we take great pride in our accomplishments and build on them every day.</p> </div> </div> </div> </div> <h2 class="text-center">Our Difference</h2> <div class="iconcircle-wrap"> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-transport"></i></span> </div> <div class="iconcircle__title"> Clean, Branded Vehicles </div> </div> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-people"></i></span> </div> <div class="iconcircle__title"> Professional, Uniformed Personnel </div> </div> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-phone-auricular"></i></span> </div> <div class="iconcircle__title"> Timely Response Guarantee </div> </div> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-lawn-mowet"></i></span> </div> <div class="iconcircle__title"> Safe, Reliable Equipment Maintained Daily </div> </div> <div class="iconcircle iconmove"> <div class="iconcircle__icon"> <span><i class="icon icon-analytic-report"></i></span> </div> <div class="iconcircle__title"> Status and Quality Reports Delivered Timely </div> </div> </div> <div class="row"> <div class="col-md-8 animation" data-animation="fadeIn" data-animation-delay="0.6s"> <h2 class="text-center lined">Video Presentation </h2> <div class="video-responsive"> <iframe src="http://www.youtube.com/embed/-PWxUQCNGtg?wmode=opaque" allowfullscreen></iframe> </div> </div> <div class="divider divider--md visible-sm visible-xs"></div> <div class="col-md-4 animation" data-animation="fadeIn" data-animation-delay="0.9s"> <h2 class="text-center lined">Why Choose Us?</h2> <p>The single biggest difference between Lawn Care and other lawn care providers boils down to one simple premise: we care more. It’s the kind of caring that can only come from being the business owner. One that lives, works, and is a part of the community they serve.</p> <ul class="marker-list-sm"> <li>We have the highest customer retention rate in the industry.</li> <li>We have 50 years of experience.</li> <li>We have the highest TrustPilot score in the industry.</li> <li>We’re locally owned, so there’s no big business “run-around”.</li> <li>We offer the best guarantee in the business: If you’re not 100% satisfied – we’ll make it right. It’s that simple.</li> </ul> </div> </div> ','<p>kh&ocirc;ng c&oacute; g&igrave; để n&oacute;i đ&oacute; l&agrave;m g&igrave; nhausdsdsdsdd</p>', 'slogan', '7 DAYS A WEEK FROM 9:00 AM TO 7:00 PM');
 /*!40000 ALTER TABLE `Company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -551,7 +551,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCategory`()
 BEGIN
-    SELECT Id, Name, Activated, Service, Orders
+    SELECT Id, Name, Activated, Service, Orders, Alias
     FROM Categorys
     ORDER BY Name, Id;
   END ;;
@@ -911,7 +911,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompany`()
 BEGIN 
-    SELECT Name, Address, Phone, Hotline, Email, TaxCode, Google, Twitter, Facebook, Description, About, Sologan, BusinessHours
+    SELECT Name, Address, Phone, Hotline, Email, TaxCode, Google, Twitter, Facebook, Description, About, Slogan, BusinessHours
     FROM Company
     LIMIT 1;
   END ;;
@@ -932,7 +932,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompanyForFooter`()
 BEGIN
-    SELECT Name, Address, Phone, Hotline, Email,Sologan, BusinessHours, Facebook, Google, Twitter, TaxCode
+    SELECT Name, Address, Phone, Hotline, Email,Slogan, BusinessHours, Facebook, Google, Twitter, TaxCode
     FROM Company
     LIMIT 1;
   END ;;
@@ -953,7 +953,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompanyForHead`()
 BEGIN
-    SELECT Sologan, BusinessHours,  Hotline, Facebook, Twitter, Google
+    SELECT Slogan, BusinessHours,  Hotline, Facebook, Twitter, Google
     FROM Company
     LIMIT 1;
   END ;;
@@ -975,6 +975,27 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompanyForHome`()
 BEGIN 
     SELECT Description
+    FROM Company
+    LIMIT 1;
+  END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getCompanyForAbout` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getCompanyForAbout`()
+BEGIN 
+    SELECT About
     FROM Company
     LIMIT 1;
   END ;;
@@ -1105,6 +1126,28 @@ BEGIN
     SELECT Id, Name, Alias, Image, ShortDescriptions, Activated, Content, CategoryId, HomePage
     FROM Posts
     WHERE Id = pId
+    LIMIT 1;
+  END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getPostByAlias` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getPostByAlias`(IN pAlias INT)
+BEGIN
+    SELECT Id, Name, Alias, Image, ShortDescriptions, Activated, Content, CategoryId, HomePage
+    FROM Posts
+    WHERE Alias = pAlias
     LIMIT 1;
   END ;;
 DELIMITER ;
@@ -1415,16 +1458,24 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCompany`(IN pName    TINYTEXT CHAR SET utf8, IN pAddress TINYTEXT CHAR SET utf8,
-  IN pPhone TINYTEXT CHAR SET utf8, IN pHotline TINYTEXT CHAR SET utf8, IN pEmail   TINYTEXT CHAR SET utf8, 
-  IN pTaxCode TINYTEXT CHAR SET utf8, IN pFacebook TINYTEXT CHAR SET utf8, IN pGoogle TINYTEXT CHAR SET utf8,
-  IN pTweeter TINYTEXT CHAR SET utf8, IN pDescription TEXT CHAR SET utf8, IN pAbout LONGTEXT CHAR SET utf8,
-  IN pSologan TEXT CHAR SET utf8, IN pBusinessHours TEXT CHAR SET utf8 )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCompany`(IN pName    TINYTEXT CHAR SET utf8, 
+  IN pAddress TINYTEXT CHAR SET utf8,
+  IN pPhone TINYTEXT CHAR SET utf8, 
+  IN pHotline TINYTEXT CHAR SET utf8, 
+  IN pEmail   TINYTEXT CHAR SET utf8, 
+  IN pTaxCode TINYTEXT CHAR SET utf8, 
+  IN pFacebook TINYTEXT CHAR SET utf8, 
+  IN pGoogle TINYTEXT CHAR SET utf8,
+  IN pTwitter TINYTEXT CHAR SET utf8, 
+  IN pDescription TEXT CHAR SET utf8, 
+  IN pAbout LONGTEXT CHAR SET utf8,
+  IN pSlogan TEXT CHAR SET utf8, 
+  IN pBusinessHours TEXT CHAR SET utf8 )
 BEGIN 
     UPDATE Company
     SET Name = pName, Address = pAddress, Phone = pPhone, Hotline = pHotline, Email = pEmail,
-        TaxCode = pTaxCode, Facebook = pFacebook, Google = pGoogle, Twitter = pTweeter,
-        Description = pDescription, About = pAbout, pSologan = Sologan, pBusinessHours = BusinessHours;
+        TaxCode = pTaxCode, Facebook = pFacebook, Google = pGoogle, Twitter = pTwitter,
+        Description = pDescription, About = pAbout, Slogan = pSlogan, BusinessHours = pBusinessHours;
   END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

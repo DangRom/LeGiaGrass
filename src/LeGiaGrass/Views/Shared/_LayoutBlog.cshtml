@@ -1,0 +1,41 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section loaderWrapper{
+    <div id="loader-wrapper" class="loader-on">
+		<div id="loader">
+			<div class="spinner"> <span class="ball-1"></span> <span class="ball-2"></span> <span class="ball-3"></span> <span class="ball-4"></span> </div>
+		</div>
+	</div>
+}
+<!-- Breadcrumb section -->
+<section class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb--wd pull-left">
+            <li><a href="/">Trang Chủ</a></li>
+            <li class="active">Tin Tức</li>
+        </ol>
+    </div>
+</section>
+
+<!-- Content section -->
+<section class="content content--fill content--fill--light top-null">
+    <div class="container">
+        <h1 class="text-center lined">Tin Tức</h1>
+        <div class="row">
+            @*RIGHT*@
+            <div class="col-md-8 column-center">
+                @RenderBody()
+            </div>
+
+            @*LEFT*@
+            <div class="col-md-4 column-right">
+                 @await Component.InvokeAsync("NewPostBlog")
+                 @await Component.InvokeAsync("CategoryBlog")
+            </div>
+        </div>
+    </div>
+</section>
+
+@RenderSection("Scripts", required: false)

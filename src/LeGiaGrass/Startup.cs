@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +26,7 @@ namespace LeGiaGrass
         {
             // Add framework services.
             services.AddMvc();
-
+            services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
             //add dependence
             Commons.DependenceConfig.InitDependence(services);
         }
@@ -38,12 +34,13 @@ namespace LeGiaGrass
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseCookieAuthentication(new CookieAuthenticationOptions(){
-                	AuthenticationScheme = "CookieAuthentication",
-                    LoginPath = new PathString("/admin/Account/Login"),
-                    AccessDeniedPath = new PathString("/admin/Account/Forbidden/"),
-                    AutomaticAuthenticate = true,
-                    AutomaticChallenge = true
+            app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            {
+                AuthenticationScheme = "CookieAuthentication",
+                LoginPath = new PathString("/admin/Account/Login"),
+                AccessDeniedPath = new PathString("/admin/Account/Forbidden/"),
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
             });
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
@@ -70,6 +67,12 @@ namespace LeGiaGrass
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{alias?}");
+
+                //routes.MapRoute(
+                //    name: "Post",
+                //    template: "post/{alias?}",
+                //    defaults: new { controller = "blog", action = "Post" });
+
             });
         }
     }

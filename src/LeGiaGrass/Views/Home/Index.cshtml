@@ -1,7 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Trang Chủ";
 }
-
+@section loaderWrapper{
+    <div id="loader-wrapper" class="loader-on">
+        <div id="loader" class="mower-loader">
+            <div class="mower"> <img src="images/lawnmower.png" alt=""> </div>
+            <div class="grass"></div>
+            <div class="text">Loading...</div>
+        </div>
+    </div>
+}
 <!-- Section: slide -->
 @await Component.InvokeAsync("SlideHome")
 

@@ -45,6 +45,13 @@ namespace LeGiaGrass.Services.Repository{
          return GetById("getPostById", para);
       }
 
+      public PostModel GetPostByAlias(string alias)
+      {
+         var para = new DynamicParameters();
+         para.Add("pAlias", alias, DbType.String, ParameterDirection.Input);
+         return GetById("getPostByAlias", para);
+      }
+
       public IEnumerable<PostModel> GetPostForHomePage()
       {
          return GetAll("getPostForHome", null);

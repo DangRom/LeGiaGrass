@@ -11,6 +11,7 @@ namespace LeGiaGrass.Services.IRepository
         CompanyModel GetCompany();
         void SaveCompany(CompanyModel model);
         CompanyModel GetCompanyForHome();
+        CompanyModel GetCompanyForAbout();
         CompanyModel GetCompanyForHead();
         CompanyModel GetCompanyForFooter();
     }

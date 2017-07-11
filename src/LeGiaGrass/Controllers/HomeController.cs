@@ -11,7 +11,6 @@ namespace LeGiaGrass.Controllers
     public class HomeController : Controller
     {
         private readonly ICompanyRepository _companyRepo;
-
         public HomeController(ICompanyRepository companyRepo){
             _companyRepo = companyRepo;
         }
@@ -25,23 +24,6 @@ namespace LeGiaGrass.Controllers
             }catch{throw;}
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
-        }
+       
     }
 }

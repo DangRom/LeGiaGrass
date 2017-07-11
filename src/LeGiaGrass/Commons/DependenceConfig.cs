@@ -1,6 +1,8 @@
 using LeGiaGrass.Services.IRepository;
 using LeGiaGrass.Services.Repository;
 using Microsoft.Extensions.DependencyInjection;
+using LeGiaGrass.Services.IServices;
+using LeGiaGrass.Services.Services;
 
 namespace LeGiaGrass.Commons{
     public static class DependenceConfig{
@@ -13,6 +15,8 @@ namespace LeGiaGrass.Commons{
             service.AddSingleton<IPostRepository, PostRepository>();
             service.AddSingleton<IUserRepository, UserRepository>();
             service.AddSingleton<IImageRepository, ImageRepository>();
+
+            service.AddSingleton<ICommunicationService, CommunicationService>();
         }
     }
 }

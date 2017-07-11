@@ -9,6 +9,8 @@ namespace LeGiaGrass.Services.IRepository{
        void Update(PostModel model);
        void Delete(int id);
        PostModel GetPostById(int id);
+       
+        PostModel GetPostByAlias(string alias);
        IEnumerable<PostModel> GetAllPost();
        IEnumerable<PostModel> GetPostForHomePage();
        IEnumerable<PostModel> GetMenuLine();

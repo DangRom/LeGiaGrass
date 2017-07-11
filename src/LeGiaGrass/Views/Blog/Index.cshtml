@@ -1,0 +1,35 @@
+@{
+    Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+}
+
+@model IEnumerable<LeGiaGrass.Models.PostViewModel>
+
+
+@foreach (var post in Model)
+{
+    <div class="blog-post">
+        <div class="post-image">
+            <a href="/blog/post/@post.Alias"><img src="@post.Image" alt=""></a>
+            @*<div class="post-link-wrapper">
+                    <div class="vert-wrap">
+                        <div class="vert">
+                            <a href="/post/@post.Url" class="post-link"></a>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+        <div class="post-content">
+            <h3 class="post-title"><a href="/blog/post/@post.Alias">@post.Name</a></h3>
+            <div class="post-date"><span class="day">@post.CreateDate.ToString("dd")</span><span class="month">@post.CreateDate.ToString("MMM")</span></div>
+            @*Author*@
+            <div class="post-author">Admin</div>
+            <div class="post-teaser">
+                @Html.Raw(post.ShortDescriptions)
+            </div>
+            @*<div class="post-meta"><i class="icon icon-speech"></i><span>3</span></div>*@
+        </div>
+    </div>
+}
+
+<div class="divider"></div>
+<div id="postPreload"></div>
