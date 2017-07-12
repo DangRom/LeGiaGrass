@@ -8,7 +8,7 @@
 			<section class="breadcrumbs">
 				<div class="container">
 					<ol class="breadcrumb breadcrumb--wd pull-left">
-						<li><a href="/">Home</a></li>
+						<li><a href="/">Trang Chủ</a></li>
 						<li><a href="#">Dịch Vụ</a></li>
 						<li class="active">@Model.Name</li>
 					</ol>
@@ -17,111 +17,20 @@
 			<!-- Content section -->
 			<section class="content content--fill content--fill--light top-null">
 				<div class="container">
-					<h1 class="text-center lined">@Model.Name <a href="services.html" class="back-link">« Back to Services</a></h1>
+					<h1 class="text-center lined">@Model.Name <a href="/" class="back-link">« Trở Lại</a></h1>
 					<div class="row">
-						<div class="col-sm-4 text-center"> <img src="images/service-page-4.jpg" alt="" class="img-responsive img-round img-center"> </div>
+						<div class="col-sm-4 text-center"> <img src="@Model.Image" alt="" class="img-responsive img-round img-center"> </div>
 						<div class="divider divider--sm visible-xs"></div>
 						<div class="col-sm-8">
-							<p>Our crew blows leaves to an area of your choice ie: woods, garden, or compost pile. We will design and build a your custom outdoor living area with quality materials and superior installation. In Pennsylvania, early fall is the best time to sow grass seeds for a number of reasons. Seeding in the fall allows cool-season grasses to establish before winter. Try to sow two months before the first frost of the season. </p>
-							<p>There are fewer active lawn diseases during fall, and weeds tend to taper off, meaning your grass won’t have to compete as much for access to sun and water. Sunlight begins to increase during fall as the tree leaves begin to drop. Moisture is key to growing a healthy lawn of grass, making spring the second-most popular (but less ideal) season for seeding.</p>
-							<p>Meaning your grass won’t have to compete as much for access to sun and water. Sunlight begins to increase during fall as the tree leaves begin to drop. Moisture is key to growing a healthy lawn of grass, making spring the second-most popular (but less ideal) season for seeding.</p>
+							@Html.Raw(Model.Content)
 						</div>
 					</div>
 					<div class="divider divider--lg"></div>
 					<div class="row">
-						<div class="col-md-4">
-							<div class="category animation" data-animation="fadeInLeft" data-animation-delay="0s">
-								<a href="service-page-1.html" class="category__image">
-									<figure><img src="images/img-service-1.jpg" alt="" class="img-responsive" /></figure>
-								</a>
-								<div class="clearfix"></div> <a href="service-page-1.html" class="category__title">Trimming Edge</a>
-								<div class="category__text">
-									<p>Edge Grinding has always been an essential part of substrate manufacturing and is becoming more common in device processing, as well as for bonded wafer wafer drawing processing. </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="category animation" data-animation="fadeIn" data-animation-delay="0.5s">
-								<a href="service-page-1.html" class="category__image"><img src="images/img-service-2.jpg" alt="" class="img-responsive" /></a>
-								<div class="clearfix"></div> <a href="service-page-4.html" class="category__title">Clean Up</a>
-								<div class="category__text">
-									<p>We can cater our spring clean-up services to your specific needs and ensure you get the personalized grounds care services you actually care about whether that be tree trimming or garden bed care </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="category animation last" data-animation="fadeInRight" data-animation-delay="0s">
-								<a href="service-page-1.html" class="category__image"><img src="images/img-service-3.jpg" alt="" class="img-responsive" /></a>
-								<div class="clearfix"></div> <a href="service-page-2.html" class="category__title">Bowling</a>
-								<div class="category__text">
-									<p>The roller is key to preparing the perfect bowling surface. Your greens will be smoother, more consistent from rink to rink and look better than ever</p>
-								</div>
-							</div>
-						</div>
+						<!-- Load: New Service -->
+						@await Component.InvokeAsync("NewService")
 					</div>
 					<div class="divider divider--md"></div>
-					<div class="contact-info">
-						<div class="row">
-							<div class="col with-icon">
-								<div class="contact-info-title"><i class="icon icon-nature-2"></i>Address</div>
-								<p>2 Elizabeth St, Melbourne,
-									<br>Victoria 3000, Australia</p>
-							</div>
-							<div class="col">
-								<div class="contact-info-title">Call Us</div>
-								<p>+1-234-567-890 <i class="icon icon-telephone"></i></p>
-							</div>
-							<div class="col with-icon noline">
-								<div class="contact-info-title"><i class="icon icon-phone-auricular"></i>Working Time</div>
-								<p>Mon-Fri: 9:00am – 5:00pm
-									<br>Sat-Sun: 11:00am - 16:00pm</p>
-							</div>
-							<div class="col text-center">
-								<div class="form-popup-wrap">
-									<a href="" class="btn btn--wd btn--md btn--invert form-popup-link">Get a Quote</a>
-									<div class="form-popup form-popup--right">
-										<form class="quote-form" method="post" id="form4" novalidate="novalidate">
-											<h3>Get a Quote</h3>
-											<div class="successform successQuote">
-												<p>Your message was sent successfully!</p>
-											</div>
-											<div class="errorform errorQuote">
-												<p>Something went wrong, try refreshing and submitting the form again.</p>
-											</div>
-											<div class="form-inline">
-												<input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
-											</div>
-											<div class="form-inline">
-												<div>
-													<input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
-												</div>
-												<div>
-													<input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
-												</div>
-											</div>
-											<div class="form-inline">
-												<input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
-											</div>
-											<div class="form-inline">
-												<div class="select-wrapper select--full">
-													<select name="select" class="select--wd">
-														<option value="Service you need">Service you need</option>
-														<option value="Tree service">Tree service</option>
-														<option value="Junk Removal">Junk Removal</option>
-														<option value="New tree planting">New tree planting</option>
-														<option value="Retaining walls">Retaining walls</option>
-													</select>
-												</div>
-											</div>
-											<div class="form-inline">
-												<textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
-											</div>
-											<button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					@await Component.InvokeAsync("ContactService")
 				</div>
 			</section>

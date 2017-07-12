@@ -96,7 +96,7 @@ CREATE TABLE `Services` (
   `Image` tinytext COLLATE utf8_unicode_ci,
   `Status` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `Price` int(11) DEFAULT NULL,
-  `ShortDesciptions` tinytext COLLATE utf8_unicode_ci NOT NULL,
+  `ShortDesciption` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `Content` longtext COLLATE utf8_unicode_ci,
   `Activated` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Id`)
@@ -594,7 +594,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllService`()
 BEGIN 
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciptions, Activated, Content
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption, Activated, Content
     FROM Services
     ORDER BY Id;
   END ;;
@@ -636,10 +636,32 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllServiceForHomePage`()
 BEGIN
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciptions
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption
     FROM Services
     WHERE Activated = 1
     LIMIT 6;
+  END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getAllServiceForServicePage` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllServiceForServicePage`()
+BEGIN
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption
+    FROM Services
+    WHERE Activated = 1
+    LIMIT 3;
   END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1041,7 +1063,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getServiceById`(IN pId INT)
 BEGIN
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciptions, Activated, Content
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption, Activated, Content
     FROM Services
     WHERE Id = pId
     LIMIT 1;
@@ -1063,7 +1085,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getServiceByAlias`(IN pAlias TINYTEXT)
 BEGIN
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciptions, Activated, Content
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption, Activated, Content
     FROM Services
     WHERE Alias = pAlias COLLATE utf8_unicode_ci 
     LIMIT 1;
@@ -1329,7 +1351,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertService`(IN pName TINYTEXT CH
 IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescriptions TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
 IN pContent LONGTEXT CHAR SET utf8, IN pPrice INT)
 BEGIN
-    INSERT INTO Services (Name, Alias, Image, Status, ShortDesciptions, Content, Activated, Price)
+    INSERT INTO Services (Name, Alias, Image, Status, ShortDesciption, Content, Activated, Price)
     VALUES (pName, pAlias, pImage, pStatus, pShortDescriptions, pContent, pActivated, pPrice);
   END ;;
 DELIMITER ;
@@ -1544,7 +1566,7 @@ IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescriptions TINYTEXT CHAR SET utf8,
 IN pContent LONGTEXT CHAR SET utf8, IN pPrice INT)
 BEGIN
     UPDATE Services
-    SET Name = pName, Alias = pAlias, Image = pImage, Status = pStatus, ShortDesciptions = pShortDescriptions,
+    SET Name = pName, Alias = pAlias, Image = pImage, Status = pStatus, ShortDesciption = pShortDescriptions,
         Activated = pActivated, Content = pContent, Price = pPrice
     WHERE Id = pId;
   END ;;

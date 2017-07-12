@@ -13,6 +13,7 @@ namespace LeGiaGrass.Services.IRepository{
         IEnumerable<ServiceModel> GetAllService();
         IEnumerable<ServiceModel> GetAllServiceForFeedback();
         IEnumerable<ServiceModel> GetAllServiceForHomePage();
+        IEnumerable<ServiceModel> GetAllServiceForServicePage();
         IEnumerable<ServiceModel> GetAllServiceForMenuLine();
         IEnumerable<ServiceModel> GetForFooter();
     }

@@ -1,0 +1,65 @@
+@model  LeGiaGrass.Models.ContactViewModel
+@{
+    var company = (LeGiaGrass.Models.CompanyViewModel)ViewBag.Company;
+}
+<div class="contact-info">
+						<div class="row">
+							<div class="col with-icon">
+								<div class="contact-info-title"><i class="icon icon-nature-2"></i>Địa Chỉ</div>
+								@company.Address
+							</div>
+							<div class="col">
+								<div class="contact-info-title">Gọi Chúng Tôi</div>
+								<p>@company.Hotline <i class="icon icon-telephone"></i></p>
+							</div>
+							<div class="col with-icon noline">
+								<div class="contact-info-title"><i class="icon icon-phone-auricular"></i>Thời Gian Làm Việc</div>
+								@company.BusinessHours
+							</div>
+							<div class="col text-center">
+								<div class="form-popup-wrap">
+									<a href="" class="btn btn--wd btn--md btn--invert form-popup-link">Get a Quote</a>
+									<div class="form-popup form-popup--right">
+										<form class="quote-form" method="post" id="form4" novalidate="novalidate">
+											<h3>Get a Quote</h3>
+											<div class="successform successQuote">
+												<p>Your message was sent successfully!</p>
+											</div>
+											<div class="errorform errorQuote">
+												<p>Something went wrong, try refreshing and submitting the form again.</p>
+											</div>
+											<div class="form-inline">
+												<input type="text" name="name" class="form-control input--wd" value="" placeholder="Your Name">
+											</div>
+											<div class="form-inline">
+												<div>
+													<input type="text" name="email" class="form-control input--wd" value="" placeholder="Your E-mail">
+												</div>
+												<div>
+													<input type="text" name="phone" class="form-control input--wd" value="" placeholder="Phone number">
+												</div>
+											</div>
+											<div class="form-inline">
+												<input type="text" name="address" class="form-control input--wd" value="" placeholder="Your Address">
+											</div>
+											<div class="form-inline">
+												<div class="select-wrapper select--full">
+													<select name="select" class="select--wd">
+														<option value="Service you need">Service you need</option>
+														<option value="Tree service">Tree service</option>
+														<option value="Junk Removal">Junk Removal</option>
+														<option value="New tree planting">New tree planting</option>
+														<option value="Retaining walls">Retaining walls</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-inline">
+												<textarea name="message" class="form-control input--wd input--full" placeholder="Details"></textarea>
+											</div>
+											<button type="submit" class="btn btn--wd"><i class="icon icon-nature-2"></i>get a quote</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>

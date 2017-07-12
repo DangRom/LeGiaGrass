@@ -64,6 +64,10 @@ namespace LeGiaGrass.Services.Repository{
         {
             return GetAll("getAllServiceForHomePage", null);
         }
+        public IEnumerable<ServiceModel> GetAllServiceForServicePage()
+        {
+             return GetAll("getAllServiceForServicePage", null);
+        }
 
           public IEnumerable<ServiceModel> GetAllServiceForMenuLine()
         {
