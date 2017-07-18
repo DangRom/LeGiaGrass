@@ -17,18 +17,18 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Categorys`
+-- Table structure for table `Category`
 --
 
-DROP TABLE IF EXISTS `Categorys`;
+DROP TABLE IF EXISTS `Category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Categorys` (
+CREATE TABLE `Category` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` tinytext COLLATE utf8_unicode_ci,
   `Alias` tinytext COLLATE utf8_unicode_ci,
   `Image` tinytext COLLATE utf8_unicode_ci,
-  `Descriptions` tinytext COLLATE utf8_unicode_ci,
+  `Description` tinytext COLLATE utf8_unicode_ci,
   `Activated` bit(1) DEFAULT NULL,
   `Service` bit(1) DEFAULT NULL,
   `Orders` int(11) DEFAULT NULL,
@@ -39,13 +39,13 @@ CREATE TABLE `Categorys` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Categorys`
+-- Dumping data for table `Category`
 --
 
-LOCK TABLES `Categorys` WRITE;
-/*!40000 ALTER TABLE `Categorys` DISABLE KEYS */;
-INSERT INTO `Categorys` VALUES (3,'Khóa học','khoa-hoc','khoahoc','khóa học ','','',2,'<p>dfdf</p>',NULL),(4,'Bài viết','bai-viet',NULL,'tin tức 123','','\0',3,NULL,''),(5,'Giới thiệu','gioi-thieu',NULL,'giới thiệu','','\0',1,NULL,NULL),(6,'Liên hệ','lien-he',NULL,'liên hệ','','\0',4,NULL,NULL);
-/*!40000 ALTER TABLE `Categorys` ENABLE KEYS */;
+LOCK TABLES `Category` WRITE;
+/*!40000 ALTER TABLE `Category` DISABLE KEYS */;
+INSERT INTO `Category` VALUES (3,'Khóa học','khoa-hoc','khoahoc','khóa học ','','',2,'<p>dfdf</p>',NULL),(4,'Bài viết','bai-viet',NULL,'tin tức 123','','\0',3,NULL,''),(5,'Giới thiệu','gioi-thieu',NULL,'giới thiệu','','\0',1,NULL,NULL),(6,'Liên hệ','lien-he',NULL,'liên hệ','','\0',4,NULL,NULL);
+/*!40000 ALTER TABLE `Category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -182,7 +182,7 @@ CREATE TABLE `Posts` (
   `Name` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `Alias` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `Image` tinytext COLLATE utf8_unicode_ci,
-  `ShortDescriptions` tinytext COLLATE utf8_unicode_ci,
+  `ShortDescription` tinytext COLLATE utf8_unicode_ci,
   `Content` longtext COLLATE utf8_unicode_ci,
   `Activated` tinyint(1) DEFAULT NULL,
   `CategoryId` int(11) DEFAULT NULL,
@@ -190,7 +190,7 @@ CREATE TABLE `Posts` (
   `HomePage` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `CategoryId` (`CategoryId`),
-  CONSTRAINT `Posts_ibfk_1` FOREIGN KEY (`CategoryId`) REFERENCES `Categorys` (`Id`)
+  CONSTRAINT `Posts_ibfk_1` FOREIGN KEY (`CategoryId`) REFERENCES `Category` (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -297,7 +297,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteCategory`(
     IN pId INT
   )
 BEGIN
-    DELETE FROM Categorys WHERE Id = pId;
+    DELETE FROM Category WHERE Id = pId;
   END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -431,7 +431,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `findCategoryByAlias`(IN pAlias TINYTEXT)
 BEGIN
     DECLARE _find INT;
-    SET _find = (SELECT count(Id) FROM Categorys WHERE Alias = pAlias COLLATE utf8_unicode_ci LIMIT 1);
+    SET _find = (SELECT count(Id) FROM Category WHERE Alias = pAlias COLLATE utf8_unicode_ci LIMIT 1);
     IF _find = 0 THEN
       SELECT 0;
     ELSE
@@ -553,7 +553,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCategory`()
 BEGIN
     SELECT Id, Name, Activated, Service, Orders, Alias
-    FROM Categorys
+    FROM Category
     ORDER BY Name, Id;
   END ;;
 DELIMITER ;
@@ -574,7 +574,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCategoryForPost`()
 BEGIN 
     SELECT Id, Name
-    FROM Categorys
+    FROM Category
     ORDER BY Name;
   END ;;
 DELIMITER ;
@@ -808,7 +808,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllPost`()
 BEGIN
     SELECT p.Id, p.Name, p.CategoryId, c.Name AS CategoryName, p.Activated, p.HomePage
     FROM Posts p
-    INNER JOIN Categorys c on p.CategoryId = c.Id
+    INNER JOIN Category c on p.CategoryId = c.Id
     ORDER BY Name, Id;
   END ;;
 DELIMITER ;
@@ -828,9 +828,9 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllPostByCategoryByAlias`(IN pAlias TINYTEXT)
 BEGIN   
-	SELECT p.Id, p.Name, p.Alias, p.Image, p.ShortDescriptions, p.Activated, p.Content, p.CategoryId, p.HomePage
+	SELECT p.Id, p.Name, p.Alias, p.Image, p.ShortDescription, p.Activated, p.Content, p.CategoryId, p.HomePage
     FROM Posts p
-	INNER JOIN Categorys c on p.CategoryId = c.Id 
+	INNER JOIN Category c on p.CategoryId = c.Id 
 	AND p.Activated = 1 
 	AND c.Alias = pAlias COLLATE utf8_unicode_ci
 	ORDER BY CreateDate DESC;
@@ -936,8 +936,8 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getCategoryById`(IN pId INT)
 BEGIN 
-    SELECT Id, Name, Alias, Image, Activated, Descriptions, Service, Content, Orders
-    FROM Categorys
+    SELECT Id, Name, Alias, Image, Activated, Description, Service, Content, Orders
+    FROM Category
     WHERE Id = pId
     LIMIT 1;
   END ;;
@@ -1171,7 +1171,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getMenuHead`()
 BEGIN
     SELECT Id, Name, Alias, Service, News
-    FROM Categorys
+    FROM Category
     WHERE Activated = 1
     ORDER BY Orders;
   END ;;
@@ -1192,7 +1192,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getPostById`(IN pId INT)
 BEGIN
-    SELECT Id, Name, Alias, Image, ShortDescriptions, Activated, Content, CategoryId, HomePage
+    SELECT Id, Name, Alias, Image, ShortDescription, Activated, Content, CategoryId, HomePage
     FROM Posts
     WHERE Id = pId
     LIMIT 1;
@@ -1214,7 +1214,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getPostByAlias`(IN pAlias TINYTEXT)
 BEGIN
-    SELECT Id, Name, Alias, Image, ShortDescriptions, Activated, Content, CategoryId, HomePage
+    SELECT Id, Name, Alias, Image, ShortDescription, Activated, Content, CategoryId, HomePage
     FROM Posts
     WHERE Alias = pAlias COLLATE utf8_unicode_ci 
     LIMIT 1;
@@ -1238,7 +1238,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getPostForFooter`()
 BEGIN
     SELECT p.Name, p.Alias
     FROM Posts p
-    INNER JOIN Categorys c ON p.CategoryId = c.Id
+    INNER JOIN Category c ON p.CategoryId = c.Id
     AND c.News = 1 AND p.Activated = 1
     LIMIT 3;
   END ;;
@@ -1259,9 +1259,9 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getPostForHome`()
 BEGIN
-    SELECT p.Name, p.Alias, p.Image, p.ShortDescriptions, p.CreateDate
+    SELECT p.Name, p.Alias, p.Image, p.ShortDescription, p.CreateDate
     FROM Posts p
-    INNER JOIN Categorys c ON p.CategoryId = c.Id
+    INNER JOIN Category c ON p.CategoryId = c.Id
     WHERE c.News = 1 AND  p.Activated = 1 AND p.HomePage = 1
     ORDER BY CreateDate DESC
     LIMIT 3;
@@ -1326,11 +1326,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertCategory`(IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT CHAR SET utf8, IN pImage TINYTEXT CHAR SET utf8,
-                                IN pActivated TINYINT(1), IN pDescriptions TINYTEXT CHAR SET utf8, IN pService TINYINT(1),
+                                IN pActivated TINYINT(1), IN pDescription TINYTEXT CHAR SET utf8, IN pService TINYINT(1),
                                 IN pContent TEXT, IN pOrders INT)
 BEGIN
-    INSERT INTO Categorys (Name, Alias, Image, Activated, Descriptions, Content, Service, Orders)
-    VALUES (pName, pAlias, pImage, pActivated, pDescriptions, pContent, pService, pOrders);
+    INSERT INTO Category (Name, Alias, Image, Activated, Description, Content, Service, Orders)
+    VALUES (pName, pAlias, pImage, pActivated, pDescription, pContent, pService, pOrders);
   END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1348,11 +1348,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertService`(IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT  CHAR SET utf8, IN pImage TINYTEXT  CHAR SET utf8,
-IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescriptions TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
+IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescription TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
 IN pContent LONGTEXT CHAR SET utf8, IN pPrice INT)
 BEGIN
     INSERT INTO Services (Name, Alias, Image, Status, ShortDesciption, Content, Activated, Price)
-    VALUES (pName, pAlias, pImage, pStatus, pShortDescriptions, pContent, pActivated, pPrice);
+    VALUES (pName, pAlias, pImage, pStatus, pShortDescription, pContent, pActivated, pPrice);
   END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1415,11 +1415,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertPost`(IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT CHAR SET utf8,
-IN pImage TINYTEXT CHAR SET utf8, IN pShortDescriptions TINYTEXT CHAR SET utf8, IN pCategoryId INT,
+IN pImage TINYTEXT CHAR SET utf8, IN pShortDescription TINYTEXT CHAR SET utf8, IN pCategoryId INT,
 IN pContent LONGTEXT  CHAR SET utf8, IN pActivated BIT, IN pHomePage BIT, IN pCreateDate DATETIME)
 BEGIN 
-    INSERT INTO Posts(Name, Alias, Image, ShortDescriptions, Content, Activated, CategoryId, CreateDate, HomePage)
-      VALUES (pName, pAlias, pImage, pShortDescriptions, pContent, pActivated, pCategoryId, pCreateDate, pHomePage);
+    INSERT INTO Posts(Name, Alias, Image, ShortDescription, Content, Activated, CategoryId, CreateDate, HomePage)
+      VALUES (pName, pAlias, pImage, pShortDescription, pContent, pActivated, pCategoryId, pCreateDate, pHomePage);
   END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1504,11 +1504,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCategory`(IN pId INT, IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT CHAR SET utf8, IN pImage TINYTEXT CHAR SET utf8,
-                                IN pActivated TINYINT(1), IN pDescriptions TINYTEXT CHAR SET utf8, IN pService TINYINT(1),
+                                IN pActivated TINYINT(1), IN pDescription TINYTEXT CHAR SET utf8, IN pService TINYINT(1),
                                 IN pContent TEXT, IN pOrders INT)
 BEGIN
-    UPDATE Categorys
-    SET Name = pName, Alias = pAlias, Image = pImage, Activated = pActivated, Descriptions = pDescriptions,
+    UPDATE Category
+    SET Name = pName, Alias = pAlias, Image = pImage, Activated = pActivated, Description = pDescription,
         Service = pService, Content = pContent, Orders = pOrders
     WHERE Id = pId;
   END ;;
@@ -1562,11 +1562,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updateService`(IN pId INT, IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT  CHAR SET utf8, IN pImage TINYTEXT  CHAR SET utf8,
-IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescriptions TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
+IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescription TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
 IN pContent LONGTEXT CHAR SET utf8, IN pPrice INT)
 BEGIN
     UPDATE Services
-    SET Name = pName, Alias = pAlias, Image = pImage, Status = pStatus, ShortDesciption = pShortDescriptions,
+    SET Name = pName, Alias = pAlias, Image = pImage, Status = pStatus, ShortDesciption = pShortDescription,
         Activated = pActivated, Content = pContent, Price = pPrice
     WHERE Id = pId;
   END ;;
@@ -1635,11 +1635,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `updatePost`(IN pId INT, IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT CHAR SET utf8,
-IN pImage TINYTEXT CHAR SET utf8, IN pShortDescriptions TINYTEXT CHAR SET utf8, IN pCategoryId INT,
+IN pImage TINYTEXT CHAR SET utf8, IN pShortDescription TINYTEXT CHAR SET utf8, IN pCategoryId INT,
 IN pContent LONGTEXT  CHAR SET utf8, IN pActivated BIT, IN pHomePage BIT, IN pCreateDate DATETIME)
 BEGIN 
     UPDATE Posts
-      SET Name = pName, Alias = pAlias, Image = pImage, ShortDescriptions = pShortDescriptions,
+      SET Name = pName, Alias = pAlias, Image = pImage, ShortDescription = pShortDescription,
           CategoryId = pCategoryId, Content = pContent, Activated = pActivated, HomePage = pHomePage, CreateDate = pCreateDate
     WHERE Id = pId;
   END ;;

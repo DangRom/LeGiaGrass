@@ -63,7 +63,7 @@ namespace LeGiaGrass.Services.Repository{
             para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
             para.Add("pAlias", model.Alias, DbType.String, ParameterDirection.Input);
             para.Add("pImage", model.Image, DbType.String, ParameterDirection.Input);
-            para.Add("pDescriptions", model.Descriptions, DbType.String, ParameterDirection.Input);
+            para.Add("pDescription", model.Description, DbType.String, ParameterDirection.Input);
             para.Add("pContent", model.Content, DbType.String, ParameterDirection.Input);
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
             para.Add("pService", model.Service, DbType.Boolean, ParameterDirection.Input);
