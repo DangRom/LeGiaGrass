@@ -96,7 +96,7 @@ CREATE TABLE `Services` (
   `Image` tinytext COLLATE utf8_unicode_ci,
   `Status` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `Price` int(11) DEFAULT NULL,
-  `ShortDesciption` tinytext COLLATE utf8_unicode_ci NOT NULL,
+  `ShortDescription` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `Content` longtext COLLATE utf8_unicode_ci,
   `Activated` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Id`)
@@ -594,7 +594,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllService`()
 BEGIN 
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption, Activated, Content
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDescription, Activated, Content
     FROM Services
     ORDER BY Id;
   END ;;
@@ -636,7 +636,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllServiceForHomePage`()
 BEGIN
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDescription
     FROM Services
     WHERE Activated = 1
     LIMIT 6;
@@ -658,7 +658,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllServiceForServicePage`()
 BEGIN
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDescription
     FROM Services
     WHERE Activated = 1
     LIMIT 3;
@@ -1063,7 +1063,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getServiceById`(IN pId INT)
 BEGIN
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption, Activated, Content
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDescription, Activated, Content
     FROM Services
     WHERE Id = pId
     LIMIT 1;
@@ -1085,7 +1085,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getServiceByAlias`(IN pAlias TINYTEXT)
 BEGIN
-    SELECT Id, Name, Alias, Image, Status, Price, ShortDesciption, Activated, Content
+    SELECT Id, Name, Alias, Image, Status, Price, ShortDescription, Activated, Content
     FROM Services
     WHERE Alias = pAlias COLLATE utf8_unicode_ci 
     LIMIT 1;
@@ -1351,7 +1351,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertService`(IN pName TINYTEXT CH
 IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescription TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
 IN pContent LONGTEXT CHAR SET utf8, IN pPrice INT)
 BEGIN
-    INSERT INTO Services (Name, Alias, Image, Status, ShortDesciption, Content, Activated, Price)
+    INSERT INTO Services (Name, Alias, Image, Status, ShortDescription, Content, Activated, Price)
     VALUES (pName, pAlias, pImage, pStatus, pShortDescription, pContent, pActivated, pPrice);
   END ;;
 DELIMITER ;
@@ -1561,12 +1561,14 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `updateService`(IN pId INT, IN pName TINYTEXT CHAR SET utf8, IN pAlias TINYTEXT  CHAR SET utf8, IN pImage TINYTEXT  CHAR SET utf8,
-IN pStatus TINYTEXT CHAR SET utf8, IN pShortDescription TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateService`(IN pId INT, IN pName TINYTEXT CHAR SET utf8, 
+IN pAlias TINYTEXT  CHAR SET utf8, IN pImage TINYTEXT  CHAR SET utf8,
+IN pStatus TINYTEXT CHAR SET utf8, 
+IN pShortDescription TINYTEXT CHAR SET utf8, IN pActivated TINYINT(1),
 IN pContent LONGTEXT CHAR SET utf8, IN pPrice INT)
 BEGIN
     UPDATE Services
-    SET Name = pName, Alias = pAlias, Image = pImage, Status = pStatus, ShortDesciption = pShortDescription,
+    SET Name = pName, Alias = pAlias, Image = pImage, Status = pStatus, ShortDescription = pShortDescription,
         Activated = pActivated, Content = pContent, Price = pPrice
     WHERE Id = pId;
   END ;;
