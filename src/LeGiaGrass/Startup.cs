@@ -68,11 +68,11 @@ namespace LeGiaGrass
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{alias?}");
 
-                // Service
-                routes.MapRoute(
-                    name: "Service",
-                    template: "service/{alias?}",
-                    defaults: new { controller = "Service", action = "Index" });
+                //Service
+                // routes.MapRoute(
+                //     name: "Service",
+                //     template: "service/{alias?}",
+                //     defaults: new { controller = "Service", action = "Index" });
 
             });
         }

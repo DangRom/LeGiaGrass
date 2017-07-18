@@ -1,73 +1,31 @@
 @model IEnumerable<LeGiaGrass.Models.PostViewModel>
-
-<section class="content content--fill content--fill--light top-null">
-    <div class="container">
-        <h2 class="text-center lined">Tin Tức</h2>
+    
+<h2 class="text-center lined">Tin Tức</h2>
         <div class="row">
-            <div class="col-sm-4">
-                <div class="blog-preview animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <div class="blog-preview-image">
-                        <a href="/post/ @Model.ElementAt(0).Alias">
-                            <img src="@Model.ElementAt(0).Image" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-preview-text">
-                        <div class="blog-post-title">
-                            @Model.ElementAt(0).Name
+            @foreach(var p in Model)
+            {
+                var plink = "/post/" + @p.Alias;
+                <div class="col-sm-4">
+                    <div class="blog-preview animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <div class="blog-preview-image">
+                            <a href="@plink">
+                                <img src="@p.Image" alt="@p.Name">
+                            </a>
                         </div>
-                        <div class="blog-preview-date">
-                             @Model.ElementAt(0).CreateDate.ToString("dd/MM/yyyy")
+                        <div class="blog-preview-text">
+                            <div class="blog-post-title">
+                                @Model.ElementAt(0).Name
+                            </div>
+                            <div class="blog-preview-date">
+                                @p.CreateDate.ToString("dd/MM/yyyy")
+                            </div>
+                            <div class="blog-preview-teaser">
+                                @p.ShortDescription
+                            </div>
+                            <div class="blog-preview-link text-right"><a href="@p.Alias"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
                         </div>
-                        <div class="blog-preview-teaser">
-                            @Model.ElementAt(0).ShortDescription
-                        </div>
-                        <div class="blog-preview-link text-right"><a href="/post/ @Model.ElementAt(0).Alias"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="blog-preview animation" data-animation="fadeIn" data-animation-delay="0s">
-                    <div class="blog-preview-image">
-                         <a href="/post/ @Model.ElementAt(1).Alias">
-                            <img src="@Model.ElementAt(1).Image" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-preview-text">
-                        <div class="blog-post-title">
-                            @Model.ElementAt(1).Name
-                        </div>
-                        <div class="blog-preview-date">
-                             @Model.ElementAt(1).CreateDate.ToString("dd/MM/yyyy")
-                        </div>
-                        <div class="blog-preview-teaser">
-                            @Model.ElementAt(1).ShortDescription
-                        </div>
-                        <div class="blog-preview-link text-right"><a href="/post/ @Model.ElementAt(1).Alias"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="blog-preview animation" data-animation="fadeInRight" data-animation-delay="0.5s">
-                    <div class="blog-preview-image">
-                          <a href="/post/ @Model.ElementAt(2).Alias">
-                            <img src="@Model.ElementAt(2).Image" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-preview-text">
-                        <div class="blog-post-title">
-                            @Model.ElementAt(2).Name
-                        </div>
-                        <div class="blog-preview-date">
-                             @Model.ElementAt(2).CreateDate.ToString("dd/MM/yyyy")
-                        </div>
-                        <div class="blog-preview-teaser">
-                            @Model.ElementAt(2).ShortDescription
-                        </div>
-                        <div class="blog-preview-link text-right"><a href="/post/ @Model.ElementAt(2).Alias"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
-    </div>
-</section>
            

@@ -17,24 +17,50 @@
 <section class="content content--fill content--fill--light top-null">
     <div class="container">
         @await Component.InvokeAsync("ServiceHome")
-        
+        @await Component.InvokeAsync("AboutHome")        
     </div>
 </section>
 <!-- Section: About & Difference Video & WhyChoose -->
-@await Component.InvokeAsync("AboutHome")
+<section class="content content--parallax top-null" data-image="/images/parallax-bg.jpg" style="background-image: url(&quot;images/parallax-bg.jpg&quot;); background-position: 50% 26px;">
+				<div class="container">
+					<h2 class="text-center white lined">Our Difference</h2>
+					<div class="iconcircle-wrap">
+						<div class="iconcircle iconmove">
+							<div class="iconcircle__icon"> <span><i class="icon icon-transport"></i></span> </div>
+							<div class="iconcircle__title"> Clean, Branded Vehicles </div>
+						</div>
+						<div class="iconcircle iconmove">
+							<div class="iconcircle__icon"> <span><i class="icon icon-people"></i></span> </div>
+							<div class="iconcircle__title"> Professional, Uniformed Personnel </div>
+						</div>
+						<div class="iconcircle iconmove">
+							<div class="iconcircle__icon"> <span><i class="icon icon-phone-auricular"></i></span> </div>
+							<div class="iconcircle__title"> Timely Response Guarantee </div>
+						</div>
+						<div class="iconcircle iconmove">
+							<div class="iconcircle__icon"> <span><i class="icon icon-lawn-mowet"></i></span> </div>
+							<div class="iconcircle__title"> Safe, Reliable Equipment Maintained Daily </div>
+						</div>
+						<div class="iconcircle iconmove">
+							<div class="iconcircle__icon"> <span><i class="icon icon-analytic-report"></i></span> </div>
+							<div class="iconcircle__title"> Status and Quality Reports Delivered Timely </div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+ @await Component.InvokeAsync("WhyChooseUs") 
 
 
 <!-- Section: Our Gallery & Customer Say -->
-<section class="content content--fill content--fill--light top-null">
+<section class="content">
     <div class="container">
         @await Component.InvokeAsync("OurGalleryHome")
         <div class="divider"></div>
         @await Component.InvokeAsync("CustomerSayHome")
+        @await Component.InvokeAsync("PostForHome")
     </div>
 </section>
-
-
-@await Component.InvokeAsync("PostForHome")
  <!--MODAL-->
     <div id="modalForm1" class="form-modal">
         <form class="quote-form" method="post" id="form1">

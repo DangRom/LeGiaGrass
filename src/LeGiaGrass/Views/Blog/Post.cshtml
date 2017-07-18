@@ -1,12 +1,13 @@
 @{
     Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+    ViewData["Title"] = @Model.Name;
 }
 
 @model LeGiaGrass.Models.PostViewModel
 
 <div class="blog-post single">
     <div class="post-image">
-        <a href="#"><img src="@Model.Image" alt=""></a>
+        <a href="#"><img src="@Model.Image" alt="@Model.Alias"></a>
         <div class="post-image-over"></div>
     </div>
 
@@ -17,7 +18,7 @@
             <span class="month">@Model.CreateDate.ToString("MMM")</span>
         </div>
         <div class="post-author">
-            <div class="text-center"><img src="/images/blog/userpic.png")" alt=""></div>
+            <div class="text-center"><img src="/images/blog/userpic.png" alt=""></div>
             Admin
         </div>
         <div class="post-teaser">

@@ -1,18 +1,19 @@
 @model IEnumerable<LeGiaGrass.Models.ServiceHomeViewModel>
 
 <div class="services-block">
-@foreach(var service in Model)
+@foreach(var s in Model)
 {
-     <a href="/service/@service.Alias" class="service iconmove light">
-                <div class="service-image"><img src="@service.Image" alt="#"></div>
+     <a href="/service/@s.Alias" class="service iconmove light">
+                <div class="service-image"><img src="@s.Image" alt="#"></div>
                 <div class="caption">
                     <div class="vert-wrap">
                         <div class="vert">
                             <!--<div class="service-icon"><i class="icon first icon-gardener"></i></div>-->
-                            <div class="service-title">@service.Name</div>
-                            <div class="service-text">@service.ShortDescription</div>
+                            <div class="service-title">@s.Name</div>
+                            <div class="service-text">@s.ShortDescription</div>
                         </div>
                     </div>
                 </div>
             </a>
 }
+</div>

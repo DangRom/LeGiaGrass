@@ -33,6 +33,8 @@ namespace LeGiaGrass.Areas.Admin.Models{
 
         public string Description { get; set; }
 
+        public string WhyChooseUs { get; set; }
+
         public string About { get; set; }
 
         [MaxLength(255, ErrorMessage = "Không được dài quá 255 ký tự")]

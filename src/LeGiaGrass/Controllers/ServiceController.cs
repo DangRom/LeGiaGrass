@@ -11,6 +11,7 @@ namespace LeGiaGrass.Controllers
         {
             _serviceRepo = serviceRepo;
         }
+        [Route("/service/{alias}")]
         public IActionResult Index(string alias)
         {
 

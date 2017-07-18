@@ -12,6 +12,7 @@
         public string Description { get; set; }
         public string About { get; set; }
         //add more
+        public string WhyChooseUs { get; set; }
         public string Slogan { get; set; } 
         public string BusinessHours { get; set; }
         public string Logo { get; set; }

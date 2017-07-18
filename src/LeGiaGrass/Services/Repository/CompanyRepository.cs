@@ -50,6 +50,7 @@ namespace LeGiaGrass.Services.Repository
             para.Add("pTwitter", model.Twitter, DbType.String, ParameterDirection.Input);
             para.Add("pDescription", model.Description, DbType.String, ParameterDirection.Input);
             para.Add("pAbout", model.About, DbType.String, ParameterDirection.Input);
+            para.Add("pWhyChooseUs", model.WhyChooseUs, DbType.String, ParameterDirection.Input);
             para.Add("pSlogan", model.Slogan, DbType.String, ParameterDirection.Input);
             para.Add("pBusinessHours", model.BusinessHours, DbType.String, ParameterDirection.Input);
             para.Add("pLogo", model.Logo, DbType.String, ParameterDirection.Input);
