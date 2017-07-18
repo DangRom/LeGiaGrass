@@ -13,5 +13,6 @@ namespace LeGiaGrass.Models{
         public string About { get; set; }
         public string Slogan { get; set; }
         public string BusinessHours { get; set; }
+        public string Logo { get; set; }
     }
 }

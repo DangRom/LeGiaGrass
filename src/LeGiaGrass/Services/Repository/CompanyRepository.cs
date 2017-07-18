@@ -52,7 +52,7 @@ namespace LeGiaGrass.Services.Repository
             para.Add("pAbout", model.About, DbType.String, ParameterDirection.Input);
             para.Add("pSlogan", model.Slogan, DbType.String, ParameterDirection.Input);
             para.Add("pBusinessHours", model.BusinessHours, DbType.String, ParameterDirection.Input);
-
+            para.Add("pLogo", model.Logo, DbType.String, ParameterDirection.Input);
             Execute("updateCompany", para);
         }
     }

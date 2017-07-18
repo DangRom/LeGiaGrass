@@ -35,7 +35,8 @@ namespace LeGiaGrass.Areas.Admin.Controllers
                     Description = companyModel.Description,
                     About = companyModel.About,
                     Slogan = companyModel.Slogan,
-                    BusinessHours = companyModel.BusinessHours
+                    BusinessHours = companyModel.BusinessHours,
+                    Logo = companyModel.Logo
                 };
                 return View(company);
             }catch(Exception ex){
@@ -61,7 +62,8 @@ namespace LeGiaGrass.Areas.Admin.Controllers
                         Description = company.Description,
                         About = company.About,
                         Slogan = company.Slogan,
-                        BusinessHours = company.BusinessHours
+                        BusinessHours = company.BusinessHours,
+                        Logo = company.Logo
                     };
                     _companyRepo.SaveCompany(companyModel);
                     return RedirectToAction("Index");
