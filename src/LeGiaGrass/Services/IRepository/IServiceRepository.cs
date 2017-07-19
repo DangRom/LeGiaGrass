@@ -16,5 +16,6 @@ namespace LeGiaGrass.Services.IRepository{
         IEnumerable<ServiceModel> GetAllServiceForServicePage();
         IEnumerable<ServiceModel> GetAllServiceForMenuLine();
         IEnumerable<ServiceModel> GetForFooter();
+        IEnumerable<ServiceModel> GetAllServiceForList();
     }
 }

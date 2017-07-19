@@ -9,5 +9,6 @@ namespace LeGiaGrass.Services.Models{
         public bool Activated { get; set; }
         public bool Service { get; set; }
         public int Orders { get; set; }
+        public bool News { get; set; }
     }
 }

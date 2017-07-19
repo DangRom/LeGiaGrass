@@ -1,24 +1,25 @@
 @model IEnumerable<LeGiaGrass.Models.FeedbackViewModel>
 
 
-
-<h2 class="text-center lined">Khách Hàng Nói Về Chúng Tôi?</h2>
-<div class="row testimonials-style2-row">
-@foreach(var feedback in Model)
-{
-     <div class="testimonials-style2 col-sm-6">
-        <div class="testimonials-style2-inside">
-            <div class="testimonials-style2__photo">
-                <img src="@feedback.Avatar" alt="">
-            </div>
-            <div class="testimonials-style2__text">
-                <p>@Html.Raw(@feedback.Content)</p>
-                <div>
-                    <span class="testimonials-style2__author">@feedback.FullName, </span>
-                    <!--<br><span class="testimonials-style2__post">homeowner</span>-->
+<div class="container">
+        <h2 class="text-center lined">Khách Hàng Nói Về Chúng Tôi?</h2>
+        <div class="row testimonials-style2-row">
+            @foreach(var feedback in Model)
+            {
+                <div class="testimonials-style2 col-sm-6">
+                    <div class="testimonials-style2-inside">
+                        <div class="testimonials-style2__photo">
+                            <img src="@feedback.Avatar" alt="">
+                        </div>
+                        <div class="testimonials-style2__text">
+                            <p>@Html.Raw(@feedback.Content)</p>
+                            <div>
+                                <span class="testimonials-style2__author">@feedback.FullName, </span>
+                                <!--<br><span class="testimonials-style2__post">homeowner</span>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
-}
-</div>

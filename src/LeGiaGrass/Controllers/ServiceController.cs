@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Threading.Tasks;
 using LeGiaGrass.Models;
 using LeGiaGrass.Services.IRepository;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +13,24 @@ namespace LeGiaGrass.Controllers
         {
             _serviceRepo = serviceRepo;
         }
-        [Route("/service/{alias}")]
-        public IActionResult Index(string alias)
-        {
 
-            var servicemodel = _serviceRepo.GetServiceByAlias(alias.Trim());
+        [Route("/dich-vu")]
+        public async Task<IActionResult> GetAll(){
+            var serviceModel = await Task.Factory.StartNew(() => _serviceRepo.GetAllServiceForList());
+            var services = serviceModel.Select(s => new ServiceViewModel{
+                Name = s.Name,
+                Alias = s.Alias,
+                Image = s.Image,
+                ShortDescription = s.ShortDescription
+            }).ToList();
+            return View(services);
+        }
+
+
+        [Route("/dich-vu/{alias}")]
+        public async Task<IActionResult> Detail(string alias)
+        {
+            var servicemodel = await Task.Factory.StartNew(() => _serviceRepo.GetServiceByAlias(alias.Trim()));
             var post = new ServiceViewModel
             {
                 Name = servicemodel.Name ?? string.Empty,

@@ -21,6 +21,7 @@ namespace LeGiaGrass.Controllers
         /// <summary>
         /// GET: Contact
         /// </summary>
+        [Route("/lien-he")]
         public async Task<IActionResult> Index()
         { 
              try{

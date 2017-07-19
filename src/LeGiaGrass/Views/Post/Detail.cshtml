@@ -2,14 +2,15 @@
     ViewData["Title"] = Model.Name;
 }
 
-@model LeGiaGrass.Models.ServiceViewModel
+@model LeGiaGrass.Models.PostViewModel
 
+@{var blink = "/" + @ViewBag.Backlink.Alias;}
 <!-- Breadcrumb section -->
 			<section class="breadcrumbs">
 				<div class="container">
 					<ol class="breadcrumb breadcrumb--wd pull-left">
 						<li><a href="/">Trang Chủ</a></li>
-						<li><a href="#">Dịch Vụ</a></li>
+						<li><a href="@blink">@ViewBag.Backlink.Name</a></li>
 						<li class="active">@Model.Name</li>
 					</ol>
 				</div>

@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+@model LeGiaGrass.Models.ServiceViewModel
+
+<!-- Breadcrumb section -->
+			<section class="breadcrumbs">
+				<div class="container">
+					<ol class="breadcrumb breadcrumb--wd pull-left">
+						<li><a href="/">Trang Chủ</a></li>
+						<li><a href="/dich-vu">Dịch Vụ</a></li>
+						<li class="active">@Model.Name</li>
+					</ol>
+				</div>
+			</section>
+			<!-- Content section -->
+			<section class="content content--fill content--fill--light top-null">
+				<div class="container">
+					<h1 class="text-center lined">@Model.Name <a href="/" class="back-link">« Trở Lại</a></h1>
+					<div class="row">
+						<div class="col-sm-4 text-center"> <img src="@Model.Image" alt="" class="img-responsive img-round img-center"> </div>
+						<div class="divider divider--sm visible-xs"></div>
+						<div class="col-sm-8">
+							@Html.Raw(Model.Content)
+						</div>
+					</div>
+					<div class="divider divider--lg"></div>
+					<div class="row">
+						<!-- Load: New Service -->
+						@await Component.InvokeAsync("NewService")
+					</div>
+					<div class="divider divider--md"></div>
+					@await Component.InvokeAsync("ContactService")
+				</div>
+			</section>

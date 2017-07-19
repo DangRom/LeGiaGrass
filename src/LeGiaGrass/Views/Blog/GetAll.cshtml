@@ -8,12 +8,13 @@
 
 @foreach (var post in Model)
 {
+    var plink = "/tin-tuc/" + @post.Alias;
     <div class="blog-post">
         <div class="post-image">
-            <a href="/blog/post/@post.Alias"><img src="@post.Image" alt=""></a>
+            <a href="@plink"><img src="@post.Image" alt="@post.Alias"></a>
         </div>
         <div class="post-content">
-            <h3 class="post-title"><a href="/blog/post/@post.Alias">@post.Name</a></h3>
+            <h3 class="post-title"><a href="plink">@post.Name</a></h3>
             <div class="post-date"><span class="day">@post.CreateDate.ToString("dd")</span><span class="month">@post.CreateDate.ToString("MMM")</span></div>
             @*Author*@
             <div class="post-author">Admin</div>
@@ -23,6 +24,5 @@
         </div>
     </div>
 }
-
 <div class="divider"></div>
 <div id="postPreload"></div>

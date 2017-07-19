@@ -2,35 +2,6 @@
 
 <!--Footer-->
 <footer class="footer">
-    <div class="footer__top">
-				<div class="container">
-					<form id="estimate-form" class="estimate-form" action="#" method="post">
-						<div class="row">
-							<div class="col-md-3">
-								<div class="title">Free Estimate</div>
-							</div>
-							<div class="col-md-3">
-								<div>I want </div>
-								<div class="select-wrapper select--full">
-									<select class="select--wd">
-										<option>Lawn Service</option>
-										<option>Landscape Service</option>
-										<option>Leaf Removal Service</option>
-										<option>Snow Removal</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div>at</div>
-								<input type="text" class="subscribe-form__input input--wd input--full" placeholder="Property address"> </div>
-							<div class="col-md-2">
-								<div>&nbsp;</div>
-								<button class="btn btn--wd">GET MY PRICE</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
     <div class="footer__column-links">
         <div class="back-to-top"><a href="#top"><span class="icon-tree"></span></a></div>
         <div class="container">
@@ -41,21 +12,22 @@
                     <div class="v-links-list mobile-collapse__content">
                         <ul>
                             <li><a href="#">FAQ</a></li>
-                            <li><a href="/contact">Địa Chỉ</a></li>
-                            <li><a href="#">Đánh Giá</a></li>
-                            <li><a href="#">Tuyển Dụng</a></li>
-                            <li><a href="#">Đối Tác</a></li>
+                            <li><a href="/ve-chung-toi">Về chúng tôi</a></li>
+                            <li><a href="/lien-he">Liên hệ</a></li>
+                            <li><a href="/dich-vu">Dịch vụ</a></li>
+                            <li><a href="/tin-tuc">Tin tức</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3 mobile-collapse">
-                    <h5 class="title mobile-collapse__title">Sử Dụng</h5>
+                    <h5 class="title mobile-collapse__title">Link</h5>
                     <div class="v-links-list mobile-collapse__content">
                         <ul>
-                            <li><a href="#">Site Map</a></li>
-                            <li><a href="#">Chính Sách</a></li>
-                            <li><a href="#">Điều Khoản</a></li>
-                            <li><a href="/contact">Liên Hệ</a></li>
+                            @foreach(var s in @ViewBag.Service)
+                            {
+                                var slink = "/dich-vu/" + s.Alias;
+                                <li><a href="@slink">@s.Name</a></li>    
+                            }
                         </ul>
                     </div>
                 </div>

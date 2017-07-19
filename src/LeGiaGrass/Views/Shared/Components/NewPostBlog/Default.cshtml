@@ -3,14 +3,15 @@
                     <h4>Bài Viết Mới</h4>
                     @foreach (var post in Model)
                     {
+                        var plink = "/tin-tuc/" + @post.Alias;
                         <div class="blog-post post-preview">
                             <div class="wrapper">
                                 <div class="post-image">
-                                    <a href="/blog/post/@post.Alias"><img src="@(!string.IsNullOrEmpty(post.Image)?post.Image :"/images/blog/blog-post-small.jpg")" alt=""></a>
+                                    <a href="@plink"><img src="@(!string.IsNullOrEmpty(post.Image)?post.Image :"/images/blog/blog-post-small.jpg")" alt="@post.Alias"></a>
                                 </div>
                                 <div class="post-content">
                                     <div class="post-date-sm">@post.CreateDate.ToString("MMM d, yyyy")</div>
-                                    <h5 class="post-title"><a href="/blog/post/@post.Alias">@post.Name</a></h5>
+                                    <h5 class="post-title"><a href="@plink">@post.Name</a></h5>
                                     <div class="post-author-sm">Admin</div>
                                 </div>
                             </div>

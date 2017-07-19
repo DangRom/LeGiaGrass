@@ -7,7 +7,7 @@
 
 <div class="blog-post single">
     <div class="post-image">
-        <a href="#"><img src="@Model.Image" alt="@Model.Alias"></a>
+        <a href=""><img src="@Model.Image" alt="@Model.Alias"></a>
         <div class="post-image-over"></div>
     </div>
 
@@ -23,8 +23,7 @@
         </div>
         <div class="post-teaser">
             <p><i>@Html.Raw(Model.ShortDescription)</i></p>
-            @Html.Raw(Model.Content)
-           
+            @Html.Raw(Model.Content)           
         </div>
     </div>
 

@@ -1,10 +1,13 @@
 @model IEnumerable<LeGiaGrass.Models.PostViewModel>
     
-<h2 class="text-center lined">Tin Tức</h2>
+
+
+ <div class="container">
+        <h2 class="text-center lined">Tin Tức</h2>
         <div class="row">
             @foreach(var p in Model)
             {
-                var plink = "/post/" + @p.Alias;
+                var plink = "/tin-tuc/" + @p.Alias;
                 <div class="col-sm-4">
                     <div class="blog-preview animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                         <div class="blog-preview-image">
@@ -22,10 +25,10 @@
                             <div class="blog-preview-teaser">
                                 @p.ShortDescription
                             </div>
-                            <div class="blog-preview-link text-right"><a href="@p.Alias"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
-                        </div>
+                            <div class="blog-preview-link text-right"><a href="@plink"><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i><i class="icon-move-to-next"></i></a></div>
+                            </div>
                     </div>
                 </div>
-            }
+                }
         </div>
-           
+    </div>       

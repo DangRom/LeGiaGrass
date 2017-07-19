@@ -4,6 +4,7 @@ using LeGiaGrass.Services.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeGiaGrass.ViewComponents{
+    [ViewComponent(Name = "WhyChooseUs")]
     public class WhyChooseUsViewComponent : ViewComponent{
         private readonly ICompanyRepository _companyRepo;
 

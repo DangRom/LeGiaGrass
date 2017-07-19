@@ -45,7 +45,7 @@ namespace LeGiaGrass.Services.Repository{
             return GetAll("getMenuHead", null);
       }
 
-      public void Insert(CategoryModel model)
+        public void Insert(CategoryModel model)
         {
             var para = GetParams(model);
             Execute("insertCategory", para);

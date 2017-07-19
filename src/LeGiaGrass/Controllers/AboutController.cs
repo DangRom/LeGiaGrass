@@ -16,6 +16,8 @@ namespace LeGiaGrass.Controllers
         public AboutController(ICompanyRepository companyRepo){
             _companyRepo = companyRepo;
         }
+
+        [Route("/ve-chung-toi")]
         public async Task<IActionResult> Index(){
             try{
                 var companymodel = await Task.Factory.StartNew(() => _companyRepo.GetCompanyForAbout());

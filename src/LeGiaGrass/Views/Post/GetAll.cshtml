@@ -1,0 +1,40 @@
+@model IEnumerable<LeGiaGrass.Models.PostViewModel>
+
+@{
+    ViewData["Title"] = "Dịch vụ của chúng tôi";
+}
+
+
+<section class="breadcrumbs">
+				<div class="container">
+					<ol class="breadcrumb breadcrumb--wd pull-left">
+						<li><a href="">Home</a></li>
+						<li class="active">@ViewBag.Backlink.Name</li>
+					</ol>
+				</div>
+			</section>
+			<!-- Content section -->
+			<section class="content content--fill content--fill--light top-null">
+				<div class="container">
+					<h1 class="text-center lined">Lawn Care Services</h1>
+					<p class="text-center info-text">Lawn Care, is a locally owned and operated lawn care company providing environmentally responsible, lawn fertilization, weed and pest management control. With many years of experience when it comes to quality lawn care, our highly skilled team of lawn care professionals will handle any weed, diseases, pests infestation and rejuvenate your lawn back to it’s glory days</p>
+					<div class="row">
+                        @foreach(var s in Model)
+                        {
+                            var slink = "/bai-viet/" + @s.Alias;
+                            <div class="col-md-4">
+                                <div class="category animation" data-animation="fadeInLeft" data-animation-delay="0s">
+                                    <a href="@slink" class="category__image">
+                                        <figure><img src="@s.Image" alt="" class="img-responsive" /></figure>
+                                    </a>
+                                    <div class="clearfix"></div> <a href="@slink" class="category__title">@s.Name</a>
+                                    <div class="category__text">
+                                        <p>@s.ShortDescription</p>
+                                        <a href="@slink" class="btn btn--wd btn--sm-1">xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+					</div>
+				</div>
+			</section>

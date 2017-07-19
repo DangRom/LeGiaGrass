@@ -1,23 +1,63 @@
-@model IEnumerable<LeGiaGrass.Models.MenuViewModel>
+@model LeGiaGrass.Models.MenuViewModel
 
 <div id="slidemenu">
     <div class="slidemenu-close visible-xs">✕</div>
     <div class="container">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/"><span class="link-name">Home</span></a></li>
-            <li>
-                <a href="#" class="dropdown-toggle"><span class="link-name">Dịch Vụ</span><span class="caret icon-angle-down"></span></a>
-                <ul class="dropdown-menu animated fadeIn" role="menu">
-                   @foreach(var menu in Model)
-                   {
-                       <li><a href="/service/@menu.Alias">@menu.Name</a></li>
-                   }
-                </ul>
-            </li>
-            <li><a href="/blog"><span class="link-name">Tin Tức</span></a></li>
-            <li><a href="/about"><span class="link-name">Thông Tin</span></a></li>
-            <li><a href="/contact"><span class="link-name">Liên Hệ</span></a></li>
+            <li class="active"><a href="/"><span class="link-name">Trang chủ</span></a></li>
+            @foreach(var h in Model.MenuHeads)
+                {
+                    var lines = Model.MenuLines.Where(l => l.HeadId == h.Id).ToList(); 
+                    if(@lines.Count == 0)
+                    {
+                         var hlink = "/gioi-thieu/" + @h.Alias; 
+                         <li><a href="@hlink"><span class="link-name">@h.Name</span></a></li> 
+                    }
+                    else
+                    {
+                        if(@h.News == true)
+                        {
+                            var hlink = "/tin-tuc";
+                            <li><a href="@hlink" class="dropdown-toggle"><span class="link-name">@h.Name</span><span class="caret icon-angle-down"></span></a>
+                                <ul class="dropdown-menu animated fadeIn" role="menu">
+                                    @foreach(var l in lines)
+                                    {
+                                        var llink = "/tin-tuc/" + @l.Alias;
+                                        <li><a href="@llink">@l.Name</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }  
+                        else if(@h.Service == true)
+                        {
+                            var hlink = "/dich-vu"; 
+                            <li><a href="@hlink" class="dropdown-toggle"><span class="link-name">@h.Name</span><span class="caret icon-angle-down"></span></a>
+                                <ul class="dropdown-menu animated fadeIn" role="menu">
+                                    @foreach(var l in lines)
+                                    {
+                                        var llink = "/dich-vu/" + @l.Alias;
+                                        <li><a href="@llink">@l.Name</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            var hlink = "/danh-sach/" + @h.Alias; 
+                            <li><a href="@hlink" class="dropdown-toggle"><span class="link-name">@h.Name</span><span class="caret icon-angle-down"></span></a>
+                                <ul class="dropdown-menu animated fadeIn" role="menu">                              
+                                    @foreach(var l in lines)
+                                    {
+                                        var llink = "/bai-viet/" + @l.Alias;
+                                        <li><a href="@llink">@l.Name</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                }
+            <li><a href="/ve-chung-toi"><span class="link-name">Thông Tin</span></a></li>
+            <li><a href="/lien-he"><span class="link-name">Liên Hệ</span></a></li>
         </ul>
     </div>
 </div>
-   

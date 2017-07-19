@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using LeGiaGrass.Models;
 using LeGiaGrass.Services.IRepository;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +21,10 @@ namespace LeGiaGrass.Controllers
             _companyRepo = companyRepo;
         }
 
-        // GET: Blog
-        public ActionResult Index(int page = 1)
+        [Route("/tin-tuc")]
+        public async Task<ActionResult> GetAll()
         {
-            var postmodels = _postRepo.GetPostForHomePage();
+            var postmodels = await Task.Factory.StartNew(() => _postRepo.GetPostForHomePage());
             var posts = postmodels.Select(p => new PostViewModel
             {
                 Name = p.Name,
@@ -35,10 +36,10 @@ namespace LeGiaGrass.Controllers
             return View(posts);
         }
 
-      
-        public ActionResult Post(string alias)
+        [Route("/tin-tuc/{alias}")]
+        public async Task<ActionResult> Detail(string alias)
         {
-            var postmodel = _postRepo.GetPostByAlias(alias.Trim());
+            var postmodel = await Task.Factory.StartNew(() => _postRepo.GetPostByAlias(alias.Trim()));
             var post = new PostViewModel
             {
                 Name = postmodel.Name,
@@ -63,7 +64,7 @@ namespace LeGiaGrass.Controllers
                 Image = p.Image,
                 CreateDate = p.CreateDate
             }).ToList();
-            return View(nameof(BlogController.Index),posts);
+            return View();
         }
     }
 }

@@ -79,6 +79,10 @@ namespace LeGiaGrass.Services.Repository{
             return GetAll("getServiceForFooter", null);
         }
 
+        public IEnumerable<ServiceModel> GetAllServiceForList()
+        {
+            return GetAll("GetAllServiceForList", null);
+        }
         public DynamicParameters GetParams(ServiceModel model){
             var para = new DynamicParameters();
             para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
@@ -91,5 +95,5 @@ namespace LeGiaGrass.Services.Repository{
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
             return para;
         }
-   }
+    }
 }

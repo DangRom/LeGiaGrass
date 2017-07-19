@@ -88,5 +88,5 @@ namespace LeGiaGrass.Services.Repository{
          para.Add("pCreateDate", model.CreateDate, DbType.DateTime, ParameterDirection.Input);
          return para;
       }
-   }
+    }
 }

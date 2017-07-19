@@ -30,6 +30,7 @@ namespace LeGiaGrass.ViewComponents
                     Google = company.Google,
                     Twitter = company.Twitter,
                 };
+                ViewBag.Service = Commons.SystemVariables.Services.Take(5);
                 return View(footer);
             }
             catch { throw; }
