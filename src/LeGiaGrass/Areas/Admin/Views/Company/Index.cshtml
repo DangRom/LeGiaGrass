@@ -91,10 +91,24 @@
                         <span asp-validation-for="Facebook" class="text-danger"></span>
                     </div>
                 </div>
+                  <div class="form-group">
+                    <label for="latitude" class="col-sm-2 control-label">Vĩ Độ</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Latitude" class="form-control height-input" id="latitude">
+                        <span asp-validation-for="Latitude" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="longitude" class="col-sm-2 control-label">Kinh Độ</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Longitude" class="form-control height-input" id="longitude">
+                        <span asp-validation-for="Longitude" class="text-danger"></span>
+                    </div>
+                </div> 
                  <!-- <div class="form-group">
                     <label for="logo" class="col-sm-2 control-label">Logo</label>
                     <div class="col-sm-10">
-                        <input asp-for="Logo" class="form-control height-input" id="log">
+                        <input asp-for="Logo" class="form-control height-input" id="logo">
                         <span asp-validation-for="Logo" class="text-danger"></span>
                     </div>
                 </div> -->

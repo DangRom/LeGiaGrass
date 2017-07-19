@@ -54,6 +54,8 @@ namespace LeGiaGrass.Services.Repository
             para.Add("pSlogan", model.Slogan, DbType.String, ParameterDirection.Input);
             para.Add("pBusinessHours", model.BusinessHours, DbType.String, ParameterDirection.Input);
             para.Add("pLogo", model.Logo, DbType.String, ParameterDirection.Input);
+            para.Add("pLatitude", model.Logo, DbType.Double, ParameterDirection.Input);
+            para.Add("pLongitude", model.Logo, DbType.Double, ParameterDirection.Input);
             Execute("updateCompany", para);
         }
     }

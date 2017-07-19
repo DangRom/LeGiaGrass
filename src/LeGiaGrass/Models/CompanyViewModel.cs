@@ -14,5 +14,8 @@ namespace LeGiaGrass.Models{
         public string Slogan { get; set; }
         public string BusinessHours { get; set; }
         public string Logo { get; set; }
+        
+        public double Latitude  { get; set; } //Vĩ độ
+        public double Longitude { get; set; } //Kinh độ
     }
 }
