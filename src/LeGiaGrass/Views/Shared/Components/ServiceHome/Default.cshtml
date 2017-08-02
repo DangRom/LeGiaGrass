@@ -3,7 +3,7 @@
 <div class="services-block">
 @foreach(var s in Model)
 {
-    var slink = "/service/" + s.Alias;
+    var slink = "/dich-vu/" + s.Alias;
     <a href="@slink" class="service iconmove light ">
         <div class="service-image image-scale"><img src="@s.Image" alt="@s.Alias"></div>
             <div class="caption">
