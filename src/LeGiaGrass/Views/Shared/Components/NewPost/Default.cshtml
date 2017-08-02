@@ -1,0 +1,21 @@
+@model IEnumerable<LeGiaGrass.Models.PostViewModel>
+
+
+
+	@foreach(var s in Model)
+	{
+		var slink = "/dich-vu/" + @s.Alias;
+		<div class="col-md-4">
+			<div class="category animation" data-animation="fadeInLeft" data-animation-delay="0s">
+				<a href="@slink" class="category__image">
+					<figure><img src="@s.Image" alt="@s.Alias" class="img-responsive" /></figure>
+				</a>
+				<div class="clearfix">
+			</div> 
+				<a href="@slink" class="category__title">@s.Name</a>
+				<div class="category__text">
+					@Html.Raw(@s.ShortDescription)
+				</div>
+			</div>
+		</div>
+	}

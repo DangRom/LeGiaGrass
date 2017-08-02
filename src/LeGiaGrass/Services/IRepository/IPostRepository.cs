@@ -16,5 +16,6 @@ namespace LeGiaGrass.Services.IRepository{
        IEnumerable<PostModel> GetPostForHomePage();
        IEnumerable<PostModel> GetMenuLine();
        IEnumerable<PostModel> GetForFooter();
+       IEnumerable<PostModel> GetNewPostByCategory(int cateId);
     }
 }

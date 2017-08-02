@@ -75,6 +75,13 @@ namespace LeGiaGrass.Services.Repository{
          Execute("updatePost", para);
       }
 
+        public IEnumerable<PostModel> GetNewPostByCategory(int cateId)
+        {
+            var para = new DynamicParameters();
+            para.Add("pCategoryId", cateId, DbType.Int32, ParameterDirection.Input);
+            return GetAll("getNewPostOfCategoryId", para);
+        }
+
       private DynamicParameters GetParams(PostModel model){
          var para = new DynamicParameters();
          para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
@@ -88,5 +95,6 @@ namespace LeGiaGrass.Services.Repository{
          para.Add("pCreateDate", model.CreateDate, DbType.DateTime, ParameterDirection.Input);
          return para;
       }
+
     }
 }
