@@ -25,16 +25,18 @@ namespace LeGiaGrass.Controllers
         [Route("/tin-tuc")]
         public async Task<ActionResult> GetAll()
         {
-            var postmodels = await Task.Factory.StartNew(() => _postRepo.GetPostForHomePage());
-            var posts = postmodels.Select(p => new PostViewModel
-            {
-                Name = p.Name,
-                Alias = p.Alias,
-                ShortDescription = p.ShortDescription,
-                Image = p.Image,
-                CreateDate = p.CreateDate
-            }).ToList();
-            return View(posts);
+            try{
+                var postmodels = await Task.Factory.StartNew(() => _postRepo.GetPostForHomePage());
+                var posts = postmodels.Select(p => new PostViewModel
+                {
+                    Name = p.Name,
+                    Alias = p.Alias,
+                    ShortDescription = p.ShortDescription,
+                    Image = p.Image,
+                    CreateDate = p.CreateDate
+                }).ToList();
+                return View(posts);
+            }catch{return View("Error");}
         }
 
         [Route("/tin-tuc/{alias}")]
@@ -60,16 +62,18 @@ namespace LeGiaGrass.Controllers
         // GET: Category
         public ActionResult Category(string alias)
         {
-           var postmodels = _postRepo.getAllPostByCategoryByAlias(alias);
-            var posts = postmodels.Select(p => new PostViewModel
-            {
-                Name = p.Name,
-                Alias = p.Alias,
-                ShortDescription = p.ShortDescription,
-                Image = p.Image,
-                CreateDate = p.CreateDate
-            }).ToList();
-            return View();
+           try{
+                var postmodels = _postRepo.getAllPostByCategoryByAlias(alias);
+                var posts = postmodels.Select(p => new PostViewModel
+                {
+                    Name = p.Name,
+                    Alias = p.Alias,
+                    ShortDescription = p.ShortDescription,
+                    Image = p.Image,
+                    CreateDate = p.CreateDate
+                }).ToList();
+                return View();
+           }catch{return View("Error");}
         }
     }
 }

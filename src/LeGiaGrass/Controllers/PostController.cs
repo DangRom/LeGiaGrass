@@ -14,15 +14,17 @@ namespace LeGiaGrass.Controllers{
 
        [Route("/danh-sach/{alias}")]
        public async Task<IActionResult> GetAll(string alias){
-            var postmodels = await Task.Factory.StartNew(() => _postRepo.getAllPostByCategoryByAlias(alias.Trim()));
-            var posts = postmodels.Select(p => new PostViewModel{
-                Name = p.Name,
-                Alias = p.Alias,
-                Image = p.Image,
-                ShortDescription = p.ShortDescription
-            }).ToList();
-            ViewBag.Backlink = Commons.Backlink.GetBacklinkFromCate(alias);
-            return View(posts);
+            try{
+                var postmodels = await Task.Factory.StartNew(() => _postRepo.getAllPostByCategoryByAlias(alias.Trim()));
+                var posts = postmodels.Select(p => new PostViewModel{
+                    Name = p.Name,
+                    Alias = p.Alias,
+                    Image = p.Image,
+                    ShortDescription = p.ShortDescription
+                }).ToList();
+                ViewBag.Backlink = Commons.Backlink.GetBacklinkFromCate(alias);
+                return View(posts);
+            }catch{return View("Error");}
        }
 
        [Route("/bai-viet/{alias}")]

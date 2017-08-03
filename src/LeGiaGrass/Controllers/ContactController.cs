@@ -30,7 +30,7 @@ namespace LeGiaGrass.Controllers
                 ViewBag.IsValid = true;
                 return View();
             }
-            catch{throw;}
+            catch{return View("Error");}
         }
 
         // POST: /Contact/send
@@ -39,15 +39,17 @@ namespace LeGiaGrass.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Send(ContactViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.IsValid = false;
-                return View(model);
-            }
+            try{
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.IsValid = false;
+                    return View(model);
+                }
 
-            ViewBag.IsValid = true;
+                ViewBag.IsValid = true;
 
-            return RedirectToAction(nameof(ContactController.Index));
+                return RedirectToAction(nameof(ContactController.Index));
+            }catch{return View("Error");}
         }
     }
 }

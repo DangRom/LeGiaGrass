@@ -16,30 +16,34 @@ namespace LeGiaGrass.Controllers
 
         [Route("/dich-vu")]
         public async Task<IActionResult> GetAll(){
-            var serviceModel = await Task.Factory.StartNew(() => _serviceRepo.GetAllServiceForList());
-            var services = serviceModel.Select(s => new ServiceViewModel{
-                Name = s.Name,
-                Alias = s.Alias,
-                Image = s.Image,
-                ShortDescription = s.ShortDescription
-            }).ToList();
-            return View(services);
+            try{
+                var serviceModel = await Task.Factory.StartNew(() => _serviceRepo.GetAllServiceForList());
+                var services = serviceModel.Select(s => new ServiceViewModel{
+                    Name = s.Name,
+                    Alias = s.Alias,
+                    Image = s.Image,
+                    ShortDescription = s.ShortDescription
+                }).ToList();
+                return View(services);
+            }catch{return View("Error");}
         }
 
 
         [Route("/dich-vu/{alias}")]
         public async Task<IActionResult> Detail(string alias)
         {
-            var servicemodel = await Task.Factory.StartNew(() => _serviceRepo.GetServiceByAlias(alias.Trim()));
-            var post = new ServiceViewModel
-            {
-                Name = servicemodel.Name ?? string.Empty,
-                Alias = servicemodel.Alias ?? string.Empty,
-                ShortDescription = servicemodel.ShortDescription ?? string.Empty,
-                Content = servicemodel.Content ?? string.Empty,
-                Image = servicemodel.Image ?? string.Empty
-            };
-            return View(post);
+            try{
+                var servicemodel = await Task.Factory.StartNew(() => _serviceRepo.GetServiceByAlias(alias.Trim()));
+                var post = new ServiceViewModel
+                {
+                    Name = servicemodel.Name ?? string.Empty,
+                    Alias = servicemodel.Alias ?? string.Empty,
+                    ShortDescription = servicemodel.ShortDescription ?? string.Empty,
+                    Content = servicemodel.Content ?? string.Empty,
+                    Image = servicemodel.Image ?? string.Empty
+                };
+                return View(post);
+            }catch{return View("Error");}
         }
     }
 }

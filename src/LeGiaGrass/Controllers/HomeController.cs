@@ -21,7 +21,7 @@ namespace LeGiaGrass.Controllers
                     Description = companymodel.Description
                 };
                 return View(company);
-            }catch{throw;}
+            }catch{return View("Error");}
         }
 
        
