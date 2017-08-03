@@ -29,7 +29,7 @@
 					<div class="divider divider--lg"></div>
 					<div class="row">
 						<!-- Load: New Service -->
-						@await Component.InvokeAsync("NewPost", New {cate_alias = @ViewBag.Backlink.Alias})
+						@await Component.InvokeAsync("NewPost", new {cate_alias = @ViewBag.Backlink.Alias})
 					</div>
 					<div class="divider divider--md"></div>
 					@await Component.InvokeAsync("ContactService")

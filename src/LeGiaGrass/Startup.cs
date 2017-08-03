@@ -26,7 +26,7 @@ namespace LeGiaGrass
         {
             // Add framework services.
             services.AddMvc();
-            services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
+            //services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
             //add dependence
             Commons.DependenceConfig.InitDependence(services);
         }

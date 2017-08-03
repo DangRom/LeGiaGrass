@@ -3,18 +3,15 @@ using System.Threading.Tasks;
 using LeGiaGrass.Models;
 using LeGiaGrass.Services.IRepository;
 using Microsoft.AspNetCore.Mvc;
-using LeGiaGrass.Services.IServices;
 namespace LeGiaGrass.ViewComponents
 {
     [ViewComponent(Name = "ContactService")]
     public class ContactServiceViewComponent : ViewComponent
     {
-       private readonly ICommunicationService _communicationService;
         private readonly ICompanyRepository _companyRepo;
 
-       public ContactServiceViewComponent(ICommunicationService communicationService, ICompanyRepository companyRepo){
+       public ContactServiceViewComponent(ICompanyRepository companyRepo){
             _companyRepo = companyRepo;
-            _communicationService = communicationService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()

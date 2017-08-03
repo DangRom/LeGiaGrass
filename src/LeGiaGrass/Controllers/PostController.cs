@@ -27,16 +27,18 @@ namespace LeGiaGrass.Controllers{
 
        [Route("/bai-viet/{alias}")]
        public async Task<IActionResult> Detail(string alias){
-            var postmodel = await Task.Factory.StartNew(() => _postRepo.GetPostByAlias(alias.Trim()));
-            var post = new PostViewModel(){
-                Name = postmodel.Name,
-                Alias = postmodel.Alias,
-                Image = postmodel.Image,
-                Content = postmodel.Content,
-                ShortDescription = postmodel.ShortDescription
-            };
-            ViewBag.Backlink = Commons.Backlink.GetBacklinkFromPost(alias);
-            return View(post);
+            try{
+                var postmodel = await Task.Factory.StartNew(() => _postRepo.GetPostByAlias(alias.Trim()));
+                var post = new PostViewModel(){
+                    Name = postmodel.Name,
+                    Alias = postmodel.Alias,
+                    Image = postmodel.Image,
+                    Content = postmodel.Content,
+                    ShortDescription = postmodel.ShortDescription
+                };
+                ViewBag.Backlink = Commons.Backlink.GetBacklinkFromPost(alias);
+                return View(post);
+            }catch{return View("Error");}
        }
     }
 }

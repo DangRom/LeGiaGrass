@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using LeGiaGrass.Models;
@@ -39,17 +40,21 @@ namespace LeGiaGrass.Controllers
         [Route("/tin-tuc/{alias}")]
         public async Task<ActionResult> Detail(string alias)
         {
-            var postmodel = await Task.Factory.StartNew(() => _postRepo.GetPostByAlias(alias.Trim()));
-            var post = new PostViewModel
-            {
-                Name = postmodel.Name,
-                Alias = postmodel.Alias,
-                ShortDescription = postmodel.ShortDescription,
-                Content = postmodel.Content,
-                Image = postmodel.Image,
-                CreateDate = postmodel.CreateDate
-            };
-            return View(post);
+            try{
+                var postmodel = await Task.Factory.StartNew(() => _postRepo.GetPostByAlias(alias.Trim()));
+                var post = new PostViewModel
+                {
+                    Name = postmodel.Name,
+                    Alias = postmodel.Alias,
+                    ShortDescription = postmodel.ShortDescription,
+                    Content = postmodel.Content,
+                    Image = postmodel.Image,
+                    CreateDate = postmodel.CreateDate
+                };
+                return View(post);
+            }catch{
+                return View("Error");
+            }
         }
 
         // GET: Category
