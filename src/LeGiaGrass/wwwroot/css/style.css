@@ -6219,7 +6219,7 @@ body:not(.boxed) .page-content--fill {
 .content--fill {
   background-color: #f4f4f5 !important;
   padding-top: 85px !important;
-  padding-bottom: 75px !important;
+  padding-bottom: 0px !important;
   margin-top: 85px;
 }
 .content--fill.top-pad-null {
